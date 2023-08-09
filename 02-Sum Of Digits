@@ -1,4 +1,6 @@
 //1-Iterative Approach
+
+//Method 1
 class Solution{
     static int sumOfDigits(int num) {         
         int sum=0;
@@ -12,7 +14,7 @@ class Solution{
     }
 }
 
-//Aliter
+//Method 2
 
 class Solution{
     static int sumOfDigits(int num) {         
@@ -23,7 +25,7 @@ class Solution{
     }
 }
 
-//Aliter
+//Method 3
 
 class Solution{
     static int sumOfDigits(int n){
