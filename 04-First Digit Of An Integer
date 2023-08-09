@@ -29,7 +29,7 @@ class Solution{
     }
 }
 
-//Method 3 - By converting given integer to string
+//Method 3 - First Convert the given integer to string and then first char of string – ‘0’ is our answer.
 
  class Solution{
     public static int firstDigit(int num){
