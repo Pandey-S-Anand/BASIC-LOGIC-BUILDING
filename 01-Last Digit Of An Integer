@@ -1,0 +1,9 @@
+class Solution {
+    public static int lastDigit(int num)
+    {
+       if(num<0)
+        num=Math.abs(num);
+         
+       return (num%10);
+    }
+}
