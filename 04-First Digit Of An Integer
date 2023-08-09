@@ -1,0 +1,45 @@
+
+//Method 1- log based approach
+
+class Solution{
+    public static int firstDigit(int num){
+        if(num<0)
+          num=Math.abs(num);
+          
+       int cntDigit=(int)Math.floor(Math.log10(num) + 1);
+       int temp=(int)Math.pow(10,cntDigit-1);
+       int first=num/temp;
+       
+       return first;
+    }
+}
+
+
+//Method 2 - Iterative Approach
+
+class Solution{
+    public static int firstDigit(int num){
+       if(num<0)
+         num=Math.abs(num);
+          
+       while(num>9)
+         num=num/10;
+        
+        return num;
+    }
+}
+
+//Method 3 - By converting given integer to string
+
+ class Solution{
+    public static int firstDigit(int num){
+       if(num<0)
+         num=Math.abs(num);
+
+       String str=Integer.toString(num);
+
+       int first=str.charAt(0)-'0';
+       
+       return first;
+    }
+}
