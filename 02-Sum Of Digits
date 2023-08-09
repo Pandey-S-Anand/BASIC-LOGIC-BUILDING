@@ -1,0 +1,51 @@
+//1-Iterative Approach
+class Solution{
+    static int sumOfDigits(int num) {         
+        int sum=0;
+        while(num!=0)
+        {
+          sum+=(num%10);
+          num=num/10;
+        }
+
+        return sum;
+    }
+}
+
+//Aliter
+
+class Solution{
+    static int sumOfDigits(int num) {         
+       int sum;
+       for (sum=0; num!=0; sum+=(num%10),num=num/10){}
+
+       return sum;
+    }
+}
+
+//Aliter
+
+class Solution{
+    static int sumOfDigits(int n){
+       String num=Integer.toString(n);
+       int sum=0;
+       
+       for(int i=0;i<num.length();i++)
+         sum+=num.charAt(i)-'0'; //ASCII VALUE OF Character '0' is 48 
+         
+       return sum;
+    }
+}
+
+
+//2-Recursive Approach
+
+class Solution{
+    static int sumOfDigits(int num){
+       if(num==0) //Base Case: Sum of Digits of '0'is 0
+         return 0;
+         
+       return (num%10)+sumOfDigits(num/10);
+    }
+}
+    
