@@ -1,0 +1,58 @@
+//1- Iterative Approach
+
+class Solution {
+    public static int CountDigits(int num){
+        if(num==0) //0 has 1 Digit
+           return 1;
+           
+        int count=0;
+        while(num!=0)
+        {
+           count++;
+           num=num/10;
+        }
+        
+        return count;
+    }
+}
+
+//2- Recursive Approach
+
+class Solution {
+    public static int CountDigits(int num){
+      if(num<10)//Base Case: Single Digit Number has Only Digit so return 1
+        return 1;
+        
+      return (1+CountDigits(num/10));
+    }
+}
+
+
+//3- Log-based Approach
+
+/*
+We can use log10(logarithm of base 10) to count the number of digits of positive Integer (logarithm is not defined for negative Integers).
+Digit count of N = upper bound of log10(N). 
+*/
+
+class Solution {
+    public static int CountDigits(int num){
+        if(num<0)
+          num=Math.abs(num);
+       
+        return (int)Math.floor(Math.log10(num) + 1); 
+    }
+}
+
+
+//4- Convert the number into String and then Calculate Length of String
+
+class Solution{
+    public static int CountDigits(int num){
+        if(num<0)
+          num=Math.abs(num);
+       
+        String str = Integer.toString(num);
+        return str.length();
+    }
+}
