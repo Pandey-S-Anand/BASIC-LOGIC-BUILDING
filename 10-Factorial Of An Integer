@@ -13,10 +13,10 @@ class Solution{
          return 1L; //0! =1
          
        long fact=1L; //1! =1
-	     for(int i=num;i>0;i--) // or for(int i=1;i<=num;i++)
-	       fact=fact*i;
+       for(int i=num;i>0;i--) // or for(int i=1;i<=num;i++)
+         fact=fact*i;
           
-	    return fact;
+       return fact;
     }
 }
 
@@ -56,9 +56,10 @@ class Solution{
 //Recursive Approach
 
 public class Solution{
-	public static long factorial(int num){
-	   if(num==0) //Base Case (Factorial of 0 is 1)
-	     return 1L;
-	   return (num*factorial(num-1));
-	}
+   public static long factorial(int num){
+      if(num==0) //Base Case (Factorial of 0 is 1)
+	 return 1L;
+
+      return (num*factorial(num-1));
+   }
 }
