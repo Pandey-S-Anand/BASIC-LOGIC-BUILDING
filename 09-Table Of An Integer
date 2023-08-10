@@ -1,0 +1,20 @@
+//Variation 1 (Display Multiplication table up to 10) 
+
+class Solution{
+    public static void Table(int num){
+      System.out.printf("Table of %d is \n:",num);
+      for(int i=1;i<=10;i++)
+         System.out.printf("%d x %d = %d\n",num,i,num*i);
+    }
+}
+
+
+//Variation 2 (Display multiplication table up to a given range) 
+
+class Solution{
+    public static void table(int num,int limit){
+      System.out.printf("Table of %d till %d is \n:",num,limit);
+      for(int i=1;i<=limit;i++)
+         System.out.printf("%d x %d = %d\n",num,i,num*i);
+    }
+}
