@@ -1,0 +1,52 @@
+/*
+Natural numbers are a part of the number system which includes all the positive integers from 1 till infinity and are also used for counting purpose. It does not include zero (0). In fact, 1,2,3,4,5,6,7,8,9…., are also called counting numbers.
+
+Natural numbers are part of real numbers, that include only the positive integers i.e. 1, 2, 3, 4,5,6, ………. excluding zero, fractions, decimals and negative numbers.
+
+Note: Natural numbers do not include negative numbers or zero.
+*/
+
+//Method 1 : Using Formula
+
+class Solution{
+    public static int sumNaturalNumbers(int N){
+         return (N*(N+1))/2;
+    }
+}
+
+
+//Method 2: Method 1 causes overflow, even if the result is not beyond the integer limit. We can avoid overflow up to some extent by dividing first.
+
+class Solution {
+    public static int sumNaturalNumbers(int n){
+        if(n % 2 == 0)
+          return (n / 2) * (n + 1);
+        else // If n is odd, (n+1) must be even
+          return ((n + 1) / 2) * n;
+    }
+}
+
+
+
+//Method 3- Iterative Approach
+
+class Solution{
+    public static int sumNaturalNumbers(int N){
+        int sum=0;
+        for(int i=1;i<=N;i++)
+           sum=sum+i;
+
+        return sum;
+    }
+}
+
+//Method 4- Recursive Approach
+
+class Solution{
+    public static int sumNaturalNumbers(int N){
+       if(N==0) //Sum of first 0 Natural Numbers
+          return 0;
+          
+       return N+sumNaturalNumbers(N-1);
+    }
+}
