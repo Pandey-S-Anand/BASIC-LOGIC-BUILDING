@@ -1,0 +1,14 @@
+//1^2  +2^2 + 3^2 + 4^2 +.........+ n^2=?
+
+class Solution {
+    public static long Series(int n){
+        if(n<=0)//invalid Input
+         return -1;
+        
+        long sum=0;
+        for(int i=1;i<=n;i++)
+          sum+=(i*i);
+          
+       return sum;
+    }
+}
