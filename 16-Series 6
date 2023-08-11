@@ -1,0 +1,17 @@
+// 1-2+3-4+5-6 +....N=?
+
+class Solution {
+    public static int Series(int n){
+       if(n<=0) //invalid Input
+         return -1;
+       
+       int sum=0; 
+       for(int i=1;i<=n;i++) 
+         if((i%2)!=0)
+           sum+=i;
+         else
+           sum-=i;
+         
+      return sum; 
+    }
+}
