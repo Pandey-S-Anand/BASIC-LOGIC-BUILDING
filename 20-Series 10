@@ -1,0 +1,17 @@
+// 1^3 - 2^3 + 3^3 -4^3 .......+N^3=?
+
+class Solution {
+    public static int Series(int n){
+        if(n<=0) //invalid Input
+          return -1;
+        
+        int sum=0;
+        for(int i=1;i<=n;i++)
+          if((i%2)==1)
+            sum+=(i*i*i);
+          else
+            sum-=(i*i*i);
+              
+        return sum;
+    }
+}
