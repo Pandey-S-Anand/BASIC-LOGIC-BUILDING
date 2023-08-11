@@ -11,29 +11,30 @@ Fn = Fn-1 + Fn-2
 
 public class Solution{
    public static void fibonacci(int n){
-	   int a=-1,b=1,c=0;
-	   for(int i=1;i<=n;i++){
+      int a=-1,b=1,c=0;
+      for(int i=1;i<=n;i++){
          c=a+b;
          System.out.print(c+" ");
-	       a=b;
-	       b=c;
-	   }
-	}
+	 a=b;
+	 b=c;
+       }
+   }
 }
 
 
 //Recurssive Approach
 
 public class Solution{	
-	public static void fibonacci(int n){ 
-	  for(int i=1;i<=n;i++)
-	    System.out.println(Nthfibonacci(i));
-	}
+   public static void fibonacci(int n){ 
+       for(int i=1;i<=n;i++)
+	  System.out.println(Nthfibonacci(i));
+   }
 	
-	public static int Nthfibonacci(int n)
-  {
+   public static int Nthfibonacci(int n)
+   {
      if(n==1 || n==2)
        return n-1;
+
      return (Nthfibonacci(n-1)+Nthfibonacci(n-2));
-	}
+   }
 }
