@@ -10,16 +10,17 @@ Fn = Fn-1 + Fn-2
 //Iterative Version :
 
 class Solution{
-	public static int nthFibonacci(int n){
-	   int a=-1,b=1,c=Integer.MAX_VALUE;
-	   for(int i=1;i<=n;i++)
-	   {
-	       c=a+b; 
-	       a=b;
-	       b=c;
-	   } 
-	   return c;
-	}
+   public static int nthFibonacci(int n){
+      int a=-1,b=1,c=Integer.MAX_VALUE;
+      for(int i=1;i<=n;i++)
+      {
+         c=a+b; 
+         a=b;
+	 b=c;
+      }
+
+      return c;
+   }
 }
 
 //Recurssive Approach
@@ -29,6 +30,6 @@ class Solution{
      if(n==1 || n==2)
        return n-1;
 
-	   return (nthFibonacci(n-1)+nthFibonacci(n-2));
-	}
+     return (nthFibonacci(n-1)+nthFibonacci(n-2));
+  }
 }
