@@ -1,0 +1,39 @@
+/*
+The Fibonacci numbers are the numbers in the following integer sequence.
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ……..
+
+In mathematical terms, the sequence Fn of Fibonacci numbers is defined by the recurrence relation 
+
+Fn = Fn-1 + Fn-2
+*/
+
+//Iterative Approach
+
+public class Solution{
+   public static void fibonacci(int n){
+	   int a=-1,b=1,c=0;
+	   for(int i=1;i<=n;i++){
+         c=a+b;
+         System.out.print(c+" ");
+	       a=b;
+	       b=c;
+	   }
+	}
+}
+
+
+//Recurssive Approach
+
+public class Solution{	
+	public static void fibonacci(int n){ 
+	  for(int i=1;i<=n;i++)
+	    System.out.println(Nthfibonacci(i));
+	}
+	
+	public static int Nthfibonacci(int n)
+  {
+     if(n==1 || n==2)
+       return n-1;
+     return (Nthfibonacci(n-1)+Nthfibonacci(n-2));
+	}
+}
