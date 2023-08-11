@@ -1,5 +1,7 @@
 // 1^2/1! + 2^2/2! + 3^2/3! +....N^2/N!=?
 
+//Bruteforce Approach
+
 class Solution{
     public static float Series(int n){
         if(n<=0) //invalid Input
@@ -15,11 +17,40 @@ class Solution{
     public static long factorial(int num)
     {
         long[]fact=new long[num+1];
-        fact[0]=1;
+        fact[0]=1L;
         
         for(int i=1;i<=num;i++)
           fact[i]=fact[i-1]*i;
           
         return fact[num];
+    }
+}
+
+
+//Optimal Approach
+
+class Solution{
+    public static float Series(int n){
+        if(n<=0)  //invalid Input
+          return -1;
+          
+        long[]fact=factorial(n);
+
+        float sum=0f;
+        for(int i=1;i<=n;i++)
+          sum=sum+(float)(i*i)/fact[i];
+
+        return sum;
+    }
+    
+    public static long[] factorial(int num)
+    {
+        long[]fact=new long[num+1];
+        fact[0]=1L;
+        
+        for(int i=1;i<=num;i++)
+           fact[i]=fact[i-1]*i;
+           
+        return fact;   
     }
 }
