@@ -1,0 +1,56 @@
+// X + X/2! + X/3! + .......+X/N!=?
+
+//Bruteforce Implementation
+class Solution{
+    public static float Series(int n,int x){
+        if(x<=0 || n<=0)  //invalid Input
+          return -1;
+          
+        float sum=0f;
+        
+        for(int i=1;i<=n;i++)
+          sum+=(float)(x)/factorial(i);
+          
+        return sum;
+    }
+    
+    public static long factorial(int num)
+    {
+        long[]fact=new long[num+1];
+        fact[0]=1L;
+        
+        for(int i=1;i<=num;i++)
+           fact[i]=fact[i-1]*i;
+           
+        return fact[num];   
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution{
+    public static float Series(int n,int x){
+        if(x<=0 || n<=0)  //invalid Input
+          return -1;
+          
+        long[]fact=factorial(n);
+        float sum=0f;
+        
+        for(int i=1;i<=n;i++)
+          sum+=(float)(x)/fact[i];
+          
+        return sum;
+    }
+    
+    public static long[] factorial(int num)
+    {
+        long[]fact=new long[num+1];
+        fact[0]=1L;
+        
+        for(int i=1;i<=num;i++)
+           fact[i]=fact[i-1]*i;
+           
+        return fact;   
+    }
+}
