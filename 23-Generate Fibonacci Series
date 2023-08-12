@@ -9,9 +9,9 @@ Fn = Fn-1 + Fn-2
 
 //Iterative Approach
 
-public class Solution{
+class Solution{
    public static void fibonacci(int n){
-      int a=-1,b=1,c=0;
+      long a=-1L,b=1L,c=0L;
       for(int i=1;i<=n;i++){
          c=a+b;
          System.out.print(c+" ");
@@ -24,17 +24,42 @@ public class Solution{
 
 //Recurssive Approach
 
-public class Solution{	
+class Solution{	
    public static void fibonacci(int n){ 
-       for(int i=1;i<=n;i++)
-	  System.out.println(Nthfibonacci(i));
+     for(int i=1;i<=n;i++)
+	System.out.println(Nthfibonacci(i));
    }
 	
-   public static int Nthfibonacci(int n)
+   public static long nthFibonacci(int n)
    {
-     if(n==1 || n==2)
-       return n-1;
+     if(n==1)
+       return 0L;
+     if(n==2)
+       return 1L;
 
-     return (Nthfibonacci(n-1)+Nthfibonacci(n-2));
+     return (nthFibonacci(n-1)+nthFibonacci(n-2));
+   }
+}
+
+
+//Dynamic Programming Approach
+
+class Solution{	
+   public static void fibonacci(int n){ 
+     long[]fib=nthFibonacci(n);
+     for(int i=1;i<=n;i++)
+	System.out.println(fib[i]);
+   }
+	
+   public static long[] nthFibonacci(int n)
+   {
+     long[]fib=new long[n+1];
+     fib[1]=0L;
+     fib[2]=1L;
+
+     for(int i=3;i<=n;i++)
+       fib[i]=fib[i-1]+fib[i-2];
+
+     return fib;
    }
 }
