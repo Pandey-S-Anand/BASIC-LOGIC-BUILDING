@@ -1,10 +1,30 @@
+//Bruteforce Approach
+
+class Solution{
+    static int countFactors(int num) {
+      int cnt=0;
+      for(int i=1;i<=num;i++)
+        if((num%i)==0)
+          cnt++;
+
+       return cnt;
+    }
+}
 
 
+//Better Approach
 
-
-
-
-
+class Solution{
+    static int countFactors(int num) {
+      int cnt=2;
+	    
+      for(int i=2;i<=(num/2);i++)
+         if((num%i)==0)
+           cnt++;
+         
+      return cnt;
+    }
+}
 
 
 //Optimal Approach
