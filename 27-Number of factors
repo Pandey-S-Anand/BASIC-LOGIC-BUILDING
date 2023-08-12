@@ -35,10 +35,10 @@ class Solution{
         for(int i=1;i<=(int)Math.sqrt(n);i++)
           if(n%i==0)
           {
-              if(i==(n/i))
-                cnt++;
-              else
-                cnt+=2;
+             if(i==(n/i))
+               cnt++;
+             else
+               cnt+=2;
           }
       
         return cnt;
