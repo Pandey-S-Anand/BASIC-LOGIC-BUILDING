@@ -1,0 +1,55 @@
+//Bruteforce Approach
+
+class Solution{
+
+    
+
+   
+    static int countFactors(int n) {
+        int cnt=0;
+        for(int i=1;i<=(int)Math.sqrt(n);i++)
+        {
+          if(n%i==0)
+          {
+              if(i==(n/i))
+                cnt++;
+              else
+                cnt+=2;
+          }
+        }
+        return cnt;
+    }
+}
+
+
+
+//Better Approach
+
+class Solution{
+    static long count(int N){
+       return countPerfectSquares(1,N);
+    }
+    countPerfectSquares(int a,int b)
+    {
+    public static long 
+       long cnt=0;
+       for(int i=a;i<=b;i++)
+         if(Math.sqrt(i)==(long)Math.sqrt(i))
+            cnt++;
+       return cnt;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution{
+    static long count(int N){
+       return countPerfectSquares(1,N);
+    }
+    
+    public static long countPerfectSquares(int a,int b)
+    {
+       return (long)(Math.floor(Math.sqrt(b)) - Math.ceil(Math.sqrt(a)) + 1); 
+    }
+}
