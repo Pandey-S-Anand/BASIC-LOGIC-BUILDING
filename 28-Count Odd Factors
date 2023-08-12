@@ -2,8 +2,7 @@
 
 class Solution{
 
-    static long count(int N)        
-    {
+    static long count(int N){
        int cnt=0;
        for(int i=1;i<=N;i++)
          if(hasOddNumberOfFactors(i))
@@ -12,7 +11,8 @@ class Solution{
        return cnt;
     }
     
-    static boolean hasOddNumberOfFactors(int n) {
+    static boolean hasOddNumberOfFactors(int n)
+    {
         int cnt=0;
         for(int i=1;i<=(int)Math.sqrt(n);i++)
         {
