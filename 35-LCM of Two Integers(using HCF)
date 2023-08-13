@@ -1,0 +1,16 @@
+class Solution{ 
+    public static int LCM(int num1,int num2){
+     	int hcf=GCD(num1,num2);
+	    int lcm=(num1*num2)/hcf;
+	     return lcm;
+    }
+	
+    public static int GCD(int divisor,int dividend)
+    {
+      int rem=dividend%divisor;
+	    if(rem==0)
+	      return divisor;
+	      
+     	return GCD(rem,divisor);      
+    }
+}
