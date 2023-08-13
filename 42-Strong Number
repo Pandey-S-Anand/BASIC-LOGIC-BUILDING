@@ -4,8 +4,8 @@ Strong number is a special number whose sum of the factorial of digits is equal 
 
 class Solution{  
   public static boolean isStrong(int num){
-	   long sum=0;
-	   int temp=num;
+     long sum=0;
+     int temp=num;
      long[]fact=factorial(num);
      
      while(temp!=0)
@@ -18,9 +18,9 @@ class Solution{
         return true;
      else 
         return false;
-	}
+  }
 	
-	public static long[] factorial (int num)
+  public static long[] factorial (int num)
   {
     long[]fact=new long[10];
     fact[0]=1;
