@@ -1,0 +1,81 @@
+/*
+   H.C.F(16,48)
+   
+   Factors of 16 = 1 ,2 ,4 ,8 , 16 .
+   Factors of 48 = 1 ,2 ,3 ,4 ,6 ,8 ,12 ,16 ,24, 48
+   
+   Common Factors of 16 and 48 : 1 ,2 ,4 ,8 ,16
+   
+   Highest Common Factor : 16
+*/
+
+//Iterative Approach
+
+class Solution{
+    public static int HCF(int num1,int num2){
+        int minNum=Math.min(num1,num2);
+        
+        if(Math.max(num1,num2)%minNum==0)
+          return minNum;
+        
+        for(int temp=(minNum/2);temp>1;temp--)
+          if((num1%temp)==0 && (num2%temp)==0)
+              return temp;
+              
+        return 1;
+    }
+}
+
+//Recurssive Approaches
+
+//Method 1: Bruteforce Approach
+
+class Solution{
+    public static int driver(int num1,int num2){
+       int minNum=Math.min(num1,num2); 
+       
+       if(Math.max(num1,num2)%minNum==0)
+          return minNum;
+          
+       return HCF(num1,num2,minNum/2);
+    }
+	
+    public static int HCF(int num1,int num2,int temp)
+    {
+        if((num1%temp)==0 && (num2%temp)==0)
+           return temp;
+              
+        return HCF(num1,num2,temp-1);      
+    }
+}
+
+
+//Method 2: Optimal Approach (using Euclidean algorithm)
+
+class Solution{
+    public static int driver(int num1,int num2){
+       return GCD(Math.min(num1,num2),Math.max(num1,num2));
+    }
+	
+    public static int GCD(int divisor,int dividend)
+    {
+      int rem=dividend%divisor;
+     	if(rem==0)
+	      return divisor;
+	      
+	    return GCD(rem,divisor);      
+    }
+}
+
+
+//Aliter (Compressed Version)
+
+class Solution{
+    public static int GCD(int divisor,int dividend){
+        int rem=dividend%divisor;
+	      if(rem==0)
+	        return divisor;
+	      
+	      return GCD(rem,divisor);      
+    }
+}
