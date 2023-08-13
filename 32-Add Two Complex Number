@@ -1,0 +1,15 @@
+class Solution{
+    public static void Roots(int a1,int b1,int a2,int b2){
+        System.out.println("Resultant Complex Number is :");
+        int a3=a1+a2;
+        int b3=b1+b2;
+        System.out.printf("(%d+i%d) + (%d+i%d) = (%d+i%d)",a1,b1,a2,b2,a3,b3);
+    }
+}
+
+/*
+ c1=2+4i;
+ c2=5+6i;
+ c3=c1+c2=(2+5) + (4+6)i
+ c3=7+10i;
+*/
