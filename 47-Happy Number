@@ -33,7 +33,7 @@ class Solution {
       HashSet<Integer>hs=new HashSet<>();
 	    
       while(true)
-	    {
+      {
 	        int sumSqr=0;
           while(num!=0)
           {
@@ -50,7 +50,7 @@ class Solution {
              hs.add(sumSqr);
              num=sumSqr;  
           }         
-	    }
+      }
     }
 }
 
@@ -59,8 +59,8 @@ class Solution {
 class Solution {
     public boolean isHappy(int num) {
      while(num!=4 && num!=16 && num!=37 && num!=58 && num!=89 && num!=145 && num!=42 && num!=20)
-	   {
-	      int sumSqr=0;
+     {
+        int sumSqr=0;
         while(num!=0)
         {
            sumSqr+=(num%10)*(num%10);
@@ -71,8 +71,8 @@ class Solution {
           return true;
         else
           num=sumSqr;  
-	   }
+     }
 	    
-	   return false;
+      return false;
     }
 }
