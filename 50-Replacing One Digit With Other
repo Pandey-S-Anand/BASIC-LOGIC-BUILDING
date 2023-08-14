@@ -1,0 +1,64 @@
+//Naive solution
+
+class Solution{	
+	 public static int replace(int num,int digit,int replace){
+	   if(num==0 && digit==0)
+	     return replace;
+	     
+	   return reverse(modifiedReverse(num,digit,replace));
+	 }
+	
+	
+    public static int modifiedReverse(int num,int digit,int replace)
+    {
+        int rev=0;
+        while(num!=0)
+        {
+          int rem=num%10;
+          if(rem==x)
+            rem=y;
+        
+          rev=rev*10+rem;  
+          num=num/10;
+        }
+      
+        return rev;
+    }
+    
+    
+    public static int reverse(int num)
+    {
+        int rev=0;
+        while(num!=0)
+        {
+           rev=rev*10+num%10;  
+           num=num/10;
+        }
+	 
+        return rev;
+    } 
+} 
+
+
+//Optimal Solution
+
+class Solution{	
+	 public static int replace(int num,int digit,int replace){
+      if(num==0 && digit==0)
+	      return replace;
+	       
+	    int sum=0;
+	    int placeValue=1;
+	    while(num!=0)
+	    {
+	       int rem=num%10;
+	       if(rem==digit)
+            rem=replace;
+              
+	       sum=sum+placeValue*rem;
+	       placeValue=placeValue*10;
+	       num=num/10;
+	    }
+	   return sum;  
+	 }
+} 
