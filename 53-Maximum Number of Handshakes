@@ -1,0 +1,13 @@
+/*
+To maximize the number of handshakes, each person should shake hand with every other person in the room. For the first person, there would be N-1 handshakes.
+For second person there would N-1 person available but he had already shaken hand with the first person. So there would be N-2 handshakes and so on. 
+So, Total number of handshake = N-1 + N-2 +….+ 1 + 0, which is equivalent to sum of first (n-1) natural numbers i.e  ((n-1)*((n-1)+1))/2 = ((N-1)*N)/2 .
+(using the formula of sum of first N natural number i.e (n*(n+1))/2)
+*/
+
+class Solution{
+    static long handShakes(long n){
+       long max=(n*(n-1))/2; 
+       return max;
+    }
+}
