@@ -45,3 +45,4 @@ class Solution{
   public static long octToDec(int oct){
     return Integer.parseInt(Integer.toString(oct),8);  
   }
+}
