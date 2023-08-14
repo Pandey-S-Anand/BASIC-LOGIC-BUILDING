@@ -1,0 +1,18 @@
+/*
+A leap year is a year that contains an additional day, February 29th, making it 366 days long instead of the usual 365 days.
+Leap years are necessary to keep our calendar in alignment with the Earth’s revolutions around the Sun.
+
+A year is a leap year if the following conditions are satisfied: 
+1:The year is multiple of 400.
+2:The year is a multiple of 4 and not a multiple of 100.
+*/
+
+
+class Solution{
+	public static boolean leapYear(int year){
+      if( (year % 400 == 0) || (year % 100 != 0 && year % 4 == 0 )) 
+        return true;
+      else
+        return false;
+	}
+}
