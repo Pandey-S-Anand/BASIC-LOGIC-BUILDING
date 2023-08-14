@@ -1,7 +1,5 @@
 class Solution{
-
-     public static void numberToEquivalentWord (int num) 
-     {
+     public static void numberToEquivalentWord (int num) {
        if(num==0)
        {
          System.out.printf("Zero ");
@@ -24,9 +22,9 @@ class Solution{
          
          case 1:
       	 System.out.printf("One ");
-	       break;
+	 break;
 	     
-	       case 2:
+	 case 2:
          System.out.printf("Two ");
          break;
          
@@ -42,17 +40,17 @@ class Solution{
          System.out.printf("Five ");
          break;
          
-	       case 6:
+         case 6:
          System.out.printf("Six ");
          break;
          
-	       case 7:
+         case 7:
          System.out.printf("Seven ");
          break;
          
          case 8:
          System.out.printf("Eight ");
-	       break;
+	 break;
 	     
          case 9:
          System.out.printf("Nine ");
