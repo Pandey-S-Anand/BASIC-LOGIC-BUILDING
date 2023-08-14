@@ -1,0 +1,56 @@
+/*
+The octal numeral system is the base-8 number system, and uses the digits 0 to 7. 
+That means there are only 8 symbols or digits (0, 1, 2, 3, 4, 5, 6, 7) used to form other numbers.
+
+Let's say we want to convert the decimal number 142 to octal:
+
+Start with the decimal number (142
+
+Divide the decimal number by 8:
+Quotient: 142 / 8 = 17
+Remainder: 6
+
+Divide the new quotient by 8:
+Quotient: 17 / 8 = 2
+Remainder: 1
+
+Divide the new quotient by 8:
+Quotient: 2 / 8 = 0
+Remainder: 2
+
+Reading the remainders from bottom to top gives us the octal representation: 216.
+*/
+
+//Method 1
+
+class Solution{
+  public static String decToOct(int dec){
+      if(dec==0)
+        return "0";
+         
+      String res="";    
+      while(dec!=0)
+      {
+        res=res+dec%8;
+        dec=dec/8;
+      }
+      
+     return reverse(res);  
+  }
+  
+  public static String reverse(String str)
+  {
+      String rev="";
+      for(int i=str.length()-1;i>=0;i--)
+          rev=rev+str.charAt(i);
+      return rev;      
+  }
+}
+
+//Method 2 (inbuilt method)
+
+class Solution{
+  public static String decToOct(int dec){
+     return Integer.toOctalString(dec);  
+  }
+}
