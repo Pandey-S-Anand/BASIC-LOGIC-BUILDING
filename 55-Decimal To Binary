@@ -1,0 +1,95 @@
+/*
+   Let's take the example of converting the decimal number 25 to binary:
+
+Start with the decimal number (25).
+
+Divide the decimal number by 2:
+Quotient: 25 / 2 = 12
+Remainder: 1
+
+Continue dividing the quotient by 2:
+Quotient: 12 / 2 = 6
+Remainder: 0
+
+Continue dividing the quotient by 2:
+Quotient: 6 / 2 = 3
+Remainder: 0
+
+Continue dividing the quotient by 2:
+Quotient: 3 / 2 = 1
+Remainder: 1
+
+Once more:
+Quotient: 1 / 2 = 0
+Remainder: 1
+
+Reading the remainders from bottom to top, we get the binary representation: 11001.
+*/
+
+//Method 1: Naive Approach (Will only work for Positive Integers ,fail for Negative Integers and 0)
+
+class Solution{
+  public static String decimalTobinary(int dec){
+     String bin="";
+     while(dec!=0)
+     {
+        bin=bin+(dec%2);
+        dec=dec/2;
+     }
+     return reverse(bin);
+  }
+  
+  public static String reverse(String str)
+  {
+      String rev="";
+      for(int i=str.length()-1;i>=0;i--)
+         rev=rev+str.charAt(i);
+      return rev;
+  }
+  
+}
+
+
+//Method 2: Optimal Approach (Will work for Positive Integers ,Negative Integers and 0)
+
+class Solution{ 
+  public static String decimalTobinary(int dec){
+     if(dec==0)
+       return "0";
+       
+     String bin="";
+     int flag=0;
+     
+     for(int i=31;i>=0;i--)
+     {
+       int mask=1<<i;
+       if(flag==1)
+       {
+          if((dec&mask)==0) 
+             bin+=0; 
+          else
+             bin+=1;
+       }
+       else
+       {
+          if((dec&mask)!=0) 
+          {
+             bin+=1; 
+             flag=1;
+          }
+       }
+     }
+     
+     return bin;
+  }
+}  
+
+
+//Method 3 : inbuilt Method (Will work for Positive Integers ,Negative Integers and 0)
+
+class Solution{ 
+  public static String decimalTobinary(int dec){
+    String bin_value =Integer.toBinaryString(dec) ;
+    return bin_value;
+  }
+}
