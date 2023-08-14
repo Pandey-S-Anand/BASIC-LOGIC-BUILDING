@@ -16,20 +16,20 @@ Reading the remainders from bottom to top gives us the hexadecimal representatio
 // Method 1
 
 class Solution{
-  public static String decToHex(int dec){
-        if(dec==0)
-          return "0";
+   public static String decToHex(int dec){
+      if(dec==0)
+        return "0";
           
-        String res="",hex="0123456789ABCDEF";
+      String res="",hex="0123456789ABCDEF";
         
-        while(dec!=0)
-        {
-          int rem=dec%16;
-          res=res+hex.charAt(rem);
-          dec=dec/16;
-        }
+      while(dec!=0)
+      {
+        int rem=dec%16;
+        res=res+hex.charAt(rem);
+        dec=dec/16;
+      }
         
-        return reverse(res);  
+      return reverse(res);  
   }
   
   
