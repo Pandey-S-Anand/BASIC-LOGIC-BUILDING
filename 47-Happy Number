@@ -57,7 +57,7 @@ class Solution {
 //Method 2 - HardCoding The Only Cycle
 
 class Solution {
-    public boolean isHappy(int num) {
+   public boolean isHappy(int num) {
      while(num!=4 && num!=16 && num!=37 && num!=58 && num!=89 && num!=145 && num!=42 && num!=20)
      {
         int sumSqr=0;
@@ -74,5 +74,5 @@ class Solution {
      }
 	    
       return false;
-    }
+   }
 }
