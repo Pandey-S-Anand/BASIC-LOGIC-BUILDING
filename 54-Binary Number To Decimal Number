@@ -1,0 +1,97 @@
+/*
+   Ex - (1   0   1   1   0   1   1)
+        2^6 2^5 2^4 2^3 2^2 2^1 2^0
+        
+       (2^6)*1 + (2^5)*0 + (2^4)*1 + (2^3)*1 + (2^2)*0 + (2^1)*1 + (2^0)*1 =  1+2+8+16+64= 91.
+*/
+
+//Method 1 : 
+
+//Bruteforce Implementation
+
+class Solution{
+    public static int binaryToDecimal(int bin){
+         int count=0,decValue=0;
+         while(bin!=0)
+         {
+           decValue+=(int)Math.pow(2,count) * (bin%10);            
+           bin/=10;
+           count++;
+         }
+         
+         return decValue;
+    }
+}
+
+
+//Better Implementation :
+
+class Solution{
+     public static int binaryToDecimal(int bin){
+         int count=0;
+         int decValue=0;
+         
+         while(bin!=0)
+         {
+            int rem=bin%10;
+            if(rem==1)
+             decValue+=(int)Math.pow(2,count); 
+             
+            bin/=10;
+            count++;
+         }
+         return decValue;
+     }
+}
+
+
+//Optimal Implementation 
+
+class Solution{
+     public static int binaryToDecimal(int bin){ 
+         int powerOf2=1; // 2^0 = 1
+         int decValue=0;
+         while(bin!=0)
+         {
+            if((bin%10)==1)
+              decValue+=powerOf2; 
+             
+            powerOf2=(powerOf2*2);
+            bin/=10;
+         }
+         
+         return decValue;
+     }
+}
+
+
+
+// When Input is in the Form Of a String
+
+//Method 1
+class Solution {
+    public int binary_to_decimal(String bin) {
+        int dec_value = 0;
+        int powerOf2 =1; // 2^0
+        for (int i=bin.length()-1; i >= 0; i--) 
+        {
+           if (bin.charAt(i)== '1')
+              dec_value +=powerOf2;
+                
+           powerOf2=powerOf2*2;
+        }
+        
+        return dec_value;
+    }
+}
+
+
+    
+//Method 2 (Using inbuilt Method)
+
+class Solution {
+    public int binary_to_decimal(String bin) {
+       int dec_value=Integer.parseInt(bin,2); 
+       return dec_value;
+    }
+}
