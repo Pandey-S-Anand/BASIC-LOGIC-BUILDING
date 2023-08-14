@@ -1,0 +1,31 @@
+/*
+Friendly pair(Amicable numbers) are two different numbers related in a way such that the Ratio’s sum of the proper divisors divided by number itself for each is same
+The first few friendly pairs are (6, 28), (30, 140), (80, 200), (40, 224), (12, 234), (84, 270), (66, 308), ....
+(A proper divisor of a natural number is the divisor that is strictly less than the number. For example, number 20 has 5 proper divisors: 1, 2, 4, 5, 10)
+*/
+
+public class Solution{
+	public static String AmmicableNumbers(int num1,int num2){	  
+	   if((sumProperDivisor(num1)/num1) == (sumProperDivisor(num2)/num2))
+	      return "are Ammicable Numbers";
+	   else
+	      return "are Not Ammicable Numbers";   
+	}
+	
+	public static int sumProperDivisor(int num)
+	{
+	  int sum=0;
+	  for(int i=1;i<=(int)Math.sqrt(num);i++)
+	  {
+	    if((num%i)==0)
+	    {
+	      sum+=i;
+	      
+	      if(i!=1 && i!=(num/i))
+	        sum+=(num/i);
+	    }
+	  }
+	  
+	  return sum;
+	}
+}
