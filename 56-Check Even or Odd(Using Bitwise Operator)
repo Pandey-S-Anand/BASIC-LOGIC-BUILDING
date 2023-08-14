@@ -39,8 +39,8 @@ otherwise the value of the number remains the same/Unchanged, if the value is od
 public class Solution{
   public static boolean isEven(int num){
     if((num|1)==(num+1))
-      return true;
+      return true; // EVEN
     else //if((num|1)==num)
-      return false; //Number is ODD
+      return false;  // ODD
   }
 }
