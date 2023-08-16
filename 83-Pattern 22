@@ -1,0 +1,41 @@
+/*
+   *****
+  ***** 
+ *****  
+*****  
+*/
+
+//Figure Specific Code
+
+class Solution {
+    public static void pattern22(){
+       for(int i=1;i<=4;i++)
+       {
+           for(int j=1;j<=8;j++)
+             if(j>=(5-i) && j<=(9-i))
+               System.out.print("*");
+             else
+               System.out.print(" ");
+               
+            System.out.println();   
+       }
+    }
+}
+
+
+//Genralised Code
+
+class Solution {
+    public static void pattern22(int n){
+       for(int i=1;i<=n;i++)
+       {
+           for(int j=1;j<=((2*n));j++)
+             if(j>=((n+1)-i) && j<=((2*n)+1-i))
+               System.out.print("*");
+             else
+               System.out.print(" ");
+               
+            System.out.println();   
+       }
+    }
+}
