@@ -1,0 +1,60 @@
+/*Q-To Print
+
+1     
+10    
+101   
+1010  
+10101 
+101010
+
+*/
+
+//Figure Specific
+
+class Solution {
+    public static void pattern24(){
+       for(int i=1;i<=6;i++)
+       {
+           int flag=1;
+           for(int j=1;j<=6;j++)
+             if(j<=i)
+             {
+                 if(flag==1)
+                   System.out.print("1");
+                 else
+                   System.out.print("0");
+                   
+                 flag=1-flag;
+             }
+             else
+               System.out.print(" ");
+               
+            System.out.println();   
+       }
+    }
+}
+
+//Generalised Code
+
+class Solution{
+    public static void pattern24(int n){
+       for(int i=1;i<=n;i++)
+       {
+           int flag=1;
+           for(int j=1;j<=n;j++)
+             if(j<=i)
+             {
+                 if(flag==1)
+                   System.out.print("1");
+                 else
+                   System.out.print("0");
+                   
+                flag=1-flag;
+             }
+             else
+               System.out.print(" ");
+               
+            System.out.println();   
+       }
+    }
+}
