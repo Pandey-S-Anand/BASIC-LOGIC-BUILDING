@@ -23,9 +23,9 @@ class Solution {
            
            for(int j=1;j<=4;j++)
             if(j<=k)
-                System.out.print(2+k);
+              System.out.print(2+k);
             else
-                System.out.print(" ");
+              System.out.print(" ");
                  
           System.out.println(); 
        }
