@@ -1,0 +1,58 @@
+/*Q-To Print
+
+1         
+1 2 1       
+1 2 3 2 1     
+1 2 3 4 3 2 1   
+1 2 3 4 5 4 3 2 1  
+
+*/
+
+//Figure Specific Code
+
+class Solution{
+  public static void pattern41()
+  {
+      for (int i = 1; i <= 5; i++)
+      {
+	      int data=1;
+	      for (int j = 1; j <= 9; j++)
+	         if(j<=(2*i)-1)
+           {
+              System.out.print(data+" ");
+              if(j<i)
+                data++;
+              else
+                data--;
+           }
+           else
+              System.out.print(" ");
+		 
+	      System.out.println ();
+      }
+  }
+}
+
+//Generalized Code
+
+class Solution {
+  public static void pattern41(int n){
+      for (int i = 1; i <=n; i++)
+      {
+	      int data=1;
+	      for (int j = 1; j <=((2*n)-1); j++)
+	         if(j<=(2*i)-1)
+           {
+              System.out.print(data+" ");
+              if(j<i)
+                data++;
+              else
+                data--;
+           }
+           else
+              System.out.print(" ");
+		 
+	       System.out.println ();
+      }
+   }
+}
