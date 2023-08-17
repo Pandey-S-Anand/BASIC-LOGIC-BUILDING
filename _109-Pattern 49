@@ -27,12 +27,12 @@ class Solution{
             k--;
 	    
       	  for(int j = 1; j <=10; j++)
-	           if(j<=k || j>=(11-k))
+	     if(j<=k || j>=(11-k))
                 System.out.print("*");
              else
                 System.out.print(" ");
 		 
-	       System.out.println();
+	 System.out.println();
       }
   }
 }
@@ -50,13 +50,13 @@ class Solution {
           if(i>(m+1))
             k--;
 	    
-	        for(int j = 1; j <=n; j++)
-	           if(j<=k || j>=((n+1)-k))
+	  for(int j = 1; j<=n; j++)
+	     if(j<=k || j>=((n+1)-k))
                System.out.print("*");
              else
                System.out.print(" ");
 	       
-	      System.out.println();
+	System.out.println();
       }
   }
 }
