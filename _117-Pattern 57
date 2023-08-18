@@ -13,7 +13,7 @@
 //Figure Specific Code
 
 class Solution{
-  public static void pattern58(){
+  public static void pattern57(){
       int k=0;
       for (int i = 1; i <= 7; i++)
       {
@@ -49,7 +49,7 @@ class Solution{
 //Genralised code
 
 class Solution{
-  public static void pattern58(int n)
+  public static void pattern57(int n)
   {
       
       int k=,m=(n+1)/2;
