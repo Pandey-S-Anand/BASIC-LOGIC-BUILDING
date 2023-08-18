@@ -1,0 +1,52 @@
+/*Q-To Print
+
+                  1     
+              4   9  16    
+         25  36  49  64  81   
+    100 121 144 169 196 225 256  
+289 324 361 400 441 484 529 576 625
+
+*/  
+  
+//Figure Specific Code
+
+class Solution{  
+  public static void pattern76(){  
+      int data=1;
+      for (int i = 1; i <= 5; i++)
+      {
+	       for(int j = 1; j <=9; j++)
+	         if(j>=(6-i) && j<=(4+i))
+	         {
+	           System.out.print((data*data)+" ");
+	           data++;
+	         }
+	         else
+             System.out.print(" ");
+		 
+	      System.out.println();
+      } 
+  }
+}
+
+
+//Gneralised Code
+
+class Solution{
+  public static void pattern76(int n){  
+     int data=1;
+     for (int i = 1; i <=n; i++)
+     {
+	      for(int j = 1; j <=((2*n)-1); j++)
+	         if(j>=(n+1-i) && j<=(n-1+i))
+	         {
+	           System.out.print((data*data)+" ");
+	           data++;
+	         }
+	         else
+             System.out.print(" ");
+		 
+	       System.out.println ();
+      } 
+  }
+}
