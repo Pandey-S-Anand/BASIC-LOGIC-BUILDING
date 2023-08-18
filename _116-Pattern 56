@@ -10,26 +10,26 @@
 //Figure Specific Code
 
 class Solution{
-  public static void pattern57(){
+  public static void pattern56(){
       for(int i = 1; i <=5; i++)
       {
-	       for(int j = 1; j <=5; j++)
-	         if(j==1 || j==5 || j==i || j==(6-i))
-	         {
-	           if(j==i || j==(6-i))
-	           {
-	              if(i<4)
-	                System.out.print("*");
-                else
-                  System.out.print(" ");
-	           }
-	           else//(j==1 || j==5)
-	              System.out.print("*");
+	  for(int j = 1; j <=5; j++)
+	    if(j==1 || j==5 || j==i || j==(6-i))
+	    {
+	        if(j==i || j==(6-i))
+	        {
+	          if(i<4)
+	            System.out.print("*");
+                  else
+                    System.out.print(" ");
 	         }
-	         else
-	           System.out.print(" ");
+	         else//(j==1 || j==5)
+	            System.out.print("*");
+	    }
+	    else
+	      System.out.print(" ");
 		  
-	      System.out.println();
+	 System.out.println();
       }
    }
 }
@@ -38,7 +38,7 @@ class Solution{
 //Generalised Code
 
 class Solution{
-  public static void pattern57(int n)
+  public static void pattern56(int n)
   {
       int m=(n+1)/2;
       for (int i = 1; i <=n; i++)
@@ -50,8 +50,8 @@ class Solution{
 	           {
 	              if(i<=m)
 	                System.out.print("*");
-                else
-                  System.out.print(" ");
+                      else
+                        System.out.print(" ");
 	           }
 	           else//(j==1 || j==5)
 	               System.out.print("*");
@@ -59,7 +59,7 @@ class Solution{
 	      else
 	        System.out.print(" ");
 		
-	    System.out.println ();
+	 System.out.println();
       }
   }
 }
