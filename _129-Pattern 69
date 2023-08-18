@@ -1,0 +1,52 @@
+/*
+
+12345
+6789 
+012  
+34   
+5
+
+*/
+
+//Figure based code
+
+class Solution {    
+    public static void pattern69(){
+       int data=1;
+       for(int i=1;i<=5;i++)
+       {
+           for(int j=1;j<=5;j++)
+              if(j<=(6-i))
+              {
+                 System.out.print((data%10));
+                 data++;
+              }
+              else
+                System.out.print(" ");
+         
+          System.out.println(); 
+       }
+    }
+}
+
+
+//Generalised code
+
+class Solution {    
+    public static void pattern69(int n){
+       int data=1;
+       for(int i=1;i<=n;i++)
+       {
+           for(int j=1;j<=n;j++)
+              if(j<=(n+1-i))
+              {
+                 System.out.print((data%10));
+                 data++;
+              }
+              else
+                System.out.print(" ");
+       
+          System.out.println(); 
+       }
+    }
+}
