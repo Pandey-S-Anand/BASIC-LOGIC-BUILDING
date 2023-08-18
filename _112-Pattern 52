@@ -39,7 +39,7 @@ class Solution{
 //Genralised code
 
 class Solution{
-  public static void pattern53(int n){
+  public static void pattern52(int n){
       int k=0,m=(n+1)/2;
       for(int i = 1; i <=n; i++)
       {
