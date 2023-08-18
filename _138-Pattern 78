@@ -14,25 +14,25 @@ class Solution {
   public static void pattern78(){  
       for (int i = 1; i <= 5; i++)
       {
-	       for(int j = 1; j <=5; j++)
-	         if(j<=i)
-	         {
-	           long temp=factorial(i-1)/(factorial(i-j)*factorial(j-1));
-	           System.out.print(temp+" ");
-	         }
-	         else
-             System.out.print(" ");
+	  for(int j = 1; j <=5; j++)
+	    if(j<=i)
+	    {
+	        long temp=factorial(i-1)/(factorial(i-j)*factorial(j-1));
+	        System.out.print(temp+" ");
+	    }
+	    else
+              System.out.print(" ");
 		  
-	       System.out.println ();
+	 System.out.println ();
       } 
   }
   
   public static long factorial(int n)
   {
       long[] fact=new long[n+1];
-      fact[0]=1;
+      fact[0]=1L;
 
-      for(int i=1;i<=n;i--)
+      for(int i=1;i<=n;i++)
         fact[i]=fact[i-1]*i;
 	
       return fact[n];
@@ -44,20 +44,19 @@ class Solution {
 //Generalised Code
 
 class Solution{
-  public static void pattern79(int n)
-  {  
+  public static void pattern79(int n){  
       for (int i = 1; i <=n; i++)
       {
-	       for(int j = 1; j <=n; j++)
-	         if(j<=i)
-	         {
-	           long temp=factorial(i-1)/(factorial(i-j)*factorial(j-1));
-	           System.out.print(temp+" ");
-	         }
-	         else
-             System.out.print(" ");
+	 for(int j = 1; j <=n; j++)
+	    if(j<=i)
+	    {
+	       long temp=factorial(i-1)/(factorial(i-j)*factorial(j-1));
+	       System.out.print(temp+" ");
+	    }
+	    else
+              System.out.print(" ");
 		 
-	      System.out.println();
+	 System.out.println();
       } 
   }
   
@@ -65,9 +64,9 @@ class Solution{
   public static long factorial(int n)
   {
       long[] fact=new long[n+1];
-      fact[0]=1;
+      fact[0]=1L;
 
-      for(int i=1;i<=n;i--)
+      for(int i=1;i<=n;i++)
         fact[i]=fact[i-1]*i;
 	
       return fact[n];
