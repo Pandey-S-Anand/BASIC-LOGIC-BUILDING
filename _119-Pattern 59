@@ -26,13 +26,13 @@ class Solution{
           else if(i>6)
             k--;
             
-	      for(int j = 1; j <=5; j++)
-	        if(j<=(6-k))
-	          System.out.print("*");
-          else
-            System.out.print(" ");
+	  for(int j = 1; j <=5; j++)
+	     if(j<=(6-k))
+	        System.out.print("*");
+             else
+                System.out.print(" ");
 	       
-	       System.out.println ();
+	 System.out.println ();
       }
   }
 }
@@ -50,13 +50,13 @@ class Solution{
           else if(i>((n/2)+1))
             k--;
             
-	        for(int j = 1; j <=(n/2); j++)
-	          if(j<=((n/2)+1-k))
-	            System.out.print("*");
-            else
-              System.out.print(" ");
+	  for(int j = 1; j <=(n/2); j++)
+	     if(j<=((n/2)+1-k))
+	       System.out.print("*");
+             else
+               System.out.print(" ");
 	       
-	      System.out.println();
+	System.out.println();
       }
    }
 }
