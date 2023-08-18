@@ -16,19 +16,19 @@ class Solution{
      {
         temp=temp+(i-1);
         int data=temp;
-	      for(int j = 1; j <=7; j++)
-	        if(j<=(2*i)-1)
-	        {
-	           System.out.print(data +" ");
+	for(int j = 1; j <=7; j++)
+           if(j<=(2*i)-1)
+	   {
+	     System.out.print(data +" ");
              if(j<i)
                data++;
              else
                data--;
-	        }
-          else
+	   }
+           else
              System.out.print(" ");
 		
-	       System.out.println ();
+	 System.out.println ();
      } 
   }
 }
@@ -37,27 +37,27 @@ class Solution{
 //Genralised code
 
 class Solution{
-  public static void pattern74(int n){
+  public static void pattern73(int n){
       int temp=1;
       for (int i = 1; i <= n; i++)
       {
           temp=temp+(i-1);
           int data=temp;
 
-	        for(int j = 1; j <=((2*n)-1); j++)
-    	      if(j<=(2*i)-1)
-	          {
-	              System.out.print(data +" ");
+	  for(int j = 1; j <=((2*n)-1); j++)
+    	     if(j<=(2*i)-1)
+	     {
+	        System.out.print(data +" ");
                 
                 if(j<i)
                   data++;
                 else
                   data--;
-	          }
-            else
-              System.out.print(" ");
+	     }
+             else
+               System.out.print(" ");
 		
-	       System.out.println();
+	 System.out.println();
       } 
   }
 }
