@@ -23,13 +23,13 @@ class Solution{
 	   for(int j = 1; j <=6; j++)
 	      if(j<=i)
 	      {
-	          System.out.print(data +" ");
-	          data=1-data;
+	         System.out.print(data +" ");
+	         data=1-data;
 	      }
               else
                 System.out.print(" ");
 		
-	    System.out.println ();
+	 System.out.println();
      } 
   }
 }
@@ -47,16 +47,16 @@ class Solution{
            else
              data=1;
 	     
-	        for(int j = 1; j <=n; j++)
-	          if(j<=i)
-	          {
-	            System.out.print(data +" ");
-	            data=1-data;
-	          }
-            else
-               System.out.print(" ");
+	   for(int j = 1; j <=n; j++)
+	      if(j<=i)
+	      {
+	        System.out.print(data +" ");
+	        data=1-data;
+	      }
+              else
+                System.out.print(" ");
 		
-	      System.out.println();
-      } 
+	 System.out.println();
+     } 
   }
 }
