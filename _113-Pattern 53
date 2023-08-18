@@ -8,7 +8,7 @@
 */
 
 class Solution {  
-  public static void pattern54(){
+  public static void pattern53(){
       for (int i = 1; i<=4; i++)
       {
 	 for(int j = 1; j<=6; j++)
@@ -26,7 +26,7 @@ class Solution {
 //Generalised Code
 
 class Solution{
-  public static void pattern54(int n){
+  public static void pattern53(int n){
       for (int i = 1; i <=n; i++)
       {
 	 for(int j = 1; j <=((2*n)-2); j++)
