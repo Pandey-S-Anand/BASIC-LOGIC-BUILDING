@@ -14,7 +14,7 @@ For the given N, the number of rows or columns to be printed will be 2*N – 1.
 //Figure Specific Code
 
 class Solution{
-  public static void pattern87(int N){  
+  public static void pattern86(int N){  
       int min=0;
       for(int i=1;i<=N;i++)
       {
