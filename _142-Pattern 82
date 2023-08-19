@@ -1,0 +1,70 @@
+/*Q-To Print
+
+1     
+1 2    
+3 5 8   
+13 21 34 55  
+89 144 233 377 610
+
+*/  
+  
+//Figure Specific Code.
+
+class Solution {
+  public static void pattern82(){  
+     int data=2;
+     for (int i = 1; i <= 5; i++)
+     {
+	      for(int j = 1; j <=5; j++)
+	        if(j<=i)
+	          System.out.print(fibonacci(data++)+" ");
+	        else
+            System.out.print(" ");
+		 
+	       System.out.println ();
+      } 
+  }
+  
+  public static int fibonacci(int n)
+  {
+     int[]fib=new int[n+1];
+     fib[1]=0;
+     fib[2]=1;
+
+     for(int i=3;i<=n;i++)
+       fib[i]=fib[i-1]+fib[i-2];
+     
+     return fib[n];
+  }
+}
+
+
+//Gneralised Code
+
+class Solution {
+  public static void pattern82(int n){  
+      int data=2;
+      for (int i = 1; i <=n; i++)
+      {
+	        for(int j = 1; j <=n; j++)
+	          if(j<=i)
+	            System.out.print(fibonacci(data++)+" ");
+	          else
+              System.out.print(" ");
+		
+	      System.out.println ();
+      } 
+  }
+  
+  public static int fibonacci(int n)
+  {
+     int[]fib=new int[n+1];
+     fib[1]=0;
+     fib[2]=1;
+
+     for(int i=3;i<=n;i++)
+       fib[i]=fib[i-1]+fib[i-2];
+     
+     return fib[n];
+  }
+}
