@@ -1,0 +1,57 @@
+/*
+Print the Below Figure using Single LOOP
+
+*
+**
+***
+****
+*****
+
+*/
+
+//Genralised Code
+
+class Solution {
+    public static void pattern92(){
+       int k=0;
+       for(int i=1;i<=5;i++)
+       {
+           System.out.print("*");
+           if(i==(1+k))
+            {
+                if(i==5)
+                 break;
+                else
+                 {
+                     i=0;
+                     k++;
+                     System.out.println(); 
+                 }
+            }
+       }
+    }
+}
+
+
+//Generalised code
+
+class Solution {
+    public static void pattern92(int n){
+       int k=0;
+       for(int i=1;i<=n;i++)
+       {
+           System.out.print("*");
+           if(i==(1+k))
+            {
+                if(i==n)
+                 break;
+                else
+                 {
+                     i=0;
+                     k++;
+                     System.out.println(); 
+                 }
+            }
+       }
+    }
+}
