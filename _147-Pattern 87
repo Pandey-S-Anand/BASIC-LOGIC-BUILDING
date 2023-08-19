@@ -42,7 +42,7 @@ class Solution {
 
 class Solution{
     public static void pattern87(int n){
-       int k=0,m=(row+1)/2;
+       int k=0,m=(n+1)/2;
        for(int i=1;i<=n;i++)
        {
            if(i<=m)
