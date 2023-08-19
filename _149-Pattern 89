@@ -20,7 +20,7 @@ class Solution {
              if(j==i || j==(10-i))
                 System.out.print("*");
              else
-                 System.out.print("-");  
+                System.out.print("-");  
            }
            else
              System.out.print(" ");
@@ -43,7 +43,7 @@ class Solution {
              if(j==i || j==((2*n)-i))
                 System.out.print("*");
              else
-                 System.out.print("-");  
+                System.out.print("-");  
            }
            else
              System.out.print(" ");
