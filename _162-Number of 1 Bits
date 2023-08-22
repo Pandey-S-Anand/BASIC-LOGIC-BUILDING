@@ -1,0 +1,54 @@
+//Bruteforce Approach
+
+class Solution {
+    static int setBits(int num) {
+       int count=0;
+       for(int i=0;i<32;i++)
+         if(checkKthBit(num,i)!=0)
+             count++;
+             
+        return count;  
+    }
+    
+    public static int checkKthBit(int num,int k)
+    {
+	    int mask=1<<k;
+	    int res=num & mask;
+	    return res;
+    }
+}
+
+//Optimal Approach
+
+class Solution {
+    static int setBits(int num) {
+      int count=0;
+	    while(num!=0)
+	    {
+	      int rmsbm=rMSBM(num);
+        num=num-rmsbm;
+        count++;  
+	    }
+	    
+      return count;
+    }
+    
+    public static int rMSBM(int num)
+	  {
+	   int rmsbm=num & twosCompliment(num);
+	   return rmsbm;
+	  }
+	
+   	public static int twosCompliment(int num)
+	  {
+       return -num;//return (~num+1);
+	  }
+}
+
+//Using inbuilt method
+
+class Solution {
+    static int setBits(int num) {
+        return Integer.bitCount(num);
+    }
+}
