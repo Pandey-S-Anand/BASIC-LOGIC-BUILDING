@@ -1,11 +1,11 @@
-class CheckBit{
+class CheckBit {
     static boolean checkKthBit(int num, int k){
       int mask=1<<k;
-	    int res=num & mask;
+      int res=num & mask;
 	   
-	    if(res==0)
-	      return false;
-	    else
-	      return true;
+      if(res==0)
+        return false;
+      else
+	return true;
     }
 }
