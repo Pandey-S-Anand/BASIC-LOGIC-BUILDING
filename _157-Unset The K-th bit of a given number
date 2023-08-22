@@ -1,0 +1,8 @@
+class Solution{
+   public static int unsetTheKthBit(int num,int k){
+	    int temp=1<<(k-1);
+	    int mask=~temp;
+	    int res=num & mask;
+	    return res;
+	 }
+}
