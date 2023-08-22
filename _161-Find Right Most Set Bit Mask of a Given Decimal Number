@@ -1,0 +1,12 @@
+
+class Solution {
+	public static String rMSBM(int num){
+	   int rmsbm=num & twosCompliment(num);
+	   return Integer.toBinaryString(rmsbm);
+	}
+	
+  public static int twosCompliment(int num)
+	{
+     return -num;//return (~num+1);
+	}
+}
