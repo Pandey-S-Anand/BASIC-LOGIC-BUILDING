@@ -1,0 +1,15 @@
+class Solution{
+    static String onesComplement(String bin,int n){
+        String ones = "";
+        
+        for (int i = 0; i < n; i++)
+            ones += flip(bin.charAt(i));
+        
+        return ones;
+    }
+    
+    static char flip(char c)
+    {
+        return (c == '0') ? '1' : '0';
+    }
+}
