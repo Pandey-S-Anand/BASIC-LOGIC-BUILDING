@@ -7,42 +7,43 @@ class Solution {
          if(checkKthBit(num,i)!=0)
              count++;
              
-        return count;  
+      return count;  
     }
     
     public static int checkKthBit(int num,int k)
     {
-	    int mask=1<<k;
-	    int res=num & mask;
-	    return res;
+      int mask=1<<k;
+      int res=num & mask;
+      return res;
     }
 }
+
 
 //Optimal Approach
 
 class Solution {
     static int setBits(int num) {
       int count=0;
-	    while(num!=0)
-	    {
-	      int rmsbm=rMSBM(num);
+      while(num!=0)
+      {
+        int rmsbm=rMSBM(num);
         num=num-rmsbm;
         count++;  
-	    }
+      }
 	    
       return count;
     }
     
     public static int rMSBM(int num)
-	  {
-	   int rmsbm=num & twosCompliment(num);
-	   return rmsbm;
-	  }
+    {
+       int rmsbm=num & twosCompliment(num);
+       return rmsbm;
+    }
 	
-   	public static int twosCompliment(int num)
-	  {
+    public static int twosCompliment(int num)
+    {
        return -num;//return (~num+1);
-	  }
+    }
 }
 
 //Using inbuilt method
