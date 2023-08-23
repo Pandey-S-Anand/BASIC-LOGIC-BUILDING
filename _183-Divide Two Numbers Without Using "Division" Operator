@@ -13,25 +13,26 @@ class Solution{
           int signOfQuotient=1,signOfRemainder=1;
              
           if((dividend<0 && divisor>0) || (dividend>0 && divisor<0))
-	            signOfQuotient=-1; //Quotient will be negative
+	     signOfQuotient=-1; //Quotient will be negative
 	            
-	        if(dividend<0) //remainder will be negative
+          if(dividend<0) //remainder will be negative
               signOfRemainder=-1;
 	          	
               
-           divisor=Math.abs(divisor);
-           dividend=Math.abs(dividend);
+          divisor=Math.abs(divisor);
+          dividend=Math.abs(dividend);
                  
-	         int quotient=0;
-           while(dividend>=divisor)
-           {
+          int quotient=0;
+
+          while(dividend>=divisor)
+          {
               dividend=dividend-divisor;
               quotient++;
-           }
+          }
                 
-	       int remainder=dividend; 
+          int remainder=dividend; 
 	
-         return "Quotient= "+(quotient*signOfQuotient)+" and Remainder ="+remainder*signOfRemainder;  
+          return "Quotient= "+(quotient*signOfQuotient)+" and Remainder ="+remainder*signOfRemainder;  
        } 
     }
 }
