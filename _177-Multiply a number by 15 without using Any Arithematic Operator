@@ -1,0 +1,22 @@
+
+class Solution{
+   public static int muntiplyBy15(int num) {
+      int sum=((num<<4) -(num<<0));
+      return sum;
+   }
+}
+
+/*
+      x*15=x*(16-1)=16x-x=(x<<4) -(x<<0)
+
+      x<<y = x*2^y
+
+      if(y==4)
+       x<<4 =x*2^4=16x
+
+      similarly
+
+      if(y==0)
+       x<<0=x*2^0=x  
+      
+*/
