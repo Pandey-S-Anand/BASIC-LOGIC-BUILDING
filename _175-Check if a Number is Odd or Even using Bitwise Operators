@@ -1,0 +1,26 @@
+//Method 1 (The idea is to check whether the last bit of the number is set or not. If the last bit is set then the number is odd, otherwise even.)
+
+class Solution{
+    public static boolean isEven(int num){
+       if((num & 1)==0)
+         return true; //Number is even
+       else// (num & 1)==1
+         return false; //Number is odd
+    }
+}
+
+//Method2
+/*
+As we know bitwise XOR Operation of the Number by 1 increment the value of the number by 1 if the number is even 
+otherwise it decrements the value of the number by 1 if the value is odd.
+*/
+
+class Solution {
+    public static boolean isEven(int num){
+        int xor=num^1;
+        if(xor==(num+1))
+          return true;//Number is even
+        else//(xor==(num-1))
+         return false;//number is odd
+    }
+}
