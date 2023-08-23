@@ -9,7 +9,7 @@ class Solution {
        preservedEvenBits=preservedEvenBits>>1;
        int res=preservedOddBits | preservedEvenBits;
        return res;
-	}
+    }
     
 }
 
@@ -63,7 +63,7 @@ class Solution{
        preservedEvenBits=preservedEvenBits<<1;
        int res=preservedOddBits | preservedEvenBits;
        return res;
-	}
+    }
     
 }
 
