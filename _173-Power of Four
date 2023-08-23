@@ -3,13 +3,16 @@
 //Iterative version
 
 class Solution {
-    public boolean isPowerOfFour(int num) {    
+    public boolean isPowerOfFour(int num) {
+        if(num<=0)
+          return false;
+
         while(true)
         {
           if(num==1)
             break;
 
-          if((num%4)!=0 || num==0)
+          if((num%4)!=0)
             return false;
              
           num=num/4;//num=num>>2
@@ -26,10 +29,92 @@ class Solution {
         if(num==1)
           return true;
           
-        if((num%4)!=0 || num==0)
+        if((num%4)!=0 || num<=0)
            return false;
            
-        return isPowerOfFour(num/4); //return isPowerOf4(num>>2);
+        return isPowerOfFour(num/4); //return isPowerOf4(num>>2);  
     }
 }
+
+
+//Optimal Approach
+
+/* All power of 4 numbers are power of 2 as well because 4 is a power of 2 and all power of two numbers has only one set bit,hence every power of 4 number should have only 1 set bit.
+   For power of 4, the additional restriction is that in binary form, the only "1" should always located at the odd position.
+
+   4  = (00000100) => 1 is at odd position 3 (right to left)
+   16 = (00010000) => 1 is at odd position 5 (right to left)
+   64 = (01000000) => 1 is at odd position 7 (right to left)
+
+*/
+
+//Naive Implementation
+
+class Solution {
+    public boolean isPowerOfFour(int num) {
+       if(isPowerOf2(num) && isSetBitAtOddPosition(num))
+         return true;
+	 
+       return false;
+    }
+
+    public static boolean isPowerOf2(int num)
+    {
+        if(num<=0)
+          return false;
+        else
+        {
+           if((num & (num-1))==0)
+             return true;
+           else
+             return false;
+        }
+     }
+	
+     public static boolean isSetBitAtOddPosition(int num)
+     {
+        int mask; 
+        for(int i=2;i<=32;i+=2) //Check if any even position have the only set bit,if Yes,return false otherwise true
+        {
+           mask=1<<(i-1);
+           if((num & mask)!=0)
+             return false;
+        }
+        return true;
+     }
+}
+
+//Optimal Implementation (we can use "num & 0x55555555==num" to check if only "1" is located at the odd position.)
+
+class Solution {
+    public boolean isPowerOfFour(int num) {
+       if(isPowerOf2(num) && isSetBitAtOddPosition(num))
+         return true;
+	 
+       return false;
+    }
+
+    public static boolean isPowerOf2(int num)
+    {
+        if(num<=0)
+          return false;
+        else
+        {
+           if((num & (num-1))==0)
+             return true;
+           else
+             return false;
+        }
+     }
+	
+     public static boolean isSetBitAtOddPosition(int num)
+     {
+       int oddMask=0x55555555;
+       if((num & oddMask) == num)
+          return true;
+        return false;
+     }
+}
+
+
 
