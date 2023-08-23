@@ -6,13 +6,13 @@ class Solution {
     public int divide(int Dividend, int Divisor) {
         long dividend=Dividend,divisor=Divisor;
         
-	      if(divisor==-1 && (dividend==Integer.MIN_VALUE)) //Integer.MIN_VALUE= -2147483648  and Integer.MAX_VALUE = 2147483647
-            return Integer.MAX_VALUE;
+        if(divisor==-1 && (dividend==Integer.MIN_VALUE)) //Integer.MIN_VALUE= -2147483648  and Integer.MAX_VALUE = 2147483647
+           return Integer.MAX_VALUE;
        
         int signOfQuotient=1; 
              
         if((dividend<0 && divisor>0) || (dividend>0 && divisor<0))
-	        signOfQuotient=-1; //Quotiient will be negative
+	  signOfQuotient=-1; //Quotiient will be negative
 		   
         divisor=Math.abs(divisor);
         dividend=Math.abs(dividend);
@@ -24,9 +24,10 @@ class Solution {
             quotient++;
         }
 		 
-	     return signOfQuotient*quotient;   
+	return signOfQuotient*quotient;   
     }
 }
+
 
 //Effecient Implementation
 
@@ -34,11 +35,11 @@ class Solution {
     public int divide(int Dividend, int Divisor) {
         long dividend=Dividend,divisor=Divisor;
         
-	      if(divisor==1)
-	        return (int)dividend;    
+	if(divisor==1)
+	   return (int)dividend;    
         else if(divisor==-1 && dividend>0)
-	        return (int)-dividend; 
-	      else if(divisor==-1 && dividend<0)
+	   return (int)-dividend; 
+	else if(divisor==-1 && dividend<0)
         {
           if(dividend==Integer.MIN_VALUE)  //Integer.MIN_VALUE= -2^31 = -2147483648  and Integer.MAX_VALUE = 2^31-1 = 2147483647 
             return Integer.MAX_VALUE;
@@ -49,7 +50,7 @@ class Solution {
         int signOfQuotient=1; 
              
         if((dividend<0 && divisor>0) || (dividend>0 && divisor<0))
-	        signOfQuotient=-1; //Quotient will be negative
+	  signOfQuotient=-1; //Quotient will be negative
 		   
         divisor=Math.abs(divisor);
         dividend=Math.abs(dividend);
@@ -61,6 +62,6 @@ class Solution {
             quotient++;
         }
 		 
-	     return signOfQuotient*quotient;   
+      return signOfQuotient*quotient;   
     }
 }
