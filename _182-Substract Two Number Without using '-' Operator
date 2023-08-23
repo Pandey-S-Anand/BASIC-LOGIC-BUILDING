@@ -40,7 +40,7 @@ class Solution {
 
 class Solution{
    public static int minus(int num1,int num2){
-	    int diff,borrow;
+      int diff,borrow;
       while(num2!=0)
       {
         diff=num1 ^ num2;
