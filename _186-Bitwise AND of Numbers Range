@@ -1,0 +1,28 @@
+//Bruteforce
+
+class Solution {
+    public int rangeBitwiseAnd(int low, int high) {
+      int res=low;
+      for(int i=low+1;i<=high;i++)
+        res=res & i;
+      return res; 
+    }
+}
+
+
+//Optimal Solution
+
+class Solution {
+    public int rangeBitwiseAnd(int low, int high) {
+        int count=0,res;
+        while(low!=high)
+        {
+          low=low>>1;
+          high=high>>1;
+          count++;
+        }
+        
+        res=low<<count;//or res=high<<count
+        return res;
+    }
+}
