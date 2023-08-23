@@ -3,15 +3,12 @@
 //Iterative version
 class Solution {
     public boolean isPowerOfTwo(int num) {
-      if(num<=0)
-        return false;
-
       while(true)
       {
          if(num==1)
            break;
         
-         if((num%2)!=0)
+         if((num%2)!=0 || num==0)
            return false;
 
          num=num/2;//num=num>>1
