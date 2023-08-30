@@ -2,21 +2,21 @@
 
 class Solution{
     static String smallestNumber(int sum, int d){
-       if(sum==0 && d>1 || sum>sumOfDigits(maxm_D_DigitNum(d)))
-	       return "-1";
-	     
- 	     long num=minm_D_DigitNum(d);
- 	     long limit=maxm_D_DigitNum(d);
+        if(sum==0 && d>1 || sum>sumOfDigits(maxm_D_DigitNum(d)))
+	  return "-1";
+	      
+        long num=minm_D_DigitNum(d);
+        long limit=maxm_D_DigitNum(d);
  	   
- 	     while(num<=limit)
- 	     {
- 	       if(sumOfDigits(num)==sum)
- 	         break;
+        while(num<=limit)
+ 	{
+ 	   if(sumOfDigits(num)==sum)
+ 	     break;
  	         
- 	       num++; 
- 	     }
+ 	  num++; 
+ 	}
  	   
- 	   return Long.toString(num);
+ 	return Long.toString(num);
     }
     
     public static long sumOfDigits(long num)
@@ -25,9 +25,10 @@ class Solution{
 	 
          while(num!=0)
          {
-             sum+=(num%10);
-             num=num/10;
+           sum+=(num%10);
+           num=num/10;
          }
+
         return sum;
     }
     
@@ -51,21 +52,21 @@ class Solution{
 
 class Solution{
     static String smallestNumber(int sum, int d){
-       if(sum==0 && d>1 || sum>(9*d) )
-	       return "-1";
+        if(sum==0 && d>1 || sum>(9*d) )
+	  return "-1";
 	     
- 	     long num=minm_D_DigitNum(d);
- 	     long limit=maxm_D_DigitNum(d);
+ 	long num=minm_D_DigitNum(d);
+ 	long limit=maxm_D_DigitNum(d);
  	   
- 	     while(num<=limit)
- 	     {
- 	       if(sumOfDigits(num)==sum)
- 	         break;
+ 	while(num<=limit)
+ 	{
+ 	   if(sumOfDigits(num)==sum)
+ 	     break;
  	         
- 	       num++; 
- 	     }
+ 	   num++; 
+ 	}
  	   
- 	    return Long.toString(num);
+      return Long.toString(num);
     }
     
     public static long sumOfDigits(long num)
@@ -77,6 +78,7 @@ class Solution{
              sum+=(num%10);
              num=num/10;
          }
+
         return sum;
     }
     
