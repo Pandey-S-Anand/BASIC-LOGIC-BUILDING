@@ -35,25 +35,11 @@ public class Test
 
 //Optimal Approach
 
-import java.util.*;
-public class Test
-{
-	public static void main(String[] args) {
-	  Scanner sc=new Scanner(System.in);
-	  System.out.println("Enter N :");
-          int n=sc.nextInt();
-          if(n<0)
-    	    System.out.println("Invalid Choice");
-          else
-   	    System.out.println("The Smallest Positive Number Having Sum Of Its Digits Equal To "+n+" is :"+smallestNumber(n));
-	} 
-	
-	//n<=82 otherwise it will lead to Integer Overflow
-	public static int smallestNumber(int n)
-	{
-	   int res=((n % 9) + 1) *(int)Math.pow(10, (n/9)) - 1;
-           return res;
-	}
+class Solution{             
+   public static int smallestNumber(int n){  //n<=82 otherwise it will lead to Integer Overflow
+       int res=((n % 9) + 1) *(int)Math.pow(10, (n/9)) - 1;
+       return res;
+   }
 }
 
 /*
