@@ -20,21 +20,7 @@ class Solution {
 	       }
 	       num=(num*10)+(n-sum);
 	       return reverse(num);
-	       
-	       /*
-	       Aliter:
-	       
-	       int num=0,sum=0,digit=9;
-	       while(sum<n)
-	       {
-               num=(num*10)+digit;
-               sum+=digit;
-               digit--;
-	       }
-	       sum-=digit;
-	       num=(num*10)+(n-sum);
-	       return reverse(num);
-	       */
+
 	   }
 	}
 	
@@ -73,7 +59,7 @@ For N = 23: The output is 689.
 For N= 41: The Output is 2456789
 
 On observing the above results,
-it is clear that the answer contains digits in decreasing order having a difference of 1 starting from one’s digit() (i.e from right to left) until the digit sum is less than N.
+it is clear that the answer contains digits in decreasing order having a difference of 1 starting from one’s digit (i.e from right to left) until the digit sum is less than N.
 
 ( 9+(9-1)+(8-1)+(7-1)+(6-1)+(5-1) < 41 (number formed till now is 987654 (i.e Iterate till sum of number (formed till now) is less than 41 ) ) 
 now Append (n-sum of number)i.e(41-39=2) at the End of The Number formed(i.e 9876542), finally Reverse The Number.(i.e 2456789)) 
