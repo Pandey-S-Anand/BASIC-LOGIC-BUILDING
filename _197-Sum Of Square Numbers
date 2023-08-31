@@ -147,13 +147,12 @@ class Solution {
         ub_b=Math.sqrt(c); - maximum possible value of b =Math.sqrt(c);
         */
         
-        int sqrt_c=(int)Math.sqrt(c);
-        long sumOfSqr,a=0; // long is used to Avoid Integer Overflow
-        int b=sqrt_c;
+        long a=0; // long is used to Avoid Integer Overflow
+        int b=sqrt_c=(int)Math.sqrt(c);;
         
         while(a<=sqrt_c && b>=0)
         { 
-            sumOfSqr=b*b+(a*a); 
+            long sumOfSqr=(b*b)+(a*a); 
             
             if(sumOfSqr==c) 
               return true;
