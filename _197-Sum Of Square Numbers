@@ -146,9 +146,10 @@ class Solution {
         ub_a=Math.sqrt(c); - maximum possible value of a =Math.sqrt(c);
         ub_b=Math.sqrt(c); - maximum possible value of b =Math.sqrt(c);
         */
-        
+
+        int sqrt_c=(int)Math.sqrt(c);
         long a=0; // long is used to Avoid Integer Overflow
-        int b=sqrt_c=(int)Math.sqrt(c);;
+        int b=sqrt_c;
         
         while(a<=sqrt_c && b>=0)
         { 
