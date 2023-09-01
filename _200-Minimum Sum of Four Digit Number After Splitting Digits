@@ -1,3 +1,4 @@
+
 class Solution {
     public int minimumSum(int num) {
       int[] arr=new int[4];
