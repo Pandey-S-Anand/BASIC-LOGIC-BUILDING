@@ -1,0 +1,63 @@
+//Bruteforce Approach
+
+class Solution {
+    public String intToRoman(int num) {
+        LinkedHashMap<Integer,String> lhm=new LinkedHashMap<>();
+
+        lhm.put(1000,"M");
+        lhm.put(900,"CM"); //Special Case
+        lhm.put(500,"D");
+        lhm.put(400,"CD"); //Special Case
+        lhm.put(100,"C");
+        lhm.put(90,"XC");  //Special Case
+        lhm.put(50,"L");
+        lhm.put(40,"XL");  //Special Case
+        lhm.put(10,"X");
+        lhm.put(9,"IX");   //Special Case
+        lhm.put(5,"V");
+        lhm.put(4,"IV");   //Special Case
+        lhm.put(1,"I");
+
+        StringBuilder sb=new StringBuilder();
+        
+       for(int key:lhm.keySet())
+       {  
+            int count=(num/key);
+            while(count!=0)
+            {
+             sb.append(lhm.get(key));  
+             count--;
+            }
+
+            num=num%key;
+       }
+      return sb.toString();   
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public String intToRoman(int num) {
+
+      int[] dec = {1000,900,500,400,100,90,50,40,10,9,5,4,1};
+      String[] rom = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+
+       StringBuilder sb=new StringBuilder();
+        
+       for(int i=0;i<dec.length;i++)
+       {  
+          int count=(num/dec[i]);
+          while(count!=0)
+          {
+            sb.append(rom[i]);  
+            count--;
+          }
+
+          num=num % dec[i];
+       }
+
+      return sb.toString();   
+    }  
+}
