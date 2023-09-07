@@ -1,3 +1,71 @@
+// Method 1 - Without String
+
+//Bruteforce Approach
+
+//Iterative version
+
+class Solution {
+    public int subtractProductAndSum(int n) {
+        return prod(n)-sum(n);
+    }
+
+    public int prod(int num)
+    {
+       int prod=1;
+
+       while(num!=0)
+       {
+         prod*=(num%10);
+         num=num/10;
+       }
+
+      return prod;
+    }
+
+    public int sum(int num)
+    {
+       int sum=0;
+
+       while(num!=0)
+       {
+         sum+=(num%10);
+         num=num/10;
+       }
+
+      return sum;
+    }
+}
+
+
+
+//Recursive Version
+
+class Solution {
+    public int subtractProductAndSum(int n) {
+        return product(n,1)-summation(n,0);
+    }
+
+    public int product(int num,int prod)
+    {
+       if(num==0)
+         return prod;
+    
+      return product(num/10,prod*=num%10);
+    }
+
+    public int summation(int num,int sum)
+    {
+      if(num==0)
+        return sum;
+    
+      return summation(num/10,sum+=num%10);
+    }
+}
+
+//Optimal Approach
+
+//Iterative Version
+
 class Solution {
     public int subtractProductAndSum(int num) {
       int sum=0,prod=1;
@@ -8,6 +76,43 @@ class Solution {
         prod*=(num%10);
         num=num/10;
       }
+
+      return prod-sum;
+    }
+}
+
+
+//Recursive Version
+
+class Solution {
+    public int subtractProductAndSum(int n) {
+        return prodMinusSum(n,1,0);
+    }
+
+    public int prodMinusSum(int n, int prod, int sum)
+    {
+      if (n == 0) 
+        return prod-sum;
+        
+      return prodMinusSum(n / 10 , prod*= n % 10, sum+=n%10);
+    }
+}
+
+
+//Method 2 - With String
+
+class Solution {
+    public int subtractProductAndSum(int num) {
+        String str=Integer.toString(num);
+        int n=str.length(), prod=1,sum=0;
+
+        for(int i=0;i<n;i++)
+        {
+            char ch=str.charAt(i);
+
+            prod*=(ch-'0');
+            sum+=(ch-'0');
+        }
 
       return prod-sum;
     }
