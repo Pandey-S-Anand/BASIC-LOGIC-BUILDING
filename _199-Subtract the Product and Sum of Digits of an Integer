@@ -2,11 +2,11 @@
 
 //Bruteforce Approach
 
-//Iterative version
+//=>Iterative version
 
 class Solution {
-    public int subtractProductAndSum(int n) {
-        return prod(n)-sum(n);
+    public int subtractProductAndSum(int num) {
+        return prod(num)-sum(num);
     }
 
     public int prod(int num)
@@ -38,11 +38,11 @@ class Solution {
 
 
 
-//Recursive Version
+//=>Recursive Version
 
 class Solution {
-    public int subtractProductAndSum(int n) {
-        return product(n,1)-summation(n,0);
+    public int subtractProductAndSum(int num) {
+        return product(num,1)-summation(num,0);
     }
 
     public int product(int num,int prod)
@@ -64,7 +64,7 @@ class Solution {
 
 //Optimal Approach
 
-//Iterative Version
+//=>Iterative Version
 
 class Solution {
     public int subtractProductAndSum(int num) {
@@ -82,11 +82,11 @@ class Solution {
 }
 
 
-//Recursive Version
+//=>Recursive Version
 
 class Solution {
-    public int subtractProductAndSum(int n) {
-        return prodMinusSum(n,1,0);
+    public int subtractProductAndSum(int num) {
+        return prodMinusSum(num,1,0);
     }
 
     public int prodMinusSum(int n, int prod, int sum)
@@ -94,12 +94,13 @@ class Solution {
       if (n == 0) 
         return prod-sum;
         
-      return prodMinusSum(n / 10 , prod*= n % 10, sum+=n%10);
+      return prodMinusSum(n / 10 , prod*(n % 10), sum+(n%10));
     }
 }
 
-
 //Method 2 - With String
+
+//=>Iterative Version
 
 class Solution {
     public int subtractProductAndSum(int num) {
@@ -115,5 +116,22 @@ class Solution {
         }
 
       return prod-sum;
+    }
+}
+
+
+//=>Recursive Version
+
+
+class Solution {
+    public int subtractProductAndSum(int num) {
+        return productMinusSum(num, 0, 1);
+    }
+
+    private int productMinusSum(int num, int sum, int prod) {
+        if (num == 0)
+          return prod - sum;
+          
+        return productMinusSum(num / 10, sum+(num % 10), prod*(num % 10));
     }
 }
