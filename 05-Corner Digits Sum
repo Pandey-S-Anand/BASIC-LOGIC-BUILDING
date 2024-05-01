@@ -9,9 +9,6 @@ class Solution{
     }
     
     private static int firstDigit(int num){
-       if(num<0)
-          num=Math.abs(num);
-          
        int cntDigit=(int)Math.floor(Math.log10(num) + 1);
        int temp=(int)Math.pow(10,cntDigit-1);
        int first=num/temp;
