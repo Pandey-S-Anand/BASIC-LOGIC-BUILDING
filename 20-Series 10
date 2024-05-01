@@ -1,7 +1,7 @@
 // 1^3 - 2^3 + 3^3 -4^3 .......+N^3=?
 
 class Solution {
-    public static int Series(int n){
+    public static int series(int n){
         if(n<=0) //invalid Input
           return -1;
         
