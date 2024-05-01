@@ -3,7 +3,7 @@
 //Bruteforce Approach
 
 class Solution{
-    public static float Series(int n){
+    public static float series(int n){
       if(n<=0) //invalid Input
         return -1;
         
@@ -29,7 +29,7 @@ class Solution{
 //Optimal Approach
 
 class Solution{
-    public static float Series(int n){
+    public static float series(int n){
       if(n<=0) //invalid Input
         return -1;
 
