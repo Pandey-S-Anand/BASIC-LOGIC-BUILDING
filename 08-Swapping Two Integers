@@ -1,7 +1,7 @@
 //Using Temporary Variable
 
 class Solution{
-    public static void Swapping(int a,int b){
+    public static void swapping(int a,int b){
        System.out.println("Before Swapping: a = "+a +" b= "+b);
        int temp=a;
        a=b;
@@ -16,7 +16,7 @@ class Solution{
 //Method 1 (using '*' and '/' operator only)
 
 class Solution{
-    public static void Swapping(int a,int b){
+    public static void swapping(int a,int b){
       System.out.println("Before Swapping: a = "+a +" b= "+b);
       a=a*b;
       b=a/b;
@@ -28,7 +28,7 @@ class Solution{
 //Method 2 (using '+' and '-' operator only)
 
 class Solution{
-    public static void Swapping(int a,int b){
+    public static void swapping(int a,int b){
       System.out.println("Before Swapping: a = "+a +" b= "+b);
       a=a+b;
       b=a-b;
@@ -40,7 +40,7 @@ class Solution{
 //Method 3 (using Bitwise XOR Operator)
 
 class Solution{
-    public static void Swapping(int a,int b)
+    public static void swapping(int a,int b)
     {
       System.out.println("Before Swapping: a = "+a +" b= "+b);
       a=a^b;
