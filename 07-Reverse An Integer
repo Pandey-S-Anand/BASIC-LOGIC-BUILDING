@@ -24,16 +24,7 @@ class Solution{
           sign=-1;  
         }
 
-        //Integer => String => StringBuilder
-       	StringBuilder sb = new StringBuilder(Integer.toString(num));
-        
-        //Reverse the String Builder
-	      sb.reverse();
-        
-        //StringBuilder => String => Integer
-	      num = Integer.parseInt(sb.toString());
-
-	      return num*sign;
+      return  Integer.parseInt(new StringBuilder(Integer.toString(num)).reverse().toString())*sign;
     }
 }
 
