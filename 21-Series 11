@@ -2,7 +2,7 @@
 
 import java.lang.Math;
 class Solution{
-    public static float Series(int n,int x){
+    public static float series(int n,int x){
         if(n<=0 || x<=0) //invalid Input
           return -1;
         
