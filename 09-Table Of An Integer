@@ -1,7 +1,7 @@
 //Variation 1 (Display Multiplication table up to 10) 
 
 class Solution{
-    public static void Table(int num){
+    public static void table(int num){
       System.out.printf("Table of %d is \n:",num);
       for(int i=1;i<=10;i++)
          System.out.printf("%d x %d = %d\n",num,i,num*i);
