@@ -1,7 +1,7 @@
 // 1-2+3-4+5-6 +....N=?
 
 class Solution {
-    public static int Series(int n){
+    public static int series(int n){
        if(n<=0) //invalid Input
          return -1;
        
