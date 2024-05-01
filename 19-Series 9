@@ -2,7 +2,7 @@
 
 //Bruteforce Implementation
 class Solution{
-    public static float Series(int n,int x){
+    public static float series(int n,int x){
         if(x<=0 || n<=0)  //invalid Input
           return -1;
           
@@ -30,7 +30,7 @@ class Solution{
 //Optimal Implementation
 
 class Solution{
-    public static float Series(int n,int x){
+    public static float series(int n,int x){
         if(x<=0 || n<=0)  //invalid Input
           return -1;
           
