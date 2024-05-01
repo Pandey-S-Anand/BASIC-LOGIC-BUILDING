@@ -1,11 +1,11 @@
 //1 +11 +111 +1111 +.......111111...n?
 
 class Solution{
-    public static int series(int n){
+    public static long series(int n){
         if(n<=0)//invalid Input
           return -1;
         
-        int sum=0,temp=0;
+        long sum=0,temp=0;
         for(int i=1;i<=n;i++){
              temp=temp*10+1;
              sum+=temp;
