@@ -5,7 +5,7 @@
  
 import java.lang.Math;
 class Solution{
-    public static float Series(int angInDeg,int limit){
+    public static float series(int angInDeg,int limit){
         if(angInDeg <0 || limit <=0)  //invalid Input
           return -1;
         
