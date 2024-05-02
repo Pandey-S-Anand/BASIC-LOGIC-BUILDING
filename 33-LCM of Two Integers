@@ -27,7 +27,7 @@
 //Iterative Approach 
 
 class Solution{
-    public static int LCM(int num1,int num2){
+    public static int lcm(int num1,int num2){
        int maxNum=Math.max(num1,num2);
        int minNum=Math.min(num1,num2);
        int temp=maxNum;
@@ -52,10 +52,10 @@ class Solution{
        int maxNum=Math.max(num1,num2);
        int minNum=Math.min(num1,num2);
        
-       return LCM(minNum,maxNum,maxNum);
+       return lcm(minNum,maxNum,maxNum);
     }
     
-    public static int LCM(int min,int max,int temp)
+    public static int lcm(int min,int max,int temp)
     {
         if((temp%min)==0)
           return temp;
