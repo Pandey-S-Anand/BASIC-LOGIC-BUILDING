@@ -1,7 +1,7 @@
 import java.lang.Math;
 
 class Solution{
-    public static void Roots(double a,double b,double c){
+    public static void roots(double a,double b,double c){
        System.out.println("Resultant Quadratic Equation is :");
        System.out.printf("%.2f*X^X + %.2f*X + %.2f\n",a,b,c);
 
