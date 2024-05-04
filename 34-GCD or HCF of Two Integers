@@ -51,6 +51,12 @@ class Solution{
 
 //Method 2: Optimal Approach (using Euclidean algorithm)
 
+/*
+Dividend: The dividend is the number that is being divided. 
+Divisor: The divisor is the number by which the dividend is being divided. 
+In the division operation : 𝑎/𝑏 => a is dividend and b is the divisor.
+*/
+
 class Solution{
     public int gcd(int num1,int num2) { 
       return findGCD(Math.min(num1,num2),Math.max(num1,num2));
