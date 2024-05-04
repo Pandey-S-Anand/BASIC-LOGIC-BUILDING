@@ -1,7 +1,7 @@
 //Method 1
 
 class Solution{
-    public static int Greatest(int num1,int num2,int num3){
+    public static int greatest(int num1,int num2,int num3){
        if(num1==num2 && num2==num3)
 	  return -1; //All three numbers are equal
        else if (num1 >= num2 && num1 >= num3)  
@@ -18,7 +18,7 @@ class Solution{
 //Method 2
 
 class Solution{
-   public static int Greatest(int num1,int num2,int num3){
+   public static int greatest(int num1,int num2,int num3){
       int temp=Math.max(num1,num2);
       int max=Math.max(temp,num3);
       return max;
