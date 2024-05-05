@@ -5,11 +5,10 @@ The first few friendly pairs are (6, 28), (30, 140), (80, 200), (40, 224), (12, 
 */
 
 class Solution{
-   public static String ammicableNumbers(int num1,int num2){	  
+   public static boolean ammicableNumbers(int num1,int num2){	  
       if((sumProperDivisor(num1)/num1) == (sumProperDivisor(num2)/num2))
-	 return "are Ammicable Numbers";
-      else
-	 return "are Not Ammicable Numbers";   
+	 return true;
+      return false;   
    }
 	
    public static int sumProperDivisor(int num)
