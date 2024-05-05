@@ -34,7 +34,7 @@ class Solution {
 	    
       while(true)
       {
-	        int sumSqr=0;
+	  int sumSqr=0;
           while(num!=0)
           {
               sumSqr+=(num%10)*(num%10);
