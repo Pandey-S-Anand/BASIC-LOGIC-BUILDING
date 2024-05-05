@@ -6,7 +6,7 @@ Some other automorphic numbers are 5, 6, 36, 890625, etc.
 //Method 1
 
 class Solution{
-     public String is_AutomorphicNumber(int num){
+     public String isAutomorphicNumber(int num){
 	int countDigits=(int)Math.ceil(Math.log10(num));
         long sqr=num*num;
 	int temp=(int)(sqr % (int)Math.pow(10,countDigits));
@@ -21,7 +21,7 @@ class Solution{
 //Method 2
 
 class Solution{
-    public String is_AutomorphicNumber(int num){
+    public String isAutomorphicNumber(int num){
         long sqr=num*num;
       
 	while(num!=0)
@@ -43,7 +43,7 @@ class Solution{
 import java.math.BigInteger;
 
 class Solution{
-    public String is_AutomorphicNumber(int num){
+    public String isAutomorphicNumber(int num){
 	BigInteger sqr=BigInteger.valueOf(num).multiply(BigInteger.valueOf(num));
 	BigInteger temp=BigInteger.valueOf((int)Math.pow(10,(int)Math.ceil(Math.log10(num))));
 	BigInteger res=sqr.remainder(temp); 
