@@ -23,7 +23,6 @@ class Solution {
                  else
                    data--;
              }
-               
              else
                System.out.print(" ");
             System.out.println();   
