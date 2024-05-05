@@ -70,18 +70,18 @@ class Solution{
 
 //Method 1
 class Solution {
-    public int binary_to_decimal(String bin) {
-        int dec_value = 0;
+    public int binaryToDecimal(String bin) {
+        int decValue = 0;
         int powerOf2 =1; // 2^0
         for (int i=bin.length()-1; i >= 0; i--) 
         {
            if (bin.charAt(i)== '1')
-              dec_value +=powerOf2;
+              decValue +=powerOf2;
                 
            powerOf2=powerOf2*2;
         }
         
-        return dec_value;
+        return decValue;
     }
 }
 
@@ -90,8 +90,8 @@ class Solution {
 //Method 2 (Using inbuilt Method)
 
 class Solution {
-    public int binary_to_decimal(String bin) {
-       int dec_value=Integer.parseInt(bin,2); 
-       return dec_value;
+    public int binaryToDecimal(String bin) {
+       int decValue=Integer.parseInt(bin,2); 
+       return decValue;
     }
 }
