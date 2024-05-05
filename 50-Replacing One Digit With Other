@@ -55,7 +55,7 @@ class Solution{
 	    if(rem==digit)
               rem=replace;
               
-	    sum=sum+placeValue*rem;
+	    sum+=placeValue*rem;
 	    placeValue=placeValue*10;
 	    num=num/10;
 	 }
