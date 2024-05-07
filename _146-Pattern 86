@@ -15,7 +15,7 @@ For the given N, the number of rows or columns to be printed will be 2*N – 1.
 
 class Solution{
   public static void pattern86(int N){  
-      int size = 2 * N - 1; // Calculate the size of the grid
+      int size = 2 * N - 1;
       for (int i = 0; i < size; i++) {
          for (int j = 0; j < size; j++) {
              int min = i < j ? i : j;
