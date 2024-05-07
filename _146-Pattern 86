@@ -11,65 +11,20 @@ For the given N, the number of rows or columns to be printed will be 2*N – 1.
 
 */  
   
-//Figure Specific Code
+//Generalised Code
 
 class Solution{
   public static void pattern86(int N){  
-      int min=0;
-      for(int i=1;i<=N;i++)
-      {
-          for(int j=1;j<=N;j++)
-          {
-              if(i<j)
-                min=i;
-              else
-                min=j;
-
-             int temp=N-min+1;
-             System.out.print(temp);
-          }
-          
-          for(int j=N-1;j>=1;j--)
-          {
-              if(i<j)
-                min=i;
-              else
-                min=j;
-
-             int temp=N-min+1;
-             System.out.print(temp);
-          }
-          
-         System.out.println(); 
+      int size = 2 * N - 1; // Calculate the size of the grid
+      for (int i = 0; i < size; i++) {
+         for (int j = 0; j < size; j++) {
+             int min = i < j ? i : j;
+             min = min < size - i ? min : size - i - 1;
+             min = min < size - j ? min : size - j - 1;
+             System.out.print(N - min);
+         }
+        System.out.println();
       }
-      
-      
-      for(int i=N-1;i>=1;i--)
-      {
-          for(int j=1;j<=N;j++)
-          {
-              if(i<j)
-                min=i;
-              else
-                min=j;
-
-             int temp=N-min+1;
-             System.out.print(temp);
-          }
-          
-          for(int j=N-1;j>=1;j--)
-          {
-              if(i<j)
-                min=i;
-              else
-                min=j;
-                
-             int temp=N-min+1;
-             System.out.print(temp);
-          }
-          
-         System.out.println(); 
-      }  
   }
 }
 
@@ -79,8 +34,8 @@ class Solution{
 
 class Solution{
    	public static void pattern86(int N) {
-        int size = 2 * N - 1; // Calculate the size of the grid
-        int[][] grid = new int[size][size]; // Create a grid to store the numbers
+        int size = 2 * N - 1;
+        int[][] grid = new int[size][size]; 
 
         for (int i = 0; i < N; i++) {
             // Top and left part
@@ -99,7 +54,7 @@ class Solution{
             for (int j = 0; j < size; j++) {
                 System.out.print(grid[i][j]);
             }
-            System.out.println();
+          System.out.println();
         }
     }
 }
