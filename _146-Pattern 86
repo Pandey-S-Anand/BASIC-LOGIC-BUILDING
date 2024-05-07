@@ -72,3 +72,34 @@ class Solution{
       }  
   }
 }
+
+
+//Aliter
+
+
+class Solution{
+   	public static void pattern86(int N) {
+        int size = 2 * N - 1; // Calculate the size of the grid
+        int[][] grid = new int[size][size]; // Create a grid to store the numbers
+
+        for (int i = 0; i < N; i++) {
+            // Top and left part
+            for (int j = i; j < size - i; j++) {
+                grid[i][j] = N - i;
+                grid[j][i] = N - i;
+            }
+            // Bottom and right part
+            for (int j = size - i - 1; j >= i; j--) {
+                grid[size - i - 1][j] = N - i;
+                grid[j][size - i - 1] = N - i;
+            }
+        }
+        
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(grid[i][j]);
+            }
+            System.out.println();
+        }
+    }
+}
