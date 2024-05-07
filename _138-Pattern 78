@@ -17,8 +17,8 @@ class Solution {
 	  for(int j = 1; j <=5; j++)
 	    if(j<=i)
 	    {
-	        long temp=factorial(i-1)/(factorial(i-j)*factorial(j-1));
-	        System.out.print(temp+" ");
+	        long data=factorial(i-1)/(factorial(i-j)*factorial(j-1));
+	        System.out.print(data+" ");
 	    }
 	    else
               System.out.print(" ");
@@ -50,8 +50,8 @@ class Solution{
 	 for(int j = 1; j <=n; j++)
 	    if(j<=i)
 	    {
-	       long temp=factorial(i-1)/(factorial(i-j)*factorial(j-1));
-	       System.out.print(temp+" ");
+	       long data=factorial(i-1)/(factorial(i-j)*factorial(j-1));
+	       System.out.print(data+" ");
 	    }
 	    else
               System.out.print(" ");
