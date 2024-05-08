@@ -1,6 +1,6 @@
 class Solution {
     public boolean hasAlternatingBits(int n) {
-        int all_Ones= (n ^ (n >> 1));
+        int allOnes= (n ^ (n >> 1));
         if(isPowerOf2(all_Ones+1))
           return true;
         else
@@ -24,7 +24,7 @@ let y= x>>1
 
 since the bits are alternating, when you right shift them how will be the new bits compared to old bits????
 
-ALL bits will be flipped
+All bits will be flipped
 
 1010 will become
 0101
