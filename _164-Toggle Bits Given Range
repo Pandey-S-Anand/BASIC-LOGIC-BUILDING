@@ -27,22 +27,20 @@ class Solution {
       for(int i=0,pwr=0;i<32;i++,pwr++)
       {
         int mask=1<<i;
-        
-        int temp=mask&n;
-        
+                
         if(i<low)
         {
-          if(temp!=0)
+          if((mask&n)!=0)
             ans+=(int)Math.pow(2,pwr); 
         }
         else if(i>=low && i<=high)
         {
-          if(temp==0)
+          if((mask&n)==0)
             ans+=(int)Math.pow(2,pwr);  //x<<y => x*(2^y)
         }
         else//if(i>end && i<32)
         {
-          if(temp!=0)
+          if((mask&n)!=0)
             ans+=(int)Math.pow(2,pwr);
         }
       }
@@ -62,21 +60,20 @@ class Solution {
       for(int i=0,pwr=0;i<32;i++,pwr++)
       {
         int mask=1<<i;
-        int temp=mask&n;
         
         if(i<low)
         {
-          if(temp!=0)
+          if((mask&n)!=0)
             ans+=1<<pwr; //x<<y => x*(2^y)
         }
         else if(i>=low && i<=high)
         {
-          if(temp==0)
+          if((mask&n)==0)
             ans+=1<<pwr; //x<<y => x*(2^y)
         }
         else//if(i>end && i<32)
         {
-          if(temp!=0)
+          if((mask&n)!=0)
             ans+=1<<pwr;
         }
       }
