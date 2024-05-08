@@ -1,6 +1,6 @@
 
 class Solution {
-    public static int muntiplyBy7_upon_8(int n) {
+    public static int muntiplyBy7Upon8(int n) {
        int res=((n<<3)-n) >> 3;
        return res;
     }
