@@ -19,34 +19,36 @@ class Solution {
 //Better Approach
 
 class Solution {
-    static int toggleBits(int n , int low , int high) {
-      int ans=0;
+   static int toggleBits(int n , int low , int high) {
+      int ans=0,powerOf2=1;
       low--;
       high--;
-      
-      for(int i=0,pwr=0;i<32;i++,pwr++)
+    
+      for(int i=0;i<32;i++)
       {
         int mask=1<<i;
-                
+        
         if(i<low)
         {
           if((mask&n)!=0)
-            ans+=(int)Math.pow(2,pwr); 
+            ans+=powerOf2; 
         }
         else if(i>=low && i<=high)
         {
           if((mask&n)==0)
-            ans+=(int)Math.pow(2,pwr);  //x<<y => x*(2^y)
+            ans+=powerOf2; 
         }
         else//if(i>end && i<32)
         {
           if((mask&n)!=0)
-            ans+=(int)Math.pow(2,pwr);
+            ans+=powerOf2;
         }
+        
+        powerOf2*=2;
       }
       
       return ans;
-    }
+   }
 }
 
 
