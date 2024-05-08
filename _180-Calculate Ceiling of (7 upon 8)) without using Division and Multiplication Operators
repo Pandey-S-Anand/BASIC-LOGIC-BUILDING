@@ -1,5 +1,5 @@
 class Solution { 
-    public static int multiplyBy7_upon_8(int n) {
+    public static int multiplyBy7Upon8(int n) {
        int res=(n<<0)-(n>>3);
        return res;
     }
