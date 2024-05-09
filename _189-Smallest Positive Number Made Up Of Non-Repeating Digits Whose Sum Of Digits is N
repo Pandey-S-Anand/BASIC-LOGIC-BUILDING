@@ -8,15 +8,12 @@ class Solution {
        else
        {
 	    int num=0,sum=0,digit=9,placeHolder=1;
-	    while(true)
+	    while((sum+digit)<n)
 	    {
 	        sum+=digit;
 	        num+=placeHolder*digit;
 	        placeHolder*=10;
                 digit--;
-             
-                if((sum+digit)>=n)
-                  break;
 	    }
 	       
 	    num+=placeHolder*(n-sum);
