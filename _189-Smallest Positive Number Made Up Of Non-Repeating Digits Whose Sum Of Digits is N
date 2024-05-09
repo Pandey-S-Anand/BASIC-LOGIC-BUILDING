@@ -1,42 +1,31 @@
 
 class Solution {
-	public static int result(int n)
-	{
-	   if(n<10)
-	     return n;
-	   else if(n>45)
-	     return -1;
-	   else
-	   {
-	       int num=0,sum=0,digit=9;
-	       while(sum<n)
-	       {
-                 num=(num*10)+digit;
-                 sum+=digit;
-                 digit--;
+   public static int result(int n){
+       if(n<10)
+	 return n;
+       else if(n>45)
+	 return -1;
+       else
+       {
+	    int num=0,sum=0,digit=9,placeHolder=1;
+	    while(true)
+	    {
+	        sum+=digit;
+	        num+=placeHolder*digit;
+	        placeHolder*=10;
+                digit--;
              
                 if((sum+digit)>=n)
                   break;
-	       }
-	       num=(num*10)+(n-sum);
-	       return reverse(num);
-
-	   }
-	}
-	
-	
-	public static int reverse(int num)
-        {
-           int rev=0;
-           while(num!=0)
-           {
-             int last=(num%10);
-             rev=rev*10+last; 
-             num=num/10;
-           }
-          return rev;
-        }
+	    }
+	       
+	    num+=placeHolder*(n-sum);
+	       
+	  return num;
+       }
+    }
 }
+
 
 /*
   Approach: The idea is based on the following observations:
