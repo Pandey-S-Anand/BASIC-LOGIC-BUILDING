@@ -2,11 +2,11 @@
 
 class Solution {
    public static int minus(int num1,int num2) {//find (num1-num2)?
-      int diff=num1+twoscomplement(num2);
+      int diff=num1+twosComplement(num2);
       return diff;
    }
     
-   public static int twoscomplement(int num)
+   public static int twosComplement(int num)
    {
       return ~num+1; // two's complement=one's complement +1
    }
