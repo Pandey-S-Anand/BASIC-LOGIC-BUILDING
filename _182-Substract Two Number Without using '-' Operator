@@ -8,8 +8,7 @@ class Solution {
     
    public static int twoscomplement(int num)
    {
-      int diff=~num+1; // diff=-num
-      return diff;
+      return ~num+1; // two's complement=one's complement +1
    }
 }
 
