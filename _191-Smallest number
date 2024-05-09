@@ -2,13 +2,13 @@
 
 class Solution{
     static String smallestNumber(int sum, int d){
-        if(sum==0 && d>1 || sum>sumOfDigits(maxm_D_DigitNum(d)))
+        long max=maximumDDigitNumber(d)
+        if(sum>sumOfDigits(max))
 	  return "-1";
 	      
-        long num=minm_D_DigitNum(d);
-        long limit=maxm_D_DigitNum(d);
+        long num=minimumDDigitNumber(d);
  	   
-        while(num<=limit)
+        while(num<=max)
  	{
  	   if(sumOfDigits(num)==sum)
  	     break;
@@ -32,18 +32,19 @@ class Solution{
         return sum;
     }
     
-    public static long maxm_D_DigitNum(int d)
+    public static long maximumDDigitNumber(int d)
     {
-      long maxm_d_DigitNum=(int)Math.pow(10,d)-1;
-      return maxm_d_DigitNum;
+      long maxDDigitNumber=(int)Math.pow(10,d)-1;
+      return maxDDigitNumber;
     }
     
-    public static long minm_D_DigitNum(int d)
+    public static long minimumDDigitNumber(int d)
     {
       if(d==1)
        return 0;
-      long minm_d_DigitNum=(int)Math.pow(10,d-1);
-      return minm_d_DigitNum;
+
+      long minDDigitNumber=(int)Math.pow(10,d-1);
+      return minDDigitNumber;
     }
 }
 
