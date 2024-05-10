@@ -4,13 +4,13 @@ class Solution {
     public double myPow(double x, int n) {
       long p=n;
       
-      if(p==0 || x==1) // x^0 ==1 also 1 ^ n ==1
+      if(p==0 || x==1D) // x^0 ==1 also 1 ^ n ==1
         return 1D;
       
       if(p==1)
        return x;
 
-      if(x==0)
+      if(x==0D)
        return 0D;
         
       if(p > 0)
@@ -58,17 +58,59 @@ Now, applying logic keeping this concept in mind
 */
 
 
+//Naive Implementation
+
 class Solution {
     public double myPow(double x, int n) {
       long p=n;
       
-      if(p==0 || x==1) // x^0 ==1 also 1 ^ n ==1
+      if(p==0 || x==1D) // x^0 ==1 also 1 ^ n ==1
         return 1D;
       
       if(p==1)
        return x;
 
       if(x==0)
+       return 0D;
+        
+      if(p > 0)
+        return result(x,p);
+      else //(p<0)
+        return(1/result(x,Math.abs(p))); 
+    }
+
+    public double result(double base, long power)
+    {
+       double res=1d;
+       int powerOf2=1; //2^0=1
+       
+       for(int i=0;i<32;i++)
+       {
+          int mask=1<<i;
+          if((power & mask)!= 0) //If Bit is ON
+             res=res*(int)Math.pow(base,powerOf2);
+            
+           powerOf2*=2;
+        }
+        
+       return res;
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution {
+    public double myPow(double x, int n) {
+      long p=n;
+      
+      if(p==0 || x==1D) // x^0 ==1 also 1 ^ n ==1
+        return 1D;
+      
+      if(p==1)
+       return x;
+
+      if(x==0D)
        return 0D;
         
       if(p > 0)
@@ -100,13 +142,13 @@ class Solution {
     public double myPow(double x, int n) {
       long p=n;
       
-      if(p==0 || x==1) // x^0 ==1 also 1 ^ n ==1
+      if(p==0 || x==1D) // x^0 ==1 also 1 ^ n ==1
         return 1D;
       
       if(p==1)
        return x;
 
-      if(x==0)
+      if(x==0D)
        return 0D;
         
       if(p > 0)
