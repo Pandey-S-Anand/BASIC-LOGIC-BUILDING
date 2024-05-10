@@ -101,8 +101,8 @@ class Solution {
 
 class Solution {
     public boolean judgeSquareSum(int c){
-      int sqrt_c=(int)Math.sqrt(c);
-      for(int a=0;a<=sqrt_c;a++)
+      int sqrtC=(int)Math.sqrt(c);
+      for(int a=0;a<=sqrtC;a++)
         if(isPerfectSquare(c-a*a))  //b^2=(c-a^2),check if b^2 is perfect square or not
           return true;
         
@@ -147,11 +147,11 @@ class Solution {
         ub_b=Math.sqrt(c); - maximum possible value of b =Math.sqrt(c);
         */
 
-        int sqrt_c=(int)Math.sqrt(c);
+        int sqrtC=(int)Math.sqrt(c);
         long a=0; // long is used to Avoid Integer Overflow
-        int b=sqrt_c;
+        int b=sqrtC;
         
-        while(a<=sqrt_c && b>=0)
+        while(a<=sqrtC && b>=0)
         { 
             long sumOfSqr=(b*b)+(a*a); 
             
