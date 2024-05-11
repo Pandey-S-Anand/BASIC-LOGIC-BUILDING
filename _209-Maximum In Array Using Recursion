@@ -1,0 +1,8 @@
+class Solution{
+   public static int maxInArray(int []arr,int idx){   // idx will be passed as 0
+	   if(idx==(arr.length-1))
+	     return arr[idx];
+	     
+	   return Math.max(arr[idx],maxInArray(arr,idx+1));
+	}
+}
