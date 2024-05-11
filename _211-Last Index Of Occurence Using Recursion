@@ -1,10 +1,10 @@
 class Solution{
    public static  int lastOccurence(int []arr,int idx,int target){  //idx will be passed as (arr.length-1)
       if(idx==-1)
-	      return -1;  //Not Found
+        return -1;  //Not Found
 	     
       if(arr[idx]==target)
-	      return idx;
+	return idx;
 	     
       return lastOccurence(arr,idx-1,target);
    }
