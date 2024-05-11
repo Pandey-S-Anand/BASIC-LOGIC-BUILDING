@@ -1,5 +1,5 @@
 class Solution{
-  	public static String changeXY(String str) {
+  public static String changeXY(String str) {
      if (str.length() == 0) {
         return str; 
      }
@@ -9,5 +9,5 @@ class Solution{
      }
       
      return str.charAt(0) + changeXY(str.substring(1));
-    }
+  }
 }
