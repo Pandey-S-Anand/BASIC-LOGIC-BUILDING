@@ -1,0 +1,9 @@
+class Solution{
+   public static  void displayArrayInReverse(int []arr,int idx){  // idx will be passed as (arr.length-1)
+      if(idx==-1)
+	     return;
+	     
+	   System.out.println(arr[idx]);
+	   displayArrayInReverse(arr,idx-1);
+   }
+}
