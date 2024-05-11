@@ -1,0 +1,13 @@
+class Solution{
+  	public static String changeXY(String str) {
+     if (str.length() == 0) {
+        return str; // Base case: if the string is empty, just return it
+     }
+   
+     if (str.charAt(0) == 'x') {
+        return 'y' + changeXY(str.substring(1));
+     }
+      
+     return str.charAt(0) + changeXY(str.substring(1)); // Recursive call with the rest of the string
+    }
+}
