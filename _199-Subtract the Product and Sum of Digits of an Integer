@@ -42,25 +42,25 @@ class Solution {
 
 class Solution {
     public int subtractProductAndSum(int num) {
-        return product(num,1)-summation(num,0);
+        return product(num) - summation(num);
     }
 
-    public int product(int num,int prod)
-    {
-       if(num==0)
-         return prod;
-    
-      return product(num/10,prod*=num%10);
+    public int product(int num) {
+        if (num == 0)
+            return 1;
+
+        return (num % 10) * product(num / 10);
     }
 
-    public int summation(int num,int sum)
-    {
-      if(num==0)
-        return sum;
-    
-      return summation(num/10,sum+=num%10);
+    public int summation(int num) {
+        if (num == 0)
+            return 0;
+
+        return (num % 10) + summation(num / 10);
     }
 }
+
+
 
 //Optimal Approach
 
@@ -97,6 +97,29 @@ class Solution {
       return prodMinusSum(n / 10 , prod*(n % 10), sum+(n%10));
     }
 }
+
+//Aliter
+
+class Solution {
+    public int subtractProductAndSum(int n) {
+        int[] results = subtractProductAndSumHelper(n);
+        return results[0] - results[1];
+    }
+
+    private static int[] subtractProductAndSumHelper(int n) {
+        if (n == 0) {
+            return new int[] { 1, 0 }; // Base case: product is 1, sum is 0
+        }
+        int lastDigit = n % 10;
+        int[] resultsFromRemainingDigits = subtractProductAndSumHelper(n / 10);
+        resultsFromRemainingDigits[0] *= lastDigit; // Multiply the product by the last digit
+        resultsFromRemainingDigits[1] += lastDigit; // Add the last digit to the sum
+
+        return resultsFromRemainingDigits;
+    }
+}
+
+
 
 //Method 2 - With String
 
