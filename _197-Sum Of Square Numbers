@@ -141,19 +141,17 @@ class Solution {
 class Solution {
     public boolean judgeSquareSum(int c) {
        /*
-        lb_a=0; - minimum possible value of a =0
-        lb_b=0; - minimum possible value of b =0
-        ub_a=Math.sqrt(c); - maximum possible value of a =Math.sqrt(c);
-        ub_b=Math.sqrt(c); - maximum possible value of b =Math.sqrt(c);
+        minimum possible value of a is a=0
+        minimum possible value of b is b=0
+        maximum possible value of a is a=Math.sqrt(c);
+        maximum possible value of b is b=Math.sqrt(c);
         */
 
-        int sqrtC=(int)Math.sqrt(c);
-        long a=0; // long is used to Avoid Integer Overflow
-        int b=sqrtC;
+        int a=0,b=(int)Math.sqrt(c);
         
-        while(a<=sqrtC && b>=0)
+        while(a<=b)
         { 
-            long sumOfSqr=(b*b)+(a*a); 
+            long sumOfSqr=(long)(b*b)+(long)(a*a); 
             
             if(sumOfSqr==c) 
               return true;
