@@ -1,5 +1,5 @@
 class Solution{
-   public static  int[] findAllOccurence(int []arr,int idx,int target,int count){
+   public static  int[] findAllOccurence(int []arr,int idx,int target,int count){  //idx and count will be passed as 0
       if(idx==arr.length){
           return new int[count];
       }
