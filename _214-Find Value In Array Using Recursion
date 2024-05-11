@@ -1,15 +1,11 @@
 class Solution{
    public boolean array220(int[] arr, int index) {
-    if(arr.length==0)
+    if(arr.length==0 || index==(arr.length-1))
       return false;
-      
-    if(index==(arr.length-1))
-      return false;
-      
-    if(index<(arr.length-1) && (arr[index]*10)==arr[index+1])
+        
+    if((arr[index]*10)==arr[index+1])
       return true;
       
     return array220(arr,index+1);
-}
-
+  }
 }
