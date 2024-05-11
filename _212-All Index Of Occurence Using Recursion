@@ -1,0 +1,16 @@
+class Solution{
+   public static  int[] findAllOccurence(int []arr,int idx,int target,int count){
+      if(idx==arr.length){
+          return new int[count];
+      }
+
+      if(arr[idx]==target){
+         count++;
+         int[]allIndices=findAllOccurence(arr,idx+1,target,count);
+         allIndices[count-1]=idx;
+         return allIndices; 
+      }else{ 
+         return findAllOccurence(arr,idx+1,target,count);
+      }
+	}
+}
