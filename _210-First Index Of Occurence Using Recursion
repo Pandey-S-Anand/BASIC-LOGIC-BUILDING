@@ -1,0 +1,11 @@
+class Solution{
+   	public static  int firstOccurence(int []arr,int idx,int target){
+	   if(idx==arr.length)
+	     return -1;  //Not Found
+	     
+	   if(arr[idx]==target)
+	     return idx;
+	     
+	   return firstOccurence(arr,idx+1,target);
+	}
+}
