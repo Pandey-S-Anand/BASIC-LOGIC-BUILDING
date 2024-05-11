@@ -12,5 +12,5 @@ class Solution{
       }else{ 
          return findAllOccurence(arr,idx+1,target,count);
       }
-	}
+   }
 }
