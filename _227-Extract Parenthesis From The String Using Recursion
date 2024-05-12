@@ -1,0 +1,33 @@
+//Method 1
+
+class Solution{
+  public String parenBit(String str) {
+       if (str.isEmpty() || str.startsWith("(") && str.endsWith(")")) {
+          return str;
+       }
+
+       // Recursive case: if the string does not start with "(", remove the first character
+       if (!str.startsWith("(")) {
+          return parenBit(str.substring(1));
+       } 
+
+       // Recursive case: if the string does not end with ")", remove the last character
+       return parenBit(str.substring(0, str.length() - 1)); 
+  }
+}
+
+//Method 2
+
+class Solution{
+  public String parenBit(String str) {
+      if (str.isEmpty()) {
+        return str;
+      }
+
+      if (str.charAt(0) == '(') {
+        return str.substring(0, str.indexOf(')') + 1);
+      }
+
+    return parenBit(str.substring(1));
+  }
+}
