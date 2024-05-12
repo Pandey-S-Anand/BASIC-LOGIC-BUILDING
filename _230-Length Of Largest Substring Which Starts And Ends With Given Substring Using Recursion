@@ -1,0 +1,48 @@
+//Intuitive Implementation
+
+class Solution{
+  public int strDist(String str, String sub) {
+        if ((str.length()==1 && !str.equals(sub)) || str.length() < sub.length()) {
+            return 0;
+        }
+        
+        if (str.startsWith(sub) && str.endsWith(sub)) {
+            return str.length();
+        }
+        
+        if (str.startsWith(sub) && !str.endsWith(sub)) {
+            return strDist(str.substring(0, str.length() - 1), sub);
+        }
+        
+        if (!str.startsWith(sub) && str.endsWith(sub)) {
+            return strDist(str.substring(1), sub);
+        }
+        
+        return strDist(str.substring(1,str.length()-1), sub);
+    }
+}
+
+
+//Optimal Implementation
+
+
+class Solution{
+   public int strDist(String str, String sub) {
+      if (str.length() < sub.length()) {
+        return 0;
+      }
+        
+      // If the substring starts and ends with sub
+      if (str.startsWith(sub) && str.endsWith(sub)) {
+        return str.length();
+      }
+        
+      // If the substring starts with sub but does not end with sub
+      if (str.startsWith(sub)) {
+       return strDist(str.substring(0, str.length() - 1), sub);        // Recur on the substring excluding the last character
+      }
+        
+    // If the substring does not start with sub, but may or maynot end with sub ,move the starting index by 1
+    return strDist(str.substring(1), sub);
+   }
+}
