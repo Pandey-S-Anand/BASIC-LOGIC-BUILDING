@@ -1,0 +1,13 @@
+class Solution{
+  public String noX(String str) {
+    if(str.isEmpty()){
+      return str;
+    }
+  
+    if(!str.startsWith("x")){
+      return str.charAt(0)+noX(str.substring(1));
+    }
+   
+    return noX(str.substring(1));
+  }
+}
