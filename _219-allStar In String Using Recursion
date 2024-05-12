@@ -1,0 +1,24 @@
+//Bruteforce Approach
+
+class Solution{
+  public String allStar(String str) {
+   if(str.isEmpty() || str.length()==1){
+    return str;
+   }
+  
+   return str.charAt(0)+"*"+allStar(str.substring(1));
+  }
+}
+
+
+//Optimal Approach
+
+class Solution{
+  public String allStar(String str) {
+   if(str.isEmpty() || str.length()==1){
+    return str;
+   }
+  
+   return new StringBuilder().append(str.charAt(0)).append("*").append(allStar(str.substring(1))).toString();
+  }
+}
