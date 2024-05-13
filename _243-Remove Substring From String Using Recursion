@@ -1,0 +1,39 @@
+//Using Recursion
+
+class Solution{
+  public String stringYak(String str) {
+    if(str.isEmpty()){
+      return str;
+    }
+   
+    if(str.startsWith("yak")){
+      return stringYak(str.substring(3));
+    }
+   
+    return str.charAt(0)+stringYak(str.substring(1));
+  }
+}
+
+
+
+//Without Using Recursion
+
+class Solution{
+  public String stringYak(String str) {
+    StringBuilder res = new StringBuilder();
+    int i=0;
+   
+    while(i<(str.length()-2)){
+      if(str.substring(i,i+3).equals("yak")){
+        i+=3;
+      }else{
+        res.append(str.charAt(i));
+        i++;
+      }
+    }
+   
+    res.append(str.substring(i));
+   
+   return res.toString();
+  }
+}
