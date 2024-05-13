@@ -1,0 +1,25 @@
+//Using Recursion
+
+class Solution{
+  public String stringBits(String str) {
+    if(str.isEmpty()){
+      return str;
+    }
+    return str.charAt(0)+stringBits(str.length()<2?"":str.substring(2));
+  }
+}
+
+
+//Without Using Recursion
+
+class Solution{
+  public String stringBits(String str) {
+    StringBuilder result=new StringBuilder();
+   
+    for(int i=0;i<str.length();i+=2){
+     result.append(str.charAt(i));
+    }
+   
+    return result.toString();
+  }
+}
