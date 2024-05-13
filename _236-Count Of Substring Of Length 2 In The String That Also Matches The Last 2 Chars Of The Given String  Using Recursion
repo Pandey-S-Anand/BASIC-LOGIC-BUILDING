@@ -1,0 +1,13 @@
+class Solution{
+  public int last2(String str) {
+    if(str.length()<=2){
+      return 0;
+    }
+
+    if(str.startsWith(str.substring(str.length()-2,str.length()))){
+      return 1+last2(str.substring(1));
+    }
+  
+    return last2(str.substring(1));
+  }
+}
