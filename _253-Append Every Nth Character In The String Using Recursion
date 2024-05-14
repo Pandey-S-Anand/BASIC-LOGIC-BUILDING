@@ -1,0 +1,27 @@
+//Using Recursion
+
+class Solution{
+  public String everyNth(String str, int n) {
+   if(str.isEmpty()){
+     return "";
+   }
+   
+   return str.charAt(0)+everyNth(str.length()>=n?str.substring(n):"",n);
+  }
+}
+
+
+//Without Using Recursion
+
+class Solution{
+  public String everyNth(String str, int n) {
+    StringBuilder result=new StringBuilder();
+    int len=str.length();
+  
+    for(int i=0;i<len;i+=n){
+      result.append(str.charAt(i)); 
+    }
+  
+    return result.toString();
+  }
+}
