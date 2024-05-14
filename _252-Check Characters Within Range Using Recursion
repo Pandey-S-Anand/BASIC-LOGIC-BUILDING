@@ -1,0 +1,42 @@
+//Without Recursion
+
+class Solution{
+  public boolean stringE(String str) {
+    int count=0,n=str.length();
+    for(int i=0;i<n;i++){
+      if(str.charAt(i)=='e'){
+        count++;
+      }
+     
+      if(count>3){
+        return false;
+      }
+    }
+    return count>=1;
+  }
+}
+
+
+//With Recursion
+
+class Solution{
+  public boolean stringE(String str) {
+     int countEs=stringHelper(str);
+     if(countEs>=1 && countEs<=3){
+       return true;
+     } 
+     return false;
+  }
+
+  public int stringHelper(String str){
+    if(str.isEmpty()){
+      return 0;
+    }
+  
+    if(str.charAt(0)=='e'){
+      return 1+stringHelper(str.substring(1));
+    }
+  
+    return stringHelper(str.substring(1));
+  }
+}
