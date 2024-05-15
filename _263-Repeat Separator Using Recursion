@@ -1,0 +1,26 @@
+//Using Recursion
+
+class Solution{
+  public String repeatSeparator(String word, String sep, int count) {
+    if(count==0){
+      return "";
+    }
+    
+    return word+(count==1?"":sep)+repeatSeparator(word,sep,count-1);
+  }
+}
+
+
+//Without Using Recursion
+
+class Solution{
+  public String repeatSeparator(String word, String sep, int count) {
+    StringBuilder result=new StringBuilder();
+    
+    for(int i=1;i<=count;i++){
+      result.append(word).append(i==count?"":sep);
+    }
+    
+    return result.toString();
+  }
+}
