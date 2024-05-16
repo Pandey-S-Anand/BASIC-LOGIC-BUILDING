@@ -1,0 +1,146 @@
+//Without Recursion
+
+class Solution{
+   public String starOut(String str) {
+    StringBuilder result = new StringBuilder();
+    int n = str.length();
+    
+    for (int i = 0; i < n;) {
+        if (str.charAt(i) == '*') {
+            if(i==0){
+               if((i+1)<n && str.charAt(i+1)!='*'){
+                 i+=2;
+               }else{
+                 i++;
+               }
+            }else if(i==(n-1)){
+               if(str.charAt(i-1)!='*'){
+                 result.deleteCharAt(result.length()-1);
+               }
+               i++;
+            }else{
+               if (str.charAt(i - 1) != '*') {
+                 result.deleteCharAt(result.length() - 1);
+               }
+            
+               if (str.charAt(i + 1) != '*') {
+                 i+=2;
+               }else{
+                 i++; 
+               }
+            }
+        } else {
+            result.append(str.charAt(i));
+            i++;
+        }
+    }
+     return result.toString();
+   }
+}
+
+//Aliter 
+
+class Solution{
+  public String starOut(String str) {
+    StringBuilder result = new StringBuilder();
+    int i=0, n = str.length();
+    
+    while (i < n) {
+        if (str.charAt(i) == '*') {
+            if(n==1){
+              break;
+            }
+            
+            if (i > 0 && str.charAt(i - 1) != '*') {
+                result.deleteCharAt(result.length() - 1);
+                if(i==(n-1)){
+                  break;
+                }
+            }
+            if (i < n - 1)
+            {
+               if(str.charAt(i + 1) != '*') {
+                i+=2;
+               }else{
+                i++;
+               }
+            }
+        } else {
+            result.append(str.charAt(i));
+            i++;
+        }
+    }
+    return result.toString();
+  }
+}
+
+//Using Recursion
+
+class Solution{
+  public String starOut(String str) {
+     return starOut(str,0,new StringBuilder());
+  }
+   
+   
+  public String starOut(String str,int i,StringBuilder result) {
+  
+    if(i>=str.length()){
+      return result.toString();
+    }
+    
+    if (str.charAt(i) == '*') {
+        if(i==0){
+           return ((i+1)<str.length() && str.charAt(i+1)!='*')?starOut(str,i+2,result):starOut(str,i+1,result);
+        }else if(i==(str.length()-1)){
+           if(str.charAt(i-1)!='*'){
+              result.deleteCharAt(result.length()-1);
+           }
+
+           return starOut(str,i+1,result);
+        }else{
+           if (str.charAt(i - 1) != '*') {
+             result.deleteCharAt(result.length() - 1);
+           }
+            
+           return str.charAt(i + 1) != '*'?starOut(str,i+2,result):starOut(str,i+1,result);
+        }
+    } else{
+        return starOut(str,i+1,result.append(str.charAt(i)));
+    }
+  }
+}
+
+
+//Aliter
+
+class Solution{
+  public String starOut(String str) {
+     return starOut(str,0,new StringBuilder());
+  }
+   
+   
+  public String starOut(String str,int i,StringBuilder result) {
+        if(i>=str.length()){
+          return result.toString();
+        }
+    
+        if (str.charAt(i) == '*') {
+            if(str.length()==1){
+              return "";
+            }
+            
+            if (i > 0 && str.charAt(i - 1) != '*') {
+                result.deleteCharAt(result.length() - 1);
+                if(i==(str.length()-1)){
+                  return result.toString();
+                }
+            }
+            
+            if (i < str.length() - 1){
+               return str.charAt(i + 1) != '*'?starOut(str,i+2,result):starOut(str,i+1,result);
+            }
+        }
+        
+      return starOut(str,i+1,result.append(str.charAt(i)));
+  }
+}
