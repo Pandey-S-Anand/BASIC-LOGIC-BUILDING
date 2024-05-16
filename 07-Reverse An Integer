@@ -29,33 +29,14 @@ class Solution{
 }
 
 
-//Method3- Recurssive Approach
-
-//Implementaton 1
+//Method3- Recursive Approach
 
 class Solution{
-    public static int driver(int num){
-       return reverse(num,0);
-    }
+   public static int reverseNumber(int number) {
+      if (number >= 0 && number <=9) {
+        return number;
+      }
 
-    public static int reverse(int num,int rev){
-        if(num==0)
-          return rev;
-        
-        return reverse(num/10,rev*10+(num%10));
-    }
-}
-
-//Implementaton 2
-
-class Solution{   
-    static int rev=0;
-
-    public static void reverse(int num){
-       if(num==0)
-        return;
-          
-       rev=rev*10+(num%10);
-       reverse(num/10);
-    }
+      return (number% 10) * (int) Math.pow(10, (int)(Math.log10(Math.abs(number) + 1))-1) + reverseNumber(number / 10);
+   }
 }
