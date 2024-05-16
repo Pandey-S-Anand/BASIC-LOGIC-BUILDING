@@ -32,17 +32,18 @@ class Solution {
 
 /*
 We can use log10(logarithm of base 10) to count the number of digits of positive Integer (logarithm is not defined for negative Integers).
-Digit count of N = upper bound of log10(N). 
+Digit count of N = lower bound of (log10(N)+1). 
 */
 
 class Solution {
     public static int countDigits(int num){
         if(n==0)
           return 1;
+
         if(num<0)
           num=Math.abs(num);
         
-        return (int)Math.floor(Math.log10(num) + 1); 
+        return (int)Math.floor(Math.log10(num) + 1); //(int)(Math.log10(num) + 1); 
     }
 }
 
