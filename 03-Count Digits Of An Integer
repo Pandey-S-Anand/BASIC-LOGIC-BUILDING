@@ -21,8 +21,9 @@ class Solution {
 
 class Solution {
     public static int countDigits(int num){
-      if(Math.abs(num)<10)   //Base Case: Single Digit Number has Only Digit so return 1
+      if(Math.abs(num)<10){   //Base Case: Single Digit Number has Only Digit so return 1
         return 1;
+      }
         
       return (1+countDigits(num/10));
     }
