@@ -2,9 +2,10 @@
 
 class Solution {
     public static int countDigits(int num){
-        if(num==0) //0 has 1 Digit
-           return 1;
-           
+        if(num==0){ //0 has 1 Digit
+          return 1;
+        }
+         
         int count=0;
         while(num!=0)
         {
@@ -20,7 +21,7 @@ class Solution {
 
 class Solution {
     public static int countDigits(int num){
-      if(num<10)//Base Case: Single Digit Number has Only Digit so return 1
+      if(Math.abs(num)<10)   //Base Case: Single Digit Number has Only Digit so return 1
         return 1;
         
       return (1+countDigits(num/10));
@@ -37,11 +38,13 @@ Digit count of N = lower bound of (log10(N)+1).
 
 class Solution {
     public static int countDigits(int num){
-        if(n==0)
+        if(n==0){
           return 1;
+        }
 
-        if(num<0)
+        if(num<0){
           num=Math.abs(num);
+        }
         
         return (int)Math.floor(Math.log10(num) + 1); //(int)(Math.log10(num) + 1); 
     }
@@ -52,10 +55,10 @@ class Solution {
 
 class Solution{
     public static int countDigits(int num){
-        if(num<0)
+        if(num<0){
           num=Math.abs(num);
+        }
        
-        String str = Integer.toString(num);
-        return str.length();
+        return Integer.toString(num).length();
     }
 }
