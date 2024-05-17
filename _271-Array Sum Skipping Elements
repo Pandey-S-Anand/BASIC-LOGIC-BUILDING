@@ -1,0 +1,32 @@
+//Using Recursion
+
+class Solution{
+   public int sum13(int[] arr) {
+      if(arr.length==0){
+        return 0;
+       }
+  
+       if(arr[0]==13){
+         return sum13(Arrays.copyOfRange(arr,(arr.length>2)?2:arr.length,arr.length));
+       }
+
+     return arr[0]+sum13(Arrays.copyOfRange(arr,1,arr.length));
+   }
+}
+
+
+//Without Recursion
+
+class Solution{
+   public int sum13(int[] arr) {
+      int sum=0;
+      for(int i=0;i<arr.length;i++){
+        if(arr[i]==13){
+           i++;
+        }else{
+           sum+=arr[i];
+        }
+      }
+     return sum;
+   }
+}
