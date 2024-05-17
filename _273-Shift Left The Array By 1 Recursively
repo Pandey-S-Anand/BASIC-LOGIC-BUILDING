@@ -1,0 +1,23 @@
+class Solution{
+  public int[] shiftLeft(int[] arr) {
+    if(arr.length==0){
+      return new int[0];
+    }
+  
+    int temp=arr[0];
+    shiftLeftHelper(arr,0);
+    arr[arr.length-1]=temp;
+  
+   return arr;
+  }
+
+  public void shiftLeftHelper(int[]arr,int index){
+    if(index>=(arr.length-1)){
+      return;
+    }
+  
+    arr[index]=arr[index+1];
+  
+    shiftLeftHelper(arr,index+1);
+  }
+}
