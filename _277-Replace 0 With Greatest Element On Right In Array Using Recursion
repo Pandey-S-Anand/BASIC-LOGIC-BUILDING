@@ -1,0 +1,59 @@
+//Without Using Recursion
+
+class Solution{
+   public int[] zeroMax(int[] arr) {
+     if(arr.length==0){
+       return arr;
+     }
+  
+     int idx=arr.length-1,maxOddSoFar=arr[idx];
+  
+     while(idx>=0 && arr[idx]%2==0){
+       idx--;
+     }
+  
+     if(idx>=0){
+       maxOddSoFar=arr[idx];
+     }
+  
+     for(int i=idx-1;i>=0;i--){
+       if(arr[i]==0){
+         arr[i]=maxOddSoFar;
+       }else if(arr[i]%2!=0 && arr[i]>maxOddSoFar){
+         maxOddSoFar=arr[i];
+       }
+     }
+  
+    return arr;
+   }
+}
+
+
+//Using Recursion 
+
+class Solution{
+   public int[] zeroMax(int[] arr) {
+     if(arr.length==0){
+       return arr;
+     }
+
+     return zeroMax(arr,arr.length-1,arr[arr.length-1]);
+   }
+
+
+    public int[] zeroMax(int[] arr,int oddNumberIdx,int maxOddSoFar) {
+        if(oddNumberIdx<0){
+          return arr;
+        }
+    
+        if(arr[oddNumberIdx]!=0 && arr[oddNumberIdx]%2!=0){
+          maxOddSoFar=Math.max(maxOddSoFar,arr[oddNumberIdx]);
+        }
+    
+        if(maxOddSoFar%2!=0 && arr[oddNumberIdx]==0){
+           arr[oddNumberIdx]=maxOddSoFar;
+        }
+
+       return zeroMax(arr,oddNumberIdx-1,maxOddSoFar) ;
+    }
+}
