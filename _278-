@@ -1,0 +1,53 @@
+//Without Using Recursion
+
+class Solution{
+   public boolean either24(int[] arr) {
+     boolean has22 = false,has44 = false;
+
+     for (int i = 0; i < arr.length - 1; i++) {
+        if (arr[i] == 2 && arr[i + 1] == 2) {
+            has22 = true;
+        }
+        if (arr[i] == 4 && arr[i + 1] == 4) {
+            has44 = true;
+        }
+
+        if (has22 && has44) {
+            return false;
+        }
+     }
+
+    return has22 != has44;
+   }
+}
+
+
+//Using Recursion
+
+class Solution{
+  public boolean either24(int[] arr) {
+    if(arr.length<2){
+      return false;
+    }
+   
+    boolean has22=false,has44=false;
+    
+    if (arr[0] == 2 && arr[1] == 2) {
+        has22 = true;
+    }
+    
+    if (arr[0] == 4 && arr[1] == 4) {
+        has44 = true;
+    }
+
+    if (has22 && has44) {
+        return false;
+    }
+    
+    if(has22 || has44){
+       return !either24(Arrays.copyOfRange(arr,1,arr.length));
+    }
+    
+    return either24(Arrays.copyOfRange(arr,1,arr.length));
+  }
+}
