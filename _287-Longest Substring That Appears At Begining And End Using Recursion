@@ -1,0 +1,32 @@
+//Using Recursion
+
+class Solution{
+   public String sameEnds(String str) {
+    return sameEndsHelper(str, str.length() / 2);
+   }
+
+   private String sameEndsHelper(String str, int mid) {
+      if (str.substring(0, mid).equals(str.substring(str.length() - mid))) {
+        return str.substring(0, mid);
+      }
+    
+     return sameEndsHelper(str, mid - 1);
+   }
+}
+
+
+//Without Recursion
+
+class Solution{
+  public String sameEnds(String str) {
+    int i,n=str.length(),mid=n/2;
+    
+    for(i=mid;i>=0;i--){
+      if (str.substring(0, i).equals(str.substring(n - i))) {
+        break;
+      }
+    }
+    
+    return str.substring(0, i);
+  }
+}
