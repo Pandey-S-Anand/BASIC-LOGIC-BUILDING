@@ -1,0 +1,56 @@
+//Without Recursion
+
+class Solution{
+   public int countYZ(String str) {
+     int count=0;
+     str=str.toLowerCase();
+     String[]arr=str.split("[^a-z]+");
+     
+     for(int i=0;i<arr.length;i++){
+       if(arr[i].endsWith("y") || arr[i].endsWith("z")){
+         count++;
+       }
+     }
+  
+    return count;
+   }
+}
+
+
+//Aliter
+
+class Solution{
+  public int countYZ(String str) {
+    int count = 0,len = str.length();
+    str = str.toLowerCase();
+
+    for (int i = 0; i < len; i++) {
+        if (str.charAt(i) == 'y' || str.charAt(i) == 'z') {
+            if (i == len - 1 || !Character.isLetter(str.charAt(i + 1))) {
+                count++;
+            }
+        }
+    }
+
+    return count;
+  }
+}
+
+
+//Using Recursion
+
+class Solution{
+  public int countYZ(String str) {
+    if(str.isEmpty()){
+      return 0;
+    }
+ 
+    if (str.charAt(0) == 'y' || str.charAt(0) == 'z' || str.charAt(0) == 'Y' || str.charAt(0) == 'Z') {
+        if (str.length()==1 || !Character.isLetter(str.charAt(1))) {
+           return 1+countYZ(str.length()>2?str.substring(2):"");
+        }
+    }
+
+    return countYZ(str.substring(1));
+  }
+}
