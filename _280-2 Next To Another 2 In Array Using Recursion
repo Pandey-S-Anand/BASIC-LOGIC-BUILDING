@@ -1,0 +1,62 @@
+//Using Recursion
+
+class Solution{
+  public boolean twoTwo(int[] arr) {
+    if(arr.length==0){
+      return true;
+    }
+
+    return twoTwo(arr,false);
+  }
+
+
+  public boolean twoTwo(int[] arr,boolean immediateLeft2) {
+    if(arr.length<2){
+      if(arr[0]==2 && !immediateLeft2){
+        return false;
+      }
+      return true;
+    }
+  
+    if(arr[0]==2 && (arr[1]!=2 && !immediateLeft2)){
+      return false;
+    }
+  
+    if(arr[0]==2 && arr[1]==2){
+      immediateLeft2=true;
+    }
+  
+    if(arr[0]!=2 && immediateLeft2){
+      immediateLeft2=false;
+    }
+  
+   return twoTwo(Arrays.copyOfRange(arr,1,arr.length),immediateLeft2);
+  }
+}
+
+
+//Without Using Recursion
+
+class Solution{
+   public boolean twoTwo(int[] arr) {
+     if(arr.length==0){
+       return true;
+     }
+   
+     if(arr[0]==2 && (arr.length==1 || arr[1]!=2)){
+       return false;
+     }
+  
+     for(int i=1;i<arr.length-1;i++){
+       if(arr[i]==2 && (arr[i+1]!=2 && arr[i-1]!=2)){
+         return false;
+       }
+     }
+   
+     if(arr[arr.length-1]==2 && arr[arr.length-2]!=2){
+       return false;
+     }
+   
+   return true;
+  }
+}
