@@ -1,0 +1,47 @@
+//Using Recursion
+
+class Solution{
+   public boolean equalIsNot(String str) {
+     return equalIsNotHelper(str)==0;
+   }
+
+
+   public int equalIsNotHelper(String str) {
+     if(str.length()<2){
+       return 0;
+     }
+  
+     if(str.startsWith("is")){
+       return 1+equalIsNotHelper(str.substring(2));
+     }
+  
+     if(str.startsWith("not")){
+       return -1+equalIsNotHelper(str.substring(3));
+     }
+  
+    return equalIsNotHelper(str.substring(1));
+   }
+}
+
+
+//Without Recursion
+
+class Solution{
+   public boolean equalIsNot(String str) {
+     int i=0,n=str.length(),count=0;
+  
+     while(i<n){
+       if(str.startsWith("is",i)){
+         i+=2;
+         count++;
+       }else if(str.startsWith("not",i)){
+         i+=3;
+         count--;
+       }else{
+         i++;
+       }
+     }
+  
+    return count==0;
+   }
+}
