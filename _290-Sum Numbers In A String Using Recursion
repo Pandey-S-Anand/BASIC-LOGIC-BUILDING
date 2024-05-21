@@ -1,0 +1,101 @@
+//Without Recursion
+
+//Method 1
+
+class Solution{
+  public int sumNumbers(String str) {
+    int sum = 0,num = 0;
+
+    for (char c : str.toCharArray()) {
+        if (Character.isDigit(c)) {
+            num = num * 10 + (c - '0');
+        } else if (num!=0) {
+            sum += num;
+            num = 0;
+        }
+    }
+
+    sum += num;
+  
+    return sum;
+  }
+}
+
+//Method 2
+
+class Solution{
+  public int sumNumbers(String str) {
+     int totalSum = 0;
+     StringBuilder currentNumber = new StringBuilder();
+
+     for (char c : str.toCharArray()) {
+        if (Character.isDigit(c)) {
+           currentNumber.append(c);
+        } else if (currentNumber.length() > 0) {
+           totalSum += Integer.parseInt(currentNumber.toString());
+           currentNumber.setLength(0);
+        }
+     }
+
+     if (currentNumber.length() > 0) {
+        totalSum += Integer.parseInt(currentNumber.toString());
+     }
+
+     return totalSum;
+  }
+}
+
+
+
+//Using Recursion
+
+//Method 1
+
+class Solution{
+   public int sumNumbers(String str) {
+     return sumNumbers(str,0) ;
+   }
+
+   public int sumNumbers(String str,int currentNumber) {
+      if(str.isEmpty()){
+        return currentNumber;
+      }
+  
+      if (Character.isDigit(str.charAt(0))) {
+          currentNumber=currentNumber*10+(str.charAt(0)-'0');
+      } else if (currentNumber!=0) {
+          return currentNumber+sumNumbers(str.substring(1),0);
+      }
+
+     return sumNumbers(str.substring(1),currentNumber);
+   }
+}
+
+
+
+//Method 2
+
+class Solution{
+   public int sumNumbers(String str) {
+     return sumNumbers(str,new StringBuilder()) ;
+   }
+
+   public int sumNumbers(String str,StringBuilder currentNumber) {
+      if(str.isEmpty()){
+        if (currentNumber.length() > 0) {
+           return Integer.parseInt(currentNumber.toString());
+        }
+        return 0;
+      }
+  
+      if (Character.isDigit(str.charAt(0))) {
+          currentNumber.append(str.charAt(0));
+      } else if (currentNumber.length() > 0) {
+          int num=Integer.parseInt(currentNumber.toString());
+          currentNumber.setLength(0);
+          return num+sumNumbers(str.substring(1),currentNumber);
+      }
+
+     return sumNumbers(str.substring(1),currentNumber);
+   }
+}
