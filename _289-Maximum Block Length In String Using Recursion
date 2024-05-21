@@ -1,0 +1,47 @@
+// Without Recursion
+
+class Solution{
+  public int maxBlock(String str) {
+     int n=str.length(),currentBlockLength = 1,maxBlockLength=1;
+
+     if (n == 0) {
+        return 0;
+     }
+
+     for (int i = 1; i < n; i++) {
+        if (str.charAt(i) == str.charAt(i - 1)) {
+          currentBlockLength++;
+        } else {
+          currentBlockLength = 1;
+        }
+            
+        maxBlockLength=Math.max(maxBlockLength,currentBlockLength);
+     }
+
+     return maxBlockLength;
+  }
+}
+
+
+//Using Recursion
+
+class Solution{
+  public int maxBlock(String str) {
+     if(str.isEmpty()){
+       return 0;
+     }
+     return maxBlock(str,1,1);
+  }
+  
+  public int maxBlock(String str,int currentBlockLength,int index) {
+     if(index==str.length()){
+       return 0;
+     }
+
+     if (str.charAt(index) == str.charAt(index - 1)) {
+        return Math.max(currentBlockLength+1,maxBlock(str,currentBlockLength+1,index+1));
+     } 
+     
+     return Math.max(1,maxBlock(str,1,index+1));
+  }
+}
