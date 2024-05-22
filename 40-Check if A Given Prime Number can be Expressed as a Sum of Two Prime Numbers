@@ -1,3 +1,9 @@
+/*
+Efficient solution: 
+Apart from 2, all of the prime numbers are odd. So it is not possible to represent a prime number (which is odd) to be written as a sum of two odd prime numbers,
+so we are sure that one of the two prime numbers should be 2. So we have to check whether n-2 is prime or not. If it holds we print Yes else No.
+For example, if the number is 19 then we have to check whether 19-2 = 17 is a prime number or not. If 17 is a prime number then print yes otherwise print no.
+*/
 
 class Solution{
   public static boolean sumPrime(int num){
