@@ -19,6 +19,6 @@ class Solution{
       return str;
     }
    
-    return ""+str.charAt(0)+(1 < str.length() ? str.charAt(1) : "")+altPairs(str.length()<4?"":str.substring(4));
+    return ""+str.charAt(0)+(str.length()>1 ? str.charAt(1) : "")+altPairs(str.length()<4?"":str.substring(4));
   }
 }
