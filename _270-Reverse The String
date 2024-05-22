@@ -10,6 +10,26 @@ class Solution{
 }
 
 
+//Aliter
+
+class Solution{
+   public String reverseString(String str){
+       return reverseString(str.toCharArray(),0);
+   }
+    
+   public String reverseString(char[] arr,int index) {     
+      if(index==(arr.length/2)){
+         return new String(arr);
+      }
+      
+      char temp=arr[index];
+      arr[index]=arr[arr.length-1-index];
+      arr[arr.length-1-index]=temp;
+      
+      return reverseString(arr,index+1);
+   }
+}
+
 
 //Without Using Recursion
 
