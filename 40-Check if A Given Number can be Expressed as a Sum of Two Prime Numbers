@@ -1,31 +1,28 @@
 
 class Solution{
-  public static void sumPrime(int num){
-     ArrayList<Integer>prime=sieveOfEratosthenes(num);
+  public static boolean sumPrime(int num){
+     if(isPrime(num-2)){
+         return true;
+     }
      
-     for(int i=0;i<prime.size();i++)
-        if(prime.contains(num-prime.get(i)))
-          System.out.printf("%d + %d = %d\n",prime.get(i),num-prime.get(i),num);
+     return false;
   }
-    	
-  public static ArrayList<Integer> sieveOfEratosthenes(int n){
-       ArrayList<Integer>res=new ArrayList<>();
-       if(n<2)
-	 return res;
-	   
-       boolean isPrime[]=new boolean[n+1];
-       for(int i=2;i<=n;i++)
-         isPrime[i]=true;
-          
-        for(int num=2;num<=(int)Math.sqrt(n);num++)
-          if(isPrime[num]==true)
-             for(int mark=(num*num);mark<=n;mark+=num)
-                isPrime[mark]=false;
-                
-        for(int i=2;i<=n;i++)
-          if(isPrime[i]==true)
-             res.add(i);
-        
-        return res;
-    }
+  
+  public static boolean isPrime(int num){
+     if(num<=1){
+       return false;
+     }
+
+     if(num==2){
+       return true;
+     }
+     
+     for(int i=2;i<=Math.sqrt(num);i++){
+        if(num%2==0){
+           return false;
+        }
+     }
+     
+     return true;
+  }
 }
