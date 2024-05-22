@@ -1,0 +1,91 @@
+//Without Recursion
+
+class Solution{
+   public String wordAppend(String[] arr) {
+     Map<String,Integer>map=new HashMap<>();
+     StringBuilder result=new StringBuilder();
+  
+     for(String str:arr){
+       if(map.containsKey(str)){
+         map.put(str,map.get(str)+1);
+         if(map.get(str)%2==0){
+           result.append(str);
+         } 
+       }else{
+         map.put(str,1);
+       }
+     }
+     return result.toString();
+   }
+}
+
+
+//Aliter
+
+class Solution{
+   public String wordAppend(String[] arr) {
+     Map<String,Integer>map=new HashMap<>();
+     StringBuilder result=new StringBuilder();
+  
+     for(String str:arr){
+       map.put(str,map.getOrDefault(str,0)+1);
+       
+       if(map.get(str)%2==0){
+         result.append(str);
+       } 
+     }
+     return result.toString();
+   }
+}
+
+
+//Using Recursion
+
+class Solution{
+  public String wordAppend(String[] arr) {
+    return wordAppend(arr,new HashMap<>());
+  }
+
+
+  public String wordAppend(String[] arr,Map<String,Integer>map) {
+    if(arr.length==0){
+      return "";
+    }
+     
+    if(map.containsKey(arr[0])){
+      map.put(arr[0],map.get(arr[0])+1);
+    
+      if(map.get(arr[0])%2==0){
+         return arr[0]+wordAppend(Arrays.copyOfRange(arr,1,arr.length),map);
+      }
+    }
+    
+    map.put(arr[0],1);
+    
+    return wordAppend(Arrays.copyOfRange(arr,1,arr.length),map);
+  }
+}
+
+
+//Aliter
+
+class Solution{
+  public String wordAppend(String[] arr) {
+    return wordAppend(arr,new HashMap<>());
+  }
+
+
+  public String wordAppend(String[] arr,Map<String,Integer>map) {
+    if(arr.length==0){
+      return "";
+    }
+
+    map.put(arr[0],map.getOrDefault(arr[0],0)+1);
+
+    if(map.get(arr[0])%2==0){
+      return arr[0]+wordAppend(Arrays.copyOfRange(arr,1,arr.length),map);
+    }
+    
+    return wordAppend(Arrays.copyOfRange(arr,1,arr.length),map);
+  }
+}
