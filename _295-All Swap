@@ -1,0 +1,38 @@
+class Solution{
+   public String[] allSwap(String[] strings) {
+     Map<Character, Integer> charIndexMap = new HashMap<>();
+
+     for (int i = 0; i < strings.length; i++) {
+       char firstChar = strings[i].charAt(0);
+
+       if (charIndexMap.containsKey(firstChar)) {
+          int prevIndex = charIndexMap.get(firstChar);
+
+          String temp = strings[i];
+          strings[i] = strings[prevIndex];  
+          strings[prevIndex] = temp;
+          
+          charIndexMap.remove(firstChar);
+        } else {
+          charIndexMap.put(firstChar, i);
+        }
+     }
+
+     return strings; 
+   }
+}
+
+/*
+  Detailed Differences:
+First Character Swap:
+
+A character can only cause one swap, after which it is entirely disabled for any further swaps regardless of where it appears.
+Example Behavior: After swapping "ax" with "ay", the character 'a' cannot cause any more swaps even if other 'a' strings appear later.
+
+All Swap:
+
+Swaps occur whenever there is a match, and only the specific positions involved in a swap are disabled from participating in further swaps.
+The disabling is based on positions rather than characters.
+Example Behavior: After swapping "ax" with "ay", the positions of "ax" and "ay" are disabled, but if another 'a' string appears later, it can still participate in a swap if it finds a match.
+
+*/
