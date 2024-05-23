@@ -1,6 +1,29 @@
+//Without Recursion
+
+class Solution{
+   public int countPairs(String str) {
+     int n=str.length(),count=0;
+  
+     if(n<3){
+      return 0;
+     }
+  
+     for(int i=0;i<=(n-3);i++){
+       if(str.charAt(i)==str.charAt(i+2)){
+         count++;
+       }
+     }
+  
+    return count;
+   }
+}
+
+
+//Using Recursion
+
 class Solution{
   public int countPairs(String str) {
-    if(str.length()<3 || str.isEmpty()){
+    if(str.length()<3){
       return 0;
     }
   
