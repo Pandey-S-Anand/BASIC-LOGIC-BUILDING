@@ -1,4 +1,4 @@
-//Method 1
+//Using Recursion
 
 class Solution{
   public int countAbc(String str) {
@@ -16,18 +16,20 @@ class Solution{
 
 
 
-//Method 2
+//Without Using Recursion
 
 class Solution{
   public int countAbc(String str) {
-    if(str.length()<3){
-      return 0;
-    }
-   
-    if(str.substring(0,3).equals("abc") || str.substring(0,3).equals("aba")){
-     return 1+countAbc(str.substring(2)); 
+    int i=0,count=0,n=str.length();
+    while(i<=(n-3)){
+      if(str.startsWith("abc",i) || str.startsWith("aba",i)){
+        count++;
+        i+=2;
+      }else{
+        i++;
+      }
     }
   
-    return countAbc(str.substring(1));
+    return count;
   }
 }
