@@ -1,5 +1,7 @@
 //Without Recursion
 
+//Method 1
+
 class Solution{
   public int strDist(String str, String sub) {
     int i=0,n=str.length(),end=n-1; 
@@ -26,6 +28,36 @@ class Solution{
     }
     
     return (end-i+1);
+  }
+}
+
+
+//Method 2
+
+class Solution{
+  public int strDist(String str, String sub) {
+    int n = str.length(),subLen = sub.length();
+    
+    if (n < subLen) {
+        return 0;
+    }
+
+    int firstOccurenceIndex = -1,lastOccurenceIndex=-1;
+
+    for(int i=0;i<=(n-subLen);i++){
+       if(str.startsWith(sub,i)) {
+            if (firstOccurenceIndex == -1) {
+                firstOccurenceIndex = i;
+            }
+          lastOccurenceIndex=i;
+       }
+    }
+
+    if(firstOccurenceIndex==-1){
+      return 0;
+    }
+
+    return (lastOccurenceIndex+subLen)-firstOccurenceIndex;
   }
 }
 
