@@ -2,14 +2,14 @@
 
 class Solution{
     public static int reverse(int num){
-        int rev=0;
-        while(num!=0)
-        {
-           int last=(num%10);
-           rev=rev*10+last; 
-           num=num/10;
-        }
-        return rev;
+      int rev=0;
+
+      while(num!=0){
+         rev=rev*10+(num%10); 
+         num=num/10;
+      }
+
+      return rev;
     }
 }
 
@@ -17,12 +17,12 @@ class Solution{
 
 class Solution{
     public static int reverse(int num){
-        int sign=1;      
-        if(num<0)
-        {
-          num=Math.abs(num);
-          sign=-1;  
-        }
+      int sign=1;
+
+      if(num<0){
+        num=Math.abs(num);
+        sign=-1;  
+      }
 
       return  Integer.parseInt(new StringBuilder(Integer.toString(num)).reverse().toString())*sign;
     }
