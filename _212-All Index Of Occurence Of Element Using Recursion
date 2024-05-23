@@ -1,7 +1,9 @@
+//Using Recursion
+
 class Solution{
    public static  int[] findAllOccurence(int []arr,int idx,int target,int count){  //idx and count will be passed as 0
       if(idx==arr.length){
-          return new int[count];
+         return new int[count];
       }
 
       if(arr[idx]==target){
