@@ -1,0 +1,48 @@
+//Using Recursion
+
+class Solution{
+   public int maxInArray(int []arr){ 
+      if(arr.length==0){
+        return Integer.MIN_VALUE;
+      }
+
+      if(arr.length==1){
+	return arr[0];
+      }
+	     
+      return Math.max(arr[0],maxInArray(Arrays.copyOfRange(arr,1,arr.length)));
+  }
+}
+
+
+//Without Recursion
+
+class Solution{
+    public int maxInArray(int arr[]){
+       if(arr.length==0){
+         return Integer.MIN_VALUE;
+       }
+
+       int maxIndex=0;
+       for(int i=1;i<arr.length;i++){
+	  if(arr[i]>arr[maxIndex]){
+	     maxIndex=i;
+	  }
+       }
+      return arr[maxIndex];   
+    }
+}
+
+
+//Aliter
+
+class Solution{
+   public int maxInArray(int arr[]){
+      if(arr.length==0){
+        return Integer.MIN_VALUE; 
+      }
+
+      Arrays.sort(arr);
+      return arr[arr.length-1];
+   }
+}
