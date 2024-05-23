@@ -17,3 +17,20 @@ class Solution{
       }
    }
 }
+
+
+//Without Recursion
+
+class Solution{
+   public static List<Integer> findAllOccurence(int []arr,int target){
+      List<Integer>indices=new ArrayList<>();
+      
+      for(int i=0;i<arr.length;i++){
+         if(arr[i]==target){
+            indices.add(i);
+         }
+      } 
+      
+      return indices;
+   }
+}
