@@ -1,7 +1,7 @@
 //Using Recursion
 
 class Solution{
-    public static void displayArrayInReverse(int []arr,int idx){  //Intially idx=0
+    public static void displayArrayInReverse(int []arr,int idx){  // idx will be passed as 0
       if(idx==arr.length){
 	return;
       }
