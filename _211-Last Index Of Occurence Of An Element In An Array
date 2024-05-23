@@ -1,14 +1,16 @@
 //Using Recursion
 
 class Solution{
-   public static  int lastOccurence(int []arr,int idx,int target){  //idx will be passed as (arr.length-1)
-      if(idx==-1)
+   public static  int lastOccurence(int []arr,int target){ 
+      if(arr.length==0){
         return -1;  //Not Found
+      }
+      
+      if(arr[arr.length-1]==target){
+	return arr.length-1;
+      }
 	     
-      if(arr[idx]==target)
-	return idx;
-	     
-      return lastOccurence(arr,idx-1,target);
+      return lastOccurence(Arrays.copyOfRange(arr,0,arr.length-1),target);
    }
 }
 
