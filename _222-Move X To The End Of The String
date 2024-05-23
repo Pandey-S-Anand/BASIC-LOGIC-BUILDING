@@ -1,0 +1,58 @@
+//Without Recursion
+
+class Solution{
+   public String endX(String str) {
+     int n=str.length(),countX=0;
+     StringBuilder result=new StringBuilder();
+
+     for(int i=0;i<n;i++){
+       if(str.charAt(i)!='x'){
+         result.append(str.charAt(i));
+       }else{
+         countX++;
+       }
+     }
+  
+     while(countX!=0){
+       result.append("x");
+       countX--;
+     }
+  
+    return result.toString();
+   }
+}
+
+
+//Using Recursion
+
+class Solution{
+  public String endX(String str) {
+    if(str.isEmpty()){
+      return str;
+    }
+  
+    if(str.charAt(0)=='x'){
+     return endX(str.substring(1))+'x';
+    }
+  
+    return str.charAt(0)+endX(str.substring(1));
+  }
+}
+
+
+/*
+
+Recursive Tree for Test Case : "xxre"
+
+endX("xxre")
+  |
+endX("xre")+'x'
+  |
+endX("re")+'x'
+  |
+'r'+endX("e")
+        |
+     'e'+endX("")
+              |
+          return "";  (base case, returns empty string)
+*/
