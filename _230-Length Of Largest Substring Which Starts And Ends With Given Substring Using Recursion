@@ -1,25 +1,59 @@
+//Without Recursion
+
+class Solution{
+  public int strDist(String str, String sub) {
+    int i=0,n=str.length(),end=n-1; 
+    
+    if(n<sub.length()){
+      return 0;
+    }
+   
+    while(i<n){
+      if (str.startsWith(sub,i) && str.substring(0,end+1).endsWith(sub)) {
+        break;
+      }else if (str.startsWith(sub,i) && !str.substring(0,end+1).endsWith(sub)) {
+        end--;
+      }else if (!str.startsWith(sub,i) && str.substring(0,end+1).endsWith(sub)) {
+        i++;
+      }else if (!str.startsWith(sub,i) && !str.substring(0,end+1).endsWith(sub)) {
+        i++;
+        end--;
+      }
+    }     
+    
+    if(i==n){
+      return 0;
+    }
+    
+    return (end-i+1);
+  }
+}
+
+
+//Using Recursion
+
 //Intuitive Implementation
 
 class Solution{
   public int strDist(String str, String sub) {
-        if ((str.length()==1 && !str.equals(sub)) || str.length() < sub.length()) {
-            return 0;
-        }
+     if (str.length() < sub.length()) {
+        return 0;
+     }
         
-        if (str.startsWith(sub) && str.endsWith(sub)) {
-            return str.length();
-        }
+     if (str.startsWith(sub) && str.endsWith(sub)) {
+        return str.length();
+     }
         
-        if (str.startsWith(sub) && !str.endsWith(sub)) {
-            return strDist(str.substring(0, str.length() - 1), sub);
-        }
+     if (str.startsWith(sub) && !str.endsWith(sub)) {
+        return strDist(str.substring(0, str.length() - 1), sub);
+     }
         
-        if (!str.startsWith(sub) && str.endsWith(sub)) {
-            return strDist(str.substring(1), sub);
-        }
-        
-        return strDist(str.substring(1,str.length()-1), sub);
-    }
+     if (!str.startsWith(sub) && str.endsWith(sub)) {
+        return strDist(str.substring(1), sub);
+     }
+
+     return strDist(str.substring((str.length()>1?1:0),str.length()-1), sub);
+  }
 }
 
 
