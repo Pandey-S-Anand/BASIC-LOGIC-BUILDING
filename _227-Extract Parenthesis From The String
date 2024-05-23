@@ -1,3 +1,5 @@
+//Using Recursion
+
 //Method 1
 
 class Solution{
@@ -29,5 +31,14 @@ class Solution{
       }
 
     return parenBit(str.substring(1));
+  }
+}
+
+
+//Without Using Recursion
+
+class Solution{
+  public String parenBit(String str) {
+     return str.substring(str.indexOf('('),str.indexOf(')')+1);
   }
 }
