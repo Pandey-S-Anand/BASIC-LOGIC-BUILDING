@@ -1,0 +1,23 @@
+//Using Recursion
+
+class Solution {
+    void printNos(int n) {
+      if(n==0){
+        return;
+      }
+
+      System.out.print(n+" ");
+      printNos(n-1);
+    }
+}
+
+
+//Without Using Recursion
+
+class Solution {
+    void printNos(int n) {
+       for(int i=n;i>=1;i--){
+         System.out.print(i+" ");
+       }
+    }
+}
