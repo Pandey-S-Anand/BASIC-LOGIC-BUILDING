@@ -1,21 +1,4 @@
-//Method 1
-
-class Solution{
-  public int count11(String str) {
-    if(str.length()<2){
-      return 0;
-    }
-   
-    if(str.substring(0,2).equals("11")){
-     return 1+count11(str.substring(2)); 
-    }
-  
-    return count11(str.substring(1)); 
-  }
-}
-
-
-//Method 2
+//Using Recursion
 
 class Solution{
   public int count11(String str) {
@@ -29,4 +12,24 @@ class Solution{
   
     return count11(str.substring(1)); 
   }
+}
+
+
+//Without Using Recursion
+
+class Solution{
+   public int count11(String str) {
+     int i=0,n=str.length(),count=0;
+   
+     while(i<=(n-2)){
+       if(str.startsWith("11",i)){
+         count++;
+         i+=2;
+       }else{
+         i++;
+       }
+     }
+  
+    return count;
+   }
 }
