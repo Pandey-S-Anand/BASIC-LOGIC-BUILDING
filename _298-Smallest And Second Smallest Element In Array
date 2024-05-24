@@ -7,10 +7,10 @@ class Compute {
        Arrays.fill(res,Long.MAX_VALUE);
 	      
        for(int i=0;i<n;i++){
-	       if(arr[i]<res[0]){
-	         res[1]=res[0];
-	         res[0]=arr[i];
-	       }
+	  if(arr[i]<res[0]){
+	     res[1]=res[0];
+	     res[0]=arr[i];
+	  }
           else if((arr[i]> res[0]) && (arr[i]<res[1])){
             res[1]=arr[i];
           }
@@ -37,14 +37,13 @@ class Compute {
         if(secMin==Long.MAX_VALUE){
           return new long[]{-1,-1};
         }
-         
         return new long[]{min,secMin};
       }
       
-	    if(arr[index]<min){
-	      secMin=min;
-	      min=arr[index];
-	    }else if((arr[index]> min) && (arr[index]<secMin)){
+      if(arr[index]<min){
+	secMin=min;
+	min=arr[index];
+      }else if((arr[index]> min) && (arr[index]<secMin)){
         secMin=arr[index];
       }
       
@@ -63,15 +62,14 @@ class Compute {
       if(arr.length==0){
          if(secMin==Long.MAX_VALUE){
             return new long[]{-1,-1};
-         }
-         
-         return new long[]{min,secMin};
+         } 
+        return new long[]{min,secMin};
       }
       
-	    if(arr[0]<min){
-	      secMin=min;
-	      min=arr[0];
-	    }else if((arr[0]> min) && (arr[0]<secMin)){
+      if(arr[0]<min){
+	secMin=min;
+	min=arr[0];
+      }else if((arr[0]> min) && (arr[0]<secMin)){
         secMin=arr[0];
       }
       
