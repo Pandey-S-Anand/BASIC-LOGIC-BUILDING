@@ -8,11 +8,11 @@ class Solution {
        for(int i=0;i<n;i++){
 	   if(str.charAt(i)!='.'){
 	      numerator=numerator*10+(str.charAt(i)-'0');
-	      if(dotFound==true){
+	      if(dotFound){
 	        countAfterDot++;
               }
 	   }else{
-            dotFound=true;
+             dotFound=true;
            } 
        }
            
