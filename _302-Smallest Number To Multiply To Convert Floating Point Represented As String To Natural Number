@@ -1,0 +1,72 @@
+//Without Recursion
+
+class Solution {
+   public static int smallestNum(String str){
+       int numerator=0,countAfterDot = 0,n=str.length();
+       boolean dotFound=false;
+	   
+       for(int i=0;i<n;i++){
+	       if(str.charAt(i)!='.'){
+	         numerator=numerator*10+(str.charAt(i)-'0');
+	         if(dotFound){
+	           countAfterDot++;
+           }
+	       }else{
+             dotFound=true;
+         } 
+       }
+           
+       if(!dotFound){
+        return 1; //Since the number is already a natural Number so we return 1(Smallest number to multiply to convert to natural)
+       }
+	   
+       int denominator=(int)Math.pow(10,countAfterDot);
+	  
+       return (denominator/GCD(numerator,denominator));
+  }
+	
+  public static int GCD(int divisor,int dividend){
+     int rem=dividend%divisor;
+     if(rem==0){
+       return divisor;
+     }
+     return GCD(rem,divisor);      
+  }
+}    
+
+
+
+//Using Recursion
+
+class Solution{
+    public static int smallestNum(String str,int numerator,int countAfterDot,boolean dotFound){
+         if(str.isEmpty()){
+           if(!dotFound){
+              return 1; //Since the number is already a natural Number so we return 1(Smallest number to multiply to convert to natural)
+           }
+           
+           int denominator=(int)Math.pow(10,countAfterDot);	   
+          
+	         return (denominator/GCD(numerator,denominator));
+         }
+	     
+	       if(str.charAt(0)!='.'){
+	         numerator=numerator*10+(str.charAt(0)-'0');
+	         if(dotFound){
+	           countAfterDot++;
+           }
+	       }else{
+            dotFound=true;
+         } 
+       
+      return smallestNum(str.substring(1),numerator,countAfterDot,dotFound);
+   }
+	
+   public static int GCD(int divisor,int dividend){
+     int rem=dividend%divisor;
+     if(rem==0){
+       return divisor;
+     }
+     return GCD(rem,divisor);      
+   }
+}
