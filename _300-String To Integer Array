@@ -8,13 +8,12 @@ class Solution {
        int n=str.length(),num=0;
 		
        for(int i=0;i<n;i++){
-	       if(str.charAt(i)!=','){
-	         num=(num*10)+(str.charAt(i)-'0');
-         }
-	       else{
-	          res.add(num);
-	          num=0; 
-	       }
+          if(str.charAt(i)!=','){
+	     num=(num*10)+(str.charAt(i)-'0');
+          }else{
+	     res.add(num);
+	     num=0; 
+          }
        }
     
        res.add(num);
@@ -32,7 +31,7 @@ class Solution {
        String[]arr=str.split(",");
 	   
        for(int i=0;i<arr.length;i++){
-	        res.add(Integer.parseInt(arr[i]));
+          res.add(Integer.parseInt(arr[i]));
        } 
 	   
       return res;
@@ -49,13 +48,13 @@ class Solution{
        return result; 
      }
  	   
-	   if(str.charAt(0)!=','){
-	       num=num*10+(str.charAt(0)-'0');
-	   }else{
-	       result.add(num);
-	       num=0;
-	   }
+     if(str.charAt(0)!=','){
+        num=num*10+(str.charAt(0)-'0');
+     }else{
+	result.add(num);
+	num=0;
+     }
 	   
-	  return arrayGenerator(str.substring(1),num,result);
+     return arrayGenerator(str.substring(1),num,result);
   }
 }
