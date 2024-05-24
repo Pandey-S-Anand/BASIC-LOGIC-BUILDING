@@ -1,0 +1,54 @@
+//Without Recursion
+
+//Method 1
+
+class Solution {
+    public String toLowerCase(String str) {
+       int n=str.length();
+       StringBuilder result=new StringBuilder();
+
+       for(char ch:str.toCharArray()){
+          if(Character.isUpperCase(ch)){
+             result.append(Character.toLowerCase(ch));
+          }else{
+             result.append(ch);
+          }
+       }
+
+       return result.toString();
+    }
+}
+
+
+
+//Method 2
+
+class Solution {
+    public String toLowerCase(String str) {
+      char[]arr=str.toCharArray();
+
+      for(int i=0;i<arr.length;i++){
+        if(arr[i]>='A' && arr[i]<='Z')
+          arr[i]=(char)(arr[i]+32); 
+      }
+
+      return new String(arr); 
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public String toLowerCase(String str) {
+       if(str.isEmpty()){
+         return str;
+       }
+
+       if(Character.isUpperCase(str.charAt(0))){
+         return Character.toLowerCase(str.charAt(0))+ toLowerCase(str.substring(1));
+       }
+
+       return str.charAt(0) + toLowerCase(str.substring(1));
+    }
+}
