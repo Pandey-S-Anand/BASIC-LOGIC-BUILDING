@@ -1,0 +1,52 @@
+//Without Recursion
+
+//Bruteforce Approach
+
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        if(word.equals(word.toUpperCase()) || word.equals(word.toLowerCase()) || (Character.isUpperCase(word.charAt(0)) && word.substring(1).equals(word.substring(1).toLowerCase()))){
+          return true;
+        }
+
+        return false;
+    }
+}
+
+//Optimal Approach
+
+class Solution {
+    public boolean detectCapitalUse(String word) {
+      int capital=0;
+
+      for(char ch:word.toCharArray()){
+        if(Character.isUpperCase(ch)){
+          capital++;
+        }
+      }
+      
+      if(capital==word.length() || capital==0 || (Character.isUpperCase(word.charAt(0)) && capital==1)){
+        return true;
+      }
+
+      return false;
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public boolean detectCapitalUse(String word) {
+      int capitalCount=detectCapitalUseHelper(word);
+
+      return (capitalCount==word.length() || capitalCount==0 || (Character.isUpperCase(word.charAt(0)) && capitalCount==1));
+    }
+
+    public int detectCapitalUseHelper(String word) {
+      if(word.isEmpty()){
+        return 0;
+      }
+
+      return (Character.isUpperCase(word.charAt(0))?1:0)+detectCapitalUseHelper(word.substring(1));
+    }
+}
