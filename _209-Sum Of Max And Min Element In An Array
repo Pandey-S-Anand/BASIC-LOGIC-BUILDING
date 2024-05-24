@@ -64,8 +64,8 @@ class Solution{
     }
 
     private static int[] findMinMax(int[] arr) {
-        if (arr.length == 0) {
-            return new int[] { Integer.MAX_VALUE, Integer.MIN_VALUE };
+        if (arr.length == 1) {
+           return new int[] { arr[0],arr[0]};
         }
 
         int[] subArrayResult = findMinMax(Arrays.copyOfRange(arr, 1, arr.length));
