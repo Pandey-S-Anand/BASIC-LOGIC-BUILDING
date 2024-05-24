@@ -37,7 +37,7 @@ class Solution {
      int rem=dividend%divisor;
      if(rem==0){
        return divisor;
-	   }
+     }
      return GCD(rem,divisor);      
   }
 }
