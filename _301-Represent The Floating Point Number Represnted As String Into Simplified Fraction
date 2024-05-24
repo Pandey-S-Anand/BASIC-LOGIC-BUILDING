@@ -1,3 +1,5 @@
+//Without Recursion
+
 class Solution {
    public static void representInFraction(String str){
        // countAfterDot : is used to find denominator in fraction form.
@@ -40,4 +42,48 @@ class Solution {
      }
      return GCD(rem,divisor);      
   }
+}
+
+
+//Using Recursion
+
+
+class Solution{
+    public static void representInFraction(String str,int numerator,int countAfterDot,boolean dotFound){
+         if(str.isEmpty()){
+           if(!dotFound){
+             System.out.println(str+" is not a Floating Point Number i.e It is An Integer");
+             return; 
+           }
+           
+           int denominator=(int)Math.pow(10,countAfterDot);
+           System.out.println("Fraction Form : "+str+" = "+numerator+" / "+denominator);
+	   
+           int hcf=GCD(numerator,denominator);
+           numerator=numerator/hcf;
+           denominator=denominator/hcf;
+	   
+           System.out.println("Simplified Fraction : "+str+" = "+numerator+" / "+denominator);
+           return;
+         }
+	     
+	 if(str.charAt(0)!='.'){
+	    numerator=numerator*10+(str.charAt(0)-'0');
+	     if(dotFound){
+	      countAfterDot++;
+             }
+	 }else{
+            dotFound=true;
+         } 
+       
+      representInFraction(str.substring(1),numerator,countAfterDot,dotFound);
+   }
+	
+   public static int GCD(int divisor,int dividend){
+     int rem=dividend%divisor;
+     if(rem==0){
+       return divisor;
+     }
+     return GCD(rem,divisor);      
+   }
 }
