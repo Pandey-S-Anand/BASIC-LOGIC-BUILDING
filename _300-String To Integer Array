@@ -42,19 +42,17 @@ class Solution {
 //Using Recursion
 
 class Solution{
-  static List<Integer> arrayGenerator(String str,int num,List<Integer>result){
-     if(str.isEmpty()){
-       result.add(num);
-       return result; 
-     }
+   static List<Integer> arrayGenerator(String str,int num,List<Integer>result){
+       if(str.isEmpty()){
+          result.add(num);
+          return result; 
+       }
  	   
-     if(str.charAt(0)!=','){
-        num=num*10+(str.charAt(0)-'0');
-     }else{
-	result.add(num);
-	num=0;
-     }
+       if(str.charAt(0)!=','){
+	  return arrayGenerator(str.substring(1),num*10+(str.charAt(0)-'0'),result);
+       }
+       result.add(num);
 	   
-     return arrayGenerator(str.substring(1),num,result);
-  }
+       return arrayGenerator(str.substring(1),0,result);
+    }
 }
