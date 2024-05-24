@@ -1,0 +1,61 @@
+//Without Using Recursion
+
+//Method 1
+
+class Solution {
+   static ArrayList<Integer> arrayGenerator(String str){
+       List<Integer>res=new ArrayList<Integer>();
+       int n=str.length(),num=0;
+		
+       for(int i=0;i<n;i++){
+	       if(str.charAt(i)!=','){
+	         num=(num*10)+(str.charAt(i)-'0');
+         }
+	       else{
+	          res.add(num);
+	          num=0; 
+	       }
+       }
+    
+       res.add(num);
+		
+       return res;
+    }
+}
+
+
+//Method 2
+
+class Solution {
+    static ArrayList<Integer> arrayGenerator(String str){
+       List<Integer>res=new ArrayList<Integer>();
+       String[]arr=str.split(",");
+	   
+       for(int i=0;i<arr.length;i++){
+	        res.add(Integer.parseInt(arr[i]));
+       } 
+	   
+      return res;
+    }
+}
+
+
+//Using Recursion
+
+class Solution{
+  static List<Integer> arrayGenerator(String str,int num,List<Integer>result){
+     if(str.isEmpty()){
+       result.add(num);
+       return result; 
+     }
+ 	   
+	   if(str.charAt(0)!=','){
+	       num=num*10+(str.charAt(0)-'0');
+	   }else{
+	       result.add(num);
+	       num=0;
+	   }
+	   
+	  return arrayGenerator(str.substring(1),num,result);
+  }
+}
