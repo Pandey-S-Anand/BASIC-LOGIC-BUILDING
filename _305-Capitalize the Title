@@ -85,17 +85,17 @@ class Solution {
         if(index==str.length()){
           if((index-start)<=2){
              return str.substring(start,index).toLowerCase();
-           }
+          }
 
-           return Character.toUpperCase(str.charAt(start))+str.substring(start+1,index).toLowerCase();
+          return Character.toUpperCase(str.charAt(start))+str.substring(start+1,index).toLowerCase();
         }
         
         if(str.charAt(index)==' '){
            if((index-start)<=2){
              return str.substring(start,index).toLowerCase()+" "+capitalizeTitle(str,index+1,index+1);
-           }else{
-             return Character.toUpperCase(str.charAt(start))+str.substring(start+1,index).toLowerCase()+" "+capitalizeTitle(str,index+1,index+1);
            }
+
+           return Character.toUpperCase(str.charAt(start))+str.substring(start+1,index).toLowerCase()+" "+capitalizeTitle(str,index+1,index+1);
         }
         
         return capitalizeTitle(str,index+1,start); 
