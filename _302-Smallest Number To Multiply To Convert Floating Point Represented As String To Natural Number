@@ -40,24 +40,24 @@ class Solution {
 
 class Solution{
     public static int smallestNum(String str,int numerator,int countAfterDot,boolean dotFound){
-          if(str.isEmpty()){
-            if(!dotFound){
-              return 1; //Since the number is already a natural Number so we return 1(Smallest number to multiply to convert to natural)
-            }
-           
-            int denominator=(int)Math.pow(10,countAfterDot);	   
-          
-	    return (denominator/GCD(numerator,denominator));
+        if(str.isEmpty()){
+          if(!dotFound){
+             return 1; //Since the number is already a natural Number so we return 1(Smallest number to multiply to convert to natural)
           }
+           
+          int denominator=(int)Math.pow(10,countAfterDot);	   
+          
+	  return (denominator/GCD(numerator,denominator));
+        }
 	     
-	  if(str.charAt(0)!='.'){
-	     numerator=numerator*10+(str.charAt(0)-'0');
-	     if(dotFound){
-	       countAfterDot++;
-             }
-	  }else{
+        if(str.charAt(0)!='.'){
+	   numerator=numerator*10+(str.charAt(0)-'0');
+	   if(dotFound){
+	      countAfterDot++;
+           }
+        }else{
             dotFound=true;
-          } 
+        } 
        
       return smallestNum(str.substring(1),numerator,countAfterDot,dotFound);
    }
