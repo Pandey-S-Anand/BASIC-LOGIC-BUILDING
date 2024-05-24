@@ -46,58 +46,62 @@ class Solution {
 
 //Using Recursion
 
+//Method 1
 
 class Solution {
-    public String capitalizeTitle(String title) {        
-       return capitalizeTitle(title.toLowerCase().toCharArray(),0,0);
+    public String capitalizeTitle(String title) {
+        return capitalizeTitleHelper(title.toLowerCase().toCharArray(), 0);
     }
 
-    public String capitalizeTitle(char[] arr,int index,int start) {        
-        if(index==arr.length){
-           if((arr.length-start)>2){
-              arr[start]=Character.toUpperCase(arr[start]);    
-           }
-
-           return new String(arr);
+    private String capitalizeTitleHelper(char[] arr, int index) {
+        if (index >= arr.length) {
+            return new String(arr);
         }
-        
-        if(arr[index]==' '){
-           if((index-start)>2){
-              arr[start]=Character.toUpperCase(arr[start]);    
-           }
 
-           start=index+1;
+        int start = index;
+        while (index < arr.length && arr[index] != ' ') {
+            index++;
         }
-        
-        return capitalizeTitle(arr,index+1,start); 
+
+        if (index - start > 2) {
+            arr[start] = Character.toUpperCase(arr[start]);
+        }
+
+        return capitalizeTitleHelper(arr, index + 1);
     }
 }
 
 
-//Aliter
+//Method 2
 
 class Solution {
     public String capitalizeTitle(String title) {        
-       return capitalizeTitle(title,0,0);
+       return capitalizeTitle(title,0);
     }
 
-    public String capitalizeTitle(String str,int index,int start) {        
+    public String capitalizeTitle(String str,int index) {        
         if(index==str.length()){
-          if((index-start)<=2){
-             return str.substring(start,index).toLowerCase();
-          }
-
-          return Character.toUpperCase(str.charAt(start))+str.substring(start+1,index).toLowerCase();
+          return "";
         }
         
-        if(str.charAt(index)==' '){
-           if((index-start)<=2){
-             return str.substring(start,index).toLowerCase()+" "+capitalizeTitle(str,index+1,index+1);
-           }
-
-           return Character.toUpperCase(str.charAt(start))+str.substring(start+1,index).toLowerCase()+" "+capitalizeTitle(str,index+1,index+1);
+        int start=index;
+        while(index<str.length() && str.charAt(index)!=' '){
+           index++;
         }
         
-        return capitalizeTitle(str,index+1,start); 
+        String word=str.substring(start,index);
+        String transformedWord;
+
+        if((index-start)<=2){
+            transformedWord=word.toLowerCase();
+        }else{
+            transformedWord= Character.toUpperCase(word.charAt(0))+ word.substring(1).toLowerCase();
+        }   
+
+        if(index==str.length()){
+           return transformedWord;
+        }else{
+           return transformedWord+" "+capitalizeTitle(str,index+1);
+        }
     }
 }
