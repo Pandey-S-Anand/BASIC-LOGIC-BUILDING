@@ -1,6 +1,6 @@
 class Solution {
    public static void representInFraction(String str){
-       // count_after_dot : is used to find denominator in fraction form.
+       // countAfterDot : is used to find denominator in fraction form.
        int numerator=0,countAfterDot = 0,n=str.length();
        boolean dotFound=false;
 	   
@@ -16,13 +16,13 @@ class Solution {
            } 
        }
            
-       if(dotFound==false){
+       if(!dotFound){
            System.out.println(str+" is not a Floating Point Number i.e It is An Integer");
            return; 
        }
 	   
        // Find denominator in fraction form. For example,for 30.25, denominator is 100
-       int denominator=(int)Math.pow(10,count_after_dot);
+       int denominator=(int)Math.pow(10,countAfterDot);
 	   
        System.out.println("Fraction Form : "+str+" = "+numerator+" / "+denominator);
 	   
