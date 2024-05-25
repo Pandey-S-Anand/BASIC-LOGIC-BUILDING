@@ -1,0 +1,80 @@
+//Without Recursion
+
+//Bruteforce Approach
+
+class Solution {
+    public char repeatedCharacter(String str) {
+      Map<Character,Boolean>isFound=new HashMap<>();
+
+      for(char ch:str.toCharArray()){
+        if(isFound.containsKey(ch)){
+           return ch;
+        }else{
+           isFound.put(ch,true);
+        }
+      }   
+
+      return '\0'; // Return null character if no repeating character found
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    public char repeatedCharacter(String str) {
+      Set<Character>isFound=new HashSet<>();
+
+      for(char ch:str.toCharArray()){
+        if(isFound.contains(ch)){
+           return ch;
+        }else{
+           isFound.add(ch);
+        }
+      }   
+
+      return '\0'; // Return null character if no repeating character found
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public char repeatedCharacter(String str) {
+      boolean[]isFound=new boolean[26];
+
+      for(char ch:str.toCharArray()){
+        if(isFound[ch-'a']){
+           return ch;
+        }else{
+           isFound[ch-'a']=true;
+        }
+      }   
+
+      return '\0'; // Return null character if no repeating character found
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public char repeatedCharacter(String str) {
+       return repeatedCharacter(str,new boolean[26]);
+    }
+
+    public char repeatedCharacter(String str,boolean[]isFound) {
+      if(str.isEmpty()){
+         return '\0'; // Return null character if no repeating character found
+      }
+      
+      if(isFound[str.charAt(0)-'a']){
+        return str.charAt(0);
+      }
+
+      isFound[str.charAt(0)-'a']=true;
+  
+      return repeatedCharacter(str.substring(1),isFound);
+    }
+}
