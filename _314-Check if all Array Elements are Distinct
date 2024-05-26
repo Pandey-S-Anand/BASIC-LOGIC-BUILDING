@@ -1,0 +1,85 @@
+//Bruteforce Approach
+
+class Solution {
+	public static boolean isDistinctArray(int[] arr){
+      for(int i=0;i<arr.length;i++){
+        for(int j=i+1;j<arr.length;j++){
+           if(arr[i]==arr[j]){
+             return false;
+           }
+        } 
+      } 
+     return true;
+   }
+}
+
+//Improved Approach
+
+class Solution {
+   public static boolean isDistinctArray(int[] arr){
+      Arrays.sort(arr);
+      
+      for(int i=0;i<arr.length-1;i++){
+        if(arr[i]==arr[i+1]){
+	       return false;
+        }
+      }
+
+     return true;
+   }
+}
+
+
+//Good Approach
+
+class Solution {
+   public static boolean isDistinctArray(int[] arr){
+      Map<Integer,Integer>elementFreqMap=new HashMap<>();
+      
+      for(int val:arr){
+        elementFreqMap.put(val,elementFreqMap.getOrDefault(val,0)+1); 
+      }
+       
+      for(int val:elementFreqMap.keySet()){
+        if(elementFreqMap.get(val)>1){
+          return false;
+        }
+      }
+           
+     return true;
+   }
+}
+
+
+//Better Approach
+
+class Solution {
+   public static boolean isDistinctArray(int[] arr){
+      Set<Integer>isUnique=new HashSet<>();
+
+      for(int val:arr){
+        if(isUnique.contains(val)){
+            return false; 
+        }else{
+           isUnique.add(val); 
+        }  
+      }
+            
+      return true;
+   }
+}
+
+
+//Optimal Approach (since Set cannot contain duplicates, so if array size and HashSet size then it can be concluded that array has all distinct or unique elements otherwise its not)
+
+class Solution {
+   public static boolean isDistinctArray(int[] arr){
+      Set<Integer>isUnique=new HashSet<>();
+
+      for(int val:arr){
+        isUnique.add(val); 
+      }
+            
+      return arr.length==isUnique.size();
+   }
+}
