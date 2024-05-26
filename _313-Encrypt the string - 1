@@ -1,0 +1,40 @@
+class Solution { 
+    String encryptString(String str) {
+       int n=str.length(),count=1;
+       StringBuilder result=new StringBuilder();
+       
+       for(int i=0;i<(n-1);i++){
+          if(str.charAt(i)==str.charAt(i+1)){
+              count++;
+          }else{
+             result.append(str.charAt(i)).append(count);
+             count=1;
+          }
+       }
+       
+       result.append(str.charAt(n-1)).append(count);
+       
+       return result.reverse().toString();
+    }
+} 
+
+
+//Using Recursion
+
+class Solution { 
+    String encryptString(String str) {
+      return new StringBuilder(encryptString(str,1)).reverse().toString(); 
+    }
+    
+    String encryptString(String str,int count) {
+        if(str.isEmpty()){
+           return ""; 
+        }
+       
+        if(str.length()>1 && (str.charAt(0)==str.charAt(1))){
+           return encryptString(str.substring(1),count+1);
+        }
+        
+        return ""+str.charAt(0)+count+encryptString(str.substring(1),1);
+    }
+} 
