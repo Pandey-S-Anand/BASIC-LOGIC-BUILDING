@@ -1,0 +1,6 @@
+class Solution {
+    public long[] findElements( long arr[], long n){
+	   Arrays.sort(arr);
+       return Arrays.copyOfRange(arr,0,(int)(n-2));
+    }
+}
