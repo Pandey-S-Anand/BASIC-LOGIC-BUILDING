@@ -104,9 +104,16 @@ Optimisation :
 
 1: Recognizing that 2 and 3 are the only exceptions to the 6n±1 rule, we handle them separately at the beginning of the method. 
 
-2: Since 2 is the only even prime number, we can skip checking even numbers in the loop and start checking odd numbers from 5 onwards.
+2: Since 2 is the only even prime number, we don't need to check other even numbers for primality. 
 
-3: By starting the loop from 5 and incrementing by 6 in each iteration, we only check numbers of the form 6n±1 ,which are potential prime numbers.
+3: The loop starts from 5 (the smallest prime number after 3) and increments by 6 in each iteration. This ensures that we only check odd numbers of the form 
+6n±1, which are potential prime numbers.
+
+4: Within the loop, we check if the number is divisible by i (of the form 6n−1) or i+2 (of the form 6n+1). If either of these conditions is true, the number is not prime, and we return false.
+
+5: We only need to iterate up to Math.sqrt(num) because if a number num has a divisor greater than Math.sqrt(num), then it must also have a corresponding divisor smaller than 
+Math.sqrt(num) ​(which we would have already checked earlier in the loop).
+
 
 These optimizations collectively improve the efficiency of the primality check by reducing the number of iterations and eliminating unnecessary checks
 */
