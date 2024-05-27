@@ -1,0 +1,112 @@
+/*
+A prime number is a natural number greater than 1, which is only divisible by 1 and itself. First few prime numbers are : 2 3 5 7 11 13 17 19 23 …..
+
+Some interesting fact about Prime numbers :
+
+-Two is the only even Prime number.
+-Every prime number can be represented in form of 6n+1 or 6n-1 except the prime number 2 and 3, where n is a natural number.
+-Two and Three are only two consecutive natural numbers that are prime.
+*/
+
+//Bruteforce Approach
+
+class Solution{
+    public static boolean isPrime(int num){
+      if(num<=1){
+         return false; //Not Prime
+      }
+	     
+      int count=0;
+	     
+      for(int i=1;i<=num;i++){
+        if((num%i)==0){
+          count++;
+        }
+      }
+                 
+      if(count==2){
+        return true; //Prime
+      }
+
+      return false; //Not Prime
+    }
+}
+
+
+//Good Approach
+
+class Solution{
+    public static boolean isPrime(int num){
+      if(num<=1){
+         return false; //Not Prime
+      }
+	     
+      for(int i=2;i<=(num/2);i++){
+        if((num%i)==0){
+          return false; //Not Prime
+        }
+      }
+                 
+      return true; //Prime
+    }
+}
+	
+
+//Better Approach
+
+class Solution{
+   public static boolean isPrime(int num){
+      if(num<=1){
+         return false; //Not Prime
+      }
+
+      int sqrt=(int)Math.sqrt(num);
+      for(int i=2;i<=sqrt;i++){
+        if((num%i)==0){
+          return false;  //Not Prime
+        }
+      }
+                 
+      return true; // Prime
+   }
+}
+
+
+//Optimal Approach
+
+class Solution{
+   public static boolean isPrime(int num) {
+        if (num <= 1) {
+           return false; // Not Prime
+        }
+
+        if (num <= 3) {
+            return true; // 2 and 3 are prime
+        }
+
+        if (num % 2 == 0 || num % 3 == 0) {
+            return false; // Divisible by 2 or 3
+        }
+
+        int sqrt=(int)Math.sqrt(num);
+        for (int i = 5; i * i <=sqrt; i += 6) {
+            if (num % i == 0 || num % (i + 2) == 0) {
+                return false; // Divisible by (6n-1) or (6n+1)
+            }
+        }
+        return true; // Prime
+   }
+}
+
+/*
+
+Optimisation :
+
+1: Recognizing that 2 and 3 are the only exceptions to the 6n±1 rule, we handle them separately at the beginning of the method. 
+
+2: Since 2 is the only even prime number, we can skip checking even numbers in the loop and start checking odd numbers from 5 onwards.
+
+3: By starting the loop from 5 and incrementing by 6 in each iteration, we only check numbers of the form 6n±1 ,which are potential prime numbers.
+
+These optimizations collectively improve the efficiency of the primality check by reducing the number of iterations and eliminating unnecessary checks
+*/
