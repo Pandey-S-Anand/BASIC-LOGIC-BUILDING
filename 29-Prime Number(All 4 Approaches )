@@ -89,7 +89,7 @@ class Solution{
         }
 
         int sqrt=(int)Math.sqrt(num);
-        for (int i = 5; i * i <=sqrt; i += 6) {
+        for (int i = 5; i <=sqrt; i += 6) {
             if (num % i == 0 || num % (i + 2) == 0) {
                 return false; // Divisible by (6n-1) or (6n+1)
             }
