@@ -94,7 +94,8 @@ class Solution{
                 return false; // Divisible by (6n-1) or (6n+1)
             }
         }
-        return true; // Prime
+
+       return true; // Prime
    }
 }
 
