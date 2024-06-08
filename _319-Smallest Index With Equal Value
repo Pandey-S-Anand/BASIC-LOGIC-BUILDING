@@ -1,0 +1,31 @@
+//Using Modulous operator
+
+class Solution {
+    public int smallestEqual(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if ((i % 10) == arr[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+
+//Without using modulous operator
+
+class Solution {
+    public int smallestEqual(int[] arr) {
+        int idx = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (idx == arr[i]) {
+                return i;
+            }
+
+            if (++idx == 10) {
+                idx = 0; // Equivalent to (index%10)
+            }
+        }
+        return -1;
+    }
+}
