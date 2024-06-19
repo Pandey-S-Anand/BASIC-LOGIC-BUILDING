@@ -1,0 +1,50 @@
+//Bruteforce Approach
+
+class Solution {
+    public static int countPrimeSetBits(int left, int right) {
+        int count = 0;
+        for (int num = left; num <= right; num++) {
+            if (isPrime(Integer.bitCount(num))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+
+        for (int i = 2; (i * i) <= num; i++) {
+            if ((num % i) == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public static int countPrimeSetBits(int left, int right) {
+        Set<Integer> prime = new HashSet<>(Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31));
+        int count = 0;
+        for (int num = left; num <= right; num++) {
+            if (prime.contains(Integer.bitCount(num))) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+/*
+An Integer is Represented using 32 bits so total bits =32 out of these 32 bits some will be Set/On while Other will be Unset/Off 
+so all we need to Do is Precompute all the Prime Numbers in the the Range [1,32](both Inclusive).
+As no.of primes are limited we can use Hashset to check no.of set bits is prime or not.
+*/
+
