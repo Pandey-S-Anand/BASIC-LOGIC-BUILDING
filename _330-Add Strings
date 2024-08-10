@@ -1,0 +1,67 @@
+//Naive Implementation
+
+class Solution {
+    public String addStrings(String num1, String num2) {
+        int i = num1.length() - 1, j = num2.length() - 1, carry = 0;
+        StringBuilder sum = new StringBuilder();
+
+        while (i >= 0 && j >= 0) {
+            int digit1 = num1.charAt(i) - '0';
+            int digit2 = num2.charAt(j) - '0';
+
+            int base = (digit1 + digit2 + carry) % 10;
+            carry = (digit1 + digit2 + carry) / 10;
+
+            sum.insert(0, base);
+            i--;
+            j--;
+        }
+
+        while (i >= 0) {
+            int digit1 = num1.charAt(i) - '0';
+
+            int base = (digit1 + carry) % 10;
+            carry = (digit1 + carry) / 10;
+
+            sum.insert(0, base);
+            i--;
+        }
+
+        while (j >= 0) {
+            int digit2 = num2.charAt(j) - '0';
+
+            int base = (digit2 + carry) % 10;
+            carry = (digit2 + carry) / 10;
+
+            sum.insert(0, base);
+            j--;
+        }
+
+        if (carry == 1) {
+            sum.insert(0, carry);
+        }
+
+        return sum.toString();
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution {
+    public String addStrings(String num1, String num2) {
+        int i = num1.length() - 1, j = num2.length() - 1, carry = 0;
+        StringBuilder sum = new StringBuilder();
+
+        while (i >= 0 || j >= 0 || carry == 1) {
+            int digit1 = (i >= 0) ? num1.charAt(i--) - '0' : 0;
+            int digit2 = (j >= 0) ? num2.charAt(j--) - '0' : 0;
+
+            int currentSum = digit1 + digit2 + carry;
+            sum.append(currentSum % 10);
+            carry = currentSum / 10;
+        }
+
+        return sum.reverse().toString();
+    }
+}
