@@ -1,0 +1,17 @@
+class Solution {
+    public String addBinary(String str1, String str2) {
+        int i = str1.length() - 1, j = str2.length() - 1, carryBit = 0;
+        StringBuilder sum = new StringBuilder();
+
+        while (i >= 0 || j >= 0 || carryBit == 1) {
+            int bit1 = i >= 0 ? str1.charAt(i--) - '0' : 0;
+            int bit2 = j >= 0 ? str2.charAt(j--) - '0' : 0;
+
+            int bitSum = bit1 + bit2 + carryBit;
+            sum.append(bitSum % 2);
+            carryBit = bitSum / 2;
+        }
+
+        return sum.reverse().toString();
+    }
+}
