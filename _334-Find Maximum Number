@@ -1,0 +1,72 @@
+// Bruteforce Approach
+
+class Solution {
+    static String findMax(String str) {
+        StringBuilder maxNumber = new StringBuilder();
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            frequencyMap.put(str.charAt(i), frequencyMap.getOrDefault(str.charAt(i), 0) + 1);
+        }
+
+        for (int i = 9; i >= 0; i--) {
+            if (frequencyMap.containsKey((char) (i + 48))) {
+                int frequency = frequencyMap.get((char) (i + 48));
+
+                while (frequency != 0) {
+                    maxNumber.append(i);
+                    frequency--;
+                }
+            }
+        }
+
+        return maxNumber.toString();
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    static String findMax(String str) {
+        char[] number = str.toCharArray();
+        Arrays.sort(number);
+        reverse(number);
+        return new String(number);
+    }
+
+    private static void reverse(char[] arr) {
+        int i = 0, j = arr.length - 1;
+        while (i < j) {
+            char temp = arr[i];
+            arr[i++] = arr[j];
+            arr[j--] = temp;
+        }
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    static String findMax(String str) {
+        int[] frequencyArray = new int[10];
+
+        for (int i = 0; i < str.length(); i++) {
+            frequencyArray[str.charAt(i) - '0']++;
+        }
+
+        StringBuilder maxNumber = new StringBuilder();
+
+        for (int i = 9; i >= 0; i--) {
+            int frequency = frequencyArray[i];
+
+            while (frequency != 0) {
+                maxNumber.append(i);
+                frequency--;
+            }
+        }
+
+        return maxNumber.toString();
+    }
+}
