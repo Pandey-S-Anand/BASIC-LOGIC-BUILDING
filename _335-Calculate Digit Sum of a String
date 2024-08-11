@@ -1,0 +1,46 @@
+class Solution {
+    public String digitSum(String str, int k) {
+        int sum = 0;
+
+        while (str.length() > k) {
+            StringBuilder temp = new StringBuilder();
+
+            for (int i = 0; i < str.length(); i += k) {
+                for (int j = i; j < (i + k) && j < str.length(); j++) {
+                    sum += str.charAt(j) - '0';
+                }
+
+                temp.append(sum);
+                sum = 0;
+            }
+            str = temp.toString();
+        }
+
+        return str;
+    }
+}
+
+//Aliter
+
+class Solution {
+    public String digitSum(String str, int k) {
+        int sum = 0;
+
+        while (str.length() > k) {
+            StringBuilder temp = new StringBuilder();
+
+            for (int i = 0; i < str.length(); i++) {
+                sum += str.charAt(i) - '0';
+
+                if ((i + 1) % k == 0 || i == str.length() - 1) {
+                    temp.append(sum);
+                    sum = 0;
+                }
+            }
+
+            str = temp.toString();
+        }
+
+        return str;
+    }
+}
