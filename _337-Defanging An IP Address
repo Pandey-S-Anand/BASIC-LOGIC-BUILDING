@@ -1,0 +1,46 @@
+//Method 1
+
+class Solution {
+    public String defangIPaddr(String address) {
+        StringBuilder defangedIPAddress = new StringBuilder();
+
+        for (int i = 0; i < address.length(); i++) {
+            char ch = address.charAt(i);
+
+            if (ch == '.') {
+                defangedIPAddress.append("[.]");
+            } else {
+                defangedIPAddress.append(ch);
+            }
+        }
+
+        return defangedIPAddress.toString();
+    }
+}
+
+
+//Method 2
+
+class Solution {
+    public String defangIPaddr(String address) {
+        String[] arr = address.split("\\.");
+        StringBuilder defangedIPAddress = new StringBuilder();
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            defangedIPAddress.append(arr[i]).append("[.]");
+        }
+
+        defangedIPAddress.append(arr[arr.length - 1]);
+
+        return defangedIPAddress.toString();
+    }
+}
+
+
+//Method 3
+
+class Solution {
+    public String defangIPaddr(String address) {
+        return address.replace(".", "[.]");
+    }
+}
