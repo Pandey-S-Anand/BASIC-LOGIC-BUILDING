@@ -1,0 +1,88 @@
+//Bruteforce Approach
+
+class Solution{
+    public static String concatenatedString(String str1,String str2){
+       StringBuilder uncommonCharacters = new StringBuilder();
+
+       for(int i = 0 ; i < str1.length() ; i++){
+            if(str2.indexOf(str1.charAt(i)) < 0){
+                uncommonCharacters.append(str1.charAt(i));
+            }
+       }
+       
+       for(int i = 0 ; i < str2.length() ; i++){
+            if(str1.indexOf(str2.charAt(i)) < 0){
+                uncommonCharacters.append(str2.charAt(i));
+            }
+       }
+
+       return uncommonCharacters.length() == 0?"-1": uncommonCharacters.toString();
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    public static String concatenatedString(String str1, String str2) {
+        Set<Character> commonChars = new HashSet<>();
+
+        for (int i = 0; i < str2.length(); i++) {
+            if (str1.contains(str2.charAt(i) + "")) {
+                commonChars.add(str2.charAt(i));
+            }
+        }
+
+        StringBuilder uncommonChars = new StringBuilder();
+
+        for (int i = 0; i < str1.length(); i++) {
+            if (!commonChars.contains(str1.charAt(i))) {
+                uncommonChars.append(str1.charAt(i));
+            }
+        }
+
+        for (int i = 0; i < str2.length(); i++) {
+            if (!commonChars.contains(str2.charAt(i))) {
+                uncommonChars.append(str2.charAt(i));
+            }
+        }
+
+        return uncommonChars.length() == 0 ? "-1" : uncommonChars.toString();
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public static String concatenatedString(String str1, String str2) {
+        Set<Character> str1Chars = new HashSet<>();
+        Set<Character> commonChars = new HashSet<>();
+
+        for (int i = 0; i < str1.length(); i++) {
+            str1Chars.add(str1.charAt(i));
+        }
+
+        for (int i = 0; i < str2.length(); i++) {
+            if (str1.contains(str2.charAt(i) + "")) {
+                commonChars.add(str2.charAt(i));
+            }
+        }
+
+        StringBuilder uncommonChars = new StringBuilder();
+
+        for (int i = 0; i < str1.length(); i++) {
+            if (!commonChars.contains(str1.charAt(i))) {
+                uncommonChars.append(str1.charAt(i));
+            }
+        }
+
+        for (int i = 0; i < str2.length(); i++) {
+            if (!commonChars.contains(str2.charAt(i))) {
+                uncommonChars.append(str2.charAt(i));
+            }
+        }
+
+        return uncommonChars.length() == 0 ? "-1" : uncommonChars.toString();
+    }
+}
