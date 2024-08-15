@@ -1,0 +1,158 @@
+//Method 1
+
+//Naive Implementation
+
+class Solution {
+    public static boolean isRotated(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        char[] arr1 = str1.toCharArray();
+        char[] arr2 = str2.toCharArray();
+
+        if (Arrays.equals(leftShiftBy2(arr1), arr2) || Arrays.equals(rightShiftBy2(arr1), arr2)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private static char[] leftShiftBy2(char[] arr) {
+        char[] aux = arr.clone();
+        leftShiftBy1(aux);
+        leftShiftBy1(aux);
+        return aux;
+    }
+
+    private static void leftShiftBy1(char[] arr) {
+        char temp = arr[0];
+        for (int i = 0; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+
+        arr[arr.length - 1] = temp;
+    }
+
+    private static char[] rightShiftBy2(char[] arr) {
+        char[] aux = arr.clone();
+        rightShiftBy1(aux);
+        rightShiftBy1(aux);
+        return aux;
+    }
+
+    private static void rightShiftBy1(char[] arr) {
+        char temp = arr[arr.length - 1];
+        for (int i = arr.length - 1; i > 0; i--) {
+            arr[i] = arr[i - 1];
+        }
+
+        arr[0] = temp;
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution {
+    public static boolean isRotated(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        char[] arr1 = str1.toCharArray();
+        char[] arr2 = str2.toCharArray();
+
+        if (Arrays.equals(leftShiftBy2(arr1), arr2) || Arrays.equals(rightShiftBy2(arr1), arr2)) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    private static char[] leftShiftBy2(char[] arr) {
+        char[] leftRotated = new char[arr.length];
+
+        for (int i = 0; i < arr.length; i++) {
+            leftRotated[i] = arr[(i + 2) % arr.length];
+        }
+
+        return leftRotated;
+    }
+
+    private static char[] rightShiftBy2(char[] arr) {
+        char[] rightRotated = new char[arr.length];
+
+        for (int i = 0; i < arr.length; i++) {
+            rightRotated[i] = arr[(i - 2 + arr.length) % arr.length];
+        }
+
+        return rightRotated;
+    }
+}
+
+
+
+
+//Method 2
+
+
+//Naive Implementation
+
+class Solution {
+    public static boolean isRotated(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+        // str1.length()==str2.length()
+        if (str1.length() == 1 && !str1.equals(str2)) {
+            return false;
+        }
+
+        if (leftShiftBy2(str1).equals(str2) || rightShiftBy2(str1).equals(str2)) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    private static String leftShiftBy2(String str) {
+        return (str + str).substring(2, str.length() + 2);
+    }
+
+    private static String rightShiftBy2(String str) {
+        return (str + str).substring(str.length() - 2, 2 * str.length() - 2);
+    }
+}
+
+
+// Optimal Implementation
+
+class Solution {
+    public static boolean isRotated(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+        // str1.length()==str2.length()
+        if (str1.length() == 1 && !str1.equals(str2)) {
+            return false;
+        }
+
+        if (leftShiftBy2(str1).equals(str2) || rightShiftBy2(str1).equals(str2)) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    private static String leftShiftBy2(String str) {
+        return str.substring(2) + str.substring(0, 2);
+    }
+
+    private static String rightShiftBy2(String str) {
+        return str.substring(str.length() - 2) + str.substring(0, str.length() - 2);
+    }
+}
