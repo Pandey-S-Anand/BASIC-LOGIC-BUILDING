@@ -1,0 +1,97 @@
+//Naive Approach
+
+class Solution {
+    public String arrangeString(String str) {
+        StringBuilder rearrangedString = new StringBuilder();
+        Map<Character, Integer> frequencyMap = new TreeMap<>();
+        int sum = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isDigit(ch)) {
+                sum += (ch - '0');
+            } else {
+                frequencyMap.put(ch, frequencyMap.getOrDefault(ch, 0) + 1);
+            }
+        }
+
+        for (char ch : frequencyMap.keySet()) {
+            int frequency = frequencyMap.get(ch);
+            while (frequency != 0) {
+                rearrangedString.append(ch);
+                frequency--;
+            }
+        }
+
+        if (sum != 0) {
+            rearrangedString.append(sum);
+        }
+
+        return rearrangedString.toString();
+    }
+}
+
+
+//Better Approach
+
+
+class Solution {
+    public String arrangeString(String str) {
+        StringBuilder rearrangedString = new StringBuilder();
+        List<Character> alphabets = new ArrayList<>();
+        int sum = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isDigit(ch)) {
+                sum += (ch - '0');
+            } else {
+                alphabets.add(ch);
+            }
+        }
+
+        Collections.sort(alphabets);
+
+        for (char ch : alphabets) {
+            rearrangedString.append(ch);
+        }
+
+        if (sum != 0) {
+            rearrangedString.append(sum);
+        }
+
+        return rearrangedString.toString();
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public String arrangeString(String str) {
+        StringBuilder rearrangedString = new StringBuilder();
+        int[] frequencyArray = new int[26];
+        int sum = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit(str.charAt(i))) {
+                sum += (str.charAt(i) - '0');
+            } else {
+                frequencyArray[str.charAt(i) - 'A']++;
+            }
+        }
+
+        for (int i = 0; i < 26; i++) {
+            while (frequencyArray[i] != 0) {
+                rearrangedString.append((char) (i + 'A'));
+                frequencyArray[i]--;
+            }
+        }
+
+        if (sum != 0) {
+            rearrangedString.append(sum);
+        }
+
+        return rearrangedString.toString();
+    }
+}
