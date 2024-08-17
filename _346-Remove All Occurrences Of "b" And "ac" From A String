@@ -1,0 +1,30 @@
+//Method 1
+
+class Solution {
+    public String stringFilter(String str) {
+        return str.replace("b", "").replace("ac", "");
+    }
+}
+
+
+//Method 2
+
+class Solution {
+    public String stringFilter(String str) {
+        int i = 0;
+        StringBuilder modifiedString = new StringBuilder();
+
+        while (i < str.length()) {
+            if (str.charAt(i) == 'b') {
+                i++;
+            } else if (str.charAt(i) == 'a' && (i + 1 < str.length() && str.charAt(i + 1) == 'c')) {
+                i += 2;
+            } else {
+                modifiedString.append(str.charAt(i));
+                i++;
+            }
+        }
+
+        return modifiedString.toString();
+    }
+}
