@@ -1,0 +1,52 @@
+//Bruteforce Approach
+
+class Solution {
+    static boolean isIsogram(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = i + 1; j < str.length(); j++) {
+                if (str.charAt(i) == str.charAt(j)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    static boolean isIsogram(String str) {
+        Set<Character> visited = new HashSet<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (visited.contains(ch)) {
+                return false;
+            }
+            visited.add(ch);
+        }
+
+        return true;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    static boolean isIsogram(String str) {
+        boolean[] visited = new boolean[26];
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (visited[ch - 'a']) {
+                return false;
+            }
+            visited[ch - 'a'] = true;
+        }
+
+        return true;
+    }
+}
