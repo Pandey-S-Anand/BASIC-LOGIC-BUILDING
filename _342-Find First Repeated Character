@@ -2,14 +2,14 @@
 
 class Solution {
     String firstRepChar(String str) {
-        HashMap<Character, Integer> visited = new HashMap<>();
+        Set<Character> visited = new HashSet<>();
 
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            if (visited.containsKey(ch)) {
+            if (visited.contains(ch)) {
                 return String.valueOf(ch);
             }
-            visited.put(ch, i);
+            visited.add(ch);
         }
 
         return "-1";
@@ -17,18 +17,19 @@ class Solution {
 }
 
 
+
 //Optimal Approach
 
 class Solution {
     String firstRepChar(String str) {
-        int[] visited = new int[26];
+        boolean[] visited = new boolean[26];
 
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            if (visited[ch - 'a'] != 0) {
+            if (visited[ch - 'a']) {
                 return String.valueOf(ch);
             }
-            visited[ch - 'a']++;
+            visited[ch - 'a'] = true;
         }
 
         return "-1";
