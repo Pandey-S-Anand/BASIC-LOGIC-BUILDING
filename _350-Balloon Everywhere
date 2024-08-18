@@ -1,0 +1,57 @@
+//Naive Approach
+
+class Solution {
+    public int maxInstance(String str) {
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            frequencyMap.put(ch, frequencyMap.getOrDefault(ch, 0) + 1);
+        }
+
+        int balloonInstancesCount = 0;
+
+        while (true) {
+            if (frequencyMap.getOrDefault('b', 0) >= 1 &&
+                    frequencyMap.getOrDefault('a', 0) >= 1 &&
+                    frequencyMap.getOrDefault('l', 0) >= 2 &&
+                    frequencyMap.getOrDefault('o', 0) >= 2 &&
+                    frequencyMap.getOrDefault('n', 0) >= 1) {
+
+                frequencyMap.put('b', frequencyMap.get('b') - 1);
+                frequencyMap.put('a', frequencyMap.get('a') - 1);
+                frequencyMap.put('l', frequencyMap.get('l') - 2);
+                frequencyMap.put('o', frequencyMap.get('o') - 2);
+                frequencyMap.put('n', frequencyMap.get('n') - 1);
+
+                balloonInstancesCount++;
+            } else {
+                break;
+            }
+        }
+
+        return balloonInstancesCount;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public int maxInstance(String str) {
+        int[] freqArray = new int[26];
+
+        for (int i = 0; i < str.length(); i++) {
+            freqArray[str.charAt(i) - 'a']++;
+        }
+
+        int b = freqArray['b' - 'a'];
+        int a = freqArray['a' - 'a'];
+        int l = freqArray['l' - 'a'] / 2; // We need 2 'l's
+        int o = freqArray['o' - 'a'] / 2; // We need 2 'o's
+        int n = freqArray['n' - 'a'];
+
+        //The number of times we can form the word "balloon" will be limited by the least frequent necessary character in the string, considering the required frequency.
+        return Math.min(Math.min(Math.min(b, a), Math.min(l, o)), n);
+    }
+}
