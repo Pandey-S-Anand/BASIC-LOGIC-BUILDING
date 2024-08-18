@@ -1,0 +1,49 @@
+//Bruteforce Approach
+
+class Solution {
+    public static boolean checkPangram(String str) {
+        str = str.toLowerCase();
+        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+
+        for (char letter : alphabet) {
+            boolean found = false;
+
+            for (int i = 0; i < str.length(); i++) {
+                if (str.charAt(i) == letter) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public static boolean checkPangram(String str) {
+        str = str.toLowerCase();
+        int[] frequencyArray = new int[26];
+
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isLetter(str.charAt(i))) {
+                frequencyArray[str.charAt(i) - 'a']++;
+            }
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (frequencyArray[i] == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
