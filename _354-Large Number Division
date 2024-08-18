@@ -1,0 +1,66 @@
+//Bruteforce Approach
+
+class Solution {
+    String longDivision(String str, int divisor) {
+        return new java.math.BigInteger(str).divide(java.math.BigInteger.valueOf(divisor)).toString();
+    }
+}
+
+
+//Optimal Approach 
+/*
+Dividend: The dividend is represented as a string of digits (e.g., "123456") and is assumed to be a positive integer.
+Divisor: The divisor is assumed to be a positive integer value.
+*/
+
+//Naive Implementation
+
+class Solution {
+    public String longDivision(String dividend, int divisor) {
+        StringBuilder quotient = new StringBuilder();
+        int currentDividend = 0;
+
+        for (int i = 0; i < dividend.length(); i++) {
+            currentDividend = 10 * currentDividend + dividend.charAt(i) - '0';
+
+            if (currentDividend >= divisor) {
+                quotient.append(currentDividend / divisor);
+                currentDividend = currentDividend % divisor;
+            } else {
+                quotient.append("0");
+            }
+        }
+
+        int index0 = 0;
+        while (index0 < quotient.length() && quotient.charAt(index0) == '0') {
+            index0++;
+        }
+
+        return (index0 == quotient.length()) ? "0" : quotient.substring(index0);
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution {
+    public String longDivision(String dividend, int divisor) {
+        StringBuilder quotient = new StringBuilder();
+        int currentDividend = 0;
+        boolean isNonZeroQuotientFound = false; // Flag to handle leading zeros
+
+        for (int i = 0; i < dividend.length(); i++) {
+            currentDividend = 10 * currentDividend + dividend.charAt(i) - '0';
+
+            if (currentDividend >= divisor) {
+                quotient.append(currentDividend / divisor);
+                currentDividend = currentDividend % divisor;
+                isNonZeroQuotientFound = true; // Mark that we have encountered a non-zero quotient
+            } else if (isNonZeroQuotientFound) {
+                quotient.append("0");  // Only append "0" if we have already started forming the quotient
+            }
+        }
+
+        return quotient.length() == 0 ? "0" : quotient.toString();
+    }
+}
