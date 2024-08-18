@@ -1,0 +1,82 @@
+//Bruteforce Approach
+
+class Solution {
+    int isdivisible7(String num) {
+        if (new java.math.BigInteger(num).mod(java.math.BigInteger.valueOf(7)).equals(java.math.BigInteger.ZERO)) {
+            return 1;
+        }
+        return 0;
+    }
+}
+
+
+/*
+Deriving the Remainder of a Large Number Using Modular Arithmetic
+
+Mathematical Representation of the Number
+
+Given a number N represented as a string of digits d1, d2, d3, ..., dk, we can express N mathematically as:
+N = d1 × 10^(k-1) + d2 × 10^(k-2) + d3 × 10^(k-3) + ... + dk × 10^0
+
+Goal
+
+Our goal is to compute N mod 7.
+
+Using Modular Arithmetic Properties
+
+We can apply the properties of modular arithmetic to break down the expression for N into smaller parts.
+
+Addition Property:
+(a + b) mod m = [(a mod m) + (b mod m)] mod m
+
+Multiplication Property:
+(a × b) mod m = [(a mod m) × (b mod m)] mod m
+
+Deriving the Remainder Formula
+
+1. Express N in terms of its digits:
+   N = d1 × 10^(k-1) + d2 × 10^(k-2) + d3 × 10^(k-3) + ... + dk × 10^0
+
+2. Take N mod 7:
+   N mod 7 = (d1 × 10^(k-1) + d2 × 10^(k-2) + d3 × 10^(k-3) + ... + dk × 10^0) mod 7
+
+3. Apply the Addition Property:
+   N mod 7 = [(d1 × 10^(k-1) mod 7) + (d2 × 10^(k-2) mod 7) + (d3 × 10^(k-3) mod 7) + ... + (dk × 10^0 mod 7)] mod 7
+
+4. Apply the Multiplication Property:
+   N mod 7 = [(d1 mod 7 × 10^(k-1) mod 7) + (d2 mod 7 × 10^(k-2) mod 7) + (d3 mod 7 × 10^(k-3) mod 7) + ... + (dk mod 7 × 10^0 mod 7)] mod 7
+
+5. Calculating Powers of 10 Modulo 7:
+   Powers of 10 modulo 7 are periodic:
+   10^0 mod 7 = 1
+   10^1 mod 7 = 3
+   10^2 mod 7 = 2
+   10^3 mod 7 = 6
+   10^4 mod 7 = 4
+   10^5 mod 7 = 5
+   10^6 mod 7 = 1 (and this cycle repeats)
+
+6. Final Remainder Calculation:
+   After calculating the powers of 10 modulo 7, substitute these values back into our equation:
+   N mod 7 = [(d1 × (10^(k-1) mod 7)) + (d2 × (10^(k-2) mod 7)) + (d3 × (10^(k-3) mod 7)) + ... + (dk × (10^0 mod 7))] mod 7
+
+7. Incremental Calculation:
+   Instead of calculating the entire sum at once, incrementally calculate the remainder as you process each digit:
+   - Initialize `remainder` to `0`.
+   - For each digit di:
+     remainder = (remainder × 10 + di) mod 7
+*/
+
+//Optimal Approach
+
+class Solution {
+    int isdivisible7(String num) {
+        long remainder = 0;
+
+        for (int i = 0; i < num.length(); i++) {
+            remainder = (remainder * 10 + (num.charAt(i) - '0')) % 7;
+        }
+
+        return (remainder == 0) ? 1 : 0;
+    }
+}
