@@ -1,0 +1,71 @@
+/*
+Even Digit: A number is even if its last digit is even. Thus, for any substring to be even, it must end with an even digit (0, 2, 4, 6, 8).
+Counting Substrings: If a digit at index i in the string is even, then all substrings ending at this index are also even.
+*/
+
+//Bruteforce Approach
+
+class Solution {
+    static long evenNumSubstring(String str) {
+        long evenSubstringsCount = 0;
+        StringBuilder substring = new StringBuilder();
+
+        for (int start = 0; start < str.length(); start++) {
+            for (int end = start; end < str.length(); end++) {
+                for (int range = start; range <= end; range++) {
+                    substring.append(str.charAt(range));
+                }
+
+                if ((substring.charAt(substring.length() - 1) - '0') % 2 == 0) {
+                    evenSubstringsCount++;
+                }
+
+                substring.setLength(0);
+            }
+
+        }
+
+        return evenSubstringsCount;
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    static long evenNumSubstring(String str) {
+        long evenSubstringsCount = 0;
+        StringBuilder substring = new StringBuilder();
+
+        for (int start = 0; start < str.length(); start++) {
+            for (int end = start; end < str.length(); end++) {
+                substring.append(str.charAt(end));
+
+                if ((substring.charAt(substring.length() - 1) - '0') % 2 == 0) {
+                    evenSubstringsCount++;
+                }
+            }
+            substring.setLength(0);
+        }
+
+        return evenSubstringsCount;
+    }
+}
+
+
+
+//Optimal Approach
+
+class Solution {
+    static long evenNumSubstring(String str) {
+        long evenSubstringsCount = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if ((str.charAt(i) - '0') % 2 == 0) {
+                evenSubstringsCount += (i + 1); // Add the number of substrings ending at this digit
+            }
+        }
+
+        return evenSubstringsCount;
+    }
+}
