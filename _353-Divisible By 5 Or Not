@@ -1,0 +1,33 @@
+//Bruteforce Approach
+
+class Solution {
+    static String isDivisibleBy5(String binary) {
+        java.math.BigInteger decimal = new java.math.BigInteger(binary, 2);
+
+        if (decimal.mod(java.math.BigInteger.valueOf(5)).equals(java.math.BigInteger.ZERO)) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    static String isDivisibleBy5(String binary) {
+        String decimal = new java.math.BigInteger(binary, 2).toString();
+        int remainder = 0;
+
+        for (int i = 0; i < decimal.length(); i++) {
+            remainder = (remainder * 10 + (decimal.charAt(i) - '0')) % 5;
+        }
+
+        if (remainder == 0) {
+            return "Yes";
+        }
+
+        return "No";
+    }
+}
