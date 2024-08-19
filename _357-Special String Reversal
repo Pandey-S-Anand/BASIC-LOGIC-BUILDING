@@ -1,0 +1,57 @@
+//Method 1
+
+class Solution{
+    public String reverse(String str){
+        char[] arr = str.toCharArray();
+        int left = 0, right = arr.length - 1;
+
+        while (left < right) {
+            // Move left pointer until an alphabetic character is found
+            while(left<right && !Character.isLetter(arr[left])) {
+                left++;
+            }
+            // Move right pointer until an alphabetic character is found
+            while(left<right && !Character.isLetter(arr[right])) {
+                right--;
+            }
+            // If both characters are alphabetic, swap them
+            if(left<right){
+                char temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                left++;
+                right--;
+            }
+        }
+
+        return new String(arr);
+    }
+}
+
+
+//Method 2
+
+class Solution {
+    public String reverse(String str) {
+        StringBuilder result = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isLetter(ch)) {
+                stack.push(ch);
+            }
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isLetter(ch)) {
+                result.append(stack.pop());
+            } else {
+                result.append(ch);
+            }
+        }
+
+        return result.toString();
+    }
+}
