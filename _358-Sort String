@@ -1,0 +1,102 @@
+//Method 1
+
+class Solution {
+    public String SortedString(String str) {
+        List<Character> vowels = new ArrayList<>();
+        List<Character> consonants = new ArrayList<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            if (isVowel(str.charAt(i))) {
+                vowels.add(str.charAt(i));
+            } else {
+                consonants.add(str.charAt(i));
+            }
+        }
+
+        Collections.sort(vowels);
+        Collections.sort(consonants);
+
+        StringBuilder sortedString = new StringBuilder();
+        boolean startWithVowel = isVowel(str.charAt(0));
+        int i = 0, j = 0;
+
+        while (i < vowels.size() && j < consonants.size()) {
+            if (startWithVowel) {
+                sortedString.append(vowels.get(i++));
+                startWithVowel = false;
+            } else {
+                sortedString.append(consonants.get(j++));
+                startWithVowel = true;
+            }
+        }
+
+        while (i < vowels.size()) {
+            sortedString.append(vowels.get(i));
+            i++;
+        }
+
+        while (j < consonants.size()) {
+            sortedString.append(consonants.get(j));
+            j++;
+        }
+
+        return sortedString.toString();
+    }
+
+    private static boolean isVowel(char ch) {
+        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+    }
+}
+
+
+
+//Method 2
+
+class Solution {
+    private static final Set<Character> isVowel = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+
+    public String SortedString(String str) {
+        List<Character> vowels = new ArrayList<>();
+        List<Character> consonants = new ArrayList<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            if (isVowel.contains(str.charAt(i))) {
+                vowels.add(str.charAt(i));
+            } else {
+                consonants.add(str.charAt(i));
+            }
+        }
+
+        Collections.sort(vowels);
+        Collections.sort(consonants);
+
+        StringBuilder sortedString = new StringBuilder();
+        boolean startWithVowel = isVowel.contains(str.charAt(0));
+        int i = 0, j = 0;
+
+        while (i < vowels.size() && j < consonants.size()) {
+            if (startWithVowel) {
+                sortedString.append(vowels.get(i++));
+                startWithVowel = false;
+            } else {
+                sortedString.append(consonants.get(j++));
+                startWithVowel = true;
+            }
+        }
+
+        while (i < vowels.size()) {
+            sortedString.append(vowels.get(i));
+            i++;
+        }
+
+        while (j < consonants.size()) {
+            sortedString.append(consonants.get(j));
+            j++;
+        }
+
+        return sortedString.toString();
+    }
+}
+
+
+
