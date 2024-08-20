@@ -31,13 +31,11 @@ class Solution {
         }
 
         while (i < vowels.size()) {
-            sortedString.append(vowels.get(i));
-            i++;
+            sortedString.append(vowels.get(i++));
         }
 
         while (j < consonants.size()) {
-            sortedString.append(consonants.get(j));
-            j++;
+            sortedString.append(consonants.get(j++));
         }
 
         return sortedString.toString();
