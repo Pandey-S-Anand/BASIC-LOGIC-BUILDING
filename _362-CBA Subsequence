@@ -1,0 +1,56 @@
+//Method 1
+/*
+To avoid the subsequence "cba," we need to ensure that the characters 'c', 'b', and 'a' don't appear in the specific order where 'c' comes before 'b' and 'b' comes before 'a'.
+By sorting the string, we automatically disturb the order of 'c', 'b', and 'a'. In the sorted string, all occurrences of 'a' will come before 'b', and all 'b' will come before 'c'.
+This guarantees that the "cba" subsequence cannot form.
+*/
+
+class Solution {
+    String cbaSubsequence(String str, int n) {
+        char[] charArray = str.toCharArray();
+        Arrays.sort(charArray);
+        return new String(charArray);
+    }
+}
+
+
+//Method 2
+/*
+For Input:
+8 pdmxxtga
+
+It's Correct output is:
+adgmptxx
+*/
+
+class Solution {
+    String cbaSubsequence(String str, int n) {
+        Map<Character, Integer> frequencyMap = new TreeMap<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            frequencyMap.put(ch, frequencyMap.getOrDefault(ch, 0) + 1);
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        // Place all 'a's at the beginning to prevent "cba" from forming
+        if (frequencyMap.containsKey('a')) {
+            int countA = frequencyMap.get('a');
+            for (int i = 0; i < countA; i++) {
+                result.append('a');
+            }
+            frequencyMap.remove('a'); // Remove 'a' from the map
+        }
+
+        // Append remaining sorted characters to the result
+        for (char ch : frequencyMap.keySet()) {
+            int count = frequencyMap.get(ch);
+            for (int i = 0; i < count; i++) {
+                result.append(ch);
+            }
+        }
+
+        return result.toString();
+    }
+}
