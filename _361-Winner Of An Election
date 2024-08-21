@@ -1,0 +1,24 @@
+class Solution {
+    public static String[] winner(String arr[], int n) {
+        Map<String, Integer> voteCountMap = new HashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            voteCountMap.put(arr[i], voteCountMap.getOrDefault(arr[i], 0) + 1);
+        }
+
+        String winner = "";
+        int maxVote = 0;
+
+        for (String name : voteCountMap.keySet()) {
+            int vote = voteCountMap.get(name);
+            if (vote > maxVote) {
+                winner = name;
+                maxVote = vote;
+            } else if (vote == maxVote && name.compareTo(winner) < 0) {
+                winner = name;
+            }
+        }
+
+        return new String[] { winner, Integer.toString(maxVote) };
+    }
+}
