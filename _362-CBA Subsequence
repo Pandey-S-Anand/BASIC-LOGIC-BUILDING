@@ -1,4 +1,15 @@
-//Method 1
+/*
+Important Testcase :
+
+For Input:
+8 pdmxxtga
+
+It's Correct output is:
+adgmptxx
+*/
+
+//Naive Approach
+
 /*
 To avoid the subsequence "cba," we need to ensure that the characters 'c', 'b', and 'a' don't appear in the specific order where 'c' comes before 'b' and 'b' comes before 'a'.
 By sorting the string, we automatically disturb the order of 'c', 'b', and 'a'. In the sorted string, all occurrences of 'a' will come before 'b', and all 'b' will come before 'c'.
@@ -14,18 +25,37 @@ class Solution {
 }
 
 
-//Method 2
-/*
-For Input:
-8 pdmxxtga
-
-It's Correct output is:
-adgmptxx
-*/
+//Aliter
 
 class Solution {
     String cbaSubsequence(String str, int n) {
         Map<Character, Integer> frequencyMap = new TreeMap<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            frequencyMap.put(ch, frequencyMap.getOrDefault(ch, 0) + 1);
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        for (char ch : frequencyMap.keySet()) {
+            int count = frequencyMap.get(ch);
+            for (int i = 0; i < count; i++) {
+                result.append(ch);
+            }
+        }
+
+        return result.toString();
+    }
+}
+
+
+
+//Aliter
+
+class Solution {
+    String cbaSubsequence(String str, int n) {
+        Map<Character, Integer> frequencyMap = new HashMap<>();
 
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
@@ -43,11 +73,42 @@ class Solution {
             frequencyMap.remove('a'); // Remove 'a' from the map
         }
 
-        // Append remaining sorted characters to the result
-        for (char ch : frequencyMap.keySet()) {
+        // Sort the remaining characters
+        List<Character> remainingChars = new ArrayList<>(frequencyMap.keySet());
+        Collections.sort(remainingChars);
+
+        // Append sorted characters to the result
+        for (char ch : remainingChars) {
             int count = frequencyMap.get(ch);
             for (int i = 0; i < count; i++) {
                 result.append(ch);
+            }
+        }
+
+        return result.toString();
+    }
+}
+
+
+
+//Optimal Approach
+
+class Solution {
+    String cbaSubsequence(String str, int n) {
+        int[] frequencyArray = new int[26];
+
+        for (int i = 0; i < str.length(); i++) {
+            frequencyArray[str.charAt(i) - 'a']++;
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < 26; i++) {
+            if (frequencyArray[i] != 0) {
+                int count = frequencyArray[i];
+                for (int j = 0; j < count; j++) {
+                    result.append((char) (i + 'a'));
+                }
             }
         }
 
