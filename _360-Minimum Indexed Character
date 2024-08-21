@@ -1,0 +1,52 @@
+//Bruteforce Approach
+
+class Solution {
+    public static int minIndexChar(String str, String patt) {
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (patt.contains(ch + "")) {
+                return i;
+            }
+        }
+
+        return -1; // Return -1 if no common character is found
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    public static int minIndexChar(String str, String patt) {
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (patt.indexOf(ch) != -1) {
+                return i;
+            }
+        }
+
+        return -1; // Return -1 if no common character is found
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public static int minIndexChar(String str, String patt) {
+        Set<Character> pattSet = new HashSet<>();
+
+        for (int i = 0; i < patt.length(); i++) {
+            pattSet.add(patt.charAt(i));
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (pattSet.contains(ch)) {
+                return i;
+            }
+        }
+
+        return -1; // Return -1 if no common character is found
+    }
+}
