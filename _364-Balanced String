@@ -1,0 +1,37 @@
+class Solution {
+    static String BalancedString(int n) {
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        StringBuilder result = new StringBuilder();
+        int input = n;
+
+        while (n >= 26) {
+            result.append(alphabet);
+            n = n - 26;
+        }
+
+        if (n == 0) {
+            return result.toString();
+        }
+
+        if (n % 2 == 0) {
+            result.append(alphabet.substring(0, n / 2)).append(alphabet.substring(26 - (n / 2)));
+        } else {
+            if (sumOfDigits(input) % 2 == 0) {
+                result.append(alphabet.substring(0, (n + 1) / 2)).append(alphabet.substring(26 - ((n - 1) / 2)));
+            } else {
+                result.append(alphabet.substring(0, (n - 1) / 2)).append(alphabet.substring(26 - (n + 1) / 2));
+            }
+        }
+
+        return result.toString();
+    }
+
+    private static int sumOfDigits(int num) {
+        int sum = 0;
+        while (num != 0) {
+            sum += num % 10;
+            num = num / 10;
+        }
+        return sum;
+    }
+}
