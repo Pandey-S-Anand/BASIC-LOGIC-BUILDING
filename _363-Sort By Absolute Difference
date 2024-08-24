@@ -1,0 +1,52 @@
+//Bruteforce Approach
+
+class Solution {
+    static void sortABS(int k, List<Integer> arr) {
+        for (int i = 0; i < arr.size() - 1; i++) {
+            for (int j = 0; j < arr.size() - i - 1; j++) {
+                int diff1 = Math.abs(arr.get(j) - k);
+                int diff2 = Math.abs(arr.get(j + 1) - k);
+
+                if (diff1 > diff2) {
+                    int temp = arr.get(j);
+                    arr.set(j, arr.get(j + 1));
+                    arr.set(j + 1, temp);
+                }
+            }
+        }
+    }
+}
+
+
+//Optimal Approach
+
+//Naive Implementation
+
+class Solution {
+    static void sortABS(int k, List<Integer> arr) {
+        Collections.sort(arr, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer a, Integer b) {
+                int diffA = Math.abs(a - k);
+                int diffB = Math.abs(b - k);
+
+                if (diffA - diffB < 0) {
+                    return -1;
+                } else if (diffA - diffB > 0) {
+                    return 1;
+                } else {
+                    return 0; // If absolute differences are equal, maintain the original order
+                }
+            }
+        });
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution {
+    static void sortABS(int k, List<Integer> arr) {
+        Collections.sort(arr, (a, b) -> Integer.compare(Math.abs(a - k), Math.abs(b - k)));
+    }
+}
