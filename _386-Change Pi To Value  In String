@@ -1,0 +1,36 @@
+//Using Recursion
+
+class Solution {
+    public String changePi(String str) {
+        if (str.isEmpty()) {
+            return str;
+        }
+
+        if (str.startsWith("pi")) {
+            return "3.14" + changePi(str.substring(2));
+        }
+
+        return str.charAt(0) + changePi(str.substring(1));
+    }
+}
+
+
+//Without Recursion
+
+class Solution {
+    public String changePi(String str) {
+        int i = 0;
+        StringBuilder modifiedString = new StringBuilder();
+
+        while (i < str.length()) {
+            if (str.startsWith("pi", i)) {
+                modifiedString.append("3.14");
+                i += 2;
+            } else {
+                modifiedString.append(str.charAt(i++));
+            }
+        }
+
+        return modifiedString.toString();
+    }
+}
