@@ -1,0 +1,28 @@
+//Using Recursion
+
+class Solution {
+    public String noX(String str) {
+        if (str.isEmpty()) {
+            return str;
+        }
+
+        return (str.charAt(0) == 'x' ? "" : str.charAt(0)) + noX(str.substring(1));
+    }
+}
+
+
+//Without Using Recursion
+
+class Solution {
+    public String noX(String str) {
+        StringBuilder modifiedString = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != 'x') {
+                modifiedString.append(str.charAt(i));
+            }
+        }
+
+        return modifiedString.toString();
+    }
+}
