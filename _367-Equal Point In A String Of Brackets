@@ -1,0 +1,111 @@
+//Method 1
+
+//Intuitive Implementation
+
+class Solution {
+    public long countSub(String str) {
+        int[] prefixOpen = new int[str.length()];
+        int[] suffixClose = new int[str.length()];
+
+        for (int i = 0; i < str.length(); i++) {
+            if (i == 0) {
+                prefixOpen[i] = str.charAt(i) == '(' ? 1 : 0;
+            } else {
+                prefixOpen[i] = prefixOpen[i - 1] + (str.charAt(i) == '(' ? 1 : 0);
+            }
+        }
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            if (i == str.length() - 1) {
+                suffixClose[i] = str.charAt(i) == ')' ? 1 : 0;
+            } else {
+                suffixClose[i] = suffixClose[i + 1] + (str.charAt(i) == ')' ? 1 : 0);
+            }
+        }
+
+        for (int i = 1; i < str.length(); i++) {
+            /*
+             * An equal point is an index (0-based) such that the number of closing brackets
+             * on the right from that point
+             * must be equal to the number of opening brackets before that point.
+             * 
+             * str="()))))))))"
+             * Output : 9
+             * 
+             * str="(())))("
+             * Output : 4
+             */
+            if (prefixOpen[i - 1] == suffixClose[i]) {
+                return i;
+            }
+        }
+
+        /*
+         * If the entire string has only closing brackets, return its length.
+         * The equal point should be at index n because after this point, the number of
+         * closing brackets is 0,
+         * and there are no opening brackets before it.
+         * 
+         * str=")"
+         * Output : 1
+         * str=")))"
+         * Output : 3
+         * 
+         * If the entire string has only opening brackets, return 0.
+         * The equal point should be at index 0 because before this point,
+         * the number of opening brackets is 0, and there are no closing brackets after
+         * it.
+         * 
+         * str="("
+         * Output : 0
+         * str="((("
+         * Output : 0
+         */
+        // the control will reah here only when the string contain all 0s or all 1s
+        return str.charAt(0) == '(' ? 0 : str.length();
+    }
+}
+
+
+//Optimal Implementation 
+
+
+class Solution {
+    public long countSub(String str) {
+        int[] prefixOpen = new int[str.length()];
+        int[] suffixClose = new int[str.length()];
+
+        for (int i = 0; i < str.length(); i++) {
+            if (i == 0) {
+                prefixOpen[i] = str.charAt(i) == '(' ? 1 : 0;
+                suffixClose[str.length() - 1 - i] = str.charAt(str.length() - 1 - i) == ')' ? 1 : 0;
+            } else {
+                prefixOpen[i] = prefixOpen[i - 1] + (str.charAt(i) == '(' ? 1 : 0);
+                suffixClose[str.length() - 1 - i] = suffixClose[str.length() - 1 - i + 1] + (str.charAt(str.length() - 1 - i) == ')' ? 1 : 0);
+            }
+        }
+
+        for (int i = 1; i < str.length(); i++) {
+            if (prefixOpen[i - 1] == suffixClose[i]) {
+                return i;
+            }
+        }
+
+        return str.charAt(0) == '(' ? 0 : str.length();
+    }
+}
+
+
+//Method 2
+
+class Solution {
+    public long countSub(String str) {
+       int count=0;
+       for(int i=0;i<str.length();i++){
+           if(str.charAt(i)==')'){
+               count++;
+           }
+       }
+       return count;
+    }
+}
