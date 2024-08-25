@@ -1,0 +1,35 @@
+//Without Recursion
+
+class Solution {
+    public String frontTimes(String str, int n) {
+        return (str.length() < 3 ? str : str.substring(0, 3)).repeat(n);
+    }
+}
+
+//Aliter
+
+class Solution {
+    public String frontTimes(String str, int n) {
+        String front = str.length() < 3 ? str : str.substring(0, 3);
+        StringBuilder modifiedString = new StringBuilder();
+
+        for (int i = 1; i <= n; i++) {
+            modifiedString.append(front);
+        }
+
+        return modifiedString.toString();
+    }
+}
+
+
+//With Recursion
+
+class Solution {
+    public String frontTimes(String str, int n) {
+        if (n == 0) {
+            return "";
+        }
+
+        return (str.length() < 3 ? str : str.substring(0, 3)) + frontTimes(str, n - 1);
+    }
+}
