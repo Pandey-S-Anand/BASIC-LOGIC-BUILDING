@@ -1,0 +1,35 @@
+//Using Recursion
+
+class Solution {
+    boolean doubleX(String str) {
+        if (str.length() < 2) {
+            return false;
+        }
+
+        if (str.charAt(0) == 'x') {
+            return str.charAt(1) == 'x';
+        }
+
+        return doubleX(str.substring(1));
+    }
+}
+
+
+
+// Without Recursion
+
+class Solution {
+    boolean doubleX(String str) {
+        if (str.length() < 2) {
+            return false;
+        }
+
+        int firstIndex = str.indexOf('x');
+
+        if (firstIndex == -1) {
+            return false;
+        }
+
+        return (firstIndex + 1) < str.length() && str.charAt(firstIndex + 1) == 'x';
+    }
+}
