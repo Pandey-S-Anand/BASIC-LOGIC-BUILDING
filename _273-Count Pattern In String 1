@@ -1,0 +1,37 @@
+//Using Recursion
+
+class Solution {
+    public int countAbc(String str) {
+        if (str.length() < 3) {
+            return 0;
+        }
+
+        if (str.startsWith("abc") || str.startsWith("aba")) {
+            return 1 + countAbc(str.substring(2));
+        }
+
+        return countAbc(str.substring(1));
+    }
+}
+
+
+
+//Without Using Recursion
+
+class Solution {
+    public int countAbc(String str) {
+        int i = 0, count = 0;
+
+        while (i <= (str.length() - 3)) {
+            if (str.startsWith("abc", i) || str.startsWith("aba", i)) {
+                count++;
+                i += 2;
+            } else {
+                i++;
+            }
+        }
+
+        return count;
+    }
+}
+
