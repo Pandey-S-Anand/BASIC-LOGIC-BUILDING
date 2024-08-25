@@ -1,26 +1,26 @@
 //Using Recursion
 
-class Solution{
-  public int bunnyEars2(int bunnies) {
-    if(bunnies==0){
-      return 0;
+class Solution {
+    public int bunnyEars2(int bunnies) {
+        if (bunnies == 0) {
+            return 0;
+        }
+
+        return ((bunnies % 2 == 0) ? 3 : 2) + bunnyEars2(bunnies - 1);
     }
-    
-    return ((bunnies%2==0)?3:2)+bunnyEars2(bunnies-1);
-  }
 }
 
 
 //Without Using Recursion
 
-class Solution{
-   public int bunnyEars2(int bunnies) {
-     int count=0;
-  
-     for(int i=1;i<=bunnies;i++){
-       count=count+((i%2==0)?3:2);
-     }
-  
-     return count;
-   }
+class Solution {
+    public int bunnyEars2(int bunnies) {
+        int count = 0;
+
+        for (int i = 1; i <= bunnies; i++) {
+            count = count + ((i % 2 == 0) ? 3 : 2);
+        }
+
+        return count;
+    }
 }
