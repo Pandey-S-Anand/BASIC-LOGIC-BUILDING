@@ -1,0 +1,31 @@
+//Using Recursion
+
+class Solution {
+    public String pairStar(String str) {
+        if (str.length() < 2) {
+            return str;
+        }
+
+        return str.charAt(0) + (str.charAt(0) == str.charAt(1) ? "*" : "") + pairStar(str.substring(1));
+    }
+}
+
+
+//Without Using Recursion
+
+class Solution {
+    public String pairStar(String str) {
+        StringBuilder modifiedString = new StringBuilder();
+
+        for (int i = 0; i < (str.length() - 1); i++) {
+            modifiedString.append(str.charAt(i));
+            if (str.charAt(i) == str.charAt(i + 1)) {
+                modifiedString.append("*");
+            }
+        }
+
+        modifiedString.append(str.length() > 0 ? str.charAt(str.length() - 1) : "");
+
+        return modifiedString.toString();
+    }
+}
