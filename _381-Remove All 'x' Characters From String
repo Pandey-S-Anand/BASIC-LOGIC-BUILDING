@@ -15,6 +15,10 @@ class Solution {
 
 class Solution {
     public String noX(String str) {
+        if(str.isEmpty()){
+           return str;
+        }
+
         StringBuilder modifiedString = new StringBuilder();
 
         for (int i = 0; i < str.length(); i++) {
