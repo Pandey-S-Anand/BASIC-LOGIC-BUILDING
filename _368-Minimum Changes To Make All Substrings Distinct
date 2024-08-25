@@ -1,0 +1,44 @@
+//To ensure all substrings of a string are distinct, all characters in the string must be unique. This means that each character should appear only once in the string.
+
+//Naive Implementation 
+
+class Solution {
+    static int minChange(String str) {
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+        int requiredChanges = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            frequencyMap.put(str.charAt(i), frequencyMap.getOrDefault(str.charAt(i), 0) + 1);
+        }
+
+        for (char ch : frequencyMap.keySet()) {
+            if (frequencyMap.get(ch) > 1) {
+                requiredChanges += (frequencyMap.get(ch) - 1);
+            }
+        }
+
+        return requiredChanges;
+    }
+}
+
+
+//Optimal Implementation 
+
+class Solution{
+    static int minChange(String str){
+      int[]frequencyArray=new int[26];
+      int requiredChanges=0;
+      
+      for(int i=0;i<str.length();i++){
+          frequencyArray[str.charAt(i)-'a']++;
+      }
+      
+      for(int i=0;i<26;i++){
+         if(frequencyArray[i]>1){
+           requiredChanges+=(frequencyArray[i]-1);
+         }
+      }
+      
+      return requiredChanges;
+    }
+}
