@@ -1,0 +1,45 @@
+class Solution {
+    public static long modified(String str) {
+        int count = 1, insertions = 0;
+
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i) == str.charAt(i - 1)) {
+                count++;
+            } else {
+                if (count >= 3) {
+                    insertions += (count - 1) / 2;
+                }
+                count = 1;
+            }
+        }
+
+        if (count >= 3) {
+            insertions += (count - 1) / 2;
+        }
+
+        return insertions;
+
+    }
+}
+
+/*
+ * Ex: str="aabeeeeeeeeeeeeeeeedeefgggggggg"
+ * Output : 10
+ * 
+ * Explanation :
+ * For 16 es:
+ * To break 16 e's into segments of at most 2 es each:
+ * We can have groups like ee | ee | ee | ee | ee | ee | ee | ee.
+ * To achieve this, you need to break the 16 e's into groups of 2, which
+ * involves placing characters between groups.
+ * You need 7 insertions to break the sequence properly
+ * 
+ * For 8 gs:
+ * To break 8 g''s into segments of at most 2 es each:
+ * We can have groups like gg | gg | gg | gg .
+ * To achieve this, you need to break the 8 g's into groups of 2, which involves
+ * placing characters between groups.
+ * You need 3 insertions to break the sequence properly
+ * 
+ * Total insertions required = 7 + 3 = 10
+ */
