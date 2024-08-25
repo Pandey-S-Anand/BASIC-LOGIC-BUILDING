@@ -1,0 +1,38 @@
+//Using Recursion
+
+class Solution {
+    public boolean strCopies(String str, String sub, int n) {
+        if (n == 0) {
+            return true;
+        }
+
+        if (str.length() < sub.length()) {
+            return false;
+        }
+
+        if (str.startsWith(sub)) {
+            return strCopies(str.substring(1), sub, n - 1);
+        }
+
+        return strCopies(str.substring(1), sub, n);
+    }
+}
+
+
+//Without Recursion
+
+class Solution {
+    public boolean strCopies(String str, String sub, int count) {
+        for (int i = 0; i <= (str.length() - sub.length()); i++) {
+            if (str.startsWith(sub, i)) {
+                count--;
+            }
+
+            if (count == 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
