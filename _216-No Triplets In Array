@@ -1,4 +1,4 @@
-//Without Using Recursion
+//Without Recursion
 
 class Solution {
     public boolean noTriples(int[] arr) {
