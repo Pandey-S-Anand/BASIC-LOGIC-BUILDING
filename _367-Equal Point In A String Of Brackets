@@ -26,8 +26,7 @@ class Solution {
         for (int i = 1; i < str.length(); i++) {
             /*
              * An equal point is an index (0-based) such that the number of closing brackets
-             * on the right from that point
-             * must be equal to the number of opening brackets before that point.
+             * on the right from that point must be equal to the number of opening brackets before that point.
              * 
              * str="()))))))))"
              * Output : 9
@@ -43,8 +42,7 @@ class Solution {
         /*
          * If the entire string has only closing brackets, return its length.
          * The equal point should be at index n because after this point, the number of
-         * closing brackets is 0,
-         * and there are no opening brackets before it.
+         * closing brackets is 0, and there are no opening brackets before it.
          * 
          * str=")"
          * Output : 1
