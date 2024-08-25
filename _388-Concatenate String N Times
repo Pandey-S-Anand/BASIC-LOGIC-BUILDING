@@ -1,0 +1,34 @@
+//Using Recursion
+
+class Solution {
+    public String stringTimes(String str, int n) {
+        if (n == 0) {
+            return "";
+        }
+
+        return str + stringTimes(str, n - 1);
+    }
+}
+
+
+//Without Recursion
+
+class Solution {
+    public String stringTimes(String str, int n) {
+        StringBuilder repeatedString = new StringBuilder();
+
+        for (int i = 1; i <= n; i++) {
+            repeatedString.append(str);
+        }
+
+        return repeatedString.toString();
+    }
+}
+
+//Aliter
+
+class Solution {
+    public String stringTimes(String str, int n) {
+        return str.repeat(n);
+    }
+}
