@@ -1,0 +1,25 @@
+//Without Recursion
+
+class Solution {
+    public String stringSplosion(String str) {
+        StringBuilder modifiedString = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            modifiedString.append(str.substring(0, i + 1));
+        }
+
+        return modifiedString.toString();
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public String stringSplosion(String str) {
+        if (str.isEmpty()) {
+            return str;
+        }
+        return stringSplosion(str.substring(0, str.length() - 1)) + str;
+    }
+}
