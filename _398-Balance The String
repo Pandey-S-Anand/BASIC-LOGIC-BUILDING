@@ -1,0 +1,35 @@
+//Without Using Recursion
+
+class Solution {
+    public boolean xyBalance(String str) {
+        boolean foundX = false;
+
+        for (int i=0;i<str.length();i++) {
+            if (str.charAt(i) == 'x') {
+                foundX = true;
+            } else if (str.charAt(i) == 'y' && foundX) {
+                foundX = false;
+            }
+        }
+
+        return !foundX;
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public boolean xyBalance(String str) {
+        if (str.isEmpty()) {
+            return true;
+        }
+
+        // Check if there is a 'y' after the current 'x'
+        if (str.charAt(0) == 'x' && !str.substring(1).contains("y")) {
+            return false;
+        }
+
+        return xyBalance(str.substring(1));
+    }
+}
