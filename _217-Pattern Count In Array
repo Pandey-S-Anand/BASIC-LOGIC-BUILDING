@@ -1,0 +1,30 @@
+//Without Recursion
+
+class Solution {
+    public int array667(int[] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == 6 && (arr[i + 1] == 6 || arr[i + 1] == 7)) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+
+//With Recursion
+
+class Solution {
+    public int array667(int[] arr) {
+        if (arr.length < 2) {
+            return 0;
+        }
+
+        if (arr[0] == 6 && (arr[1] == 6 || arr[1] == 7)) {
+            return 1 + array667(Arrays.copyOfRange(arr, 1, arr.length));
+        }
+
+        return array667(Arrays.copyOfRange(arr, 1, arr.length));
+    }
+}
