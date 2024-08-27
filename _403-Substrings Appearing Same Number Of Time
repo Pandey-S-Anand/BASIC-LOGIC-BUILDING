@@ -1,0 +1,45 @@
+//Without Using Recursion
+
+class Solution {
+    public boolean catDog(String str) {
+        int i = 0, balance = 0;
+
+        while (i < str.length()) {
+            if (str.startsWith("cat", i)) {
+                balance++;
+                i += 3;
+            } else if (str.startsWith("dog", i)) {
+                balance--;
+                i += 3;
+            } else {
+                i++;
+            }
+        }
+        return balance == 0;
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public boolean catDog(String str) {
+        return catDogHelper(str) == 0;
+    }
+
+    private int catDogHelper(String str) {
+        if (str.length() < 3) {
+            return 0;
+        }
+
+        if (str.startsWith("cat")) {
+            return 1 + catDogHelper(str.substring(3));
+        }
+
+        if (str.startsWith("dog")) {
+            return catDogHelper(str.substring(3)) - 1;
+        }
+
+        return catDogHelper(str.substring(1));
+    }
+}
