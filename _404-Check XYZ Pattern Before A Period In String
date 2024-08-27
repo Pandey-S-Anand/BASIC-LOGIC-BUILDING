@@ -1,0 +1,34 @@
+//Without Using Recursion
+
+class Solution {
+    public boolean xyzThere(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if (str.startsWith("xyz", i) && (i == 0 || str.charAt(i - 1) != '.')) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public boolean xyzThere(String str) {
+        if (str.isEmpty()) {
+            return false;
+        }
+
+        if (str.startsWith(".xyz")) {
+            return xyzThere(str.substring(4));
+        }
+
+        if (str.startsWith("xyz")) {
+            return true;
+        }
+
+        return xyzThere(str.substring(1));
+    }
+}
