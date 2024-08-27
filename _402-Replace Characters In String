@@ -1,0 +1,36 @@
+//Using Recursion
+
+class Solution {
+    public String plusOut(String str, String word) {
+        if (str.isEmpty()) {
+            return str;
+        }
+
+        if (str.startsWith(word)) {
+            return word + plusOut(str.substring(word.length()), word);
+        }
+
+        return "+" + plusOut(str.substring(1), word);
+    }
+}
+
+
+//Without Recursion
+
+class Solution {
+    public String plusOut(String str, String word) {
+        int i = 0;
+        StringBuilder modifiedString = new StringBuilder();
+
+        while (i < str.length()) {
+            if (str.startsWith(word, i)) {
+                modifiedString.append(word);
+                i += word.length();
+            } else {
+                modifiedString.append("+");
+                i++;
+            }
+        }
+        return modifiedString.toString();
+    }
+}
