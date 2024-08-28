@@ -1,0 +1,69 @@
+//Without Recursion
+
+class Solution {
+    public String wordEnds(String str, String word) {
+        StringBuilder modifiedString = new StringBuilder();
+        int index = 0;
+
+        for (int i = 0; i <= (str.length() - word.length()); i = index + word.length()) {
+            index = str.indexOf(word, i);
+
+            if (index == -1) {
+                break;
+            }
+
+            modifiedString.append(index == 0 ? "" : str.charAt(index - 1)).append((index + word.length()) == str.length() ? "" : str.charAt(index + word.length()));
+        }
+
+        return modifiedString.toString();
+    }
+}
+
+
+//Aliter
+
+class Solution {
+    public String wordEnds(String str, String word) {
+        StringBuilder modifiedString = new StringBuilder();
+
+        for (int i = 0; i <= (str.length() - word.length()); i++) {
+            if (str.startsWith(word, i)) {
+                if (i > 0) {
+                    modifiedString.append(str.charAt(i - 1));
+                }
+
+                if ((i + word.length()) < str.length()) {
+                    modifiedString.append(str.charAt(i + word.length()));
+                }
+            }
+        }
+
+        return modifiedString.toString();
+    }
+}
+
+
+
+//Using Recursion
+
+
+class Solution {
+    public String wordEnds(String str, String word) {
+        return wordEndsHelper(str, word, 0);
+    }
+
+    private String wordEndsHelper(String str, String word, int index) {
+        if ((index + word.length()) > str.length()) {
+            return "";
+        }
+
+        if (str.startsWith(word, index)) {
+            String front = index == 0 ? "" : String.valueOf(str.charAt(index - 1));
+            String back = (index + word.length()) < str.length() ? String.valueOf(str.charAt(index + word.length())): "";
+
+            return front + back + wordEndsHelper(str, word, index + word.length());
+        }
+
+        return wordEndsHelper(str, word, index + 1);
+    }
+}
