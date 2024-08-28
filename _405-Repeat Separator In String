@@ -1,0 +1,29 @@
+//Using Recursion
+
+class Solution {
+    public String repeatSeparator(String word, String sep, int count) {
+        if (count == 0) {
+            return "";
+        }
+        if (count == 1) {
+            return word;
+        }
+
+        return word + sep + repeatSeparator(word, sep, count - 1);
+    }
+}
+
+
+//Without Using Recursion
+
+class Solution {
+    public String repeatSeparator(String word, String sep, int count) {
+        StringBuilder modifiedString = new StringBuilder();
+
+        for (int i = 1; i <= count; i++) {
+            modifiedString.append(word).append(i == count ? "" : sep);
+        }
+
+        return modifiedString.toString();
+    }
+}
