@@ -1,0 +1,50 @@
+//Without Using Recursion
+
+class Solution {
+    public int[] zeroMax(int[] arr) {
+        if (arr.length == 0) {
+            return arr;
+        }
+
+        int maxOddSoFar = 0;
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == 0) {
+                arr[i] = maxOddSoFar;
+            } else if (arr[i] % 2 != 0 && arr[i] > maxOddSoFar) {
+                maxOddSoFar = arr[i];
+            }
+        }
+
+        return arr;
+    }
+}
+
+
+//Using Recursion 
+
+class Solution {
+    public int[] zeroMax(int[] arr) {
+        if (arr.length == 0) {
+            return arr;
+        }
+
+        return zeroMax(arr, arr.length - 1, 0);
+    }
+
+    private int[] zeroMax(int[] arr, int index, int maxOddSoFar) {
+        if (index < 0) {
+            return arr;
+        }
+
+        if (arr[index] == 0) {
+            arr[index] = maxOddSoFar;
+        }
+
+        if (arr[index] % 2 != 0) {
+            maxOddSoFar = Math.max(maxOddSoFar, arr[index]);
+        }
+
+        return zeroMax(arr, index - 1, maxOddSoFar);
+    }
+}
