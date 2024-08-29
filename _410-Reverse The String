@@ -1,0 +1,65 @@
+//Using Recursion
+
+class Solution {
+    public String reverseString(String str) {
+        if (str.isEmpty()) {
+            return str;
+        }
+        
+        return str.charAt(str.length() - 1) + reverseString(str.substring(0, str.length() - 1));
+    }
+}
+
+
+//Aliter
+
+class Solution {
+    public String reverseString(String str) {
+        return reverseString(str.toCharArray(), 0);
+    }
+
+    public String reverseString(char[] arr, int index) {
+        if (index == (arr.length / 2)) {
+            return new String(arr);
+        }
+
+        char temp = arr[index];
+        arr[index] = arr[arr.length - 1 - index];
+        arr[arr.length - 1 - index] = temp;
+
+        return reverseString(arr, index + 1);
+    }
+}
+
+
+//Without Using Recursion
+
+
+class Solution {
+    public static String reverseString(String str) {
+        StringBuilder reverse = new StringBuilder();
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            reverse.append(str.charAt(i));
+        }
+
+        return reverse.toString();
+    }
+}
+
+
+//Aliter
+
+class Solution {
+    public static String reverseString(String str) {
+        char[] arr = str.toCharArray();
+
+        for (int i = 0; i < (arr.length / 2); i++) {
+            char temp = arr[i];
+            arr[i] = arr[arr.length - 1 - i];
+            arr[arr.length - 1 - i] = temp;
+        }
+
+        return new String(arr);
+    }
+}
