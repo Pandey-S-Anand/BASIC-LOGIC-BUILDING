@@ -1,0 +1,71 @@
+//Using Recursion
+
+class Solution {
+    public boolean twoTwo(int[] arr) {
+        if (arr.length == 0) {
+            return true;
+        }
+        return twoTwo(arr, 0);
+    }
+
+    private boolean twoTwo(int[] arr, int index) {
+        if (index == arr.length) {
+            return true;
+        }
+
+        if (arr[index] == 2) {
+            if ((index > 0 && arr[index - 1] == 2) || (index < arr.length - 1 && arr[index + 1] == 2)) {
+                return twoTwo(arr, index + 1);
+            }
+            return false;
+        }
+
+        return twoTwo(arr, index + 1);
+    }
+}
+
+
+//Without Recursion
+
+//Naive Implementation
+
+class Solution {
+    public boolean twoTwo(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 2) {
+                if (i == 0) {
+                    if (arr.length == 1 || arr[i + 1] != 2) {
+                        return false;
+                    }
+                } else if (i == arr.length - 1) {
+                    if (arr[i - 1] != 2) {
+                        return false;
+                    }
+                } else {
+                    if (arr[i - 1] != 2 && arr[i + 1] != 2) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution {
+    public boolean twoTwo(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 2) {
+                if ((i > 0 && arr[i - 1] == 2) || (i < arr.length - 1 && arr[i + 1] == 2)) {
+                    continue;
+                }
+                return false;
+            }
+        }
+        return true;
+    }
+}
