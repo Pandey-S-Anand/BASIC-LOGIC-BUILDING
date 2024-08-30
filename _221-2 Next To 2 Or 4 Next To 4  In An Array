@@ -1,4 +1,4 @@
-//Without Using Recursion
+//Without Recursion
 
 class Solution {
     public boolean either24(int[] arr) {
@@ -22,7 +22,6 @@ class Solution {
 
 
 //Using Recursion
-
 
 class Solution {
     public boolean either24(int[] arr) {
