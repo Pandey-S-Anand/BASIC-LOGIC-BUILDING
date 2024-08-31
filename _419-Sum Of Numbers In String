@@ -1,0 +1,106 @@
+//Without Recursion
+
+//Method 1
+
+class Solution {
+    public static long findSum(String str) {
+        long sum = 0, num = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit(str.charAt(i))) {
+                num = num * 10 + (str.charAt(i) - '0');
+            } else if (num != 0) {
+                sum += num;
+                num = 0;
+            }
+        }
+
+        sum += num;
+
+        return sum;
+    }
+}
+
+
+//Method 2
+
+class Solution {
+    public static long findSum(String str) {
+        long totalSum = 0;
+        StringBuilder currentNumber = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit(str.charAt(i))) {
+                currentNumber.append(str.charAt(i));
+            } else if (currentNumber.length() > 0) {
+                totalSum += Long.parseLong(currentNumber.toString());
+                currentNumber.setLength(0);
+            }
+        }
+
+        if (currentNumber.length() > 0) {
+            totalSum += Long.parseLong(currentNumber.toString());
+        }
+
+        return totalSum;
+    }
+}
+
+
+
+//Using Recursion
+
+//Method 1
+
+class Solution {
+    public static long findSum(String str) {
+        return findSum(str, 0);
+    }
+
+    private static long findSum(String str, long currentNumber) {
+        if (str.isEmpty()) {
+            return currentNumber;
+        }
+
+        if (Character.isDigit(str.charAt(0))) {
+            return findSum(str.substring(1), currentNumber * 10 + (str.charAt(0) - '0'));
+        }
+
+        if (currentNumber != 0) {
+            return currentNumber + findSum(str.substring(1), 0);
+        }
+
+        return findSum(str.substring(1), currentNumber);
+    }
+}
+
+
+
+//Method 2
+
+class Solution {
+    public static long findSum(String str) {
+        return findSum(str, new StringBuilder());
+    }
+
+    private static long findSum(String str, StringBuilder currentNumber) {
+        if (str.isEmpty()) {
+            if (currentNumber.length() > 0) {
+                return Long.parseLong(currentNumber.toString());
+            }
+            return 0;
+        }
+
+        if (Character.isDigit(str.charAt(0))) {
+            return findSum(str.substring(1), currentNumber.append(str.charAt(0) - '0'));
+        }
+
+        if (currentNumber.length() != 0) {
+            Long num = Long.parseLong(currentNumber.toString());
+            currentNumber.setLength(0);
+            return num + findSum(str.substring(1), currentNumber);
+        }
+
+        return findSum(str.substring(1), currentNumber);
+    }
+}
