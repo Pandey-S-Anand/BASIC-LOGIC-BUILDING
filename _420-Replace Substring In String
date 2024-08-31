@@ -1,0 +1,84 @@
+//Without Using Recursion
+
+//Naive Implementation 
+
+class Solution {
+    public String notReplace(String str) {
+        StringBuilder modifiedString = new StringBuilder();
+        int i = 0;
+
+        while (i < str.length()) {
+            if (str.startsWith("is", i)) {
+                boolean isStart = (i == 0 || !Character.isLetter(str.charAt(i - 1)));
+                boolean isEnd = (i + 2 == str.length() || !Character.isLetter(str.charAt(i + 2)));
+
+                if (isStart && isEnd) {
+                    modifiedString.append("is not");
+                    i += 2;
+                } else {
+                    modifiedString.append(str.charAt(i));
+                    i++;
+                }
+            } else {
+                modifiedString.append(str.charAt(i));
+                i++;
+            }
+        }
+
+        return modifiedString.toString();
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution {
+    public String notReplace(String str) {
+        StringBuilder modifiedString = new StringBuilder();
+        int i = 0;
+
+        while (i < str.length()) {
+            if (str.startsWith("is", i)) {
+                boolean isStart = (i == 0 || !Character.isLetter(str.charAt(i - 1)));
+                boolean isEnd = (i + 2 == str.length() || !Character.isLetter(str.charAt(i + 2)));
+
+                if (isStart && isEnd) {
+                    modifiedString.append("is not");
+                    i += 2;
+                    continue;
+                }
+            } 
+            modifiedString.append(str.charAt(i));
+            i++;
+        }
+
+        return modifiedString.toString();
+    }
+}
+
+
+
+//Using Recursion
+
+class Solution {
+    public String notReplace(String str) {
+        return notReplace(str, 0);
+    }
+
+    private String notReplace(String str, int index) {
+        if (index == str.length()) {
+            return "";
+        }
+
+        if (str.startsWith("is", index)) {
+            boolean isStart = (index == 0 || !Character.isLetter(str.charAt(index - 1)));
+            boolean isEnd = (index + 2 == str.length() || !Character.isLetter(str.charAt(index + 2)));
+
+            if (isStart && isEnd) {
+                return "is not" + notReplace(str, index + 2);
+            }
+        }
+
+        return str.charAt(index) + notReplace(str, index + 1);
+    }
+}
