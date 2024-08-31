@@ -1,0 +1,68 @@
+//Using Recursion
+
+class Solution {
+    public boolean gHappy(String str) {
+        return gHappy(str, 0);
+    }
+
+    private boolean gHappy(String str, int index) {
+        if (index == str.length()) {
+            return true;
+        }
+
+        if (str.charAt(index) == 'g') {
+            if ((index > 0 && str.charAt(index - 1) == 'g') || (index < str.length() - 1 && str.charAt(index + 1) == 'g')) {
+                return gHappy(str, index + 1);
+            }
+
+            return false;
+        }
+
+        return gHappy(str, index + 1);
+    }
+}
+
+
+
+//Without Recursion
+
+class Solution {
+    public boolean gHappy(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'g') {
+                if (i == 0) {
+                    if (str.length() == 1 || str.charAt(i + 1) != 'g') {
+                        return false;
+                    }
+                } else if (i == str.length() - 1) {
+                    if (str.charAt(i - 1) != 'g') {
+                        return false;
+                    }
+                } else {
+                    if (str.charAt(i - 1) != 'g' && str.charAt(i + 1) != 'g') {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution {
+    public boolean gHappy(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'g') {
+                if ((i > 0 && str.charAt(i - 1) == 'g') || (i < str.length() - 1 && str.charAt(i + 1) == 'g')) {
+                    continue;
+                }
+
+                return false;
+            }
+        }
+        return true;
+    }
+}
