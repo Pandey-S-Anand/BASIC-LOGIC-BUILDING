@@ -1,29 +1,29 @@
-class Solution{
-   public String[] allSwap(String[] strings) {
-     Map<Character, Integer> charIndexMap = new HashMap<>();
+class Solution {
+    public String[] allSwap(String[] strings) {
+        Map<Character, Integer> charIndexMap = new HashMap<>();
 
-     for (int i = 0; i < strings.length; i++) {
-       char firstChar = strings[i].charAt(0);
+        for (int i = 0; i < strings.length; i++) {
+            char firstChar = strings[i].charAt(0);
 
-       if (charIndexMap.containsKey(firstChar)) {
-          int prevIndex = charIndexMap.get(firstChar);
+            if (charIndexMap.containsKey(firstChar)) {
+                int prevIndex = charIndexMap.get(firstChar);
 
-          String temp = strings[i];
-          strings[i] = strings[prevIndex];  
-          strings[prevIndex] = temp;
-          
-          charIndexMap.remove(firstChar);
-        } else {
-          charIndexMap.put(firstChar, i);
+                String temp = strings[i];
+                strings[i] = strings[prevIndex];
+                strings[prevIndex] = temp;
+
+                charIndexMap.remove(firstChar);
+            } else {
+                charIndexMap.put(firstChar, i);
+            }
         }
-     }
 
-     return strings; 
-   }
+        return strings;
+    }
 }
 
 /*
-  Detailed Differences:
+Detailed Differences:
 First Character Swap:
 
 A character can only cause one swap, after which it is entirely disabled for any further swaps regardless of where it appears.
