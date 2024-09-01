@@ -1,0 +1,44 @@
+//Naive Approach
+
+class Solution {
+    public String capitalizeTitle(String title) {
+        StringBuilder modifiedString = new StringBuilder();
+
+        for (String str : title.toLowerCase().split(" ")) {
+            if (str.length() <= 2) {
+                modifiedString.append(str);
+            } else {
+                modifiedString.append(Character.toUpperCase(str.charAt(0)));
+                modifiedString.append(str.substring(1, str.length()));
+            }
+            modifiedString.append(" ");
+        }
+
+        return modifiedString.toString().trim();
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public String capitalizeTitle(String title) {
+        char[] arr = title.toLowerCase().toCharArray();
+        int start = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == ' ') {
+                if ((i - start) > 2) {
+                    arr[start] = Character.toUpperCase(arr[start]);
+                }
+                start = i + 1;
+            }
+        }
+
+        if ((arr.length - start) > 2) {
+            arr[start] = Character.toUpperCase(arr[start]);
+        }
+
+        return new String(arr);
+    }
+}
