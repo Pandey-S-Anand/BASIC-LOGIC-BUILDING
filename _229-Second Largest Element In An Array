@@ -1,0 +1,66 @@
+//Without Recursion
+
+//Bruteforce Approach
+
+class Solution {
+    int print2largest(int arr[]) {
+        int max = Integer.MIN_VALUE;
+        for (int num : arr) {
+            max = Math.max(num, max);
+        }
+
+        int secondMax = -1;
+        for (int num : arr) {
+            if (num > secondMax && num < max) {
+                secondMax = num;
+            }
+        }
+
+        return secondMax;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    int print2largest(int arr[]) {
+        int max = -1, secondMax = -1;
+
+        for (int num : arr) {
+            if (num > max) {
+                secondMax = max;
+                max = num;
+            } else if (num < max && num > secondMax) {
+                secondMax = num;
+            }
+        }
+
+        return secondMax;
+    }
+}
+
+
+
+//Using Recursion
+
+class Solution {
+    int print2largest(int[] arr) {
+        return print2largestHelper(arr, -1, -1);
+    }
+
+    private int print2largestHelper(int[] arr, int max, int secondMax) {
+        if (arr.length == 0) {
+            return secondMax;
+        }
+
+        if (arr[0] > max) {
+            secondMax = max;
+            max = arr[0];
+        } else if (arr[0] < max && arr[0] > secondMax) {
+            secondMax = arr[0];
+        }
+
+        return print2largestHelper(Arrays.copyOfRange(arr, 1, arr.length), max, secondMax);
+    }
+}
