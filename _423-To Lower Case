@@ -1,0 +1,42 @@
+//Without Recursion
+
+class Solution {
+    public String toLowerCase(String str) {
+        StringBuilder lowercase = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isUpperCase(str.charAt(i))) {
+                lowercase.append(Character.toLowerCase(str.charAt(i)));
+            } else {
+                lowercase.append(str.charAt(i));
+            }
+        }
+
+        return lowercase.toString();
+    }
+}
+
+//Aliter
+
+class Solution {
+    public String toLowerCase(String str) { 
+        return str.toLowerCase();
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public String toLowerCase(String str) {
+        if (str.isEmpty()) {
+            return str;
+        }
+
+        if (Character.isUpperCase(str.charAt(0))) {
+            return Character.toLowerCase(str.charAt(0)) + toLowerCase(str.substring(1));
+        }
+
+        return str.charAt(0) + toLowerCase(str.substring(1));
+    }
+}
