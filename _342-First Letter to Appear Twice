@@ -1,18 +1,18 @@
 //Naive Approach 
 
 class Solution {
-    String firstRepChar(String str) {
+    public char repeatedCharacter(String str) {
         Set<Character> visited = new HashSet<>();
 
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
             if (visited.contains(ch)) {
-                return String.valueOf(ch);
+                return ch;
             }
             visited.add(ch);
         }
 
-        return "-1";
+        return '\0'; // This return statement will never be reached
     }
 }
 
@@ -21,17 +21,17 @@ class Solution {
 //Optimal Approach
 
 class Solution {
-    String firstRepChar(String str) {
+    public char repeatedCharacter(String str) {
         boolean[] visited = new boolean[26];
 
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
             if (visited[ch - 'a']) {
-                return String.valueOf(ch);
+                return ch;
             }
             visited[ch - 'a'] = true;
         }
 
-        return "-1";
+        return '\0';
     }
 }
