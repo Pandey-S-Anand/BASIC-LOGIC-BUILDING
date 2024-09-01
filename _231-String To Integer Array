@@ -1,0 +1,62 @@
+//Without Using Recursion
+
+//Method 1
+
+class Solution {
+    public ArrayList<Integer> solve(String str) {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        int num = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != ',') {
+                num = (num * 10) + (str.charAt(i) - '0');
+            } else {
+                numbers.add(num);
+                num = 0;
+            }
+        }
+
+        numbers.add(num);
+
+        return numbers;
+    }
+}
+
+//Method 2
+
+public class Solution {
+    public ArrayList<Integer> solve(String str) {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        String[] arr = str.split(",");
+
+        for (String num : arr) {
+            numbers.add(Integer.parseInt(num));
+        }
+
+        return numbers;
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public ArrayList<Integer> solve(String str) {
+        return solveRecursively(str, 0, new ArrayList<>());
+    }
+
+    private ArrayList<Integer> solveRecursively(String str, int num, ArrayList<Integer> numbers) {
+        if (str.isEmpty()) {
+            numbers.add(num);
+            return numbers;
+        }
+
+        if (str.charAt(0) != ',') {
+            return solveRecursively(str.substring(1), num * 10 + (str.charAt(0) - '0'), numbers);
+        }
+
+        numbers.add(num);
+
+        return solveRecursively(str.substring(1), 0, numbers);
+    }
+}
