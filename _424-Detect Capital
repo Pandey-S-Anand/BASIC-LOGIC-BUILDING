@@ -1,0 +1,28 @@
+//Bruteforce Approach
+
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        return (word.equals(word.toUpperCase()) || word.equals(word.toLowerCase()) || (Character.isUpperCase(word.charAt(0)) && word.substring(1).equals(word.substring(1).toLowerCase())));
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        int capital = 0;
+
+        for (int i = 0; i < word.length(); i++) {
+            if (Character.isUpperCase(word.charAt(i))) {
+                capital++;
+            }
+        }
+
+        if (capital == word.length() || capital == 0 || (Character.isUpperCase(word.charAt(0)) && capital == 1)) {
+            return true;
+        }
+
+        return false;
+    }
+}
