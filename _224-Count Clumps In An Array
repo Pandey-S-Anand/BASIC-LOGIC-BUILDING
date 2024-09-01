@@ -1,0 +1,59 @@
+//Without Recursion
+
+class Solution {
+    public int countClumps(int[] arr) {
+        int clumpCount = 0, i = 0;
+
+        while (i < arr.length) {
+            int current = arr[i];
+            int count = 0;
+
+            while (i < arr.length && arr[i] == current) {
+                i++;
+                count++;
+            }
+
+            if (count > 1) {
+                clumpCount++;
+            }
+        }
+
+        return clumpCount;
+    }
+}
+
+//Aliter
+
+class Solution {
+    public int countClumps(int[] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            if ((i == 0 ? true : arr[i] != arr[i - 1]) && (arr[i] == arr[i + 1])) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public int countClumps(int[] arr) {
+        return countClumps(arr, 0);
+    }
+
+    private int countClumps(int[] arr, int index) {
+        if (arr.length == 0 || index == (arr.length - 1)) {
+            return 0;
+        }
+
+        if ((index == 0 ? true : arr[index] != arr[index - 1]) && (arr[index] == arr[index + 1])) {
+            return 1 + countClumps(arr, index + 1);
+        }
+
+        return countClumps(arr, index + 1);
+    }
+}
