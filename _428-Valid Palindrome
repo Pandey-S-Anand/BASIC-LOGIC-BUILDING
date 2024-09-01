@@ -1,0 +1,119 @@
+//Naive Approach
+
+class Solution {
+    public boolean isPalindrome(String str) {
+        return isStringPalindrome(filterAlphaNumeric(str));
+    }
+
+    private String filterAlphaNumeric(String str) {
+        StringBuilder modifiedString = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isLetter(str.charAt(i)) || Character.isDigit(str.charAt(i))) {
+                modifiedString.append(Character.toLowerCase(str.charAt(i)));
+            }
+        }
+
+        return modifiedString.toString();
+    }
+
+    private boolean isStringPalindrome(String str) {
+        int i = 0, j = str.length() - 1;
+
+        while (i < j) {
+            if (str.charAt(i) != str.charAt(j)) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+
+        return true;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public boolean isPalindrome(String str) {
+        int start = 0;
+        int end = str.length() - 1;
+
+        while (start < end) {
+            while (start < end && !Character.isLetterOrDigit(str.charAt(start))) {
+                start++;
+            }
+
+            while (start < end && !Character.isLetterOrDigit(str.charAt(end))) {
+                end--;
+            }
+
+            if (start < end) {
+                if (Character.toLowerCase(str.charAt(start)) != Character.toLowerCase(str.charAt(end))) {
+                    return false;
+                }
+
+                start++;
+                end--;
+            }
+        }
+
+        return true;
+    }
+}
+
+
+
+//Using Recursion
+
+class Solution {
+    public boolean isPalindrome(String str) {
+        return isPalindrome(str, 0, str.length() - 1);
+    }
+
+    private boolean isPalindrome(String str, int start, int end) {
+        if (start >= end) {
+            return true;
+        }
+
+        while (start < end && !Character.isLetterOrDigit(str.charAt(start))) {
+            start++;
+        }
+
+        while (start < end && !Character.isLetterOrDigit(str.charAt(end))) {
+            end--;
+        }
+
+        if (start < end && Character.toLowerCase(str.charAt(start)) != Character.toLowerCase(str.charAt(end))) {
+            return false;
+        }
+
+        return isPalindrome(str, ++start, --end);
+    }
+}
+
+
+//Aliter
+
+class Solution {
+    public boolean isPalindrome(String str) {
+        if (str.length() < 2) {
+            return true;
+        }
+
+        while (!str.isEmpty() && !Character.isLetterOrDigit(str.charAt(0))) {
+            str = str.substring(1);
+        }
+
+        while (!str.isEmpty() && !Character.isLetterOrDigit(str.charAt(str.length() - 1))) {
+            str = str.substring(0, str.length() - 1);
+        }
+
+        if (str.length() >= 2 && Character.toLowerCase(str.charAt(0)) != Character.toLowerCase(str.charAt(str.length() - 1))) {
+            return false;
+        }
+
+        return isPalindrome(str.length() < 2 ? str : str.substring(1, str.length() - 1));
+    }
+}
