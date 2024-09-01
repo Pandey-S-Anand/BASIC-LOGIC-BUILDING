@@ -1,0 +1,43 @@
+//Without Recursion
+
+class Solution {
+    public String wordAppend(String[] arr) {
+        Map<String, Integer> frequencyMap = new HashMap<>();
+        StringBuilder modifiedString = new StringBuilder();
+
+        for (String str : arr) {
+            frequencyMap.put(str, frequencyMap.getOrDefault(str, 0) + 1);
+            if (frequencyMap.get(str) % 2 == 0) {
+                modifiedString.append(str);
+            }
+        }
+        return modifiedString.toString();
+    }
+}
+
+
+
+//Using Recursion
+
+class Solution {
+    Map<String, Integer> frequencyMap = new HashMap<>();
+
+    public String wordAppend(String[] arr) {
+        frequencyMap.clear();
+        return wordAppendRecursive(arr);
+    }
+
+    private String wordAppendRecursive(String[] arr) {
+        if (arr.length == 0) {
+            return "";
+        }
+
+        frequencyMap.put(arr[0], frequencyMap.getOrDefault(arr[0], 0) + 1);
+
+        if (frequencyMap.get(arr[0]) % 2 == 0) {
+            return arr[0] + wordAppendRecursive(Arrays.copyOfRange(arr, 1, arr.length));
+        }
+
+        return wordAppendRecursive(Arrays.copyOfRange(arr, 1, arr.length));
+    }
+}
