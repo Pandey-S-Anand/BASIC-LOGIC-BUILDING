@@ -1,0 +1,9 @@
+class Solution {
+    public static float findMedian(int[] arr) {
+        if ((arr.length % 2) == 0) {
+            return (float) (arr[(arr.length - 1) / 2] + arr[arr.length / 2]) / 2.0F;
+        }
+
+        return (float) arr[arr.length / 2];
+    }
+}
