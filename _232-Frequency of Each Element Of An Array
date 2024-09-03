@@ -1,0 +1,110 @@
+//Method 1
+
+class Solution {
+    public static void countFrequency(int[] arr) {
+        int[] frequencyArray = new int[arr.length];
+
+        for (int i = 0; i < arr.length; i++) {
+            if (frequencyArray[i] == -1) {
+                continue;
+            }
+
+            int count = 1;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    frequencyArray[j] = -1;
+                    count++;
+                }
+            }
+
+            frequencyArray[i] = count;
+        }
+
+        System.out.println("Frequency :");
+        for (int i = 0; i < arr.length; i++) {
+            if (frequencyArray[i] != -1) {
+                System.out.println(arr[i] + "--->" + frequencyArray[i] + "  Times");
+            }
+        }
+    }
+}
+
+
+//Method 2
+
+class Solution {
+    public static void countFrequency(int[] arr) {
+        System.out.println("Frequency :");
+
+        Map<Integer, Integer> frequencyMap = new HashMap<>(arr.length);
+
+        for (int val : arr) {
+            frequencyMap.put(val, frequencyMap.getOrDefault(val, 0) + 1);
+        }
+
+        for (int key : frequencyMap.keySet()) {
+            System.out.println(key + "==>" + frequencyMap.get(key));
+        }
+    }
+}
+
+
+//Method 3 - Using HashMap (Prints elements(Along with Their Frequency) in same order as they appear in input)
+
+class Solution {
+    public static void countFrequency(int[] arr) {
+        System.out.println("Frequency :");
+
+        Map<Integer, Integer> frequencyMap = new HashMap<>(arr.length);
+
+        for (int val : arr) {
+            frequencyMap.put(val, frequencyMap.getOrDefault(val, 0) + 1);
+        }
+
+        for (int val : arr) {
+            if (frequencyMap.containsKey(val)) {
+                System.out.println(val + "==>" + frequencyMap.get(val));
+                frequencyMap.remove(val);
+            }
+        }
+    }
+}
+
+
+//Aliter - Using LinkedHashMap (Prints elements(Along with Their Frequency) in same order as they appear in input)
+
+
+class Solution {
+    public static void countFrequency(int[] arr) {
+        System.out.println("Frequency :");
+
+        Map<Integer, Integer> frequencyMap = new LinkedHashMap<>(arr.length);
+
+        for (int val : arr) {
+            frequencyMap.put(val, frequencyMap.getOrDefault(val, 0) + 1);
+        }
+
+        for (int key : frequencyMap.keySet()) {
+            System.out.println(key + "==>" + frequencyMap.get(key));
+        }
+    }
+}
+
+
+//Method 4 - Using TreeMap (Prints elements(Along with Their Frequency) in sorted order(Ascending order))
+
+class Solution {
+    public static void countFrequency(int[] arr) {
+        System.out.println("Frequency :");
+
+        Map<Integer, Integer> frequencyMap = new TreeMap<>();
+
+        for (int val : arr) {
+            frequencyMap.put(val, frequencyMap.getOrDefault(val, 0) + 1);
+        }
+
+        for (int key : frequencyMap.keySet()) {
+            System.out.println(key + "==>" + frequencyMap.get(key));
+        }
+    }
+}
