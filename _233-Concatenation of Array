@@ -1,0 +1,28 @@
+//Bruteforce Approach
+
+class Solution {
+    public int[] getConcatenation(int[] arr) {
+        int[] twice = new int[2 * arr.length];
+
+        System.arraycopy(arr, 0, twice, 0, arr.length);
+        System.arraycopy(arr, 0, twice, arr.length, arr.length);
+
+        return twice;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public int[] getConcatenation(int[] arr) {
+        int[] twice = new int[2 * arr.length];
+
+        for (int i = 0; i < arr.length; i++) {
+            twice[i] = arr[i];
+            twice[arr.length + i] = arr[i];
+        }
+
+        return twice;
+    }
+}
