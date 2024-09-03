@@ -16,14 +16,14 @@ class Solution {
 
 class Solution {
     public int smallestEqual(int[] arr) {
-        int idx = 0;
+        int index = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (idx == arr[i]) {
+            if (index == arr[i]) {
                 return i;
             }
 
-            if (++idx == 10) {
-                idx = 0; // Equivalent to (index%10)
+            if (++index == 10) {
+                index = 0; // Equivalent to (index%10)
             }
         }
         return -1;
