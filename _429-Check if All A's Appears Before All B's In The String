@@ -1,0 +1,40 @@
+//Without Recursion
+
+//Bruteforce Approach
+
+class Solution {
+    public boolean checkString(String str) {
+        int aCount = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'a') {
+                aCount++;
+            }
+        }
+
+        int i = 0;
+        while (aCount != 0) {
+            if (str.charAt(i++) == 'b') {
+                return false;
+            }
+            aCount--;
+        }
+
+        return true;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public boolean checkString(String str) {
+        for (int i = 0; i < (str.length() - 1); i++) {
+            if (str.charAt(i) == 'b' && str.charAt(i + 1) == 'a') {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
