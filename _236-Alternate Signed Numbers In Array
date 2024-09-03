@@ -2,24 +2,22 @@
 
 class Solution {
     static void isAlternate(int arr[], int n) {
-        boolean alternate = true;
+        int i;
         if (arr[0] >= 0) {
-            for (int i = 1; i < n; i++) {
+            for (i = 1; i < n; i++) {
                 if (((i % 2 == 1) && arr[i] >= 0) || ((i % 2 == 0) && arr[i] < 0)) {
-                    alternate = false;
                     break;
                 }
             }
         } else {
-            for (int i = 1; i < n; i++) {
+            for (i = 1; i < n; i++) {
                 if (((i % 2) == 1 && arr[i] < 0) || ((i % 2) == 0 && arr[i] >= 0)) {
-                    alternate = false;
                     break;
                 }
             }
         }
 
-        if (alternate) {
+        if (i == n) {
             System.out.println("Yes");
         } else {
             System.out.println("No");
@@ -32,18 +30,17 @@ class Solution {
 
 class Solution {
     static void isAlternate(int arr[], int n) {
-        boolean alternate = true, isPositive = arr[0] >= 0;
-
-        for (int i = 1; i < n; i++) {
+        boolean isPositive = arr[0] >= 0;
+        int i;
+        for (i = 1; i < n; i++) {
             if ((isPositive && arr[i] >= 0) || (!isPositive && arr[i] < 0)) {
-                alternate = false;
                 break;
             }
 
             isPositive = !isPositive;
         }
 
-        if (alternate) {
+        if (i == n) {
             System.out.println("Yes");
         } else {
             System.out.println("No");
