@@ -1,0 +1,32 @@
+/*
+Mathematical Insight:
+
+The number of digits d in a number N can be determined using the logarithm base 10:
+
+d = ⌊log₁₀(N)⌋ + 1
+
+For N!, you want to find:
+
+d = ⌊log₁₀(N!)⌋ + 1
+
+Using properties of logarithms:
+
+log₁₀(N!) = log₁₀(1) + log₁₀(2) + log₁₀(3) + ⋯ + log₁₀(N)
+
+Thus, the number of digits in N! can be determined using the following formula:
+
+d = ⌊log₁₀(1) + log₁₀(2) + log₁₀(3) + ⋯ + log₁₀(N)⌋ + 1
+*/
+
+class Solution {
+    static int facDigits(int n) {
+        double logSum = 0;
+        for (int i = 1; i <= n; i++) {
+            logSum += Math.log10(i);
+        }
+
+        return (int) Math.floor(logSum) + 1;
+    }
+}
+
+
