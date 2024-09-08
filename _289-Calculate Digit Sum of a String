@@ -1,3 +1,4 @@
+
 class Solution {
     public String digitSum(String str, int k) {
         int sum = 0;
