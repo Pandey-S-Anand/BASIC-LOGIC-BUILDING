@@ -1,11 +1,18 @@
 //Naive Implementation
 
-class GfG {
-    int strstr(String str, String sub) {
-        for (int i = 0; i < str.length(); i++) {
+class Solution {
+    public int strStr(String str, String sub) {
+        if (sub.length() > str.length()) {
+            return -1;
+        }
+        
+        int j, k;
 
-            int j = i, k = 0;
-            while (j<str.length() && k < sub.length()) {
+        for (int i = 0; i < str.length(); i++) {
+            j = i;
+            k = 0;
+
+            while (j < str.length() && k < sub.length()) {
                 if (str.charAt(j) != sub.charAt(k)) {
                     break;
                 }
@@ -25,8 +32,11 @@ class GfG {
 
 //Optimal Implementation
 
-class GfG {
-    int strstr(String str, String sub) {
+class Solution {
+    public int strStr(String str, String sub) {
+        if (sub.length() > str.length()) {
+            return -1;
+        }
         for (int i = 0; i <= (str.length() - sub.length()); i++) {
             int j;
             for (j = 0; j < sub.length(); j++) {
