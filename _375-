@@ -1,0 +1,138 @@
+//Using Two Queue
+
+class MyStack {
+    private int[] mainQueue;
+    private int[] helperQueue;
+    int mainFront;
+    int mainRear;
+    int helperFront;
+    int helperRear;
+
+    public MyStack() {
+        mainQueue = new int[100];
+        helperQueue = new int[100];
+        mainFront = mainRear = helperFront = helperRear - 1;
+    }
+
+    public void push(int x) {
+        if (!isMainFull()) {
+            if (isMainEmpty()) {
+                enqueueMain(x);
+            } else {
+                while (!isMainEmpty()) {
+                    enqueueHelper(mainQueue[mainFront]);
+                    dequeueMain();
+                }
+
+                enqueueMain(x);
+
+                while (!isHelperEmpty()) {
+                    enqueueMain(helperQueue[helperFront]);
+                    dequeueHelper();
+                }
+            }
+        }
+    }
+
+    public int pop() {
+        return dequeueMain();
+    }
+
+    public int top() {
+        return mainPeek();
+    }
+
+    public boolean empty() {
+        return isMainEmpty();
+    }
+
+    // Enqueue in mainQueue
+    private void enqueueMain(int x) {
+        if (!isMainFull()) {
+            if (isMainEmpty()) {
+                mainFront = mainRear = 0;
+            } else {
+                mainRear++;
+            }
+            mainQueue[mainRear] = x;
+        }
+    }
+
+    // Dequeue from mainQueue
+    private int dequeueMain() {
+        if (isMainEmpty()) {
+            return -1;
+        }
+
+        int removedElement = mainQueue[mainFront];
+        if (mainFront == mainRear) {
+            mainFront = mainRear = -1;
+        } else {
+            mainFront++;
+        }
+        return removedElement;
+    }
+
+    // Enqueue in helperQueue
+    private void enqueueHelper(int x) {
+        if (!isHelperFull()) {
+            if (isHelperEmpty()) {
+                helperFront = helperRear = 0;
+            } else {
+                helperRear++;
+            }
+            helperQueue[helperRear] = x;
+        }
+    }
+
+    // Dequeue from helperQueue
+    private int dequeueHelper() {
+        if (isHelperEmpty()) {
+            return -1;
+        }
+
+        int removedElement = helperQueue[helperFront];
+        if (helperFront == helperRear) {
+            helperFront = helperRear = -1;
+        } else {
+            helperFront++;
+        }
+        return removedElement;
+    }
+
+    // Check if mainQueue is empty
+    private boolean isMainEmpty() {
+        return mainFront == -1;
+    }
+
+    // Check if helperQueue is empty
+    private boolean isHelperEmpty() {
+        return helperFront == -1;
+    }
+
+    // Check if mainQueue is full
+    private boolean isMainFull() {
+        return mainRear == mainQueue.length - 1;
+    }
+
+    // Check if helperQueue is full
+    private boolean isHelperFull() {
+        return helperRear == helperQueue.length - 1;
+    }
+
+    // Peek the front element of the mainQueue
+    private int mainPeek() {
+        if (isMainEmpty()) {
+            return -1;
+        }
+        return mainQueue[mainFront];
+    }
+
+    // Peek the front element of the helperQueue
+    private int helperPeek() {
+        if (isHelperEmpty()) {
+            return -1;
+        }
+        return helperQueue[helperFront];
+    }
+}
