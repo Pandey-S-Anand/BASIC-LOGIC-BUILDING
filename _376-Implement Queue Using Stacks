@@ -1,0 +1,227 @@
+// Naive Implementation
+
+class MyQueue {
+    private MyStack mainStack;
+    private MyStack helperStack;
+
+    public MyQueue() {
+        mainStack = new MyStack(100);
+        helperStack = new MyStack(100);
+    }
+
+    public void push(int x) {
+        if (!mainStack.isFull()) {
+            mainStack.push(x);
+        }
+    }
+
+    public int pop() {
+        if (mainStack.isEmpty()) {
+            return -1;
+        }
+
+        /*
+         * Transfer all elements from main stack to helper stack
+         * This reverses the order of elements, allowing the first pushed element to be accessed first
+         */
+        while (!mainStack.isEmpty()) {
+            helperStack.push(mainStack.pop());
+        }
+        // Pop the top element from helper stack (which is the front of the queue)
+        int removedElement = helperStack.pop();
+        
+        // Transfer all elements back to the main stack to maintain original order for future push operations
+        while (!helperStack.isEmpty()) {
+            mainStack.push(helperStack.pop());
+        }
+
+        return removedElement;
+    }
+
+    public int peek() {
+        if (mainStack.isEmpty()) {
+            return -1;
+        }
+
+        while (!mainStack.isEmpty()) {
+            helperStack.push(mainStack.pop());
+        }
+
+        int peakElement = helperStack.peek();
+
+        while (!helperStack.isEmpty()) {
+            mainStack.push(helperStack.pop());
+        }
+
+        return peakElement;
+    }
+
+    public boolean empty() {
+        return mainStack.isEmpty();
+    }
+}
+
+class MyStack {
+    private int[] stack;
+    int top;
+
+    MyStack(int size) {
+        stack = new int[size];
+        top = -1;
+    }
+
+    public void push(int num) {
+        if (!isFull()) {
+            stack[++top] = num;
+        }
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            return -1;
+        }
+
+        return stack[top--];
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            return -1;
+        }
+
+        return stack[top];
+    }
+
+    public boolean isFull() {
+        return top == stack.length - 1;
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public int size() {
+        return top + 1;
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
+
+
+
+// Optimal Implementation
+
+class MyQueue {
+    private MyStack mainStack;
+    private MyStack helperStack;
+
+    private static final int capacity = 100;
+
+    public MyQueue() {
+        mainStack = new MyStack(capacity);
+        helperStack = new MyStack(capacity);
+    }
+
+    public void push(int x) {
+        // Only push to the main stack if the total size of both stacks is less than capacity
+        if ((mainStack.size() + helperStack.size()) < capacity) {
+            mainStack.push(x);
+        }
+    }
+
+    public int pop() {
+        // If both stacks are empty, return -1
+        if (mainStack.isEmpty() && helperStack.isEmpty()) {
+            return -1;
+        }
+        
+        // If the helper stack is empty, transfer elements from main stack to helper stack
+        if (helperStack.isEmpty()) {
+            while (!mainStack.isEmpty()) {
+                helperStack.push(mainStack.pop()); // Transfer elements to reverse their order
+            }
+        }
+
+        return helperStack.pop(); // Pop and return the top element from the helper stack (front of the queue)
+    }
+
+    public int peek() {
+        // If both stacks are empty, return -1
+        if (mainStack.isEmpty() && helperStack.isEmpty()) {
+            return -1;
+        }
+
+        // If the helper stack is empty, transfer elements from main stack to helper stack
+        if (helperStack.isEmpty()) {
+            while (!mainStack.isEmpty()) {
+                helperStack.push(mainStack.pop()); // Transfer elements to reverse their order
+            }
+        }
+
+        return helperStack.peek(); // Peek at the top element from the helper stack (front of the queue)
+    }
+
+    public boolean empty() {
+        return mainStack.isEmpty() && helperStack.isEmpty();
+    }
+}
+
+class MyStack {
+    private int[] stack;
+    int top;
+
+    MyStack(int size) {
+        stack = new int[size];
+        top = -1;
+    }
+
+    public void push(int num) {
+        if (!isFull()) {
+            stack[++top] = num;
+        }
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            return -1;
+        }
+
+        return stack[top--];
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            return -1;
+        }
+
+        return stack[top];
+    }
+
+    public boolean isFull() {
+        return top == stack.length - 1;
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public int size() {
+        return top + 1;
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
