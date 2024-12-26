@@ -97,7 +97,16 @@ class MyQueue {
         }
         return queue[front];
     }
+
+    // Get the size of the queue (number of elements)
+    public int size() {
+        if (isEmpty()) {
+            return 0;
+        }
+        return rear - front + 1;
+    }
 }
+
 
 
 //Using One Queue
