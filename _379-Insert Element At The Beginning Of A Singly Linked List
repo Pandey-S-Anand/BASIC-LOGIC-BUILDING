@@ -1,0 +1,10 @@
+class Solution {
+    public Node insertAtBegining(Node head, int x) {
+        Node newHead = new Node(x);
+
+        newHead.next = head;
+        head = newHead;
+
+        return head;
+    }
+}
