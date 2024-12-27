@@ -1,0 +1,93 @@
+//Naive Implementation
+
+class Solution {
+    static Node constructLL(int arr[]) {
+       // Create an instance of SinglyLinkedList
+       SinglyLinkedList singlyLinkedList=new SinglyLinkedList();
+       
+       // Iterate over each element in the array and append it to the singly linked list
+       for(int num:arr){
+          singlyLinkedList.append(num);  
+       }
+       
+       // Return the head node of the constructed linked list
+       return singlyLinkedList.head;
+    }
+}
+
+class SinglyLinkedList{
+    // Head pointer of the linked list
+    public Node head
+    
+    public void append(int data){
+       // If the singly linked list is empty, create a new node and set it as the head    
+       if(head==null){
+           head=new Node(data);
+       }else{
+          Node current=head;
+          // Traverse to the last node in the singly linked list
+          while(current.next!=null){
+             current=current.next; 
+          }
+          
+          // Create a new node and link it to the last node
+          current.next=new Node(data); ;
+       }
+    }
+}
+
+
+//Better Implementation
+
+class Solution {
+    static Node constructLL(int arr[]) {
+        SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+
+        for (int num : arr) {
+            singlyLinkedList.append(num);
+        }
+
+        return singlyLinkedList.head;
+    }
+}
+
+class SinglyLinkedList {
+    public Node head;
+    // Pointer to the last node of the singly linked list (for efficient appending)
+    private Node tail;
+
+    public void append(int data) {
+        // If the singly linked list is empty, initialize the head and tail with the new node
+        if (head == null) {
+            head = tail = new Node(data);
+        } else {
+            Node newNode = new Node(data);
+            // Link the new node after the current tail
+            tail.next = newNode;
+            // Update the tail to point to the new node
+            tail = newNode;
+        }
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution {
+    static Node constructLL(int arr[]) {
+        Node head = null;
+        Node tail = null;
+
+        for (int num : arr) {
+            if (head == null) {
+                head = tail = new Node(num);
+            } else {
+                Node newNode = new Node(num);
+                tail.next = newNode;
+                tail = newNode;
+            }
+        }
+
+        return head;
+    }
+}
