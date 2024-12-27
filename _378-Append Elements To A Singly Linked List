@@ -1,0 +1,17 @@
+class Solution {
+    Node insertAtEnd(Node head, int x) {
+        if (head == null) {
+            head = new Node(x);
+        } else {
+            Node currentNode = head;
+
+            while (currentNode.next != null) {
+                currentNode = currentNode.next;
+            }
+
+            currentNode.next = new Node(x);
+        }
+
+        return head;
+    }
+}
