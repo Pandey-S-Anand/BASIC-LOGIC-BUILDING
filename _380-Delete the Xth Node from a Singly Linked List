@@ -1,0 +1,36 @@
+/* Linklist node structure
+class Node
+{
+    int data;
+    Node next;
+
+    Node(int d){
+        data = d;
+        next = null;
+    }
+}*/
+
+class Solution {
+    Node deleteNode(Node head, int x) {
+       Node currentNode=head;
+       Node previousNode=null;
+       
+       // Traverse to the xth node (1-based indexing)
+       while(x>1){
+          previousNode=currentNode;
+          currentNode=currentNode.next;
+          x--; 
+       }
+       
+       
+       if(previousNode==null){ // If deleting the first node
+           head=currentNode.next;  // Update the head to the next node 
+       }else if(currentNode.next==null){ // If deleting the last node
+           previousNode.next=null; // Set the previous node's next to null
+       }else{  // If deleting an intermediate node
+           previousNode.next=currentNode.next;  // Skip the current node to delete it
+       }
+       
+       return head;
+    }
+}
