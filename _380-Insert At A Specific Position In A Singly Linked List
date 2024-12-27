@@ -1,1 +1,30 @@
+public class Solution {
+    static Node insert(Node head, int n, int index, int val) {
+        Node currentNode = head;
+        Node prevNode = null;
 
+        while (index > 0) {
+            prevNode = currentNode;
+            currentNode = currentNode.next;
+            index--;
+        }
+
+        /*
+         * After the completion of the loop, prevNode will point to the node just before
+         * the target index (targetIndex - 1), and currentNode will point to the node at
+         * the target index (targetIndex).
+         */
+        Node newNode = new Node(val);
+        // Handle special case when index is 0 (insert at the beginning)
+        if (prevNode == null) {
+            newNode.next = head;
+            head = newNode;
+        } else { 
+            // Insert the new node between prevNode and currentNode
+            newNode.next = prevNode.next;
+            prevNode.next = newNode;
+        }
+
+        return head;
+    }
+}
