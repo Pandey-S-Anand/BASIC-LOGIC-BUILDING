@@ -1,0 +1,24 @@
+class Solution {
+    Node removeDuplicates(Node head) {
+        if (head == null) {
+            return null;
+        }
+
+        Node prevNode = head;
+        Node currentNode = head.next;
+
+        while (currentNode != null) {
+            // If current node's data is equal to previous node's data, skip the current node
+            if (prevNode.data == currentNode.data) {
+                prevNode.next = currentNode.next; // Link previous node to next of current
+            } else {
+                prevNode = currentNode; // Move prevNode pointer to current node if it's unique
+            }
+            currentNode = currentNode.next; // Move to the next node in the singly linked list
+
+        }
+
+        return head;
+    }
+}
+
