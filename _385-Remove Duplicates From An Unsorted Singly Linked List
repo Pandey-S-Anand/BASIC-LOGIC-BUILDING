@@ -1,0 +1,22 @@
+class Solution {
+    public Node removeDuplicates(Node head) {
+        Set<Integer> seen = new HashSet<>();
+
+        Node currentNode = head;
+        Node prevNode = null;
+
+        while (currentNode != null) {
+            // If the current value is already seen, remove the current node
+            if (seen.contains(currentNode.data)) {
+                prevNode.next = currentNode.next;
+            } else {
+                // Add the value to the set and move prev pointer
+                seen.add(currentNode.data);
+                prevNode = currentNode;
+            }
+            currentNode = currentNode.next;
+        }
+
+        return head;
+    }
+}
