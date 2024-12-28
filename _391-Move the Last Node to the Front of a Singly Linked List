@@ -1,0 +1,17 @@
+class Solution {
+    public static Node moveToFront(Node head) {
+        Node currentNode = head;
+        Node prevNode = null;
+
+        while (currentNode.next != null) {
+            prevNode = currentNode;
+            currentNode = currentNode.next;
+        }
+
+        prevNode.next = null; // Detach the last node by setting prevNode's next to null
+        currentNode.next = head; // Move the last node to the front by setting its next to the head
+        head = currentNode; // Update the head to be the last node
+
+        return head; // Return the new head of the singly linked list
+    }
+}
