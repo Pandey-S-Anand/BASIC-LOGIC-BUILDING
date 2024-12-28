@@ -115,8 +115,6 @@ class Solution {
 
 //Optimal Approach
 
-//Iterative Approach
-
 /*
 * The core idea is to reverse the direction of the links between nodes.
 * Instead of using any additional data structures, we will:
@@ -136,6 +134,8 @@ class Solution {
 * 
 * This approach modifies the list in-place with no additional space required.
 */
+
+//Iterative Approach
 
 class Solution {
     public ListNode reverseList(ListNode head) {
@@ -160,3 +160,21 @@ class Solution {
 
 // Recursive Approach
 
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        return reverseList(head, null);
+    }
+
+    private ListNode reverseList(ListNode currentNode, ListNode prevNode) {
+        if (currentNode == null) {
+            return prevNode;
+        }
+
+        ListNode nextNode = currentNode.next;
+        currentNode.next = prevNode;
+        prevNode = currentNode;
+        currentNode = nextNode;
+
+        return reverseList(currentNode, prevNode);
+    }
+}
