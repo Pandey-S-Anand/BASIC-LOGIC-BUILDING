@@ -1,0 +1,162 @@
+//Bruteforce Approach
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode() {}
+ * ListNode(int val) { this.val = val; }
+ * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        List<Integer> nodeValues = new ArrayList<>();
+        ListNode currentNode = head;
+
+        while (currentNode != null) {
+            nodeValues.add(currentNode.val);
+            currentNode = currentNode.next;
+        }
+
+        SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+
+        for (int i = nodeValues.size() - 1; i >= 0; i--) {
+            singlyLinkedList.append(nodeValues.get(i));
+        }
+
+        return singlyLinkedList.getHead();
+    }
+}
+
+class SinglyLinkedList {
+    private ListNode head;
+    private ListNode tail;
+
+    public ListNode getHead() {
+        return head;
+    }
+
+    public void append(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
+}
+
+
+//Improved Approach
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        List<Integer> nodeValues = new ArrayList<>();
+        ListNode currentNode = head;
+
+        while (currentNode != null) {
+            nodeValues.add(currentNode.val);
+            currentNode = currentNode.next;
+        }
+
+        ListNode tail;
+        head = tail = new ListNode(nodeValues.get(nodeValues.size() - 1));
+
+        for (int i = nodeValues.size() - 2; i >= 0; i--) {
+            ListNode newNode = new ListNode(nodeValues.get(i));
+            tail.next = newNode;
+            tail = newNode;
+        }
+
+        return head;
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        // Traverse the singly linked list and push all node values onto the stack
+        Deque<Integer> nodeValues = new ArrayDeque<>();
+        ListNode currentNode = head;
+
+        while (currentNode != null) {
+            nodeValues.push(currentNode.val); // Push node value onto the stack
+            currentNode = currentNode.next; // Move to the next node
+        }
+
+        // Reset the current node back to the head of the list
+        currentNode = head;
+
+        // Traverse the singly linked list again and pop values from the stack to reverse the node values
+        while (currentNode != null) {
+            currentNode.val = nodeValues.pop(); // Pop value from the stack and assign to current node
+            currentNode = currentNode.next; // Move to the next node
+        }
+
+        // Return the head of the reversed list
+        return head;
+    }
+}
+
+
+//Optimal Approach
+
+//Iterative Approach
+
+/*
+* The core idea is to reverse the direction of the links between nodes.
+* Instead of using any additional data structures, we will:
+* 
+* - Maintain two pointers:
+*     1. currentNode: to traverse the list.
+*     2. prevNode: to reverse the links and keep track of the new list.
+* 
+* - For each node, we:
+*     1. Save the next node (currentNode.next) to avoid losing track of the list.
+*     2. Set currentNode.next to prevNode, effectively reversing the direction of the link.
+*     3. Move prevNode to currentNode, and currentNode to the next node.
+* 
+* - Repeat this process for every node in the list until we reach the end.
+* 
+* - Once the loop completes, prevNode will point to the new head of the reversed list.
+* 
+* This approach modifies the list in-place with no additional space required.
+*/
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        ListNode currentNode = head;
+        ListNode prevNode = null;
+
+        while (currentNode != null) {
+            ListNode nextNode = currentNode.next;  // Save the next node.
+            currentNode.next = prevNode; // Reverse the link.
+            prevNode = currentNode; // Move prevNode forward.
+            currentNode = nextNode;  // Move currentNode forward.
+        }
+
+        return prevNode; // Return prevNode, which now points to the head of the reversed list.
+    }
+}
+
+
+// Recursive Approach
+
