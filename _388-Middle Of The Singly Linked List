@@ -1,0 +1,85 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode() {}
+ * ListNode(int val) { this.val = val; }
+ * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+//Bruteforce Approach
+
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        int middleIndex = getSize(head) / 2;
+
+        ListNode currentNode = head;
+        while (middleIndex > 0) {
+            currentNode = currentNode.next;
+            middleIndex--;
+        }
+
+        return currentNode;
+    }
+
+    private int getSize(ListNode head) {
+        ListNode currentNode = head;
+        int size = 0;
+
+        while (currentNode != null) {
+            size++;
+            currentNode = currentNode.next;
+        }
+
+        return size;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    /**
+     * The logic of the slow and fast pointer approach is based on the following analogy:
+     * 
+     * - Imagine a person A (moving at speed X jumps/hour) wants to find the middle of a track.
+     * - The track's total length (L km) is unknown to them, and they need to place a flag at the middle (L/2 km).
+     * 
+     * 1. One approach is for person A to run the entire track to determine its total length (L),
+     *    and then run back to the middle point (L/2). This is similar to first calculating the size 
+     *    of a singly linked list and then traversing to the middle.
+     * 
+     * 2. A more efficient approach is for person A to get help from another person B, 
+     *    who moves twice as fast (2X jumps/hour). Both start at the same point on the track:
+     *    - Person B will run faster, and when they can no longer move forward (track exhausted),
+     *      they inform person A. At this moment, person A will be exactly at the middle of the track.
+     * 
+     * - This works because for every jump person A takes, person B takes two jumps, 
+     *   ensuring that person A's position is always half of person B's distance on the track.
+     * - This eliminates the need for calculating the track length first, making the approach more efficient.
+     * 
+     * Additional Notes:
+     * - For an **odd-sized list** (e.g., `1 -> 2 -> 3`), the loop ends when `currentFast.next == null`, 
+     *   ensuring that `currentSlow` is at the exact middle node (`2`).
+     * - For an **even-sized list** (e.g., `1 -> 2 -> 3 -> 4`), the loop ends when `currentFast == null`, 
+     *   ensuring that `currentSlow` points to the second middle node (`3`).
+     * - **As per the problem's requirement**, for even-sized lists, there are two middle nodes, 
+     *   and we are expected to treat the second middle node as the middle.
+     * - The condition `currentFast != null` ensures proper handling for even-sized lists, 
+     *   while `currentFast.next != null` handles odd-sized lists.
+     */
+    public ListNode middleNode(ListNode head) {
+        ListNode currentSlow = head; // Moves one step at a time
+        ListNode currentFast = head; // Moves two steps at a time
+
+        // Fast pointer reaches the end, and slow pointer reaches the middle
+        while (currentFast != null && currentFast.next != null) {
+            currentFast = currentFast.next.next;
+            currentSlow = currentSlow.next;
+        }
+
+        return currentSlow; // Slow pointer points to the middle node
+    }
+}
