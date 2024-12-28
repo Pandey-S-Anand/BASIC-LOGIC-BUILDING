@@ -1,0 +1,28 @@
+//Bruteforce Approach
+
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        Set<ListNode> seenNodes = new HashSet<>(); // Track seen node references
+
+        ListNode currentNode = head;
+
+        while (currentNode != null) {
+            // If the node is already seen, a cycle exists
+            if (seenNodes.contains(currentNode)) {
+                return true;
+            }
+
+            // Otherwise, add the node to the set and move to the next node
+            seenNodes.add(currentNode);
+            currentNode = currentNode.next;
+        }
+
+        // No cycle detected
+        return false;
+    }
+}
+
+
+//Optimal Approach
+
+
