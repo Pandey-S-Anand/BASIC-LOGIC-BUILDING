@@ -1,0 +1,62 @@
+//Bruteforce Approach
+
+class Solution {
+    public int countNodesinLoop(Node head) {
+        // Create a HashMap to store each node with the timestamp (the step number when the node was first visited)
+        Map<Node, Integer> nodesTimestamp = new HashMap<>();
+        int time = 1; // Variable to track the current time (step number)
+
+        Node currentNode = head;
+
+        while (currentNode != null) {
+            // If the current node is already in the map, a loop is detected
+            if (nodesTimestamp.containsKey(currentNode)) {
+                // The loop length is the difference between the current time and the first time the node was seen
+                return time - nodesTimestamp.get(currentNode);
+            }
+
+            // Add the current node to the map with the current timestamp
+            nodesTimestamp.put(currentNode, time++);
+            // Move to the next node in the list
+            currentNode = currentNode.next;
+        }
+
+        // If no loop is detected, return 0
+        return 0;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public int countNodesinLoop(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            // If slow and fast pointers meet, a cycle is detected
+            if (slow == fast) {
+                // Call findLoopLength to calculate the length of the cycle
+                return findLoopLength(fast);
+            }
+        }
+
+        return 0;
+    }
+
+    private int findLoopLength(Node fast) {
+        Node currentNode = fast.next; // Start from the next node (clockwise next) where the cycle was detected (fast.next)
+        int length = 1; // Count for the node where the cycle was detected i.e fast
+
+        // Traverse the loop and count the nodes
+        while (currentNode != fast) {
+            currentNode = currentNode.next;
+            length++;
+        }
+        // Return the number of nodes in the loop
+        return length;
+    }
+}
