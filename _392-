@@ -1,0 +1,69 @@
+//Bruteforce Approach
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode() {}
+ * ListNode(int val) { this.val = val; }
+ * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        List<Integer> nodeData = new ArrayList<>();
+
+        ListNode currentNode = head;
+
+        while (currentNode != null) {
+            nodeData.add(currentNode.val);
+            currentNode = currentNode.next;
+        }
+
+        return isPalindrome(nodeData);
+    }
+
+    private boolean isPalindrome(List<Integer> arr) {
+        int start = 0, end = arr.size() - 1;
+
+        while (start < end) {
+            if (arr.get(start) != arr.get(end)) {
+                return false;
+            }
+
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+}
+
+
+//Improved Approach
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        // Stack to store node values
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        ListNode currentNode = head;
+        // Traverse the linked list and push all node values onto the stack
+        while (currentNode != null) {
+            stack.push(currentNode.val);
+            currentNode = currentNode.next;
+        }
+
+        currentNode = head;
+        // Traverse the linked list again and compare node values with stack elements
+        while (currentNode != null) {
+            if (currentNode.val != stack.pop()) { // Compare with the top of the stack
+                return false; // If values mismatch, it's not a palindrome
+            }
+            currentNode = currentNode.next; // Move to the next node
+        }
+
+        return true; // All values matched, it's a palindrome
+    }
+}
