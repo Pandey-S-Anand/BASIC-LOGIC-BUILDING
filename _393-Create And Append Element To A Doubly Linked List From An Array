@@ -1,0 +1,100 @@
+//Bruteforce Approach
+
+class Solution {
+    Node constructDLL(int arr[]) {
+        DoublyLinkedlist doublyLinkedList = new DoublyLinkedlist();
+        
+        // Add each element of the array to the doubly linked list
+        for (int data : arr) {
+            doublyLinkedList.append(data);
+        }
+
+        return doublyLinkedList.getHead(); // Return the head node of the doubly linked list
+    }
+}
+
+class DoublyLinkedlist {
+    private Node head; // Head of the doubly linked list
+
+    public Node getHead() {
+        return this.head;
+    }
+
+    public void append(int data) {
+        Node newNode = new Node(data); // Create a new node
+
+        if (head == null) {
+            head = newNode;  // If the doubly linked list is empty, set the new node as the head
+        } else {
+            Node currentNode = head;
+            // Traverse to the end of the doubly linked list
+            while (currentNode.next != null) {
+                currentNode = currentNode.next;
+            }
+            // Append the new node at the end
+            currentNode.next = newNode;
+            // Link the previous pointer of the new node to the current tail of the doubly linked list
+            newNode.prev=currentNode;
+        }
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    Node constructDLL(int arr[]) {
+        DoublyLinkedlist doublyLinkedList = new DoublyLinkedlist();
+
+        for (int data : arr) {
+            doublyLinkedList.append(data);
+        }
+
+        return doublyLinkedList.getHead();
+    }
+}
+
+class DoublyLinkedlist {
+    private Node head; // Head of the doubly linked list
+    private Node tail; // Tail of the doubly linked list
+
+    public Node getHead() {
+        return this.head;
+    }
+
+    public void append(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) { // If the doubly linked list is empty, set the new node as both head and tail
+            head = tail = newNode;
+        } else {
+            tail.next = newNode; // Append the new node at the end using the tail pointer
+            newNode.prev = tail; // Link the previous pointer of the new node to the current tail of the doubly linked list
+            tail = newNode; // Update the tail pointer to the new node
+        }
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    Node constructDLL(int arr[]) {
+        Node head = null;
+        Node tail = null;
+
+        for (int data : arr) {
+            Node newNode = new Node(data);
+
+            if (head == null) {
+                head = tail = newNode;
+            } else {
+                tail.next = newNode;
+                newNode.prev = tail;
+                tail = newNode;
+            }
+        }
+
+        return head;
+    }
+}
