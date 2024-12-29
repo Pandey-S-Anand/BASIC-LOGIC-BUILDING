@@ -1,0 +1,135 @@
+//Bruteforce Approach
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode() {}
+ * ListNode(int val) { this.val = val; }
+ * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        List<Integer> nodeData = new ArrayList<>();
+
+        ListNode currentNode = head;
+
+        while (currentNode != null) {
+            nodeData.add(currentNode.val);
+            currentNode = currentNode.next;
+        }
+
+        return isPalindrome(nodeData);
+    }
+
+    private boolean isPalindrome(List<Integer> arr) {
+        int start = 0, end = arr.size() - 1;
+
+        while (start < end) {
+            if (arr.get(start) != arr.get(end)) {
+                return false;
+            }
+
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+}
+
+
+//Improved Approach
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        // Stack to store node values
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        ListNode currentNode = head;
+        // Traverse the linked list and push all node values onto the stack
+        while (currentNode != null) {
+            stack.push(currentNode.val);
+            currentNode = currentNode.next;
+        }
+
+        currentNode = head;
+        // Traverse the linked list again and compare node values with stack elements
+        while (currentNode != null) {
+            if (currentNode.val != stack.pop()) { // Compare with the top of the stack
+                return false; // If values mismatch, it's not a palindrome
+            }
+            currentNode = currentNode.next; // Move to the next node
+        }
+
+        return true; // All values matched, it's a palindrome
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        // Step 1: Find the middle node of the singly linked list
+        ListNode middleNode = findMiddleNode(head);
+
+        // Step 2: Reverse the links in the second half of the singly linked list
+        ListNode tail = reverse(middleNode);
+
+        // Step 3: Compare the first half and the reversed second half
+        ListNode start = head; // Pointer for the first half
+        ListNode end = tail; // Pointer for the reversed second half
+
+        while (end != null) {
+            if (start.val != end.val) {
+                return false; // Not a palindrome
+            }
+            start = start.next; // Move pointer in the first half in forward direction
+            end = end.next; // Move pointer in the second half in backward direction
+        }
+
+        // Step 4: Restore the original singly linked list structure (optional) .
+        // Only needed if the question requires preserving the list's configuration
+        reverse(tail);
+
+        return true; // The list is a palindrome
+    }
+
+    private ListNode findMiddleNode(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        /*
+         * Note :
+         * Explanation for odd and even-sized lists:
+         * For odd-sized lists, the slow pointer will point to the exact middle node.
+         * Example: List = [1, 2, 3, 4, 5] -> slow points to 3
+         * For even-sized lists, the slow pointer will point to the second middle node.
+         * Example: List = [1, 2, 3, 4, 5, 6] -> slow points to 4
+         */
+
+        return slow;
+    }
+
+    private ListNode reverse(ListNode head) {
+        ListNode currentNode = head;
+        ListNode prevNode = null;
+
+        while (currentNode != null) {
+            ListNode nextNode = currentNode.next;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+
+        return prevNode; // Return the new head of the reversed list, which is the tail of the original singly linked list
+    }
+}
