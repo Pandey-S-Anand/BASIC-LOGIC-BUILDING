@@ -1,0 +1,61 @@
+//Bruteforce Approach
+
+
+
+//Optimal Approach
+
+/*
+Structure of node class is:
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+*/
+
+class Solution {
+    public Node insertInMiddle(Node head, int data) {
+        // Case 1: If the list is empty, create a new node and return as head
+        if (head == null) {
+            return new Node(data);    
+        }
+
+        // Initialize slow and fast pointers, slowPrev to keep track of the previous node of slow
+        int size = 0;
+        Node slowPrev = null;
+        Node slow = head;
+        Node fast = head;
+        
+        // Traverse the list with the fast pointer moving 2 steps at a time
+        while (fast != null && fast.next != null) {
+            slowPrev = slow;  // slowPrev keeps track of the node before slow
+            slow = slow.next; // slow moves 1 step at a time
+            fast = fast.next.next; // fast moves 2 steps at a time
+            size += 2; // Increment the size by 2 for every 2 steps taken by fast
+        }
+        
+        // If fast is not null, the list has an odd number of nodes, so increment size by 1
+        if (fast != null) {
+            size += 1;
+        }
+
+        // Create the new node to be inserted
+        Node newNode = new Node(data);
+
+        // Case 2: If the list size is odd, insert after the slow pointer (middle node)
+        if (size % 2 != 0) {
+            newNode.next = slow.next; // Link the new node to the node after slow
+            slow.next = newNode;      // Link slow to the new node
+        } else {
+            // Case 3: If the list size is even, insert after the slowPrev pointer
+            newNode.next = slowPrev.next;  // Link new node to slowPrev's next
+            slowPrev.next = newNode;       // Link slowPrev to the new node
+        }
+        
+        return head;
+    }
+} 
