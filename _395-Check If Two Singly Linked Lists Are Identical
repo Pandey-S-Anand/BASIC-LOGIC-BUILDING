@@ -1,0 +1,23 @@
+class Solution {
+    public boolean areIdentical(Node head1, Node head2) {
+        // Initialize pointers for traversing both singly linked lists
+        Node currentNode1 = head1;
+        Node currentNode2 = head2;
+
+        // Traverse both singly linked lists simultaneously
+        while (currentNode1 != null && currentNode2 != null) {
+            // Compare the data of the current nodes in both singly linked lists
+            if (currentNode1.data != currentNode2.data) {
+                return false; // If data doesn't match, the singly linked lists are not identical
+            }
+
+            // Move to the next nodes in both singly linked lists
+            currentNode1 = currentNode1.next;
+            currentNode2 = currentNode2.next;
+        }
+
+        // After traversal, check if both singly linked lists have been fully traversed
+        // If one singly linked list has remaining nodes, they are not identical
+        return currentNode1 == null && currentNode2 == null;
+    }
+}
