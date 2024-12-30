@@ -1,0 +1,18 @@
+class Solution {
+    public void deleteAlt(Node head) {
+        boolean flag = false; // Flag to track alternate nodes
+        Node currentNode = head; // Pointer to the current node
+        Node prevNode = null; // Pointer to the previous node
+
+        // Traverse the list while checking each node
+        while (currentNode != null) {
+            if (flag) { // If flag is true, delete the current node (i.e., skip it)
+                prevNode.next = currentNode.next; // Link the previous node to the node after current node
+            }
+
+            flag = !flag; // Alternate flag between true and false for skipping nodes
+            prevNode = currentNode; // Move prevNode to the current node
+            currentNode = currentNode.next; // Move to the next node in the list
+        }
+    }
+}
