@@ -1,0 +1,18 @@
+class Solution {
+    public int GetNth(Node head, int index) {
+        Node currentNode = head;
+
+        // Traverse the linked list while ensuring we do not go past the end of the singly linked list,
+        while (currentNode != null && index > 1) {
+            currentNode = currentNode.next;
+            index--;
+        }
+
+        // If the currentNode is null, it means the index is out of range.
+        if (currentNode == null) {
+            return -1; // Return -1 to indicate invalid index
+        }
+
+        return currentNode.data; // Return the data of the node at the given index
+    }
+}
