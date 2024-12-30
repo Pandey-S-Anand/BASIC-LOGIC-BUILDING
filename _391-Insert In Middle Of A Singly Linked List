@@ -1,5 +1,56 @@
 //Bruteforce Approach
 
+class Solution {
+    public Node insertInMiddle(Node head, int data) {
+        // Case 1: If the singly linked list is empty, create a new node and return it as the new head
+        if (head == null) {
+            return new Node(data); // The new node is the only node in the singly linked list
+        }
+
+        // Step 1: Calculate the size of the singly linked list
+        int size = getSize(head);
+
+        // Step 2: Find the index where we need to insert the new node (middle index)
+        int middleIndex = size / 2; // For even-size list, this is the index of the second middle element
+
+        Node currentNode = head;
+        Node prevNode = null;
+        // Step 3: Traverse the singly linked list until reaching the middle node
+        while (middleIndex > 0) {
+            prevNode = currentNode; // Keep track of the node before the middle node
+            currentNode = currentNode.next; // Move to the next node in the singly linked list
+            middleIndex--; // Decrease middle index until we reach the middle
+        }
+
+        // Step 4: Create the new node to insert
+        Node newNode = new Node(data);
+
+        // Step 5: Insert the new node in the middle of the singly linked list
+        if (size % 2 == 0) { // If the singly linked list size is even, insert after the node that is previous to the middle node
+            newNode.next = prevNode.next; // Point the new node to the next of prevNode
+            prevNode.next = newNode; // Make prevNode point to the new node
+        } else { // If the singly linked list size is odd, insert after the middle node
+            newNode.next = currentNode.next; // Point the new node to the next of currentNode
+            currentNode.next = newNode; // Make currentNode point to the new node
+        }
+
+        return head; // Return the head of the singly linked list, unchanged
+    }
+
+    // Helper function to calculate the size of the singly linked list
+    private int getSize(Node head) {
+        int size = 0;
+        Node currentNode = head;
+
+        while (currentNode != null) {
+            currentNode = currentNode.next;
+            size++;
+        }
+
+        return size;
+    }
+}
+
 
 
 //Optimal Approach
