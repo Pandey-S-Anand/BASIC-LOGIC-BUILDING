@@ -1,0 +1,120 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode() {}
+ * ListNode(int val) { this.val = val; }
+ * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+//Brutefoce Approach
+
+//Naive Implementation 
+
+class Solution {
+    public ListNode mergeTwoLists(ListNode head1, ListNode head2) {
+        MySinglyLinkedList mergedSinglyLinkedList = new MySinglyLinkedList();
+        ListNode currentNode1 = head1;
+        ListNode currentNode2 = head2;
+
+        while (currentNode1 != null && currentNode2 != null) {
+            // Retrieve the values of the current nodes from both the singly linked lists
+            int val1 = currentNode1.val;
+            int val2 = currentNode2.val;
+            // Append the smaller value to the merged singly linked list
+            if (val1 <= val2) {
+                mergedSinglyLinkedList.append(val1);
+                currentNode1 = currentNode1.next; // Move pointer of the first singly linked list forward
+            } else {
+                mergedSinglyLinkedList.append(val2);
+                currentNode2 = currentNode2.next; // Move pointer of the second singly linked list forward
+            }
+        }
+
+        // If there are remaining nodes in the first singly linked list, append them all
+        while (currentNode1 != null) {
+            mergedSinglyLinkedList.append(currentNode1.val);
+            currentNode1 = currentNode1.next;
+        }
+
+        // If there are remaining nodes in the second singly linked list, append them all
+        while (currentNode2 != null) {
+            mergedSinglyLinkedList.append(currentNode2.val);
+            currentNode2 = currentNode2.next;
+        }
+
+        // Return the head of the merged singly linked list
+        return mergedSinglyLinkedList.getHead();
+    }
+}
+
+class MySinglyLinkedList {
+    private ListNode head;
+    private ListNode tail;
+
+    public ListNode getHead() {
+        return this.head;
+    }
+
+    public void append(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
+}
+
+
+//Optimal Implementation 
+
+class Solution {
+    private ListNode mergedHead = null;
+    private ListNode mergedTail = null;
+
+    public ListNode mergeTwoLists(ListNode head1, ListNode head2) {
+        ListNode currentNode1 = head1;
+        ListNode currentNode2 = head2;
+
+        while (currentNode1 != null && currentNode2 != null) {
+            int val1 = currentNode1.val;
+            int val2 = currentNode2.val;
+
+            if (val1 <= val2) {
+                append(val1);
+                currentNode1 = currentNode1.next;
+            } else {
+                append(val2);
+                currentNode2 = currentNode2.next;
+            }
+        }
+
+        while (currentNode1 != null) {
+            append(currentNode1.val);
+            currentNode1 = currentNode1.next;
+        }
+
+        while (currentNode2 != null) {
+            append(currentNode2.val);
+            currentNode2 = currentNode2.next;
+        }
+
+        return mergedHead;
+    }
+
+    private void append(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if (mergedHead == null) {
+            mergedHead = mergedTail = newNode;
+        } else {
+            mergedTail.next = newNode;
+            mergedTail = newNode;
+        }
+    }
+}
