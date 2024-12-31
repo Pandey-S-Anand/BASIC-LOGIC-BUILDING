@@ -1,0 +1,38 @@
+class Solution {
+    static Node deleteAllOccurOfX(Node head, int key) {
+        Node currentNode = head;
+
+        while (currentNode != null) {
+            // Check if the current node contains the target key
+            if (currentNode.data == key) {
+                Node prevNode = currentNode.prev;
+                Node nextNode = currentNode.next;
+
+                /*
+                 * Update the 'next' pointer of the previous node (if it exists).
+                 * The only case when it does not exist is when the node being deleted is the head node.
+                 */
+                if (prevNode != null) {
+                    prevNode.next = nextNode;
+                }
+
+                /*
+                 * Update the 'prev' pointer of the next node (if it exists).
+                 * The only case when it does not exist is when the node being deleted is the tail node.
+                 */
+                if (nextNode != null) {
+                    nextNode.prev = prevNode;
+                }
+
+                // If the current node being deleted is the head node, update the head pointer to the next node.
+                if (currentNode.prev == null) {
+                    head = nextNode;
+                }
+            }
+            // Move to the next node in the list
+            currentNode = currentNode.next;
+        }
+
+        return head;
+    }
+}
