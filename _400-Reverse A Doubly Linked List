@@ -1,0 +1,34 @@
+class Solution {
+    public DLLNode reverseDLL(DLLNode head) {
+        // Edge case : If the doubly linked list is empty or it contains a single node
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        DLLNode currentNode = head;
+        // Find the tail of the doubly linked list
+        while (currentNode.next != null) {
+            currentNode = currentNode.next;
+        }
+
+        DLLNode start = head;
+        DLLNode end = currentNode;
+        /*
+         * - For odd-sized lists: Until `start` equals `end`.
+         * - For even-sized lists: Until `start` and `end` pointers cross each other.
+         */
+        while (start != end && start.prev != end) {
+            swap(start, end); // Swap the data
+            start = start.next; // Swap the data
+            end = end.prev; // Move end backward
+        }
+
+        return head;
+    }
+
+    private void swap(DLLNode start, DLLNode end) {
+        int temp = start.data;
+        start.data = end.data;
+        end.data = temp;
+    }
+}
