@@ -1,0 +1,29 @@
+class Solution {
+    Node removeDuplicates(Node head) {
+        Node currentNode = head.next;
+        // Traverse the doubly linked list until the end
+        while (currentNode != null) {
+            // Access the previous and next nodes of the current node
+            Node prevNode = currentNode.prev;
+            Node nextNode = currentNode.next;
+             // Check if the current node is a duplicate of the previous node
+            if (currentNode.data == prevNode.data) {
+                // Update the 'next' pointer of the previous node to skip the current node
+                // prevNode == null only happens when the current node is the head node
+                if (prevNode != null) {
+                    prevNode.next = currentNode.next;
+                }
+                
+                // Update the 'prev' pointer of the next node to skip the current node
+                // nextNode == null only happens when the current node is the tail node
+                if (nextNode != null) {
+                    nextNode.prev = prevNode;
+                }
+            }
+            // Move to the next node in the doubly linked list
+            currentNode = currentNode.next;
+        }
+        // Return the head of the list
+        return head;
+    }
+}
