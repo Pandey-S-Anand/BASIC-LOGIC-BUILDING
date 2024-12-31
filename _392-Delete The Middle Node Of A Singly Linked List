@@ -1,0 +1,86 @@
+//Brutefroce Approach
+
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        /*
+         * Edge case: If the singly linked list contains only one node, it is the middle node itself.
+         * Therefore, deleting it will result in an empty list, so return null.
+         */
+        if (head.next == null) {
+            return null;
+        }
+
+        // Step 1: Calculate the index of the middle node
+        int middleIndex = getSize(head) / 2;
+
+        ListNode prevNode = null; // Keeps track of the node before the current node
+        ListNode currentNode = head;
+
+        // Step 2: Traverse the singly linked list to the middle node
+        while (middleIndex > 0) {
+            prevNode = currentNode;
+            currentNode = currentNode.next;
+            middleIndex--;
+        }
+
+        // Step 3: Remove the middle node by updating the 'next' pointer of the previous node
+        prevNode.next = currentNode.next;
+
+        return head;
+    }
+
+    private int getSize(ListNode head) {
+        int size = 0;
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            size += 2; // Increase size count by 2 for each step
+        }
+        
+        // If the fast pointer is not null, the singly linked list has an odd number of nodes. Increment the size by 1 to account for the last node.
+        if (fast != null) {
+            size++;
+        }
+
+        return size;
+    }
+}
+
+
+//Optimal Approach
+
+/*
+ * - For an **odd-sized list** (e.g., `1 -> 2 -> 3`), the loop ends when
+ *   `currentFast.next == null`, ensuring that `currentSlow` is at the exact middle node (`2`).
+ * - For an **even-sized list** (e.g., `1 -> 2 -> 3 -> 4`), the loop ends when`currentFast == null`,
+ *   ensuring that `currentSlow` points to the second middle node (`3`).
+ * - **As per the problem's requirement**, for even-sized lists, there are two middle nodes,
+ *.  and we are expected to treat the second middle node as the middle.
+ * - The condition `currentFast != null` ensures proper handling for even-sized lists,
+ *.   while `currentFast.next != null` handles odd-sized lists.
+ */
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        if (head.next == null) {
+            return null;
+        }
+
+        ListNode slowPrev = null; // Keeps track of the node before the middle node
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slowPrev = slow; // Update the node before the slow pointer
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        // After the loop, the slow pointer points to the middle node. Remove the middle node by updating the 'next' pointer of the previous node.
+        slowPrev.next = slow.next;
+
+        return head;
+    }
+}
