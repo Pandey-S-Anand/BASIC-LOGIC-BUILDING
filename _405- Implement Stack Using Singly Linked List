@@ -1,0 +1,266 @@
+/****************************************************************
+ * 
+ * Following is the class structure of the Node class:
+ * 
+ * static class Node
+ * {
+ * int data;
+ * Node next;
+ * Node()
+ * {
+ * this.data = 0;
+ * this.next = null;
+ * }
+ * Node(int data)
+ * {
+ * this.data = data;
+ * this.next = null;
+ * }
+ * Node(int data, Node next)
+ * {
+ * this.data = data;
+ * this.next = next;
+ * }
+ * };
+ * 
+ * 
+ *****************************************************************/
+
+//Bruteforce Approach (Push operation : O(1) and Pop operation : O(n))
+
+public class Solution {
+    static class Stack {
+        private SinglyLinkedList singlyLinkedList;
+
+        Stack() {
+            singlyLinkedList = new SinglyLinkedList();
+        }
+
+        int getSize() {
+            return singlyLinkedList.getSize();
+        }
+
+        boolean isEmpty() {
+            return singlyLinkedList.getHead() == null;
+        }
+
+        void push(int data) {
+            singlyLinkedList.append(data);
+        }
+
+        void pop() {
+            singlyLinkedList.removeLastNode();
+        }
+
+        int getTop() {
+            Node tail = singlyLinkedList.getTail();
+            return tail == null ? -1 : tail.data;
+        }
+    }
+}
+
+class SinglyLinkedList {
+    private Node head; // Head of the list
+    private Node tail; // Tail of the list
+
+    public Node getHead() {
+        return head;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
+    // Append a new node with the given data to the end of the singly linked list
+    public void append(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
+
+    // Remove the tail node from the singly linked list
+    public void removeLastNode() {
+        if (head != null) { // If the singly linked list is not empty
+            Node currentNode = head;
+            Node prevNode = null;
+
+            // Traverse the list to reach the last node
+            while (currentNode.next != null) {
+                prevNode = currentNode;
+                currentNode = currentNode.next;
+            }
+
+            // If there is only one node, it will be both the tail and head node. Deleting it will make the singly linked list empty.
+            if (prevNode == null) {
+                head = tail = null;
+            } else {
+                prevNode.next = null; // Remove the last node by setting the previous node's next pointer to null
+                tail = prevNode; // Update the tail to the previous node
+            }
+        }
+    }
+
+    public int getSize() {
+        int size = 0;
+        Node fast = head; // Use a fast pointer to traverse the list in a way that counts two nodes at a time
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next; // Move fast pointer two steps
+            size += 2; // Increment size by 2 as we are moving two nodes at a time
+        }
+
+        if (fast != null) { // In case of an odd length singly linked list, the fast pointer will point to the last node
+            size++; // Add one to count the last node
+        }
+
+        return size;
+    }
+}
+
+
+// Optimal Approach (Push operation : O(1) and Pop operation : O(1))
+/*
+ * Optimal Approach: 
+ * The stack's push operation inserts elements at the front of the list, 
+ * and pop removes the first node, both in constant time O(1).
+ */
+
+//Naive Implementation
+
+public class Solution {
+    static class Stack {
+        private SinglyLinkedList singlyLinkedList;
+
+        Stack() {
+            singlyLinkedList = new SinglyLinkedList();
+        }
+
+        int getSize() {
+            return singlyLinkedList.getSize();
+        }
+
+        boolean isEmpty() {
+            return singlyLinkedList.getHead() == null;
+        }
+
+        void push(int data) {
+            singlyLinkedList.addAtFront(data);
+        }
+
+        void pop() {
+            singlyLinkedList.removeFirstNode();
+        }
+
+        int getTop() {
+            Node head = singlyLinkedList.getHead();
+            return head == null ? -1 : head.data;
+        }
+    }
+}
+
+class SinglyLinkedList {
+    private Node head;
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void addAtFront(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
+    }
+
+    public void removeFirstNode() {
+        if (head != null) {
+            if(head.next==null){
+              head=null;
+            }else{
+              head=head.next; 
+            }
+        }
+    }
+
+    public int getSize() {
+        int size = 0;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            size += 2;
+        }
+
+        if (fast != null) {
+            size++;
+        }
+
+        return size;
+    }
+}
+
+
+//Optimal Implementation
+
+public class Solution {
+    static class Stack {
+        private Node head;
+
+        Stack() {
+        }
+
+        int getSize() {
+            int size = 0;
+            Node fast = head;
+
+            while (fast != null && fast.next != null) {
+                fast = fast.next.next;
+                size += 2;
+            }
+
+            if (fast != null) {
+                size++;
+            }
+
+            return size;
+        }
+
+        boolean isEmpty() {
+            return head == null;
+        }
+
+        void push(int data) {
+            Node newNode = new Node(data);
+
+            if (head == null) {
+                head = newNode;
+            } else {
+                newNode.next = head;
+                head = newNode;
+            }
+        }
+
+        void pop() {
+            if (head != null) {
+                if (head.next == null) {
+                    head = null;
+                } else {
+                    head = head.next;
+                }
+            }
+        }
+
+        int getTop() {
+            return head == null ? -1 : head.data;
+        }
+    }
+}
