@@ -1,7 +1,0 @@
-class Solution {
-   public static int toggleKthBit(int num,int k){
-       int mask=1<<(k-1);
-       int res=num ^ mask;
-       return res;
-   }
-}
