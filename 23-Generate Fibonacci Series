@@ -9,57 +9,61 @@ Fn = Fn-1 + Fn-2
 
 //Iterative Approach
 
-class Solution{
-   public static void fibonacci(int n){
-      long a=-1L,b=1L,c=0L;
-      for(int i=1;i<=n;i++){
-         c=a+b;
-         System.out.print(c+" ");
-	 a=b;
-	 b=c;
-       }
-   }
+class Solution {
+    public static void fibonacci(int n) {
+        long a = -1L, b = 1L, c = 0L;
+
+        for (int i = 1; i <= n; i++) {
+            c = a + b;
+            System.out.print(c + " ");
+            a = b;
+            b = c;
+        }
+    }
 }
 
 
 //Recurssive Approach
 
-class Solution{	
-   public static void fibonacci(int n){ 
-     for(int i=1;i<=n;i++)
-	System.out.println(Nthfibonacci(i));
-   }
-	
-   public static long nthFibonacci(int n)
-   {
-     if(n==1)
-       return 0L;
-     if(n==2)
-       return 1L;
+class Solution {
+    public static void fibonacci(int n) {
+        for (int i = 1; i <= n; i++) {
+            System.out.println(nthFibonacci(i));
+        }
+    }
 
-     return (nthFibonacci(n-1)+nthFibonacci(n-2));
-   }
+    private static long nthFibonacci(int n) {
+        if (n == 1) {
+            return 0L;
+        }
+        if (n == 2) {
+            return 1L;
+        }
+        return nthFibonacci(n - 1) + nthFibonacci(n - 2);
+    }
 }
+
 
 
 //Dynamic Programming Approach
 
-class Solution{	
-   public static void fibonacci(int n){ 
-     long[]fib=nthFibonacci(n);
-     for(int i=1;i<=n;i++)
-	System.out.println(fib[i]);
-   }
-	
-   public static long[] nthFibonacci(int n)
-   {
-     long[]fib=new long[n+1];
-     fib[1]=0L;
-     fib[2]=1L;
+class Solution {
+    public static void fibonacci(int n) {
+        long[] fibonacci = generateFibonacci(n);
 
-     for(int i=3;i<=n;i++)
-       fib[i]=fib[i-1]+fib[i-2];
+        for (int i = 1; i <= n; i++) {
+            System.out.println(fibonacci[i]);
+        }
+    }
 
-     return fib;
-   }
+    private static long[] generateFibonacci(int n) {
+        long[] fibonacci = new long[n + 1];
+        fibonacci[1] = 0L;
+        fibonacci[2] = 1L;
+
+        for (int i = 3; i <= n; i++) {
+            fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+        }
+        return fibonacci;
+    }
 }
