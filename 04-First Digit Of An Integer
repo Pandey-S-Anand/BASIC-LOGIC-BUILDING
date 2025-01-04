@@ -12,9 +12,9 @@ class Solution {
 
         int digitCount = (int) (Math.log10(num) + 1);
         int divisor = (int) Math.pow(10, digitCount - 1);
-        int first = num / divisor;
+        int firstDigit = num / divisor;
 
-        return first;
+        return firstDigit;
     }
 }
 
