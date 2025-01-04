@@ -1,18 +1,17 @@
 //1- Iterative Approach
 
 class Solution {
-    public static int countDigits(int num){
-        if(num==0){ //0 has 1 Digit
-          return 1;
+    public static int countDigits(int num) {
+        if (num == 0) { // 0 has 1 Digit
+            return 1;
         }
-         
-        int count=0;
-        while(num!=0)
-        {
-           count++;
-           num=num/10;
+
+        int count = 0;
+        while (num != 0) {
+            count++;
+            num = num / 10;
         }
-        
+
         return count;
     }
 }
@@ -20,12 +19,12 @@ class Solution {
 //2- Recursive Approach
 
 class Solution {
-    public static int countDigits(int num){
-      if(Math.abs(num)<10){   //Base Case: Single Digit Number has Only Digit so return 1
-        return 1;
-      }
-        
-      return (1+countDigits(num/10));
+    public static int countDigits(int num) {
+        if (Math.abs(num) < 10) { // Base Case: Single Digit Number has Only Digit so return 1
+            return 1;
+        }
+
+        return (1 + countDigits(num / 10));
     }
 }
 
@@ -38,16 +37,16 @@ Digit count of N = lower bound of (log10(N)+1).
 */
 
 class Solution {
-    public static int countDigits(int num){
-        if(n==0){
-          return 1;
+    public static int countDigits(int num) {
+        if (n == 0) {
+            return 1;
         }
 
-        if(num<0){
-          num=Math.abs(num);
+        if (num < 0) {
+            num = Math.abs(num);
         }
-        
-        return (int)Math.floor(Math.log10(num) + 1); //(int)(Math.log10(num) + 1); 
+
+        return (int) Math.floor(Math.log10(num) + 1); // (int)(Math.log10(num) + 1);
     }
 }
 
