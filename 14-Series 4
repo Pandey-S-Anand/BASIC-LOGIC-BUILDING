@@ -1,16 +1,17 @@
 // 1+ 1/2+ 1/3+ 1/4.......+1/n=?
 
 class Solution {
-    public static float series(int n)
-    {
-      if(n<=0)//invalid Input
-        return -1;
-        
-      float sum=0;
-      
-      for(int i=1;i<=n;i++)
-        sum+=(float)1/i;
-        
-      return sum;
+    public static float series(int n) {
+        if (n <= 0) {// Invalid Input
+            return -1;
+        }
+
+        float sum = 0;
+
+        for (int i = 1; i <= n; i++) {
+            sum += (float) 1 / i;
+        }
+
+        return sum;
     }
 }
