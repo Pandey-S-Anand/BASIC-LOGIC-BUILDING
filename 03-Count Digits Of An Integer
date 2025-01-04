@@ -53,12 +53,12 @@ class Solution {
 
 //4- Convert the number into String and then Calculate Length of String
 
-class Solution{
-    public static int countDigits(int num){
-        if(num<0){
-          num=Math.abs(num);
+class Solution {
+    public static int countDigits(int num) {
+        if (num < 0) {
+            num = Math.abs(num);
         }
-       
+
         return Integer.toString(num).length();
     }
 }
