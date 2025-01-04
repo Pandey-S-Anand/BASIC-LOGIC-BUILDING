@@ -1,21 +1,23 @@
-
 //Method 1- log based approach
 
-class Solution{
-    public static int firstDigit(int num){
-        if(num==0)
-          return num;
+class Solution {
+    public static int firstDigit(int num) {
+        if (num == 0) {
+            return num;
+        }
 
-        if(num<0)
-          num=Math.abs(num);
-          
-       int cntDigit=(int)(Math.log10(num) + 1);
-       int temp=(int)Math.pow(10,cntDigit-1);
-       int first=num/temp;
-       
-       return first;
+        if (num < 0) {
+            num = Math.abs(num);
+        }
+
+        int digitCount = (int) (Math.log10(num) + 1);
+        int divisor = (int) Math.pow(10, digitCount - 1);
+        int first = num / divisor;
+
+        return first;
     }
 }
+
 
 
 //Method 2 - Iterative Approach
@@ -32,13 +34,12 @@ class Solution{
 
 //Method 3 - First Convert the given integer to string and then first char of string – ‘0’ is our answer.
 
- class Solution{
-    public static int firstDigit(int num){
-       if(num<0)
-         num=Math.abs(num);
+class Solution {
+    public static int firstDigit(int num) {
+        if (num < 0) {
+            num = Math.abs(num);
+        }
 
-       String str=Integer.toString(num);
-
-       return str.charAt(0)-'0';
+        return Integer.toString(num).charAt(0) - '0';
     }
 }
