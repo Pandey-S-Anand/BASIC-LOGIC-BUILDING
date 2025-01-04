@@ -1,56 +1,29 @@
 // 1^2/1! + 2^2/2! + 3^2/3! +....N^2/N!=?
 
-//Bruteforce Approach
+class Solution {
+    public static float series(int n) {
+        if (n <= 0) { // Invalid input
+            return -1;
+        }
 
-class Solution{
-    public static float series(int n){
-        if(n<=0) //invalid Input
-          return -1;
-        
-        float sum=0f;
-        for(int i=1;i<=n;i++)
-          sum=sum+(float)(i*i)/factorial(i);
-          
-        return sum;
-    }
-    
-    public static long factorial(int num)
-    {
-        long[]fact=new long[num+1];
-        fact[0]=1L;
-        
-        for(int i=1;i<=num;i++)
-          fact[i]=fact[i-1]*i;
-          
-        return fact[num];
-    }
-}
+        long[] fact = factorial(n);
 
-
-//Optimal Approach
-
-class Solution{
-    public static float series(int n){
-        if(n<=0)  //invalid Input
-          return -1;
-          
-        long[]fact=factorial(n);
-
-        float sum=0f;
-        for(int i=1;i<=n;i++)
-          sum=sum+(float)(i*i)/fact[i];
+        float sum = 0f;
+        for (int i = 1; i <= n; i++) {
+            sum = sum + (float) (i * i) / fact[i];
+        }
 
         return sum;
     }
-    
-    public static long[] factorial(int num)
-    {
-        long[]fact=new long[num+1];
-        fact[0]=1L;
-        
-        for(int i=1;i<=num;i++)
-           fact[i]=fact[i-1]*i;
-           
-        return fact;   
+
+    private static long[] factorial(int num) {
+        long[] fact = new long[num + 1];
+        fact[0] = 1L;
+
+        for (int i = 1; i <= num; i++) {
+            fact[i] = fact[i - 1] * i;
+        }
+
+        return fact;
     }
 }
