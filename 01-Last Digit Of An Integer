@@ -1,22 +1,20 @@
 //Method 1- log based approach
 
 class Solution {
-    public static int lastDigit(int num){
-       if(num<0)
-        num=Math.abs(num);
-         
-       return (num%10);
+    public static int lastDigit(int num) {
+        if (num < 0) {
+            num = Math.abs(num);
+        }
+
+        return (num % 10);
     }
 }
 
-//Method 2 - First Convert the given integer to string and then last char of string – ‘0’ is our answer.
+// Method 2 - First Convert the given integer to string and then last char of  string – ‘0’ is our answer.
 
- class Solution{
-    public static int lastDigit(int num){
-       String str=Integer.toString(num);
-
-       int last=str.charAt(str.length()-1)-'0';
-       
-       return last;
+class Solution {
+    public static int lastDigit(int num) {
+        String str = Integer.toString(num);
+        return str.charAt(str.length() - 1) - '0';
     }
 }
