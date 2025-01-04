@@ -1,38 +1,39 @@
 //Method 1
 
-class Solution{
-    public int cornerDigitSum(int n){
-       if(n<10)
-         return n;
+class Solution {
+    public int cornerDigitSum(int n) {
+        if (n < 10) {
+            return n;
+        }
 
-       return firstDigit(n)+lastDigit(n);
+        return firstDigit(n) + lastDigit(n);
     }
-    
-    private static int firstDigit(int num){
-       int cntDigit=(int)(Math.log10(num) + 1);
-       int temp=(int)Math.pow(10,cntDigit-1);
-       int first=num/temp;
-       
-       return first;
+
+    private int firstDigit(int num) {
+        int digitCount = (int) (Math.log10(num) + 1);
+        int divisor = (int) Math.pow(10, digitCount - 1);
+        return num / divisor;
     }
-    
-    private static int lastDigit(int num){
-       return num%10;
+
+    private int lastDigit(int num) {
+        return num % 10;
     }
 }
 
+
 //Method 2
 
-class Solution{
-    public int cornerDigitSum(int num){
-       if(num<10)
-         return num;
+class Solution {
+    public int cornerDigitSum(int num) {
+        if (num < 10) {
+            return num;
+        }
 
-       String str=Integer.toString(num);
+        String str = Integer.toString(num);
 
-       int first=str.charAt(0)-'0';
-       int last=str.charAt(str.length()-1)-'0';
-       
-       return first+last;
+        int firstDigit = str.charAt(0) - '0';
+        int lastDigit = str.charAt(str.length() - 1) - '0';
+
+        return firstDigit + lastDigit;
     }
 }
