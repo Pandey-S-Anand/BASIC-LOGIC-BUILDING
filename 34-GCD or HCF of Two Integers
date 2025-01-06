@@ -11,43 +11,56 @@
 
 //Iterative Approach
 
-class Solution{
-    public int gcd(int num1,int num2) { 
-        int minNum=Math.min(num1,num2);
-        
-        if(Math.max(num1,num2)%minNum==0)
-          return minNum;
-        
-        for(int temp=(minNum/2);temp>1;temp--)
-          if((num1%temp)==0 && (num2%temp)==0)
-              return temp;
-              
-        return 1;
-    } 
+class Solution {
+    public int findGCD(int num1, int num2) {
+        // Find the minimum of the two numbers
+        int smallerNum = Math.min(num1, num2);
+
+        // Check if the larger number is divisible by the smaller number
+        if (Math.max(num1, num2) % smallerNum == 0) {
+            return smallerNum; // If true, return the smaller number as the GCD
+        }
+
+        // Iterate from half of the smaller number to 1, to find the GCD
+        for (int i = smallerNum / 2; i > 1; i--) {
+            if (num1 % i == 0 && num2 % i == 0) {
+                return i; // If i is a divisor of both num1 and num2, return it as GCD
+            }
+        }
+
+        return 1; // If no common divisor greater than 1 is found, return 1
+    }
 }
+
 
 //Recurssive Approaches
 
 //Method 1: Bruteforce Approach
 
-class Solution{
-    public int gcd(int num1,int num2){ 
-       int minNum=Math.min(num1,num2); 
-       
-       if(Math.max(num1,num2)%minNum==0)
-          return minNum;
-          
-       return findGCD(num1,num2,minNum/2);
-    } 
-    
-    public static int findGCD(int num1,int num2,int temp)
-    {
-        if((num1%temp)==0 && (num2%temp)==0)
-           return temp;
-              
-        return findGCD(num1,num2,temp-1);      
+class Solution {
+    public int findGCD(int num1, int num2) {
+        // Find the smaller of the two numbers
+        int smallerNum = Math.min(num1, num2);
+
+        // If one number is divisible by the smaller one, return the smaller number
+        if (Math.max(num1, num2) % smallerNum == 0) {
+            return smallerNum;
+        }
+
+        return findGCDRecursive(num1, num2, smallerNum / 2);
+    }
+
+    private static int findGCDRecursive(int num1, int num2, int currentDivisor) {
+        // If currentDivisor is a divisor of both num1 and num2, return it
+        if (num1 % currentDivisor == 0 && num2 % currentDivisor == 0) {
+            return currentDivisor;
+        }
+
+        // Recursively check the next smaller divisor
+        return findGCDRecursive(num1, num2, currentDivisor - 1);
     }
 }
+
 
 //Method 2: Optimal Approach (using Euclidean algorithm)
 
@@ -57,29 +70,31 @@ Divisor: The divisor is the number by which the dividend is being divided.
 In the division operation : 𝑎/𝑏 => a is dividend and b is the divisor.
 */
 
-class Solution{
-    public int gcd(int num1,int num2) { 
-      return findGCD(Math.min(num1,num2),Math.max(num1,num2));
-    } 
-    
-    public static int findGCD(int divisor,int dividend)
-    {
-      int rem=dividend%divisor;
-      if(rem==0)
-	 return divisor;
-	      
-      return findGCD(rem,divisor);      
+class Solution {
+    public int gcd(int num1, int num2) {
+        return findGCD(Math.min(num1, num2), Math.max(num1, num2));
+    }
+
+    private static int findGCD(int divisor, int dividend) {
+        int remainder = dividend % divisor;
+
+        if (remainder == 0) {
+            return divisor;
+        }
+
+        return findGCD(remainder, divisor);
     }
 }
 
 //Aliter (Compressed Version)
 
-class Solution{
-    public int gcd(int divisor,int dividend){ 
-      int rem=dividend%divisor;
-      if(rem==0)
-	return divisor;
+class Solution {
+    public int gcd(int divisor, int dividend) {
+        int remainder = dividend % divisor;
+        if (remainder == 0) {
+            return divisor;
+        }
 
-      return gcd(rem,divisor);
-    } 
+        return gcd(remainder, divisor);
+    }
 }
