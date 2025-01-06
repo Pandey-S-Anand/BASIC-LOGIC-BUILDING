@@ -1,0 +1,28 @@
+class Solution {
+    public static void addFractions(int numerator1, int denominator1, int numerator2, int denominator2) {
+        // Calculate the numerator and denominator of the result
+        int resultNumerator = (numerator1 * denominator2) + (numerator2 * denominator1);
+        int resultDenominator = denominator1 * denominator2;
+
+        // Simplify the fraction by finding the GCD
+        int gcd = findGCD(resultNumerator, resultDenominator);
+        resultNumerator = resultNumerator / gcd;
+        resultDenominator = resultDenominator / gcd;
+
+        System.out.printf("(%d / %d) + (%d / %d) = (%d / %d)\n", numerator1, denominator1, numerator2, denominator2, resultNumerator, resultDenominator);
+    }
+
+    // Helper method to find the GCD
+    private static int findGCD(int a, int b) {
+        // Find the remainder
+        int remainder = b % a;
+
+        // If the remainder is 0, return the current divisor as the GCD
+        if (remainder == 0) {
+            return a;
+        }
+
+        // Recursive call with the remainder
+        return findGCD(remainder, a);
+    }
+}
