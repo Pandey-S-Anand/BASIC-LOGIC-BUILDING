@@ -26,6 +26,47 @@ class Solution {
 }
 
 
+//Recursive Approach
+
+class Solution {
+    private final static int MOD = 1000000007;
+
+    static int nthFibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+
+        return (nthFibonacci(n - 1) % MOD + nthFibonacci(n - 2) % MOD);
+    }
+}
+
+
+//Memoized Approach
+
+class Solution {
+    private static int[] cache;
+    private final static int MOD = 1000000007;
+
+    static int nthFibonacci(int n) {
+        cache = new int[n + 1];
+        Arrays.fill(cache, -1);
+        return computeNthFibonacci(n);
+    }
+
+    private static int computeNthFibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+
+        if (cache[n] != -1) {
+            return cache[n];
+        }
+
+        return cache[n] = (computeNthFibonacci(n - 1) % MOD + computeNthFibonacci(n - 2) % MOD);
+    }
+}
+
+
 //Dynamic Programming
 
 class Solution {
