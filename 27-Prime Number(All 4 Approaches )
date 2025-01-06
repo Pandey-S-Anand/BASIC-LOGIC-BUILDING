@@ -10,65 +10,66 @@ Some interesting fact about Prime numbers :
 
 //Bruteforce Approach
 
-class Solution{
-    public static boolean isPrime(int num){
-      if(num<=1){
-         return false; //Not Prime
-      }
-	     
-      int count=0;
-	     
-      for(int i=1;i<=num;i++){
-        if((num%i)==0){
-          count++;
+class Solution {
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false; // Not Prime
         }
-      }
-                 
-      if(count==2){
-        return true; //Prime
-      }
 
-      return false; //Not Prime
+        int count = 0;
+
+        for (int i = 1; i <= num; i++) {
+            if ((num % i) == 0) {
+                count++;
+            }
+        }
+
+        if (count == 2) {
+            return true; // Prime
+        }
+
+        return false; // Not Prime
     }
 }
 
 
 //Good Approach
 
-class Solution{
-    public static boolean isPrime(int num){
-      if(num<=1){
-         return false; //Not Prime
-      }
-	     
-      for(int i=2;i<=(num/2);i++){
-        if((num%i)==0){
-          return false; //Not Prime
+class Solution {
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false; // Not Prime
         }
-      }
-                 
-      return true; //Prime
+
+        for (int i = 2; i <= (num / 2); i++) {
+            if ((num % i) == 0) {
+                return false; // Not Prime
+            }
+        }
+
+        return true; // Prime
     }
 }
 	
 
 //Better Approach
 
-class Solution{
-   public static boolean isPrime(int num){
-      if(num<=1){
-         return false; //Not Prime
-      }
 
-      int sqrt=(int)Math.sqrt(num);
-      for(int i=2;i<=sqrt;i++){
-        if((num%i)==0){
-          return false;  //Not Prime
+class Solution {
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false; // Not Prime
         }
-      }
-                 
-      return true; // Prime
-   }
+
+        int sqrt = (int) Math.sqrt(num);
+        for (int i = 2; i <= sqrt; i++) {
+            if ((num % i) == 0) {
+                return false; // Not Prime
+            }
+        }
+
+        return true; // Prime
+    }
 }
 
 
