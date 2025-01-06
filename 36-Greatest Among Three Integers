@@ -1,0 +1,27 @@
+//Method 1
+
+class Solution {
+    public static int greatest(int num1, int num2, int num3) {
+        if (num1 == num2 && num2 == num3) {
+            return -1; // All three numbers are equal
+        } else if (num1 >= num2 && num1 >= num3) {
+            return num1;
+        } else if (num2 >= num1 && num2 >= num3) {
+            return num2;
+        } else if (num3 >= num1 && num3 >= num2) {
+            return num3;
+        }
+
+        return 0; // Default return, although it will never be reached logically
+    }
+}
+
+
+//Method 2
+
+class Solution {
+    public static int greatest(int num1, int num2, int num3) {
+        return Math.max(Math.max(num1, num2), num3);
+    }
+}
+
