@@ -1,0 +1,51 @@
+/*
+
+Print the Below Figure using Single LOOP
+
+####
+####
+####
+####
+
+*/
+
+// Figure Specific Code
+
+class Solution {    
+    public static void pattern() {
+        int rowCount = 0;
+        for (int row = 1; row <= 4; row++) {
+            System.out.print("#");
+            rowCount++;
+            if (row == 4) {
+                if (rowCount == 16) {
+                    break;
+                } else {
+                    row = 0;
+                    System.out.println();
+                }
+            }
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        int rowCount = 0;
+        for (int row = 1; row <= n; row++) {
+            System.out.print("#");
+            rowCount++;
+            if (row == n) {
+                if (rowCount == (n * n)) {
+                    break;
+                } else {
+                    row = 0;
+                    System.out.println();
+                }
+            }
+        }
+    }
+}
