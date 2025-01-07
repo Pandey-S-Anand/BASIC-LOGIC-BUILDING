@@ -1,0 +1,31 @@
+/*Q-To Print
+
+aaaaaaaaa
+BBBBBBBBB
+ccccccccc
+DDDDDDDDD
+eeeeeeeee
+FFFFFFFFF
+ggggggggg
+HHHHHHHHH
+iiiiiiiii
+
+*/  
+  
+//Figure Specific Code
+
+class Solution {
+    public static void pattern() {  
+        for (int row = 1; row <= 9; row++) {
+            for (int column = 1; column <= 9; column++) {
+                if ((row % 2) == 0) {
+                    System.out.printf("%c", (char)(64 + row));
+                } else {
+                    System.out.printf("%c", (char)(96 + row));
+                }
+            }
+            System.out.println();
+        } 
+    }
+}
+
