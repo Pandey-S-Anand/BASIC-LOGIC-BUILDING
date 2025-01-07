@@ -4,20 +4,16 @@ Below are the first few Harshad Numbers represented in base 10:
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, 20………
 */
 
-class Solution{
-	public static boolean harshad(int num){
-	    int rem=num%(sumDigits(num));
-	    if(res==0)
-	      return true;
-	    else
-	      return false;
-	}
-	
-	public static int sumDigits(int num)
-	{
-	   if(num==0)
-	     return 0;
-	      
-           return (num%10)+sumDigits(num/10);
-	}
+class Solution {
+    public static boolean isHarshadNumber(int num) {
+        int remainder = num % sumOfDigits(num);
+        return remainder == 0; // If divisible, it's a Harshad number
+    }
+
+    private static int sumOfDigits(int num) {
+        if (num == 0) {
+            return 0;
+        }
+        return (num % 10) + sumOfDigits(num / 10);
+    }
 }
