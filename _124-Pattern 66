@@ -1,0 +1,28 @@
+/*Q-To Print
+
+55555
+45555
+34555
+23455
+12345
+
+*/
+
+// Figure Specific
+
+class Solution {    
+    public static void pattern66() {
+        for (int row = 1; row <= 5; row++) {
+            int data = 6 - row;
+            for (int column = 1; column <= 5; column++) {
+                if (column <= row) {
+                    System.out.print(data++);
+                } else {
+                    System.out.print("5");
+                }
+            }
+            System.out.println();   
+        }
+    }
+}
+
