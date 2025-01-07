@@ -1,0 +1,61 @@
+/*
+*********
+**** ****
+***   ***
+**     **
+*       *
+**     **
+***   ***
+**** ****
+*********
+*/
+
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {
+        int k = 0;
+        for (int row = 1; row <= 9; row++) {   
+            if (row <= 5) {
+                k++;
+            } else {
+                k--;
+            }
+              
+            for (int column = 1; column <= 9; column++) {
+                if (column <= (6 - k) || column >= (4 + k)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println(); 
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        int k = 0;
+        for (int row = 1; row <= n; row++) {  
+            int mid = (n + 1) / 2;
+            if (row <= mid) {
+                k++;
+            } else {
+                k--;
+            }
+               
+            for (int column = 1; column <= n; column++) {
+                if (column <= (mid + 1 - k) || column >= (mid - 1 + k)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println(); 
+        }
+    }
+}
