@@ -19,32 +19,32 @@ Decimal equivalent:
 
 //Method 1
 
-class Solution{
-  public static long hexToDec(String hex){
-      if(hex.length()==0)
-        return -1;
-        
-      String res="",digits = "0123456789ABCDEF";
-      
-      long sum=0,powerOf16=1; // 16^0
-      
-      for(int i=hex.length()-1;i>=0;i--)
-      {
-         char ch=hex.charAt(i);
-         int idx=digits.indexOf(ch);
-         sum+=(idx*powerOf16);
-         powerOf16=powerOf16*16;
-      }
-      
-      return sum;
-  }
+class Solution {
+    public static long hexToDecimal(String hex) {
+        if (hex.isEmpty()) {
+            return -1;
+        }
+
+        String validDigits = "0123456789ABCDEF";
+        long decimalValue = 0;
+        long powerOf16 = 1; // 16^0
+
+        for (int i = hex.length() - 1; i >= 0; i--) {
+            char currentChar = hex.charAt(i);
+            int digitIndex = validDigits.indexOf(currentChar);
+            decimalValue += (digitIndex * powerOf16);
+            powerOf16 = powerOf16 * 16;
+        }
+
+        return decimalValue;
+    }
 }
 
 
 //Method2(inbuilt function)  
 
-class Solution{
-  public static int hexToDec(String hex){ 
-    return Integer.parseInt(hex,16);
-  }
+class Solution {
+    public static int hexToDec(String hex) {
+        return Integer.parseInt(hex, 16);
+    }
 }
