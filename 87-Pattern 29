@@ -1,0 +1,50 @@
+/*Q-To Print
+    A
+   CB
+  FED
+ JIHG
+ONMLK
+
+*/
+
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {
+        int start = 64;
+        for (int row = 1; row <= 5; row++) {
+            start = start + row;
+            int data = start;
+            for (int column = 1; column <= 5; column++) {
+                if (column >= (6 - row)) {
+                    System.out.print((char) data--);
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();   
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        int start = 64;
+        for (int row = 1; row <= n; row++) {
+            start = start + row;
+            int data = start;
+
+            for (int column = 1; column <= n; column++) {
+                if (column >= (n + 1 - row)) {
+                    System.out.print((char) data--);
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();   
+        }
+    }
+}
