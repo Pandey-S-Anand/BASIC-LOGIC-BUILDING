@@ -1,0 +1,66 @@
+/*Q-To Print
+   1   
+  A B  
+ 1 2 3 
+A B C D
+
+*/
+
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {
+        for (int row = 1; row <= 4; row++) {
+            int integer = 1;
+            char character = 'A';
+            boolean flag = true;
+            for (int column = 1; column <= 7; column++) {
+                if (column >= (5 - row) && column <= (3 + row)) {
+                    if (flag) {
+                        if ((row % 2) != 0) {
+                            System.out.print(integer++);
+                        } else {
+                            System.out.print(character++);
+                        }
+                    } else {
+                        System.out.print(" ");
+                    }
+                    flag = !flag;
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();   
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        for (int row = 1; row <= n; row++) {
+            int integer = 1;
+            char character = 'A';
+            boolean flag = true;
+            for (int column = 1; column <= (2 * n) - 1; column++) {
+                if (column >= (n + 1 - row) && column <= (n - 1 + row)) {
+                    if (flag) {
+                        if ((row % 2) != 0) {
+                            System.out.print(integer++);
+                        } else {
+                            System.out.print(character++);
+                        }
+                    } else {
+                        System.out.print(" ");
+                    }
+                    flag = !flag;
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();   
+        }
+    }
+}
