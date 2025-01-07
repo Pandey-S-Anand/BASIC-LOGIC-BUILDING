@@ -8,11 +8,8 @@ A year is a leap year if the following conditions are satisfied:
 */
 
 
-class Solution{
-   public static boolean isLeapYear(int year){
-      if( (year % 400 == 0) || (year % 100 != 0 && year % 4 == 0 )) 
-        return true;
-      else
-        return false;
-   }
+class Solution {
+    public static boolean isLeapYear(int year) {
+        return (year % 400 == 0) || (year % 100 != 0 && year % 4 == 0);
+    }
 }
