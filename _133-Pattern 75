@@ -1,0 +1,45 @@
+/*Q-To Print
+
+1234
+2341
+3421
+4321
+
+*/  
+  
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {
+        for (int row = 1; row <= 4; row++) {
+            int data1 = row, data2 = row - 1;
+            for (int column = 1; column <= 4; column++) {
+                if (column <= (5 - row)) {
+                    System.out.print(data1++);
+                } else {
+                    System.out.print(data2--);
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        for (int row = 1; row <= n; row++) {
+            int data1 = row, data2 = row - 1;
+            for (int column = 1; column <= n; column++) {
+                if (column <= (n + 1 - row)) {
+                    System.out.print(data1++);
+                } else {
+                    System.out.print(data2--);
+                }
+            }
+            System.out.println();
+        }
+    }
+}
