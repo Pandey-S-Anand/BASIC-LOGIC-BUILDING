@@ -1,0 +1,27 @@
+// Strong number is a special number whose sum of the factorial of digits is equal to the original number. For Example: 145 is strong number. 
+
+class Solution {
+    static int isStrong(int num) {
+        int sum = 0;
+        int numCopy = num;
+        int[] factorial = computeFactorial(9);
+
+        while (numCopy != 0) {
+            sum += factorial[numCopy % 10];
+            numCopy = numCopy / 10;
+        }
+
+        return sum == num ? 1 : 0;
+    }
+
+    private static int[] computeFactorial(int num) {
+        int[] factorial = new int[num + 1];
+        factorial[0] = 1;
+
+        for (int i = 1; i <= num; i++) {
+            factorial[i] = factorial[i - 1] * i;
+        }
+
+        return factorial;
+    }
+}
