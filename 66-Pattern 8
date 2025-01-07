@@ -1,0 +1,52 @@
+/*Q-To Print
+
+   1   
+  121  
+ 12321 
+1234321
+
+*/
+
+// Figure Specific Code
+class Solution {
+    public static void pattern8() {
+        for (int row = 1; row <= 4; row++) {
+            int data = 1;
+            for (int column = 1; column <= 7; column++) {
+                if (column >= (5 - row) && column <= (3 + row)) {
+                    System.out.print(data);
+                    if (column < 4) {
+                        data++;
+                    } else {
+                        data--;
+                    }
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+// Generalized Code
+class Solution {
+    public static void pattern8(int n) {
+        for (int row = 1; row <= n; row++) {
+            int data = 1;
+            for (int column = 1; column <= (2 * n) - 1; column++) {
+                if (column >= (n + 1 - row) && column <= (n - 1 + row)) {
+                    System.out.print(data);
+                    if (column < n) {
+                        data++;
+                    } else {
+                        data--;
+                    }
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
