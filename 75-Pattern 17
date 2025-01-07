@@ -1,0 +1,53 @@
+/*
+
+\*****/
+*\***/*
+**\*/**
+***\***
+**/*\**
+*/***\*
+/*****\
+   
+*/
+
+// Figure-Specific Code
+
+class Solution {
+    public static void pattern() {
+        for (int row = 1; row <= 7; row++) {
+            for (int column = 1; column <= 7; column++) {
+                if (column == row || column == (8 - row)) {
+                    if (column == row) {
+                        System.out.print("\\");
+                    } else {
+                        System.out.print("/");
+                    }
+                } else {
+                    System.out.print("*");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        for (int row = 1; row <= n; row++) {
+            for (int column = 1; column <= n; column++) {
+                if (column == row || column == (n + 1 - row)) {
+                    if (column == row) {
+                        System.out.print("\\");
+                    } else {
+                        System.out.print("/");
+                    }
+                } else {
+                    System.out.print("*");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
