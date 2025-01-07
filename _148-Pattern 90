@@ -1,0 +1,72 @@
+/*
+
+Print the Below Figure using Single LOOP
+
+   *
+  * *
+ * * *
+* * * *
+
+*/
+
+// Generalized Code
+
+class Solution {
+    public static void pattern() {
+        int k = 0, flag = 1;
+        for (int row = 1; row <= 7; row++) {
+            if (row < (4 - k)) {
+                System.out.print(" ");
+            } else {
+                if (flag == 1) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+                flag = 1 - flag;
+            }
+
+            if (row == (4 + k)) {
+                if (row == 7) {
+                    break;
+                } else {
+                    flag = 1;
+                    row = 0;
+                    k++;
+                    System.out.println();
+                }
+            }
+        }
+    }
+}
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        int k = 0, flag = 1;
+        for (int row = 1; row <= ((2 * n) - 1); row++) {
+            if (row < (n - k)) {
+                System.out.print(" ");
+            } else {
+                if (flag == 1) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+                flag = 1 - flag;
+            }
+
+            if (row == (n + k)) {
+                if (row == ((2 * n) - 1)) {
+                    break;
+                } else {
+                    flag = 1;
+                    row = 0;
+                    k++;
+                    System.out.println();
+                }
+            }
+        }
+    }
+}
