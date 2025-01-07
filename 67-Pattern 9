@@ -1,0 +1,61 @@
+/*Q-To Print
+
+ABCDCBA
+ABC CBA
+AB   BA
+A     A 
+
+*/
+
+// Figure-specific Code
+
+class Solution {
+    public static void pattern() {
+        for (int row = 1; row <= 4; row++) {
+            char data = 'A';
+            for (int column = 1; column <= 7; column++) {
+                if (column <= (5 - row) || column >= (3 + row)) {
+                    System.out.print(data);
+                    if (column < (5 - row)) {
+                        data++;
+                    } else {
+                        data--;
+                    }
+                } else {
+                    System.out.print(" ");
+                    if (column == (5 - row + 1)) {
+                        data++;
+                    }
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        for (int row = 1; row <= n; row++) {
+            char data = 'A';
+            for (int column = 1; column <= (2 * n) - 1; column++) {
+                if (column <= (n + 1) - row || column >= (n - 1) + row) {
+                    System.out.print(data);
+                    if (column < (n + 1) - row) {
+                        data++;
+                    } else {
+                        data--;
+                    }
+                } else {
+                    System.out.print(" ");
+                    if (column == (n + 1) - row + 1) {
+                        data++;
+                    }
+                }
+            }
+            System.out.println();
+        }
+    }
+}
