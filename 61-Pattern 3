@@ -1,0 +1,45 @@
+/*Q-To Print
+
+*****
+ ****
+  ***
+   **
+    *
+
+*/
+
+//Figure Specific Code
+
+class Solution {
+    public static void pattern3() {
+        for (int row = 1; row <= 5; row++) {
+            for (int column = 1; column <= 5; column++) {
+                if (column >= row) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();   
+        }
+    }
+}
+
+
+
+//Genralised Code
+
+class Solution {
+    public static void pattern3(int n) {
+        for (int row = 1; row <= n; row++) { 
+            for (int column = 1; column <= n; column++) { 
+                if (column >= row) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
