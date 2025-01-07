@@ -8,7 +8,7 @@
 
 */
 
-//Figure Specific code
+//Figure specific code
 
 class Solution {
     public static void pattern2() {
@@ -27,7 +27,7 @@ class Solution {
 
 
 
-//Generalised Code
+//Generalised code
 
 class Solution {
     public static void pattern2(int n) {
