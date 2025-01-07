@@ -41,16 +41,16 @@ class Solution {
 
 class Solution {
     public static void pattern(int n) {
-        int k = 0, m = (n + 1) / 2;
+        int k = 0, middle = (n + 1) / 2;
         for (int row = 1; row <= n; row++) {
-            if (row <= m) {
+            if (row <= middle) {
                 k++;
             } else {
                 k--;
             }
 
             for (int column = 1; column <= n; column++) {
-                if (row == m || column == m || column == (m + 1 - k) || column == (m - 1 + k)) {
+                if (row == middle || column == middle || column == (middle + 1 - k) || column == (middle - 1 + k)) {
                     System.out.print("*");
                 } else {
                     System.out.print(" ");
