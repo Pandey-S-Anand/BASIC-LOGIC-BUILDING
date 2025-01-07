@@ -1,0 +1,56 @@
+/*
+
+   1   
+  12A  
+ 123AB 
+1234ABC
+
+*/
+
+// Figure Specific Code
+
+class Solution {    
+    public static void pattern() {
+        for (int row = 1; row <= 4; row++) {
+            char ch = 'A';
+            int num = 1;
+            for (int column = 1; column <= 7; column++) {
+                if (column >= (5 - row) && column <= (3 + row)) {  
+                    if (column <= 4) {
+                        System.out.print(num++);
+                    } else {
+                        System.out.print(ch++);
+                    }
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();   
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        for (int row = 1; row <= n; row++) {
+            char ch = 'A';
+            int num = 1;
+            for (int column = 1; column <= (2 * n) - 1; column++) {
+                if (column >= (n + 1 - row) && column <= (n - 1 + row)) {   
+                    if (column <= n) {
+                        System.out.print(num++);
+                    } else {
+                        System.out.print(ch++);
+                    }
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();   
+        }
+    }
+}
+
