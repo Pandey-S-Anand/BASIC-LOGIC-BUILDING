@@ -12,7 +12,7 @@
 //Figure Specific
 
 class Solution {    
-    public static void pattern1() {
+    public static void pattern() {
         for (int row = 1; row <= 5; row++) { 
             for (int column = 1; column <= 5; column++) {
                 if (column <= row) {
@@ -27,10 +27,10 @@ class Solution {
 }
 
 
-//Genralised Code
+//Genralised code
 
 class Solution {
-    public static void pattern1(int n) {
+    public static void pattern(int n) {
         for (int row = 1; row <= n; row++) {  // Used 'row' for i
             for (int column = 1; column <= n; column++) {  // Used 'column' for j
                 if (column <= row) {
