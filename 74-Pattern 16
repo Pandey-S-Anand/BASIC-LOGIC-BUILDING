@@ -1,0 +1,65 @@
+/*
+
+    1
+   12
+  123
+ 1234
+12345
+ 1234
+  123
+   12
+    1
+   
+*/
+
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {
+        int k = 0;
+        for (int row = 1; row <= 9; row++) {
+            if (row <= 5) {
+                k++;
+            } else {
+                k--;
+            }
+
+            int data = 1;
+            for (int column = 1; column <= 5; column++) {
+                if (column >= (6 - k)) {
+                    System.out.print(data++);
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        int k = 0;
+        for (int row = 1; row <= n; row++) {
+            int maxRow = (n + 1) / 2;
+            if (row <= maxRow) {
+                k++;
+            } else {
+                k--;
+            }
+
+            int data = 1;
+            for (int column = 1; column <= maxRow; column++) {
+                if (column >= (maxRow + 1 - k)) {
+                    System.out.print(data++);
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
