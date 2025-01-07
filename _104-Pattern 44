@@ -13,50 +13,51 @@
 
 */
 
-//Figure specific  Code
+// Figure Specific Code
 
-class Solution{
-  public static void pattern44()
-  {
-     int k=0;
-     for (int i = 1; i <= 10; i++)
-     {
-	 if(i<=5)
-	    k++;
-	 else if(i>6)
-	    k--;
+class Solution {
+    public static void pattern() {
+        int k = 0;
+        for (int row = 1; row <= 10; row++) {
+            if (row <= 5) {
+                k++;
+            } else if (row > 6) {
+                k--;
+            }
 	    
-	 for(int j = 1; j <=9; j++)
-	    if(j==(6-k) || j==(4+k))
-               System.out.print("*");
-            else
-               System.out.print(" ");
-	       
-	  System.out.println ();
-      }
-  }
+            for (int column = 1; column <= 9; column++) {
+                if (column == (6 - k) || column == (4 + k)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
 }
 
+// Generalized Code
 
-//Genralised  Code
-
-class Solution{
-  public static void pattern44(int n){
-    int k=0,m=n/2;
-    for (int i = 1; i <=n; i++)
-    {
-	if(i<=m)
-	   k++;
-	else if(i>(m+1))
-           k--;
-	   
-	for(int j = 1; j <=(n-1); j++)
-	   if(j==(m+1-k) || j==(m-1+k))
-             System.out.print("*");
-           else
-             System.out.print(" ");
-	       
-	  System.out.println();
-      }
-   }
+class Solution {
+    public static void pattern(int n) {
+        int k = 0;
+        int mid = n / 2;
+        for (int row = 1; row <= n; row++) {
+            if (row <= mid) {
+                k++;
+            } else if (row > (mid + 1)) {
+                k--;
+            }
+	    
+            for (int column = 1; column <= (n - 1); column++) {
+                if (column == (mid + 1 - k) || column == (mid - 1 + k)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
 }
