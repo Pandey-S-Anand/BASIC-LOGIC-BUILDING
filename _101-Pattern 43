@@ -1,0 +1,31 @@
+/*
+********1********
+*******2*2*******
+******3*3*3******
+*****4*4*4*4*****
+****5*5*5*5*5****
+*/
+
+// Figure-based Code
+
+class Solution {
+    public static void pattern() {
+        for (int row = 1; row <= 5; row++) {
+            boolean flag = true;
+            for (int column = 1; column <= 17; column++) {
+                if (column >= (10 - row) && column <= (8 + row)) {
+                    if (flag) {
+                        System.out.print(row);
+                    } else {
+                        System.out.print("*");
+                    }
+                    flag = !flag;
+                } else {
+                    System.out.print("*");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
