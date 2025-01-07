@@ -12,9 +12,9 @@
 
 class Solution {
     public static void pattern() {
-        for (int row = 1; row <= 5; row++) {  // Used 'row' for i
+        for (int row = 1; row <= 5; row++) {
             int flag = 1;
-            for (int column = 1; column <= 9; column++) {  // Used 'column' for j
+            for (int column = 1; column <= 9; column++) {
                 if (column >= (6 - row) && column <= (4 + row)) {
                     if (flag == 1) {
                         System.out.print("*");
@@ -35,9 +35,9 @@ class Solution {
 
 class Solution {
     public static void pattern(int n) {
-        for (int row = 1; row <= n; row++) {  // Used 'row' for i
+        for (int row = 1; row <= n; row++) {
             int flag = 1;
-            for (int column = 1; column <= (2 * n - 1); column++) {  // Used 'column' for j
+            for (int column = 1; column <= (2 * n - 1); column++) {
                 if (column >= (n + 1 - row) && column <= (n - 1 + row)) {
                     if (flag == 1) {
                         System.out.print("*");
