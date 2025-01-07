@@ -6,19 +6,16 @@ For example, 0, 1, 153, 370, 371, 407 are three-digit Armstrong numbers and, 163
 */
 
 class Solution {
-    static String armstrongNumber(int num){
-         int countDigit=(int)Math.ceil(Math.log10(num)); 
-	 int sum=0,temp=num;
-	 while(temp!=0)
-	 {
-	    int rem=temp%10;
-	    sum+=Math.pow(rem,countDigit);
-	    temp=temp/10;
-	 }
-	    
-	 if(num==sum)
-	   return "Yes";
-	 else
-	   return "No";
+    static boolean armstrongNumber(int num) {
+        int digitCount = (int) Math.ceil(Math.log10(num));
+        int sum = 0, numCopy = num;
+
+        while (numCopy != 0) {
+            int remainder = numCopy % 10;
+            sum += Math.pow(remainder, countDigit);
+            numCopy = numCopy / 10;
+        }
+
+        return num == sum;
     }
 }
