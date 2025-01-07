@@ -44,16 +44,16 @@ class Solution {
     public static void pattern(int n) {
         int k = 0;
         for (int row = 1; row <= n; row++) {
-            int maxRow = (n + 1) / 2;
-            if (row <= maxRow) {
+            int middle = (n + 1) / 2;
+            if (row <= middle) {
                 k++;
             } else {
                 k--;
             }
 
             int data = 1;
-            for (int column = 1; column <= maxRow; column++) {
-                if (column >= (maxRow + 1 - k)) {
+            for (int column = 1; column <= middle; column++) {
+                if (column >= (middle + 1 - k)) {
                     System.out.print(data++);
                 } else {
                     System.out.print(" ");
