@@ -1,0 +1,29 @@
+/*
+
+6543210
+543210 
+43210  
+3210   
+210    
+10     
+0 
+   
+*/
+
+class Solution {
+    public static void pattern() {
+        for (int row = 1; row <= 7; row++) {
+            int value = 7 - row;
+            for (int column = 1; column <= 7; column++) {
+                if (column <= (8 - row)) {
+                    System.out.print(value);
+                    value--;
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
