@@ -14,20 +14,16 @@
 class Solution {
     public static void pattern() {
         for (int row = 1; row <= 6; row++) {
-            int flag = 1;
+            boolean flag = true;
             for (int column = 1; column <= 6; column++) {
                 if (column <= row) {
-                    if (flag == 1) {
-                        System.out.print("1");
-                    } else {
-                        System.out.print("0");
-                    }
-                    flag = 1 - flag;
+                    System.out.print(flag ? "1" : "0");
+                    flag = !flag;
                 } else {
                     System.out.print(" ");
                 }
             }
-            System.out.println();   
+            System.out.println();
         }
     }
 }
@@ -37,20 +33,16 @@ class Solution {
 class Solution {
     public static void pattern(int n) {
         for (int row = 1; row <= n; row++) {
-            int flag = 1;
+            boolean flag = true;
             for (int column = 1; column <= n; column++) {
                 if (column <= row) {
-                    if (flag == 1) {
-                        System.out.print("1");
-                    } else {
-                        System.out.print("0");
-                    }
-                    flag = 1 - flag;
+                    System.out.print(flag ? "1" : "0");
+                    flag = !flag;
                 } else {
                     System.out.print(" ");
                 }
             }
-            System.out.println();   
+            System.out.println();
         }
     }
 }
