@@ -25,32 +25,32 @@
 
 */
 
-//Figure Specific Code
+// Figure Specific Code
 
 class Solution {
-  public static void pattern84(){
-     int k=0;
-     for (int i = 1; i <= 21; i++)
-     {
-          if(i<=11)
-            k++;
-          else
-            k--;
-	    
-         int data=k-1;
-	 for(int j = 1; j <=21; j++)
-	    if(j>=(12-k) && j<=(10+k))
-	    {
-	        System.out.print((data%10)+" ");
-	        if(j<11)
-	          data++;
-	        else
-	          data--;
-	    }
-	    else
-               System.out.print("  ");
-		
-	 System.out.println ();
-     } 
-  }
+    public static void pattern() {
+        int k = 0;
+        for (int row = 1; row <= 21; row++) {
+            if (row <= 11) {
+                k++;
+            } else {
+                k--;
+            }
+
+            int data = k - 1;
+            for (int column = 1; column <= 21; column++) {
+                if (column >= (12 - k) && column <= (10 + k)) {
+                    System.out.print((data % 10) + " ");
+                    if (column < 11) {
+                        data++;
+                    } else {
+                        data--;
+                    }
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+    }
 }
