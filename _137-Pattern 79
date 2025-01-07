@@ -1,0 +1,46 @@
+/*Q-To Print
+
+E     
+D E    
+C D E   
+B C D E  
+A B C D E 
+
+*/  
+  
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {
+        for (int row = 1; row <= 5; row++) {
+            int data = (70 - row);
+            for (int column = 1; column <= 5; column++) {
+                if (column <= row) {
+                    System.out.print((char) data++ + " ");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        for (int row = 1; row <= n; row++) {
+            int data = (65 + n - row);
+            for (int column = 1; column <= n; column++) {
+                if (column <= row) {
+                    System.out.print((char) data++ + " ");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
