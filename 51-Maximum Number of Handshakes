@@ -5,9 +5,13 @@ So, Total number of handshake = N-1 + N-2 +….+ 1 + 0, which is equivalent to s
 (using the formula of sum of first N natural number i.e (n*(n+1))/2)
 */
 
-class Solution{
-    static long handShakes(long n){
-       long max=(n*(n-1))/2; 
-       return max;
+class Solution {
+    public static long calculateHandshakes(long peopleCount) {
+        if (peopleCount <= 1) {
+            return 0; // No handshakes possible if 0 or 1 person is present
+        }
+        
+        long handshakes = (peopleCount * (peopleCount - 1)) / 2;
+        return handshakes;
     }
 }
