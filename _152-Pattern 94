@@ -34,36 +34,36 @@ Enter N:10
                     *
 
 */
-//For the given N, the number of rows(i.e Height) would be (3*N) and columns(i.e Width) to be printed will be (4*N + 1)
+
 
 class Solution {  
-    public static void pattern94(int size){
-        // nested for loop to print the upper part of Heart  
-        for (int i = 0; i < size; i++) 
-        {  
-            for (int j = 0; j <= (4 * size); j++)
-            {  
-                double pos1 = Math.sqrt(Math.pow(i - size, 2) + Math.pow(j - size, 2));  
-                double pos2 = Math.sqrt(Math.pow(i - size, 2) + Math.pow(j - 3 * size, 2));  
-   
-                if (pos1 < (size + 0.5) || pos2 < (size + 0.5))  
+    public static void pattern(int size) {
+        // Nested loop to print the upper part of the heart
+        for (int row = 0; row < size; row++) {  
+            for (int column = 0; column <= (4 * size); column++) {  
+                double pos1 = Math.sqrt(Math.pow(row - size, 2) + Math.pow(column - size, 2));  
+                double pos2 = Math.sqrt(Math.pow(row - size, 2) + Math.pow(column - 3 * size, 2));  
+
+                if (pos1 < (size + 0.5) || pos2 < (size + 0.5)) {  
                     System.out.print("*");  
-                else
-                     System.out.print(" ");  
+                } else {  
+                    System.out.print(" ");  
+                }  
             }  
             System.out.println();  
         }  
-        
-        // for loop to print the lower part of Heart  
-        for (int i = 1; i <= 2 * size; i++)  
-        {  
-            for (int j = 0; j < i; j++)
+
+        // Loop to print the lower part of the heart
+        for (int row = 1; row <= 2 * size; row++) {  
+            for (int column = 0; column < row; column++) {  
                 System.out.print(" ");  
-                        
-            for (int k = 0; k <((4 * size)-(2 * i)+1); k++) 
+            }  
+
+            for (int column = 0; column < ((4 * size) - (2 * row) + 1); column++) {  
                 System.out.print("*");  
-                        
-             System.out.println(); 
-        }          
-    }
-}  
+            }  
+
+            System.out.println(); 
+        }  
+    }  
+}
