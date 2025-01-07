@@ -1,0 +1,59 @@
+class Solution {
+    public void numberToEquivalentWord(int num) {
+        if (num == 0) {
+            System.out.print("Zero ");
+            return;
+        }
+
+        int reversedNumber = reverse(num);
+
+        while (reversedNumber != 0) {
+            int currentDigit = reversedNumber % 10;
+            reversedNumber = reversedNumber / 10;
+
+            switch (currentDigit) {
+                case 0:
+                    System.out.print("Zero ");
+                    break;
+                case 1:
+                    System.out.print("One ");
+                    break;
+                case 2:
+                    System.out.print("Two ");
+                    break;
+                case 3:
+                    System.out.print("Three ");
+                    break;
+                case 4:
+                    System.out.print("Four ");
+                    break;
+                case 5:
+                    System.out.print("Five ");
+                    break;
+                case 6:
+                    System.out.print("Six ");
+                    break;
+                case 7:
+                    System.out.print("Seven ");
+                    break;
+                case 8:
+                    System.out.print("Eight ");
+                    break;
+                case 9:
+                    System.out.print("Nine ");
+                    break;
+                default:
+                    System.out.print("Invalid");
+            }
+        }
+    }
+
+    public int reverse(int num) {
+        int reversedNumber = 0;
+        while (num != 0) {
+            reversedNumber = reversedNumber * 10 + num % 10;
+            num = num / 10;
+        }
+        return reversedNumber;
+    }
+}
