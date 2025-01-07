@@ -1,0 +1,70 @@
+/*Q-To Print
+
+1     
+1 2    
+3 5 8   
+13 21 34 55  
+89 144 233 377 610
+
+*/  
+  
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {  
+        int data = 2;
+        for (int row = 1; row <= 5; row++) {
+            for (int column = 1; column <= 5; column++) {
+                if (column <= row) {
+                    System.out.print(generateFibonacciNumber(data++) + " ");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+  
+    private static int generateFibonacciNumber(int n) {
+        int[] fibonacci = new int[n + 1];
+        fibonacci[1] = 0;
+        fibonacci[2] = 1;
+
+        for (int i = 3; i <= n; i++) {
+            fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+        }
+
+        return fibonacci[n];
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {  
+        int data = 2;
+        for (int row = 1; row <= n; row++) {
+            for (int column = 1; column <= n; column++) {
+                if (column <= row) {
+                    System.out.print(generateFibonacciNumber(data++) + " ");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+  
+    private static int generateFibonacciNumber(int n) {
+        int[] fibonacci = new int[n + 1];
+        fibonacci[1] = 0;
+        fibonacci[2] = 1;
+
+        for (int i = 3; i <= n; i++) {
+            fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+        }
+
+        return fibonacci[n];
+    }
+}
