@@ -13,29 +13,27 @@ For the given N, the number of rows or columns to be printed will be 2*N – 1.
   
 //Generalised Code
 
-class Solution{
-  public static void pattern86(int N){  
-      int size = 2 * N - 1;
-      for (int i = 0; i < size; i++) {
-         for (int j = 0; j < size; j++) {
-             int min = i < j ? i : j;
-             min = min < size - i ? min : size - i - 1;
-             min = min < size - j ? min : size - j - 1;
-             System.out.print(N - min);
-         }
-        System.out.println();
-      }
-  }
+class Solution {
+    public static void pattern86(int N) {
+        int size = 2 * N - 1;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                int min = i < j ? i : j;
+                min = min < size - i ? min : size - i - 1;
+                min = min < size - j ? min : size - j - 1;
+                System.out.print(N - min);
+            }
+            System.out.println();
+        }
+    }
 }
 
+// Aliter
 
-//Aliter
-
-
-class Solution{
-   	public static void pattern86(int N) {
+class Solution {
+    public static void pattern86(int N) {
         int size = 2 * N - 1;
-        int[][] grid = new int[size][size]; 
+        int[][] grid = new int[size][size];
 
         for (int i = 0; i < N; i++) {
             // Top and left part
@@ -49,12 +47,12 @@ class Solution{
                 grid[j][size - i - 1] = N - i;
             }
         }
-        
+
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 System.out.print(grid[i][j]);
             }
-          System.out.println();
+            System.out.println();
         }
     }
 }
