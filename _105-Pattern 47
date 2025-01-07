@@ -1,0 +1,80 @@
+
+/*Q-To Print
+
+1      
+2*3    
+4*5*6  
+7*8*9*10
+7*8*9*10
+4*5*6  
+2*3    
+1   
+
+*/
+
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {
+        int start = 1, k = 0;
+        for (int row = 1; row <= 8; row++) {
+            if (row <= 4) {
+                k++;
+                start = start + (row - 1);
+            } else if (row > 5) {
+                k--; 
+                start = start - (9 - row);
+            }
+            
+            boolean flag = true;
+            int data = start;
+            for (int column = 1; column <= 7; column++) {
+                if (column <= (2 * k) - 1) {
+                    if (flag) {
+                        System.out.print(data++);
+                    } else {
+                        System.out.print("*");
+                    }
+                    flag = !flag;
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        int start = 1, k = 0, m = n / 2;
+        for (int row = 1; row <= n; row++) {
+            if (row <= m) {
+                k++;
+                start = start + (row - 1);
+            } else if (row > (m + 1)) {
+                k--; 
+                start = start - (n + 1 - row);
+            }
+            
+            boolean flag = true;
+            int data = start;
+            for (int column = 1; column <= (n - 1); column++) {
+                if (column <= (2 * k) - 1) {
+                    if (flag) {
+                        System.out.print(data++);
+                    } else {
+                        System.out.print("*");
+                    }
+                    flag = !flag;
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
