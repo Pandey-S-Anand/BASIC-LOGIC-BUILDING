@@ -1,0 +1,43 @@
+/*
+
+*******
+ ***** 
+  ***  
+   *
+   
+*/
+
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {
+        for (int row = 1; row <= 4; row++) {
+            for (int column = 1; column <= 7; column++) {
+                if (column >= row && column <= (8 - row)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        for (int row = 1; row <= n; row++) {
+            for (int column = 1; column <= (2 * n) - 1; column++) {
+                if (column >= row && column <= ((2 * n) - row)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
