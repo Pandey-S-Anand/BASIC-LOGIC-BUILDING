@@ -14,49 +14,53 @@
 
 */
 
-//Figure Specific Code
+// Figure Specific Code
 
-class Solution{ 
-  public static void pattern59(){
-      int k=0;
-      for (int i = 1; i <=10; i++)
-      {
-          if(i<=5)
-            k++;
-          else if(i>6)
-            k--;
-            
-	  for(int j = 1; j <=5; j++)
-	     if(j<=(6-k))
-	        System.out.print("*");
-             else
-                System.out.print(" ");
-	       
-	 System.out.println ();
-      }
-  }
+class Solution {
+    public static void pattern() {
+        int k = 0;
+        for (int row = 1; row <= 10; row++) {
+            if (row <= 5) {
+                k++;
+            } else if (row > 6) {
+                k--;
+            }
+
+            for (int column = 1; column <= 5; column++) {
+                if (column <= (6 - k)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+
+            System.out.println();
+        }
+    }
 }
 
 
-//Genralised code
+// Generalized Code
 
-class Solution{
-  public static void pattern59(int n){
-      int k=0;
-      for (int i=1;i<=n;i++)
-      {
-          if(i<=(n/2))
-            k++;
-          else if(i>((n/2)+1))
-            k--;
-            
-	  for(int j = 1; j <=(n/2); j++)
-	     if(j<=((n/2)+1-k))
-	       System.out.print("*");
-             else
-               System.out.print(" ");
-	       
-	System.out.println();
-      }
-   }
+class Solution {
+    public static void pattern(int n) {
+        int k = 0;
+        for (int row = 1; row <= n; row++) {
+            if (row <= (n / 2)) {
+                k++;
+            } else if (row > ((n / 2) + 1)) {
+                k--;
+            }
+
+            for (int column = 1; column <= (n / 2); column++) {
+                if (column <= ((n / 2) + 1 - k)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+
+            System.out.println();
+        }
+    }
 }
