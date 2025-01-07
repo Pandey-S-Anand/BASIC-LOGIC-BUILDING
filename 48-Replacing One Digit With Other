@@ -1,0 +1,77 @@
+//Naive solution
+
+class Solution {
+    public int replaceDigit(int number, int targetDigit, int replacementDigit) {
+        // Special case: If number is 0 and we are replacing 0
+        if (number == 0 && targetDigit == 0) {
+            return replacementDigit;
+        }
+
+        // Reverse the modified number to retain original digit order
+        return reverseNumber(modifyAndReverse(number, targetDigit, replacementDigit));
+    }
+
+    private int modifyAndReverse(int number, int targetDigit, int replacementDigit) {
+        int reversed = 0;
+
+        while (number != 0) {
+            int currentDigit = number % 10;
+            
+            // Replace the target digit
+            if (currentDigit == targetDigit) {
+                currentDigit = replacementDigit;
+            }
+
+            // Build the reversed number with the modified digit
+            reversed = reversed * 10 + currentDigit;
+            number /= 10;
+        }
+
+        return reversed;
+    }
+
+    private int reverseNumber(int number) {
+        int reversed = 0;
+
+        while (number != 0) {
+            reversed = reversed * 10 + number % 10;
+            number /= 10;
+        }
+
+        return reversed;
+    }
+}
+
+
+
+//Optimal Solution
+
+class Solution {	
+    public int replaceDigit(int number, int targetDigit, int replacementDigit) {
+        // Handle edge case where number is 0 and target digit is also 0
+        if (number == 0 && targetDigit == 0) {
+            return replacementDigit;
+        }
+
+        int modifiedNumber = 0;
+        int placeValue = 1;
+
+        while (number != 0) {
+            int currentDigit = number % 10;
+
+            // Replace the target digit with the replacement digit
+            if (currentDigit == targetDigit) {
+                currentDigit = replacementDigit;
+            }
+
+            // Update the modifiedNumber based on the current digit and place value
+            modifiedNumber += placeValue * currentDigit;
+
+            // Move to the next place value and reduce the number
+            placeValue *= 10;
+            number /= 10;
+        }
+
+        return modifiedNumber;  
+    }
+}
