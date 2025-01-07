@@ -5,30 +5,30 @@ so we are sure that one of the two prime numbers should be 2. So we have to chec
 For example, if the number is 19 then we have to check whether 19-2 = 17 is a prime number or not. If 17 is a prime number then print yes otherwise print no.
 */
 
-class Solution{
-  public static boolean sumPrime(int num){
-     if(isPrime(num-2)){
-         return true;
-     }
-     
-     return false;
-  }
-  
-  public static boolean isPrime(int num){
-     if(num<=1){
-       return false;
-     }
-
-     if(num==2){
-       return true;
-     }
-     
-     for(int i=2;i<=Math.sqrt(num);i++){
-        if(num%2==0){
-           return false;
+class Solution {
+    public static boolean canBeExpressedAsSumOfTwoPrimes(int num) {
+        // Check if (num - 2) is prime
+        if (isPrime(num - 2)) {
+            return true;
         }
-     }
-     
-     return true;
-  }
+        return false;
+    }
+
+    private static boolean isPrime(int number) {
+        if (number <= 1) {
+            return false; // Numbers <= 1 are not prime
+        }
+
+        if (number == 2) {
+            return true; // 2 is the only even prime number
+        }
+
+        for (int divisor = 2; divisor <= Math.sqrt(number); divisor++) {
+            if (number % divisor == 0) {
+                return false; // Found a divisor, so not prime
+            }
+        }
+
+        return true; // Prime if no divisors are found
+    }
 }
