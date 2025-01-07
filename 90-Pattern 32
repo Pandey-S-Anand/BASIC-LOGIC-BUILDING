@@ -1,0 +1,55 @@
+/*
+
+1     
+6 2    
+10 7 3   
+13 11 8 4  
+15 14 12 9 5 
+
+*/
+
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {
+        int start = -5;
+        for (int row = 1; row <= 5; row++) {
+            start = start + (7 - row);
+            int data = start;
+            for (int column = 1; column <= 5; column++) {
+                if (column <= row) {
+                    System.out.print(data + " "); 
+                    data = data - (6 - row) - (column - 1);
+                }  
+                else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();   
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        int start = -5;
+        for (int row = 1; row <= n; row++) {
+            start = start + (n - row);
+            int data = start;
+            for (int column = 1; column <= n; column++) {
+                if (column <= row) {
+                    System.out.print(data + " "); 
+                    data = data - (n - row) - (column - 1);
+                }   
+                else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();   
+        }
+    }
+}
+
