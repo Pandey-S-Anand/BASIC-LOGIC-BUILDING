@@ -9,76 +9,82 @@
 
 //Bruteforce Implementation
 
-class Solution{
-    public static int binaryToDecimal(int bin){
-         int count=0,decValue=0;
-         while(bin!=0)
-         {
-           decValue+=(int)Math.pow(2,count) * (bin%10);            
-           bin/=10;
-           count++;
-         }
-         
-         return decValue;
+class Solution {
+    public static int binaryToDecimal(int binaryNumber) {
+        int power = 0;
+        int decimalValue = 0;
+        
+        while (binaryNumber != 0) {
+            int lastDigit = binaryNumber % 10;
+            decimalValue += lastDigit * (int) Math.pow(2, power); 
+            binaryNumber /= 10;
+            power++;
+        }
+        
+        return decimalValue;
     }
 }
 
 
+
 //Better Implementation :
 
-class Solution{
-     public static int binaryToDecimal(int bin){
-         int count=0;
-         int decValue=0;
-         
-         while(bin!=0)
-         {
-            int rem=bin%10;
-            if(rem==1)
-             decValue+=(int)Math.pow(2,count); 
-             
-            bin/=10;
-            count++;
-         }
-         return decValue;
-     }
+class Solution {
+    public static int binaryToDecimal(int binary) {
+        int exponent = 0;
+        int decimalValue = 0;
+
+        while (binary != 0) {
+            int remainder = binary % 10;
+            if (remainder == 1) {
+                decimalValue += (int) Math.pow(2, exponent);
+            }
+
+            binary /= 10;
+            exponent++;
+        }
+
+        return decimalValue;
+    }
 }
 
 
 //Optimal Implementation 
 
-class Solution{
-     public static int binaryToDecimal(int bin){ 
-         int powerOf2=1; // 2^0 = 1
-         int decValue=0;
-         while(bin!=0)
-         {
-            if((bin%10)==1)
-              decValue+=powerOf2; 
-             
-            powerOf2=(powerOf2*2);
-            bin/=10;
-         }
-         
-         return decValue;
-     }
-}
+class Solution {
+    public static int binaryToDecimal(int binaryNumber) { 
+        int currentPowerOfTwo = 1; // 2^0 = 1
+        int decimalValue = 0;
 
+        while (binaryNumber != 0) {
+            if ((binaryNumber % 10) == 1) {
+                decimalValue += currentPowerOfTwo; 
+            }
+            
+            currentPowerOfTwo *= 2; // Double the power of 2 for the next bit
+            binaryNumber /= 10; // Remove the last digit of the binary number
+        }
+
+        return decimalValue;
+    }
+}
 
 
 // When Input is in the Form Of a String
 
-//Method 1
+// Method 1
+
 class Solution {
     public int binaryToDecimal(String bin) {
         int decValue = 0;
-        int powerOf2 =1; // 2^0
-        for (int i=bin.length()-1; i >= 0; i--) 
-        {
-           if (bin.charAt(i)== '1')
-              decValue +=powerOf2;
-                
-           powerOf2=powerOf2*2;
+        int powerOf2 = 1; // 2^0
+        
+        for (int i = bin.length() - 1; i >= 0; i--) {
+            if (bin.charAt(i) == '1') {
+                decValue += powerOf2;
+            }
+            
+            powerOf2 = powerOf2 * 2;
         }
         
         return decValue;
@@ -86,12 +92,13 @@ class Solution {
 }
 
 
+
     
 //Method 2 (Using inbuilt Method)
 
 class Solution {
-    public int binaryToDecimal(String bin) {
-       int decValue=Integer.parseInt(bin,2); 
-       return decValue;
+    public int binaryToDecimal(String binaryString) {
+        int decimalValue = Integer.parseInt(binaryString, 2); 
+        return decimalValue;
     }
 }
