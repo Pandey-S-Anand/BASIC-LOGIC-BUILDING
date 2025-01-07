@@ -1,0 +1,53 @@
+/*Q-To Print
+
+Enter Rows:13
+1111111111111
+1111111111122
+1111111111333
+1111111114444
+1111111155555
+1111111666666
+1111117777777
+1111188888888
+1111999999999
+1110000000000
+1111111111111
+1222222222222
+3333333333333
+
+*/
+
+// Figure Specific Code
+
+class Solution {
+    public static void pattern() {
+        for (int row = 1; row <= 13; row++) {
+            for (int column = 1; column <= 13; column++) {
+                if (column >= (6 - row)) {
+                    System.out.print(row % 10);
+                } else {
+                    System.out.print("1");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        for (int row = 1; row <= n; row++) {
+            for (int column = 1; column <= n; column++) {
+                if (column >= ((n + 1) - row)) {
+                    System.out.print(row % 10);
+                } else {
+                    System.out.print("1");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
