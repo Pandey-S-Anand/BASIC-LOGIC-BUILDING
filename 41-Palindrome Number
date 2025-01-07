@@ -2,26 +2,23 @@
 
 class Solution {
     public boolean isPalindrome(int num) {
-      if(num<0)
-        return false;
-        
-      if(reverse(num)==num)
-         return true;
-      else 
-         return false;  
+        if (num < 0) {
+            return false;
+        }
+
+        return reverse(num) == num;
     }
 
-    public static int reverse(int num)
-    {
-	int rev=0;
-	while(num!=0)
-	{
-	   rev=rev*10+num%10;
-	   num=num/10;
-	}
+    private int reverse(int num) {
+        int reverse = 0;
 
-        return rev;
-    } 
+        while (num != 0) {
+            reverse = reverse * 10 + num % 10;
+            num = num / 10;
+        }
+
+        return reverse;
+    }
 }
 
 
@@ -29,36 +26,13 @@ class Solution {
 
 class Solution {
     public boolean isPalindrome(int num) {
-      if(num<0)
-        return false;
+        if (num < 0) {
+            return false; // Negative numbers are not palindromes
+        }
 
-      if(reverse(Integer.toString(num)).equals(Integer.toString(num)))
-         return true;
-      else 
-         return false;  
+        String original = Integer.toString(num);
+        String reversed = new StringBuilder(original).reverse().toString();
+
+        return original.equals(reversed);
     }
-
-    public static String reverse(String str)
-    {
-       String res="";
-       for(int i=str.length()-1;i>=0;i--)
-         res+=str.charAt(i);
-
-       return res;
-    }
-}
-
-
-//Method 3
-
-class Solution {
-    public boolean isPalindrome(int num) {
-      if(num<0)
-        return false;
-
-      if(new StringBuilder(Integer.toString(num)).reverse().compareTo(new StringBuilder(Integer.toString(num)))==0)
-         return true;
-      else 
-         return false;  
-    }  
 }
