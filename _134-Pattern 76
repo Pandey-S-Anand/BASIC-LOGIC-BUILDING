@@ -1,0 +1,48 @@
+/*Q-To Print
+
+                  1     
+              4   9  16    
+         25  36  49  64  81   
+    100 121 144 169 196 225 256  
+289 324 361 400 441 484 529 576 625
+
+*/  
+  
+// Figure Specific Code
+
+class Solution {  
+    public static void pattern() {  
+        int data = 1;
+        for (int row = 1; row <= 5; row++) {
+            for (int column = 1; column <= 9; column++) {
+                if (column >= (6 - row) && column <= (4 + row)) {
+                    System.out.print((data * data) + " ");
+                    data++;
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        } 
+    }
+}
+
+
+// Generalized Code
+
+class Solution {  
+    public static void pattern(int n) {  
+        int data = 1;
+        for (int row = 1; row <= n; row++) {
+            for (int column = 1; column <= (2 * n - 1); column++) {
+                if (column >= (n + 1 - row) && column <= (n - 1 + row)) {
+                    System.out.print((data * data) + " ");
+                    data++;
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        } 
+    }
+}
