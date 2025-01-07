@@ -1,0 +1,62 @@
+/*Q-To Print
+
+    *    
+   *     
+  *      
+ *       
+*********
+ *       
+  *      
+   *     
+    * 
+
+*/
+
+// Figure Specific Code
+
+class Solution {  
+    public static void pattern() {
+        int k = 0;
+        for (int row = 1; row <= 9; row++) {
+            if (row <= 5) {
+                k++;
+            } else {
+                k--;
+            }
+
+            for (int column = 1; column <= 9; column++) {
+                if (row == 5 || column == (6 - k)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+// Generalized Code
+
+class Solution {
+    public static void pattern(int n) {
+        int k = 0, middle = (n + 1) / 2;
+        for (int row = 1; row <= n; row++) {
+            if (row <= middle) {
+                k++;
+            } else {
+                k--;
+            }
+
+            for (int column = 1; column <= n; column++) {
+                if (row == middle || column == (middle + 1 - k)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
