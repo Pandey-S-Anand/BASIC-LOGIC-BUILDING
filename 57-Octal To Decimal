@@ -22,27 +22,31 @@ So, the octal number 347 is equivalent to the decimal number 231.
 
 //Method 1
 
-class Solution{
-  public static long octToDec(int oct){
-      if(oct==0)
-        return 0;
-        
-      long sum=0,powerOf8=1; //8^0 =1
-      while(oct!=0)
-      {
-        int rem=oct%10;
-        sum+=rem*powerOf8;
-        oct=oct/10;
-        powerOf8=powerOf8*8;
-      }
-      return sum;
-  }
+class Solution {
+    public static long octalToDecimal(int octal) {
+        if (octal == 0) {
+            return 0;
+        }
+
+        long decimalValue = 0;
+        long powerOf8 = 1; // 8^0 = 1
+
+        while (octal != 0) {
+            int remainder = octal % 10;
+            decimalValue += remainder * powerOf8;
+            octal = octal / 10;
+            powerOf8 = powerOf8 * 8;
+        }
+
+        return decimalValue;
+    }
 }
+
 
 //Method 2 (using Inbuilt Method)
 
-class Solution{
-  public static long octToDec(int oct){
-    return Integer.parseInt(Integer.toString(oct),8);  
-  }
+class Solution {
+    public static long octToDec(int oct) {
+        return Integer.parseInt(Integer.toString(oct), 8);
+    }
 }
