@@ -1,0 +1,52 @@
+//Using Recursion
+
+class Solution {
+    public int minInArray(int[] arr) {
+        return getMinInArray(arr, 0);
+    }
+
+    private int getMinInArray(int[] arr, int index) { 
+        if (index == arr.length) {
+            return Integer.MAX_VALUE; // Base case: if index reaches the end, return the maximum value
+        }
+
+        int minFromRest = getMinInArray(arr, index + 1); // Recursive call to find min in the remaining array
+        return Math.min(arr[index], minFromRest); // Compare the current element with the min from the rest
+    }
+}
+
+
+
+//Without Recursion
+
+class Solution {
+    public int minInArray(int arr[]) {
+        if (arr.length == 0) {
+            return Integer.MAX_VALUE;
+        }
+
+        int mixIndex = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[mixIndex]) {
+                minIndex = i;
+            }
+        }
+
+        return arr[minIndex];
+    }
+}
+
+
+//Aliter
+
+class Solution {
+    public int minInArray(int arr[]) {
+        if (arr.length == 0) {
+            return Integer.MAX_VALUE;
+        }
+
+        Arrays.sort(arr);
+
+        return arr[0];
+    }
+}
