@@ -1,22 +1,22 @@
 //Bruteforce Approach
 
-class Solution{
-    public static String concatenatedString(String str1,String str2){
-       StringBuilder uncommonCharacters = new StringBuilder();
+class Solution {
+    public static String concatenatedString(String str1, String str2) {
+        StringBuilder uncommonCharacters = new StringBuilder();
 
-       for(int i = 0 ; i < str1.length() ; i++){
-            if(str2.indexOf(str1.charAt(i)) < 0){
+        for (int i = 0; i < str1.length(); i++) {
+            if (str2.indexOf(str1.charAt(i)) < 0) {
                 uncommonCharacters.append(str1.charAt(i));
             }
-       }
-       
-       for(int i = 0 ; i < str2.length() ; i++){
-            if(str1.indexOf(str2.charAt(i)) < 0){
+        }
+
+        for (int i = 0; i < str2.length(); i++) {
+            if (str1.indexOf(str2.charAt(i)) < 0) {
                 uncommonCharacters.append(str2.charAt(i));
             }
-       }
+        }
 
-       return uncommonCharacters.length() == 0?"-1": uncommonCharacters.toString();
+        return uncommonCharacters.length() == 0 ? "-1" : uncommonCharacters.toString();
     }
 }
 
