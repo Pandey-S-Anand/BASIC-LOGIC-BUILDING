@@ -2,11 +2,16 @@
 
 class Solution {
     public String changeXY(String str) {
-        if (str.isEmpty()) {
-            return str;
+        return changeXYHelper(str, 0);
+    }
+
+    private String changeXYHelper(String str, int index) {
+        if (index == str.length()) {
+            return ""; // Base case: reached the end of the string
         }
 
-        return (str.charAt(0) == 'x' ? 'y' : str.charAt(0)) + changeXY(str.substring(1));
+        char currentChar = (str.charAt(index) == 'x') ? 'y' : str.charAt(index);
+        return currentChar + changeXYHelper(str, index + 1);
     }
 }
 
