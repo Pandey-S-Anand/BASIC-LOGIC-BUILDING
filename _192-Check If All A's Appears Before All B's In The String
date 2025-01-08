@@ -17,12 +17,14 @@ class Solution {
             if (str.charAt(i++) == 'b') {
                 return false;
             }
+            i++;
             aCount--;
         }
 
         return true;
     }
 }
+
 
 
 //Optimal Approach
