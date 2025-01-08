@@ -54,53 +54,62 @@ class Solution {
 
 class Solution {
     public static long findSum(String str) {
-        return findSum(str, 0);
+        return findSumHelper(str, 0, 0);
     }
 
-    private static long findSum(String str, long currentNumber) {
-        if (str.isEmpty()) {
-            return currentNumber;
+    private static long findSumHelper(String str, int index, long currentNumber) {
+        if (index == str.length()) {
+            return currentNumber; // Return the last number if it exists
         }
 
-        if (Character.isDigit(str.charAt(0))) {
-            return findSum(str.substring(1), currentNumber * 10 + (str.charAt(0) - '0'));
+        char currentChar = str.charAt(index);
+
+        if (Character.isDigit(currentChar)) {
+            // Accumulate the current number
+            return findSumHelper(str, index + 1, currentNumber * 10 + (currentChar - '0'));
         }
 
+        // Add the accumulated number to the result and reset the current number
         if (currentNumber != 0) {
-            return currentNumber + findSum(str.substring(1), 0);
+            return currentNumber + findSumHelper(str, index + 1, 0);
         }
 
-        return findSum(str.substring(1), currentNumber);
+        return findSumHelper(str, index + 1, currentNumber);
     }
 }
-
 
 
 //Method 2
 
 class Solution {
     public static long findSum(String str) {
-        return findSum(str, new StringBuilder());
+        return findSumHelper(str, 0, new StringBuilder());
     }
 
-    private static long findSum(String str, StringBuilder currentNumber) {
-        if (str.isEmpty()) {
+    private static long findSumHelper(String str, int index, StringBuilder currentNumber) {
+        if (index == str.length()) {
+            // Return the last number if present
             if (currentNumber.length() > 0) {
                 return Long.parseLong(currentNumber.toString());
             }
             return 0;
         }
 
-        if (Character.isDigit(str.charAt(0))) {
-            return findSum(str.substring(1), currentNumber.append(str.charAt(0) - '0'));
+        char currentChar = str.charAt(index);
+
+        if (Character.isDigit(currentChar)) {
+            // Append the digit to the current number
+            currentNumber.append(currentChar);
+            return findSumHelper(str, index + 1, currentNumber);
         }
 
         if (currentNumber.length() != 0) {
-            Long num = Long.parseLong(currentNumber.toString());
+            // Convert accumulated number, reset, and add it to the result
+            long num = Long.parseLong(currentNumber.toString());
             currentNumber.setLength(0);
-            return num + findSum(str.substring(1), currentNumber);
+            return num + findSumHelper(str, index + 1, currentNumber);
         }
 
-        return findSum(str.substring(1), currentNumber);
+        return findSumHelper(str, index + 1, currentNumber);
     }
 }
