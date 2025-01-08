@@ -1,27 +1,5 @@
 //Bruteforce Approach
 
-class Solution {
-    String ReverseSort(String str) {
-        Character[] charArray = new Character[str.length()];
-        for (int i = 0; i < str.length(); i++) {
-            charArray[i] = str.charAt(i);
-        }
-
-        Arrays.sort(charArray, Collections.reverseOrder());
-
-        StringBuilder reverseSorted = new StringBuilder(charArray.length);
-        for (char ch : charArray) {
-            reverseSorted.append(ch);
-        }
-
-        return reverseSorted.toString();
-    }
-}
-
-
-
-//Better Approach
-
 class Solution { 
     String ReverseSort(String str) { 
         char[]arr=str.toCharArray();
