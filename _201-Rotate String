@@ -36,11 +36,11 @@ class Solution {
 //Optimal Approach
 
 class Solution {
-    public boolean rotateString(String str, String goal) {  
-       if(str.length()!=goal.length()){
-          return false;
-       }  
-         
-       return (str+str).contains(goal);
+    public boolean rotateString(String str, String goal) {
+        if (str.length() != goal.length()) {
+            return false;
+        }
+
+        return (str + str).contains(goal);
     }
 }
