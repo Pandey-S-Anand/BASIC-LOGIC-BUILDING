@@ -31,9 +31,7 @@ class Solution {
     }
 }
 
-
-//Better Approach
-
+// Better Approach
 
 class Solution {
     public String arrangeString(String str) {
@@ -64,8 +62,7 @@ class Solution {
     }
 }
 
-
-//Optimal Approach
+// Optimal Approach
 
 class Solution {
     public String arrangeString(String str) {
