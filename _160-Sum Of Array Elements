@@ -12,7 +12,7 @@ class Solution {
     }
 }
 
-//Using Recursion
+// Using Recursion
 
 class Solution {
     int sum(int arr[], int n) {
