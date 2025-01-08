@@ -1,0 +1,53 @@
+//Without Recursion
+
+class Solution {
+    public int countClumps(int[] arr) {
+        int clumps = 0;
+        int i = 0;
+
+        while (i < arr.length) {
+            int value = arr[i];
+            int count = 0;
+
+            // Count the size of the current clump
+            while (i < arr.length && arr[i] == value) {
+                count++;
+                i++;
+            }
+
+            // If the clump has 2 or more elements, increment clumps count
+            if (count >= 2) {
+                clumps++;
+            }
+        }
+
+        return clumps;
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public int countClumps(int[] arr) {
+        return countClumps(arr, 0, false);
+    }
+
+    private int countClumps(int[] arr, int index, boolean inClump) {
+        if (index >= arr.length - 1) {
+            return 0; // Base case: Reached the end of the array
+        }
+
+        if (arr[index] == arr[index + 1]) {
+            /*
+             * If the current and next elements are equal
+             * If already in a clump, continue without incrementing the count
+             * Otherwise, start a new clump and increment the count
+             */
+            return inClump ? countClumps(arr, index + 1, true) : 1 + countClumps(arr, index + 1, true);
+        }
+
+        // If the current and next elements are not equal, End the current clump (if any) and move to the next index
+        return countClumps(arr, index + 1, false);
+    }
+}
