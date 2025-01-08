@@ -1,0 +1,50 @@
+//Using Recursion
+
+class Solution {
+    public int maxInArray(int[] arr) {
+        return getMaxInArray(arr, 0);
+    }
+
+    private int getMaxInArray(int[] arr, int index) { // index will be passed as 0
+        if (index == arr.length) {
+            return Integer.MIN_VALUE; // Base case: if index reaches the end, return the minimum value
+        }
+
+        int maxFromRest = getMaxInArray(arr, index + 1); // Recursive call to find max in the remaining array
+        return Math.max(arr[index], maxFromRest); // Compare the current element with the max from the rest
+    }
+}
+
+
+//Without Recursion
+
+class Solution {
+    public int maxInArray(int arr[]) {
+        if (arr.length == 0) {
+            return Integer.MIN_VALUE;
+        }
+
+        int maxIndex = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+
+        return arr[maxIndex];
+    }
+}
+
+
+//Aliter
+
+class Solution {
+    public int maxInArray(int arr[]) {
+        if (arr.length == 0) {
+            return Integer.MIN_VALUE;
+        }
+
+        Arrays.sort(arr);
+        return arr[arr.length - 1];
+    }
+}
