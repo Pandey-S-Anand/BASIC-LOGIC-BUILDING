@@ -2,18 +2,21 @@
 
 class Solution {
     public boolean array123(int[] arr) {
-        if (arr.length < 3) {
-            return false;
+        return array123(arr, 0);
+    }
+
+    private boolean array123(int[] arr, int index) {
+        if (index + 2 >= arr.length) {
+            return false; // Base case: check if there are fewer than 3 elements left
         }
 
-        if (arr[0] == 1 && arr[1] == 2 && arr[2] == 3) {
+        if (arr[index] == 1 && arr[index + 1] == 2 && arr[index + 2] == 3) {
             return true;
         }
 
-        return array123(Arrays.copyOfRange(arr, 1, arr.length));
+        return array123(arr, index + 1);
     }
 }
-
 
 //Without Using Recursion
 
