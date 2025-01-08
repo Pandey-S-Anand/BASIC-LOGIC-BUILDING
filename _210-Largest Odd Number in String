@@ -1,0 +1,34 @@
+//Iterative Approach
+
+class Solution {
+    public String largestOddNumber(String str) {
+        for (int i = str.length() - 1; i >= 0; i--) {
+            if ((str.charAt(i) - '0') % 2 == 1) {
+                return str.substring(0, i + 1);
+            }
+        }
+        return "";
+    }
+}
+
+
+//Recursive Approach
+
+class Solution {
+    public String largestOddNumber(String str) {
+        return largestOddNumberHelper(str, str.length() - 1);
+    }
+
+    private String largestOddNumberHelper(String str, int index) {
+        if (index < 0) {
+            return ""; // Base case: no odd digit found
+        }
+
+        if ((str.charAt(index) - '0') % 2 == 1) {
+            return str.substring(0, index + 1); // Return the substring up to the last odd digit
+        }
+
+        return largestOddNumberHelper(str, index - 1);
+    }
+}
+
