@@ -2,11 +2,16 @@
 
 class Solution {
     public String stringBits(String str) {
-        if (str.isEmpty()) {
-            return str;
+        return stringBitsHelper(str, 0);
+    }
+
+    private String stringBitsHelper(String str, int index) {
+        if (index >= str.length()) {
+            return ""; // Base case: reached the end of the string
         }
 
-        return str.charAt(0) + stringBits(str.length() < 2 ? "" : str.substring(2));
+        // Include the character at the current index and move to the next character with a step of 2
+        return str.charAt(index) + stringBitsHelper(str, index + 2);
     }
 }
 
