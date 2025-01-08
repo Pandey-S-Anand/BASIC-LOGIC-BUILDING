@@ -37,12 +37,12 @@ class Solution {
     public static boolean isDistinctArray(int[] arr) {
         Map<Integer, Integer> frequencyMap = new HashMap<>();
 
-        for (int val : arr) {
-            frequencyMap.put(val, frequencyMap.getOrDefault(val, 0) + 1);
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
         }
 
-        for (int val : frequencyMap.keySet()) {
-            if (frequencyMap.get(val) > 1) {
+        for (int num : frequencyMap.keySet()) {
+            if (frequencyMap.get(num) > 1) {
                 return false;
             }
         }
@@ -56,13 +56,13 @@ class Solution {
 
 class Solution {
     public static boolean isDistinctArray(int[] arr) {
-        Set<Integer> uniqueElements = new HashSet<>();
+        Set<Integer> seen = new HashSet<>();
 
-        for (int value : arr) {
-            if (uniqueElements.contains(value)) {
+        for (int num : arr) {
+            if (seen.contains(num)) {
                 return false;
             } else {
-                uniqueElements.add(value);
+                seen.add(num);
             }
         }
 
@@ -71,17 +71,16 @@ class Solution {
 }
 
 
-
 //Optimal Approach (since Set cannot contain duplicates, so if array size and HashSet size then it can be concluded that array has all distinct or unique elements otherwise its not)
 
 class Solution {
     public static boolean isDistinctArray(int[] arr) {
-        Set<Integer> uniqueElements = new HashSet<>();
+        Set<Integer> seen = new HashSet<>();
 
-        for (int val : arr) {
-            uniqueElements.add(val);
+        for (int num : arr) {
+            seen.add(num);
         }
 
-        return arr.length == uniqueElements.size();
+        return arr.length == seen.size();
     }
 }
