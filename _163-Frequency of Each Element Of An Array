@@ -38,12 +38,12 @@ class Solution {
 
         Map<Integer, Integer> frequencyMap = new HashMap<>(arr.length);
 
-        for (int val : arr) {
-            frequencyMap.put(val, frequencyMap.getOrDefault(val, 0) + 1);
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
         }
 
-        for (int key : frequencyMap.keySet()) {
-            System.out.println(key + "==>" + frequencyMap.get(key));
+        for (int num : frequencyMap.keySet()) {
+            System.out.println(num + "==>" + frequencyMap.get(num));
         }
     }
 }
@@ -57,22 +57,21 @@ class Solution {
 
         Map<Integer, Integer> frequencyMap = new HashMap<>(arr.length);
 
-        for (int val : arr) {
-            frequencyMap.put(val, frequencyMap.getOrDefault(val, 0) + 1);
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
         }
 
-        for (int val : arr) {
-            if (frequencyMap.containsKey(val)) {
-                System.out.println(val + "==>" + frequencyMap.get(val));
-                frequencyMap.remove(val);
+        for (int num : arr) {
+            if (frequencyMap.containsKey(num)) {
+                System.out.println(num + "==>" + frequencyMap.get(num));
+                frequencyMap.remove(num);
             }
         }
     }
 }
 
 
-//Aliter - Using LinkedHashMap (Prints elements(Along with Their Frequency) in same order as they appear in input)
-
+//Method 4 - Using LinkedHashMap (Prints elements(Along with Their Frequency) in same order as they appear in input)
 
 class Solution {
     public static void countFrequency(int[] arr) {
@@ -80,12 +79,12 @@ class Solution {
 
         Map<Integer, Integer> frequencyMap = new LinkedHashMap<>(arr.length);
 
-        for (int val : arr) {
-            frequencyMap.put(val, frequencyMap.getOrDefault(val, 0) + 1);
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
         }
 
-        for (int key : frequencyMap.keySet()) {
-            System.out.println(key + "==>" + frequencyMap.get(key));
+        for (int num : frequencyMap.keySet()) {
+            System.out.println(num + "==>" + frequencyMap.get(num));
         }
     }
 }
@@ -99,12 +98,12 @@ class Solution {
 
         Map<Integer, Integer> frequencyMap = new TreeMap<>();
 
-        for (int val : arr) {
-            frequencyMap.put(val, frequencyMap.getOrDefault(val, 0) + 1);
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
         }
 
-        for (int key : frequencyMap.keySet()) {
-            System.out.println(key + "==>" + frequencyMap.get(key));
+        for (int num : frequencyMap.keySet()) {
+            System.out.println(num + "==>" + frequencyMap.get(num));
         }
     }
 }
