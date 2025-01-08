@@ -14,8 +14,7 @@ class Solution {
     }
 }
 
-
-//Better Approach
+// Better Approach
 
 class Solution {
     static boolean isIsogram(String str) {
@@ -33,8 +32,7 @@ class Solution {
     }
 }
 
-
-//Optimal Approach
+// Optimal Approach
 
 class Solution {
     static boolean isIsogram(String str) {
