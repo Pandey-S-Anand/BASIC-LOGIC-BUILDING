@@ -1,0 +1,35 @@
+//Without Recursion
+
+class Solution {
+    public int sumDigits(String str) {
+        int digitSum = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            digitSum += Character.isDigit(str.charAt(i)) ? str.charAt(i) - '0' : 0;
+        }
+
+        return digitSum;
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public int sumDigits(String str) {
+        return sumDigitsHelper(str, 0);
+    }
+
+    private int sumDigitsHelper(String str, int index) {
+        if (index == str.length()) {
+            return 0; // Base case: reached the end of the string
+        }
+
+        char currentChar = str.charAt(index);
+        if (Character.isDigit(currentChar)) {
+            return (currentChar - '0') + sumDigitsHelper(str, index + 1);
+        }
+
+        return sumDigitsHelper(str, index + 1);
+    }
+}
