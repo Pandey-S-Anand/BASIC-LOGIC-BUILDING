@@ -21,14 +21,18 @@ class Solution {
 
 class Solution {
     public boolean noTriples(int[] arr) {
-        if (arr.length < 3) {
-            return true;
+        return noTriples(arr, 0);
+    }
+
+    private boolean noTriples(int[] arr, int index) {
+        if (index + 2 >= arr.length) {
+            return true; // Base case: fewer than 3 elements left
         }
 
-        if (arr[0] == arr[1] && arr[1] == arr[2]) {
-            return false;
+        if (arr[index] == arr[index + 1] && arr[index + 1] == arr[index + 2]) {
+            return false; // Found a triple
         }
 
-        return noTriples(Arrays.copyOfRange(arr, 1, arr.length));
+        return noTriples(arr, index + 1); // Check the rest of the array
     }
 }
