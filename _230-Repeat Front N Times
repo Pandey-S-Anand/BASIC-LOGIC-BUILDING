@@ -26,10 +26,15 @@ class Solution {
 
 class Solution {
     public String frontTimes(String str, int n) {
-        if (n == 0) {
-            return "";
+        String front = str.length() < 3 ? str : str.substring(0, 3);
+        return frontTimesHelper(front, n, 0);
+    }
+
+    private String frontTimesHelper(String front, int n, int index) {
+        if (index == n) {
+            return ""; // Base case: no more repetitions needed
         }
 
-        return (str.length() < 3 ? str : str.substring(0, 3)) + frontTimes(str, n - 1);
+        return front + frontTimesHelper(front, n, index + 1);
     }
 }
