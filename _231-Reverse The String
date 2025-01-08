@@ -18,7 +18,7 @@ class Solution {
         return reverseString(str.toCharArray(), 0);
     }
 
-    public String reverseString(char[] arr, int index) {
+    private String reverseString(char[] arr, int index) {
         if (index == (arr.length / 2)) {
             return new String(arr);
         }
