@@ -46,14 +46,18 @@ class Solution {
 
 class Solution {
     public String mixString(String str1, String str2) {
-        if (str1.isEmpty()) {
-            return str2;
+        return mixStringHelper(str1, str2, 0, 0);
+    }
+
+    private String mixStringHelper(String str1, String str2, int index1, int index2) {
+        if (index1 == str1.length()) {
+            return str2.substring(index2); // If `str1` is exhausted, append the remaining of `str2`
         }
 
-        if (str2.isEmpty()) {
-            return str1;
+        if (index2 == str2.length()) {
+            return str1.substring(index1); // If `str2` is exhausted, append the remaining of `str1`
         }
 
-        return Character.toString(str1.charAt(0)) + str2.charAt(0) + mixString(str1.substring(1), str2.substring(1));
+        return str1.charAt(index1) + "" + str2.charAt(index2) + mixStringHelper(str1, str2, index1 + 1, index2 + 1);
     }
 }
