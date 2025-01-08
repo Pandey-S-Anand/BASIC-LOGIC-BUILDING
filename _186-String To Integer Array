@@ -40,23 +40,28 @@ public class Solution {
 
 //Using Recursion
 
-class Solution {
+public class Solution {
+    private ArrayList<Integer> numbers;
+
     public ArrayList<Integer> solve(String str) {
-        return solveRecursively(str, 0, new ArrayList<>());
+        numbers = new ArrayList<>();
+        solveRecursively(str, 0, 0);
+        return numbers;
     }
 
-    private ArrayList<Integer> solveRecursively(String str, int num, ArrayList<Integer> numbers) {
-        if (str.isEmpty()) {
+    private void solveRecursively(String str, int index, int num) {
+        if (index == str.length()) {
             numbers.add(num);
-            return numbers;
+            return;
         }
 
-        if (str.charAt(0) != ',') {
-            return solveRecursively(str.substring(1), num * 10 + (str.charAt(0) - '0'), numbers);
+        if (str.charAt(index) != ',') {
+            solveRecursively(str, index + 1, num * 10 + (str.charAt(index) - '0'));
+            return;
         }
 
         numbers.add(num);
 
-        return solveRecursively(str.substring(1), 0, numbers);
+        solveRecursively(str, index + 1, 0);
     }
 }
