@@ -1,0 +1,36 @@
+//Using Recursion
+
+class Solution {
+    public static int[] findAllOccurence(int[] arr, int index, int target, int count) { // idx and count will be passed as 0
+        if (index == arr.length) {
+            return new int[count];
+        }
+
+        if (arr[index] == target) {
+            count++;
+            int[] allIndices = findAllOccurence(arr, index + 1, target, count);
+            allIndices[count - 1] = index;
+
+            return allIndices;
+        }
+
+        return findAllOccurence(arr, index + 1, target, count);
+    }
+}
+
+
+//Without Recursion
+
+class Solution {
+    public static List<Integer> findAllOccurence(int[] arr, int target) {
+        List<Integer> indices = new ArrayList<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                indices.add(i);
+            }
+        }
+
+        return indices;
+    }
+}
