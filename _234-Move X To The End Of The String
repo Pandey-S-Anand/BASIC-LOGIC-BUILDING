@@ -27,18 +27,24 @@ class Solution {
 
 class Solution {
     public String endX(String str) {
-        if (str.isEmpty()) {
-            return str;
+        return endXHelper(str, 0, "");
+    }
+
+    private String endXHelper(String str, int index, String result) {
+        if (index == str.length()) {
+            return result; // Base case: processed all characters
         }
 
-        if (str.charAt(0) == 'x') {
-            return endX(str.substring(1)) + 'x';
+        char currentChar = str.charAt(index);
+        if (currentChar == 'x') {
+            // Append 'x' to the end of the result string
+            return endXHelper(str, index + 1, result) + 'x';
         }
 
-        return str.charAt(0) + endX(str.substring(1));
+        // Append the current character to the result string
+        return currentChar + endXHelper(str, index + 1, result);
     }
 }
-
 
 /*
 
