@@ -2,18 +2,21 @@
 
 class Solution {
     public int countAbc(String str) {
-        if (str.length() < 3) {
-            return 0;
+        return countAbcHelper(str, 0);
+    }
+
+    private int countAbcHelper(String str, int index) {
+        if (index + 2 >= str.length()) {
+            return 0; // Base case: fewer than 3 characters left
         }
 
-        if (str.startsWith("abc") || str.startsWith("aba")) {
-            return 1 + countAbc(str.substring(2));
+        if (str.startsWith("abc", index) || str.startsWith("aba", index)) {
+            return 1 + countAbcHelper(str, index + 2); // Skip 2 characters if "abc" or "aba" is found
         }
 
-        return countAbc(str.substring(1));
+        return countAbcHelper(str, index + 1); // Otherwise, move to the next character
     }
 }
-
 
 
 //Without Using Recursion
@@ -34,4 +37,3 @@ class Solution {
         return count;
     }
 }
-
