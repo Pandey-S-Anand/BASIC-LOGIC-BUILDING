@@ -23,14 +23,18 @@ class Solution {
 
 class Solution {
     public int countPairs(String str) {
-        if (str.length() < 3) {
-            return 0;
+        return countPairsHelper(str, 0);
+    }
+
+    private int countPairsHelper(String str, int index) {
+        if (index + 2 >= str.length()) {
+            return 0; // Base case: fewer than 3 characters left
         }
 
-        if (str.charAt(0) == str.charAt(2)) {
-            return 1 + countPairs(str.substring(1));
+        if (str.charAt(index) == str.charAt(index + 2)) {
+            return 1 + countPairsHelper(str, index + 1);
         }
 
-        return countPairs(str.substring(1));
+        return countPairsHelper(str, index + 1);
     }
 }
