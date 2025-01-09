@@ -1,0 +1,41 @@
+//Without Recursion
+
+class Solution {
+    public String altPairs(String str) {
+        StringBuilder modifiedString = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i += 4) {
+            modifiedString.append(str.charAt(i));
+            if ((i + 1) < str.length()) {
+                modifiedString.append(str.charAt(i + 1));
+            }
+        }
+
+        return modifiedString.toString();
+    }
+}
+
+
+
+//Using Recursion
+
+class Solution {
+    public String altPairs(String str) {
+        return altPairsHelper(str, 0);
+    }
+
+    private String altPairsHelper(String str, int index) {
+        if (index >= str.length()) {
+            return ""; // Base case: if index goes out of bounds, return an empty string
+        }
+
+        String result = Character.toString(str.charAt(index)); // Always include the current character
+
+        if (index + 1 < str.length()) {
+            result += str.charAt(index + 1); // Include the next character if it exists
+        }
+
+        return result + altPairsHelper(str, index + 4); // Skip the next two characters and continue
+    }
+}
+
