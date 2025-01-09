@@ -1,0 +1,34 @@
+//Without Recursion
+
+class Solution {
+    int countXX(String str) {
+        int count = 0;
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.startsWith("xx",i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public int countXX(String str) {
+        return countXXHelper(str, 0);
+    }
+
+    private int countXXHelper(String str, int index) {
+        if (index + 1 >= str.length()) {
+            return 0; // Base case: not enough characters left to form "xx"
+        }
+
+        if (str.charAt(index) == 'x' && str.charAt(index + 1) == 'x') {
+            return 1 + countXXHelper(str, index + 1); // Found "xx", increment count
+        }
+
+        return countXXHelper(str, index + 1); // Move to the next index
+    }
+}
