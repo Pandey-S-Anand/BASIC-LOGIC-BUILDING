@@ -2,15 +2,19 @@
 
 class Solution {
     public boolean nestParen(String str) {
-        if (str.isEmpty()) {
-            return true;
+        return nestParenHelper(str, 0, str.length() - 1);
+    }
+
+    private boolean nestParenHelper(String str, int start, int end) {
+        if (start > end) {
+            return true; // Base case: all pairs are valid
         }
 
-        if (str.charAt(0) == '(' && str.charAt(str.length() - 1) == ')') {
-            return nestParen(str.substring(1, str.length() - 1));
+        if (str.charAt(start) == '(' && str.charAt(end) == ')') {
+            return nestParenHelper(str, start + 1, end - 1); // Check the inner part
         }
 
-        return false;
+        return false; // Invalid if current pair is not matching
     }
 }
 
