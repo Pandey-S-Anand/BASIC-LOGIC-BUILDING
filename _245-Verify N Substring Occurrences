@@ -1,0 +1,39 @@
+//Using Recursion
+
+class Solution {
+    public int stringMatch(String str1, String str2) {
+        return stringMatchHelper(str1, str2, 0);
+    }
+
+    private int stringMatchHelper(String str1, String str2, int index) {
+        if (str1.length() - index < 2 || str2.length() - index < 2) {
+            return 0; // Base case: if there are fewer than 2 characters remaining in either string
+        }
+
+        // Check if the first two characters from both strings match
+        if (str1.charAt(index) == str2.charAt(index) && str1.charAt(index + 1) == str2.charAt(index + 1)) {
+            return 1 + stringMatchHelper(str1, str2, index + 1); // If they match, count and continue
+        }
+
+        return stringMatchHelper(str1, str2, index + 1); // Otherwise, continue checking from the next index
+    }
+}
+
+
+//Without Recursion
+
+class Solution {
+    public boolean strCopies(String str, String sub, int count) {
+        for (int i = 0; i <= (str.length() - sub.length()); i++) {
+            if (str.startsWith(sub, i)) {
+                count--;
+            }
+
+            if (count == 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
