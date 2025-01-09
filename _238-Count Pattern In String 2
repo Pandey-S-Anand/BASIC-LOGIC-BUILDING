@@ -1,0 +1,45 @@
+//Using Recursion
+
+class Solution {
+    public int countHi2(String str) {
+        return countHi2Helper(str, 0);
+    }
+
+    private int countHi2Helper(String str, int index) {
+        if (index > str.length() - 2) {
+            return 0; // Base case: fewer than 2 characters remaining
+        }
+
+        if (index < str.length() - 2 && str.substring(index, index + 3).equals("xhi")) {
+            return countHi2Helper(str, index + 3);
+        }
+
+        if (str.substring(index, index + 2).equals("hi")) {
+            return 1 + countHi2Helper(str, index + 2);
+        }
+
+        return countHi2Helper(str, index + 1);
+    }
+}
+
+
+//Without Using Recursion
+
+class Solution {
+    public int countHi2(String str) {
+        int i = 0, count = 0;
+
+        while (i <= (str.length() - 2)) {
+            if (str.startsWith("xhi", i)) {
+                i += 3;
+            } else if (str.startsWith("hi", i)) {
+                count++;
+                i += 2;
+            } else {
+                i++;
+            }
+        }
+
+        return count;
+    }
+}
