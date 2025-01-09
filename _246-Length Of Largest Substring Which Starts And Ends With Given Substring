@@ -1,0 +1,47 @@
+//Without Recursion
+
+class Solution {
+    public int strDist(String str, String sub) {
+        if (str.length() < sub.length()) {
+            return 0;
+        }
+
+        int startIndex = str.indexOf(sub);
+
+        if (startIndex == -1) {
+            return 0;
+        }
+         
+        //Return the length of the substring from the start of the first occurrence to the end of the last occurrence, inclusive
+        return str.lastIndexOf(sub) + sub.length() - startIndex;
+    }
+}
+
+
+//Using Recursion
+
+class Solution {
+    public int strDist(String str, String sub) {
+        return strDistHelper(str, sub, 0, str.length() - 1);
+    }
+
+    private int strDistHelper(String str, String sub, int start, int end) {
+        // Base case: if the length of the string is smaller than the substring
+        if (end - start + 1 < sub.length()) {
+            return 0;
+        }
+
+        // If the substring starts and ends with 'sub'
+        if (str.startsWith(sub, start) && str.endsWith(sub, end)) {
+            return end - start + 1; // Length of the valid string
+        }
+
+        // If the substring starts with 'sub' but does not end with 'sub'
+        if (str.startsWith(sub, start)) {
+            return strDistHelper(str, sub, start, end - 1); // Recur on the substring excluding the last character
+        }
+
+        // If the substring does not start with 'sub', move the starting index by 1
+        return strDistHelper(str, sub, start + 1, end);
+    }
+}
