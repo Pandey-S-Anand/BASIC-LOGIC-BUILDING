@@ -1,0 +1,31 @@
+//Using Recursion
+
+class Solution {
+    private String parenBit(String str) {
+        return parenBit(str, 0, str.length() - 1);
+    }
+
+    private String parenBit(String str, int start, int end) {
+        // Base case: the substring starts with '(' and ends with ')'
+        if (start < end && str.charAt(start) == '(' && str.charAt(end) == ')') {
+            return str.substring(start, end + 1);
+        }
+
+        // If the substring does not start with '('
+        if (str.charAt(start) != '(') {
+            return parenBit(str, start + 1, end);
+        }
+
+        // If the substring does not end with ')'
+        return parenBit(str, start, end - 1);
+    }
+}
+
+
+//Without Using Recursion
+
+class Solution {
+    public String parenBit(String str) {
+        return str.substring(str.indexOf('('), str.indexOf(')') + 1);
+    }
+}
