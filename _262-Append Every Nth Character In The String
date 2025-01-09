@@ -2,11 +2,15 @@
 
 class Solution {
     public String everyNth(String str, int n) {
-        if (str.isEmpty()) {
-            return "";
+        return everyNthHelper(str, n, 0);
+    }
+
+    private String everyNthHelper(String str, int n, int index) {
+        if (index >= str.length()) {
+            return ""; // Base case: reached the end of the string
         }
 
-        return str.charAt(0) + everyNth(str.length() < n ? "" : str.substring(n), n);
+        return str.charAt(index) + everyNthHelper(str, n, index + n); // Include current character and skip `n` positions
     }
 }
 
