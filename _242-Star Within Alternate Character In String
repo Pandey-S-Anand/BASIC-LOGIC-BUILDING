@@ -1,0 +1,34 @@
+//Using Recursion
+
+class Solution {
+    public String allStar(String str) {
+        return allStarHelper(str, 0);
+    }
+
+    private String allStarHelper(String str, int index) {
+        if (index == str.length() - 1) {
+            return String.valueOf(str.charAt(index)); // Base case: return last character
+        }
+
+        return str.charAt(index) + "*" + allStarHelper(str, index + 1); // Add '*' between characters
+    }
+}
+
+
+
+//Without Using Recursion
+
+class Solution {
+    public String allStar(String str) {
+        StringBuilder modifiedString = new StringBuilder();
+        int n = str.length();
+
+        for (int i = 0; i < (n - 1); i++) {
+            modifiedString.append(str.charAt(i)).append("*");
+        }
+
+        modifiedString.append(n > 0 ? str.charAt(n - 1) : "");
+
+        return modifiedString.toString();
+    }
+}
