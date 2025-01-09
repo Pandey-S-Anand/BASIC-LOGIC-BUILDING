@@ -2,17 +2,22 @@
 
 class Solution {
     public String plusOut(String str, String word) {
-        if (str.isEmpty()) {
-            return str;
+        return plusOutHelper(str, word, 0);
+    }
+
+    private String plusOutHelper(String str, String word, int index) {
+        if (index >= str.length()) {
+            return ""; // Base case: processed the entire string
         }
 
-        if (str.startsWith(word)) {
-            return word + plusOut(str.substring(word.length()), word);
+        if (str.startsWith(word, index)) {
+            return word + plusOutHelper(str, word, index + word.length()); // Match word and move index
         }
 
-        return "+" + plusOut(str.substring(1), word);
+        return "+" + plusOutHelper(str, word, index + 1); // Add '+' and move to next character
     }
 }
+
 
 
 //Without Recursion
