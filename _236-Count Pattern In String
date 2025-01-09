@@ -2,17 +2,22 @@
 
 class Solution {
     public int count11(String str) {
-        if (str.length() < 2) {
-            return 0;
+        return count11Helper(str, 0);
+    }
+
+    private int count11Helper(String str, int index) {
+        if (index > str.length() - 2) {
+            return 0; // Base case: fewer than 2 characters left
         }
 
-        if (str.startsWith("11")) {
-            return 1 + count11(str.substring(2));
+        if (str.charAt(index) == '1' && str.charAt(index + 1) == '1') {
+            return 1 + count11Helper(str, index + 2); // Skip the "11" substring
         }
 
-        return count11(str.substring(1));
+        return count11Helper(str, index + 1); // Move to the next character
     }
 }
+
 
 //Without Using Recursion
 
