@@ -2,17 +2,24 @@
 
 class Solution {
     public String stringYak(String str) {
-        if (str.isEmpty()) {
-            return str;
+        return stringYakHelper(str, 0);
+    }
+
+    private String stringYakHelper(String str, int index) {
+        if (index == str.length()) {
+            return ""; // Base case: reached the end of the string
         }
 
-        if (str.startsWith("yak")) {
-            return stringYak(str.substring(3));
+        // Check if the substring starting at the current index is "yak"
+        if (index <= str.length() - 3 && str.substring(index, index + 3).equals("yak")) {
+            return stringYakHelper(str, index + 3); // Skip "yak"
         }
 
-        return str.charAt(0) + stringYak(str.substring(1));
+        // Include the current character and move to the next
+        return str.charAt(index) + stringYakHelper(str, index + 1);
     }
 }
+
 
 
 
