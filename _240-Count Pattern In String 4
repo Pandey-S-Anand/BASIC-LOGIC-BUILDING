@@ -2,15 +2,19 @@
 
 class Solution {
     public int countCode(String str) {
-        if (str.length() < 4) {
+        return countCode(str, 0);
+    }
+
+    private int countCode(String str, int index) {
+        if (index >= str.length() - 3) {
             return 0;
         }
 
-        if (str.charAt(0) == 'c' && str.charAt(1) == 'o' && str.charAt(3) == 'e') {
-            return 1 + countCode(str.substring(4));
+        if (str.charAt(index) == 'c' && str.charAt(index + 1) == 'o' && str.charAt(index + 3) == 'e') {
+            return 1 + countCode(str, index + 4);
         }
 
-        return countCode(str.substring(1));
+        return countCode(str, index + 1);
     }
 }
 
