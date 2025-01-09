@@ -24,22 +24,22 @@ class Solution {
 
 class Solution {
     public boolean catDog(String str) {
-        return catDogHelper(str) == 0;
+        return catDogHelper(str, 0) == 0;
     }
 
-    private int catDogHelper(String str) {
-        if (str.length() < 3) {
-            return 0;
+    private int catDogHelper(String str, int index) {
+        if (index > str.length() - 3) {
+            return 0; // Base case: remaining string is too short
         }
 
-        if (str.startsWith("cat")) {
-            return 1 + catDogHelper(str.substring(3));
+        if (str.startsWith("cat", index)) {
+            return 1 + catDogHelper(str, index + 3); // Found "cat", increment count and move ahead
         }
 
-        if (str.startsWith("dog")) {
-            return catDogHelper(str.substring(3)) - 1;
+        if (str.startsWith("dog", index)) {
+            return catDogHelper(str, index + 3) - 1; // Found "dog", decrement count and move ahead
         }
 
-        return catDogHelper(str.substring(1));
+        return catDogHelper(str, index + 1); // Move to the next character
     }
 }
