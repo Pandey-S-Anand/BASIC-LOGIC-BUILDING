@@ -1,0 +1,43 @@
+//Using Recursion
+
+class Solution {
+    public int strCount(String str, String sub) {
+        return strCountHelper(str, sub, 0); // Initial call with index 0
+    }
+
+    private int strCountHelper(String str, String sub, int index) {
+        // Base case: If remaining string is shorter than the substring
+        if ((str.length() - index) < sub.length()) {
+            return 0; 
+        }
+
+        // If substring 'sub' matches at the current index, count it and move ahead
+        if (str.startsWith(sub, index)) {
+            return 1 + strCountHelper(str, sub, index + sub.length());
+        }
+
+        // Otherwise, move to the next index
+        return strCountHelper(str, sub, index + 1); 
+    }
+}
+
+
+
+//Without Recursion
+
+class Solution {
+    public int strCount(String str, String sub) {
+        int i = 0, count = 0;
+
+        while (i <= (str.length() - sub.length())) {
+            if (str.startsWith(sub, i)) {
+                count++;
+                i += sub.length();
+            } else {
+                i++;
+            }
+        }
+
+        return count;
+    }
+}
