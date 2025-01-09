@@ -1,0 +1,27 @@
+class Solution {
+    public String starOut(String str) {
+        StringBuilder result = new StringBuilder();
+        int i = 0;
+
+        while (i < str.length()) {
+            if (str.charAt(i) == '*') {
+                // Remove the last character if it exists (left side of the star)
+                if (result.length() > 0) {
+                    result.deleteCharAt(result.length() - 1);
+                }
+
+                // Skip all consecutive '*' and the character immediately to the right
+                while (i < str.length() && str.charAt(i) == '*') {
+                    i++;
+                }
+                i++; // Skip the right-side character
+            } else {
+                // Add the current character to the result if not affected by a star
+                result.append(str.charAt(i));
+                i++;
+            }
+        }
+
+        return result.toString();
+    }
+}
