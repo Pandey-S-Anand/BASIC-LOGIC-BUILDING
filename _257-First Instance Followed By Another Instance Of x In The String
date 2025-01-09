@@ -2,15 +2,19 @@
 
 class Solution {
     boolean doubleX(String str) {
-        if (str.length() < 2) {
+        return doubleX(str,0);
+    }
+
+    private boolean doubleX(String str, int index) {
+        if (index + 2 > str.length()) {
             return false;
         }
 
-        if (str.charAt(0) == 'x') {
-            return str.charAt(1) == 'x';
+        if (str.charAt(index) == 'x') {
+            return str.charAt(index + 1) == 'x';
         }
 
-        return doubleX(str.substring(1));
+        return doubleX(str, index + 1);
     }
 }
 
