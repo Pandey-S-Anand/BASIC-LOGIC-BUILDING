@@ -17,18 +17,22 @@ class Solution {
 
 class Solution {
     public boolean xyzThere(String str) {
-        if (str.isEmpty()) {
+        return xyzThere(str, 0);
+    }
+
+    private boolean xyzThere(String str, int index) {
+        if (index + 3 > str.length()) {
             return false;
         }
 
-        if (str.startsWith(".xyz")) {
-            return xyzThere(str.substring(4));
+        if (str.startsWith(".xyz", index)) {
+            return xyzThere(str, index + 4);
         }
 
-        if (str.startsWith("xyz")) {
+        if (str.startsWith("xyz", index)) {
             return true;
         }
 
-        return xyzThere(str.substring(1));
+        return xyzThere(str, index + 1);
     }
 }
