@@ -2,15 +2,19 @@
 
 class Solution {
     public String withoutString(String base, String remove) {
-        if (base.length() < remove.length()) {
-            return base;
+        return withoutString(base, remove, 0);
+    }
+
+    private String withoutString(String base, String remove, int index) {
+        if ((base.length() - index) < remove.length()) {
+            return base.substring(index);
         }
 
-        if (base.toLowerCase().startsWith(remove.toLowerCase())) {
-            return withoutString(base.substring(remove.length()), remove);
+        if (base.toLowerCase().startsWith(remove.toLowerCase(), index)) {
+            return withoutString(base, remove, index + remove.length());
         }
 
-        return base.charAt(0) + withoutString(base.substring(1), remove);
+        return base.charAt(index) + withoutString(base, remove, index + 1);
     }
 }
 
