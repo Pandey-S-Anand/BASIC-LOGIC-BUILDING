@@ -1,0 +1,18 @@
+class Solution {
+    public String sameEnds(String str) {
+        String left = str.substring(0, str.length() / 2);
+        String right;
+        if (str.length() % 2 == 0) {
+            right = str.substring(str.length() / 2);
+        } else {
+            right = str.substring((str.length() / 2) + 1);
+        }
+
+        while (!left.equals(right)) {
+            left = left.substring(0, left.length() - 1);
+            right = right.substring(1);
+        }
+
+        return left;
+    }
+}
