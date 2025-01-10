@@ -1,15 +1,15 @@
 //Method 1
 
-class Solution{
-  public static long concatenate(int num1,int num2){
-     return num1*(int)Math.pow(10,(int)(Math.log10(num1)+1))+num2;
-  }
+class Solution {
+    public static long concatenate(int num1, int num2) {
+        return num1 * (int) Math.pow(10, (int) (Math.log10(num1) + 1)) + num2;
+    }
 }
 
-//Method 2
+// Method 2
 
-class Solution{
-  public static int concatenate(int num1,int num2){
-     return Integer.parseInt(Integer.toString(num1)+Integer.toString(num2));
-  }
+class Solution {
+    public static int concatenate(int num1, int num2) {
+        return Integer.parseInt(Integer.toString(num1) + Integer.toString(num2));
+    }
 }
