@@ -3,28 +3,6 @@
 class Solution {
     public String wordEnds(String str, String word) {
         StringBuilder modifiedString = new StringBuilder();
-        int index = 0;
-
-        for (int i = 0; i <= (str.length() - word.length()); i = index + word.length()) {
-            index = str.indexOf(word, i);
-
-            if (index == -1) {
-                break;
-            }
-
-            modifiedString.append(index == 0 ? "" : str.charAt(index - 1)).append((index + word.length()) == str.length() ? "" : str.charAt(index + word.length()));
-        }
-
-        return modifiedString.toString();
-    }
-}
-
-
-//Aliter
-
-class Solution {
-    public String wordEnds(String str, String word) {
-        StringBuilder modifiedString = new StringBuilder();
 
         for (int i = 0; i <= (str.length() - word.length()); i++) {
             if (str.startsWith(word, i)) {
