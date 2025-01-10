@@ -5,6 +5,7 @@ class Solution {
         if (count == 0) {
             return "";
         }
+
         if (count == 1) {
             return word;
         }
