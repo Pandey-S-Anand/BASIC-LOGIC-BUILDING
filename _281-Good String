@@ -3,7 +3,7 @@ class Solution {
         for (int i = 0; i < str.length() - 1; i++) {
             int diff = Math.abs(str.charAt(i) - str.charAt(i + 1));
 
-            if (diff!= 1 && diff!=25) {
+            if (diff != 1 && diff != 25) {
                 return "NO";
             }
         }
@@ -13,6 +13,6 @@ class Solution {
 }
 
 /*
-Input: s = "xyzabc"
-Output: YES
-*/
+ * Input: s = "xyzabc"
+ * Output: YES
+ */
