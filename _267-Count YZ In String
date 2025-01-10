@@ -41,16 +41,20 @@ class Solution {
 
 class Solution {
     public int countYZ(String str) {
-        if (str.isEmpty()) {
-            return 0;
+        return countYZHelper(str, 0);
+    }
+
+    private int countYZHelper(String str, int index) {
+        if (index >= str.length()) {
+            return 0; // Base case: reached the end of the string
         }
 
-        if (str.charAt(0) == 'y' || str.charAt(0) == 'z' || str.charAt(0) == 'Y' || str.charAt(0) == 'Z') {
-            if (str.length() == 1 || !Character.isLetter(str.charAt(1))) {
-                return 1 + countYZ(str.length() > 1 ? str.substring(2) : "");
-            }
+        if ((str.charAt(index) == 'y' || str.charAt(index) == 'z' || 
+             str.charAt(index) == 'Y' || str.charAt(index) == 'Z') &&
+            (index == str.length() - 1 || !Character.isLetter(str.charAt(index + 1)))) {
+            return 1 + countYZHelper(str, index + 1); // Count this occurrence
         }
 
-        return countYZ(str.substring(1));
+        return countYZHelper(str, index + 1); // Move to the next character
     }
 }
