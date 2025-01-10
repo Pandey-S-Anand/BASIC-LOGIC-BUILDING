@@ -1,0 +1,27 @@
+//Using Recursion
+
+class Solution {
+    public static void printDecInc(int n) {
+        if (n == 0) {
+            return;
+        }
+
+        System.out.println(n);
+        printDecInc(n - 1);
+        System.out.println(n);
+    }
+}
+
+// Without Recursion
+
+class Solution {
+    public static void printDecInc(int n) {
+        for (int i = n; i >= 1; i--) {
+            System.out.println(i);
+        }
+
+        for (int i = 1; i <= n; i++) {
+            System.out.println(i);
+        }
+    }
+}
