@@ -1,0 +1,92 @@
+/*
+The process of writing a number as the product of prime numbers is prime factorization.
+Prime numbers are the numbers that have only two factors, 1 and the number itself. For example, 2, 3, 5, 7, 11, 13, 17, 19, and so on are prime numbers.
+*/
+
+//Bruteforce Approach
+
+class Solution {
+    public int[] AllPrimeFactors(int number) {
+        ArrayList<Integer> primeFactorsList = new ArrayList<>();
+        
+        for (int i = 2; i <= number; i++) {
+            if (number % i == 0) {
+                primeFactorsList.add(i);
+                while (number % i == 0) {
+                    number /= i;
+                }
+            }
+        }
+
+        int n = primeFactorsList.size();
+        int[] primeFactors = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            primeFactors[i] = primeFactorsList.get(i);
+        }
+        
+        return primeFactors;
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    public int[] AllPrimeFactors(int number) {
+        ArrayList<Integer> primeFactorsList = new ArrayList<>();
+        
+        for (int i = 2; i <= (number / 2); i++) {
+            if (number % i == 0) {
+                primeFactorsList.add(i);
+                while (number % i == 0) {
+                    number /= i;
+                }
+            }
+        }
+        
+        if (number != 1) {
+           primeFactorsList.add(number);
+        }
+
+        int n = primeFactorsList.size();
+        int[] primeFactors = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            primeFactors[i] = primeFactorsList.get(i);
+        }
+        
+        return primeFactors;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public int[] getPrimeFactors(int number) {
+        ArrayList<Integer> primeFactorsList = new ArrayList<>();
+        
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                primeFactorsList.add(i);
+                while (number % i == 0) {
+                    number /= i;
+                }
+            }
+        }
+        
+        if (number != 1) {
+           primeFactorsList.add(number);
+        }
+
+        int n = primeFactorsList.size();
+        int[] primeFactors = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            primeFactors[i] = primeFactorsList.get(i);
+        }
+        
+        return primeFactors;
+    }
+}
