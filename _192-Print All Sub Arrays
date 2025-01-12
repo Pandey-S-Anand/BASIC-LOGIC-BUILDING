@@ -1,0 +1,61 @@
+/* Subarrays :
+
+1 : A subarray is contigious part of an array.
+2 : Order of elements in the subarray should be same as in the array
+3 : For an array of size 'n' there are (n*(n+1))/2 non-empty subarrays + 1 Empty subarray. 
+
+*/
+
+//Iterative Approach
+
+class Solution {
+    public static void printAllSubarrays(int[] arr) {
+        for (int start = 0; start < arr.length; start++) {
+            for (int end = start; end < arr.length; end++) {
+                System.out.print("{");
+                for (int range = start; range <= end; range++) {
+                    System.out.print(arr[range]);
+
+                    if (range < end) {
+                        System.out.print(",");
+                    }
+                }
+                System.out.println("}");
+            }
+        }
+    }
+}
+
+// Recurssive Approach
+
+class Solution {
+    public void printAllSubarrays(int[] arr) {
+        printSubarraysHelper(arr, 0, 0);
+    }
+
+    private void printSubarraysHelper(int[] arr, int start, int end) {
+        if (start == arr.length) {
+            return;
+        }
+
+        if (end == arr.length) {
+            printSubarraysHelper(arr, start + 1, start + 1);
+            return;
+        }
+
+        printCurrentSubarray(arr, start, end);
+
+        printSubarraysHelper(arr, start, end + 1);
+    }
+
+    private void printCurrentSubarray(int[] arr, int start, int end) {
+        System.out.print("{");
+        for (int i = start; i <= end; i++) {
+            System.out.print(arr[i]);
+            if (i < end) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("}");
+    }
+}
