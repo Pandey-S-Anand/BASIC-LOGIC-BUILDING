@@ -9,12 +9,12 @@ class Solution {
             frequencyMap.put(str.charAt(i), frequencyMap.getOrDefault(str.charAt(i), 0) + 1);
         }
 
-        for (int i = 9; i >= 0; i--) {
-            if (frequencyMap.containsKey((char) (i + 48))) {
-                int frequency = frequencyMap.get((char) (i + 48));
+        for (char ch = '9'; ch >= '0'; ch--) {
+            if (frequencyMap.containsKey(ch)) {
+                int frequency = frequencyMap.get(ch);
 
                 while (frequency != 0) {
-                    maxNumber.append(i);
+                    maxNumber.append(ch);
                     frequency--;
                 }
             }
