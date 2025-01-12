@@ -1,0 +1,74 @@
+ //Bruteforce Approach
+
+class Solution {
+    enum SortOrder {
+        ASCENDING, DESCENDING, NOT_SORTED
+    }
+
+    public SortOrder checkSortOrder(int[] arr) {
+        if (arr.length <= 1) {
+            return SortOrder.NOT_SORTED; // Single element or empty array is considered not sorted
+        }
+
+        boolean isAscending = true;
+        boolean isDescending = true;
+
+        // Check for ascending order
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                isAscending = false;
+                break;
+            }
+        }
+
+        // Check for descending order
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] < arr[i + 1]) {
+                isDescending = false;
+                break;
+            }
+        }
+
+        if (isAscending) {
+            return SortOrder.ASCENDING;
+        } else if (isDescending) {
+            return SortOrder.DESCENDING;
+        } else {
+            return SortOrder.NOT_SORTED;
+        }
+    }
+}
+
+// Optimal Approach
+
+class Solution {
+    enum SortOrder {
+        ASCENDING, DESCENDING, NOT_SORTED
+    }
+
+    public SortOrder checkSortOrder(int[] arr) {
+        if (arr.length <= 1) {
+            return SortOrder.NOT_SORTED; // Single element or empty array is considered not sorted
+        }
+
+        boolean ascending = true;
+        boolean descending = true;
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                ascending = false;
+            }
+            if (arr[i] < arr[i + 1]) {
+                descending = false;
+            }
+        }
+
+        if (ascending) { // 'descending' flag will be set to 'false' and 'ascending' flag will be set to 'true'
+            return SortOrder.ASCENDING;
+        } else if (descending) { // 'ascending' flag will be set to 'false' and 'descending' flag will be set to 'true'
+            return SortOrder.DESCENDING;
+        } else { // both the flags will be set to false
+            return SortOrder.NOT_SORTED;
+        }
+    }
+}
