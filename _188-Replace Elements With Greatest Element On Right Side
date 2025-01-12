@@ -1,0 +1,52 @@
+// Naive Approach
+
+class Solution {
+    public int[] replaceElements(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = findMaxOnRight(arr, i);
+        }
+        return arr;
+    }
+
+    private int findMaxOnRight(int[] arr, int index) {
+        int max = -1;
+        for (int i = index + 1; i < arr.length; i++) {
+            max = Math.max(max, arr[i]);
+        }
+        return max;
+    }
+}
+
+
+// Improved Approach
+
+class Solution {
+    public int[] replaceElements(int[] arr) {
+        int[] result = new int[arr.length];
+        int maxRight = -1;
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            result[i] = maxRight;
+            maxRight = Math.max(maxRight, arr[i]);
+        }
+
+        return result;
+    }
+}
+
+
+// Optimal Approach
+
+class Solution {
+    public int[] replaceElements(int[] arr) {
+        int maxRight = -1;
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            int currentValue = arr[i];
+            arr[i] = maxRight;
+            maxRight = Math.max(maxRight, currentValue);
+        }
+
+        return arr;
+    }
+}
