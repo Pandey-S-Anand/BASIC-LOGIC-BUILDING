@@ -1,0 +1,18 @@
+class Solution {
+    public static void replace(int[] arr) {
+        if (arr.length < 2) {
+            return;
+        }
+
+        int previous = arr[0];
+        arr[0] = arr[0] * arr[1];
+
+        for (int i = 1; i < (arr.length - 1); i++) {
+            int temp = arr[i];
+            arr[i] = previous * arr[i + 1];
+            previous = temp;
+        }
+
+        arr[arr.length - 1] = arr[arr.length - 1] * previous;
+    }
+}
