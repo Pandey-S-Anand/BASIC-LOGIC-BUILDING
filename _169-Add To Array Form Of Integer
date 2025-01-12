@@ -1,0 +1,82 @@
+//Naive Approach
+
+class Solution {
+    public List<Integer> addToArrayForm(int[] num1, int num2) {
+        int i = num1.length - 1, carry = 0;
+        List<Integer> sum = new ArrayList<>();
+
+        while (i >= 0 && num2 != 0) {
+            int digit = (num1[i] + (num2 % 10) + carry) % 10;
+            carry = (num1[i] + (num2 % 10) + carry) / 10;
+
+            sum.add(digit);
+            i--;
+            num2 = num2 / 10;
+        }
+
+        while (i >= 0) {
+            int digit = (num1[i] + carry) % 10;
+            carry = (num1[i] + carry) / 10;
+
+            sum.add(digit);
+            i--;
+        }
+
+        while (num2 != 0) {
+            int digit = (num2 % 10 + carry) % 10;
+            carry = (num2 % 10 + carry) / 10;
+
+            sum.add(digit);
+            num2 = num2 / 10;
+        }
+
+        if (carry == 1) {
+            sum.add(carry);
+        }
+
+        Collections.reverse(sum);
+
+        return sum;
+    }
+}
+
+
+//Optimal Implementation
+
+class Solution {
+    public List<Integer> addToArrayForm(int[] num1, int num2) {
+        int i = num1.length - 1, carry = 0;
+        List<Integer> sum = new LinkedList<>();
+
+        while (i >= 0 && num2 != 0) {
+            int digit = (num1[i] + (num2 % 10) + carry) % 10;
+            carry = (num1[i] + (num2 % 10) + carry) / 10;
+
+            sum.add(0, digit);
+            i--;
+            num2 = num2 / 10;
+        }
+
+        while (i >= 0) {
+            int digit = (num1[i] + carry) % 10;
+            carry = (num1[i] + carry) / 10;
+
+            sum.add(0, digit);
+            i--;
+        }
+
+        while (num2 != 0) {
+            int digit = (num2 % 10 + carry) % 10;
+            carry = (num2 % 10 + carry) / 10;
+
+            sum.add(0, digit);
+            num2 = num2 / 10;
+        }
+
+        if (carry == 1) {
+            sum.add(0, carry);
+        }
+
+        return sum;
+    }
+}
