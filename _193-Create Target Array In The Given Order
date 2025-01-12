@@ -1,0 +1,43 @@
+//Using array
+
+class Solution {
+    public int[] createTargetArray(int[] nums, int[] indices) {
+        int[] targetArray = new int[nums.length];
+        Arrays.fill(targetArray, -1);
+
+        for (int i = 0; i < nums.length; i++) {
+            if (targetArray[indices[i]] != -1) {
+                shiftRight(targetArray, indices[i], i);
+            }
+            targetArray[indices[i]] = nums[i];
+        }
+
+        return targetArray;
+    }
+
+    private void shiftRight(int[] arr, int startIdx, int endIdx) {
+        for (int i = endIdx; i > startIdx; i--) {
+            arr[i] = arr[i - 1];
+        }
+    }
+}
+
+
+//Using Arraylist
+
+class Solution {
+    public int[] createTargetArray(int[] values, int[] positions) {
+        List<Integer> targetArrayList = new ArrayList<>();
+        int[] targetArray = new int[values.length];
+
+        for (int i = 0; i < values.length; i++) {
+            targetArrayList.add(positions[i], values[i]);
+        }
+
+        for (int i = 0; i < values.length; i++) {
+            targetArray[i] = targetArrayList.get(i);
+        }
+
+        return targetArray;
+    }
+}
