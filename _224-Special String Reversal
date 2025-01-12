@@ -1,4 +1,32 @@
-//Method 1
+//Naive approach
+
+class Solution {
+    public String reverse(String str) {
+        StringBuilder reverse = new StringBuilder();
+        Deque<Character> stack = new ArrayDeque<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isLetter(ch)) {
+                stack.push(ch);
+            }
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isLetter(ch)) {
+                reverse.append(stack.pop());
+            } else {
+                reverse.append(ch);
+            }
+        }
+
+        return reverse.toString();
+    }
+}
+
+
+//Optimal approach
 
 class Solution{
     public String reverse(String str){
@@ -25,33 +53,5 @@ class Solution{
         }
 
         return new String(arr);
-    }
-}
-
-
-//Method 2
-
-class Solution {
-    public String reverse(String str) {
-        StringBuilder reverse = new StringBuilder();
-        Deque<Character> stack = new ArrayDeque<>();
-
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            if (Character.isLetter(ch)) {
-                stack.push(ch);
-            }
-        }
-
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            if (Character.isLetter(ch)) {
-                reverse.append(stack.pop());
-            } else {
-                reverse.append(ch);
-            }
-        }
-
-        return reverse.toString();
     }
 }
