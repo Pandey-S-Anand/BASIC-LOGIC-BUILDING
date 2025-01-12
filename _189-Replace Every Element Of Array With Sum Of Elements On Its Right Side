@@ -1,0 +1,51 @@
+//Bruteforce Approach
+
+class Solution {
+    public static void replaceElement(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = calculateSumOnRight(arr, i);
+        }
+    }
+
+    private static int calculateSumOnRight(int[] arr, int index) {
+        int sum = 0;
+        for (int i = index + 1; i < arr.length; i++) {
+            sum += arr[i];
+        }
+
+        return sum;
+    }
+}
+
+
+// Better Approach
+
+class Solution {
+    public static void replaceElement(int[] arr) {
+        int[] postFixSum = new int[arr.length];
+
+        for (int i = arr.length - 2; i >= 0; i--) {
+            postFixSum[i] = postFixSum[i + 1] + arr[i + 1];
+        }
+
+        System.arraycopy(postFixSum, 0, arr, 0, arr.length);
+    }
+}
+
+
+// Optimal Approach
+
+class Solution {
+    public static void replaceElement(int[] arr) {
+        int totalSum = 0;
+
+        for (int num : arr) {
+            totalSum += num;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            totalSum -= arr[i];
+            arr[i] = totalSum;
+        }
+    }
+}
