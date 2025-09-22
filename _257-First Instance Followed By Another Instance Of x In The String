@@ -2,11 +2,11 @@
 
 class Solution {
     boolean doubleX(String str) {
-        return doubleX(str,0);
+        return doubleX(str, 0);
     }
 
-    private boolean doubleX(String str, int index) {
-        if (index + 2 > str.length()) {
+    boolean doubleX(String str, int index) {
+        if (index + 1 >= str.length()) {
             return false;
         }
 
@@ -17,7 +17,6 @@ class Solution {
         return doubleX(str, index + 1);
     }
 }
-
 
 
 // Without Recursion
