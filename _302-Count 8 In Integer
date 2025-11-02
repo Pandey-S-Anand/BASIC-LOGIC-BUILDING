@@ -6,15 +6,9 @@ class Solution {
             return 0;
         }
 
-        if ((n % 100) == 88) {
-            return 2 + count8(n / 10);
-        }
+        int count = (n % 100) == 88 ? 2 : (n % 10) == 8 ? 1 : 0;
 
-        if ((n % 10) == 8) {
-            return 1 + count8(n / 10);
-        }
-
-        return count8(n / 10);
+        return count + count8(n / 10);
     }
 }
 
