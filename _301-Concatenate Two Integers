@@ -1,15 +1,46 @@
 //Method 1
 
 class Solution {
-    public static long concatenate(int num1, int num2) {
-        return num1 * (int) Math.pow(10, (int) (Math.log10(num1) + 1)) + num2;
+    /*
+     * To concatenate two numbers a and b (i.e ab) (without converting them to strings):
+     *
+     * 1️⃣ Find the number of digits in b → let's call it 'digits'.
+     * 2️⃣ Multiply a by (10 ^ digits) → this shifts a to the left by the number of digits in b.
+     * 3️⃣ Add b to the shifted value.
+     *
+     *    Formula:  result = (a * (10 ^ digits_in_b)) + b
+     *
+     * Example:
+     *    a = 12, b = 345
+     *    digits_in_b = 3
+     *    result = (12 * 10^3) + 345 = 12000 + 345 = 12345
+     */
+
+    public long concatenate(long a, long b) {
+        long digits = countDigits(b);
+        long result = (long) ((a * Math.pow(10, digits)) + b);
+        return result;
+    }
+
+    private long countDigits(long num) {
+        if (num == 0) {
+            return 1; // special case: 0 has 1 digit
+        }
+
+        long count = 0;
+        while (num > 0) {
+            count++;
+            num /= 10;
+        }
+        return count;
     }
 }
+
 
 // Method 2
 
 class Solution {
-    public static int concatenate(int num1, int num2) {
+    public int concatenate(int num1, int num2) {
         return Integer.parseInt(Integer.toString(num1) + Integer.toString(num2));
     }
 }
