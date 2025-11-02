@@ -34,29 +34,6 @@ class Solution {
 }
 
 
-//Aliter
-
-class Solution {
-    public int subtractProductAndSum(int n) {
-        int[] results = subtractProductAndSumHelper(n);
-        return results[0] - results[1];
-    }
-
-    private int[] subtractProductAndSumHelper(int n) {
-        if (n == 0) {
-            return new int[] { 1, 0 }; // Base case: product is 1, sum is 0
-        }
-        int lastDigit = n % 10;
-        int[] resultsFromRemainingDigits = subtractProductAndSumHelper(n / 10);
-        resultsFromRemainingDigits[0] *= lastDigit; // Multiply the product by the last digit
-        resultsFromRemainingDigits[1] += lastDigit; // Add the last digit to the sum
-
-        return resultsFromRemainingDigits;
-    }
-}
-
-
-
 //Method 2 - With String
 
 class Solution {
