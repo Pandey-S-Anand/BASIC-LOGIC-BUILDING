@@ -1,24 +1,27 @@
 class Solution {
     public long[] sumOfThree(long num) {
+        /*
+         * Suppose the three consecutive integers are (k − 1), k, and (k + 1).
+         * Their sum is:
+         *     (k − 1) + k + (k + 1) = 3k
+         * 
+         * Hence, any number that can be expressed as the sum of three consecutive
+         * integers must be equal to 3k for some integer k — meaning it is divisible by 3.
+         * 
+         * Therefore, if the given number is not divisible by 3, it cannot be expressed
+         * as the sum of three consecutive integers.
+         */
         if (num % 3 != 0) {
             return new long[0];
         }
 
         /*
-         * Three Consecutive Numbers:
-         * x+(x+1)+(x+2)=num;
-         * or 3x+3=num;
-         * or x=(num-3)/3;
-         * or x=(num/3)-1;
+         * Since (k − 1) + k + (k + 1) = num,
+         * we have 3k = num, which gives k = num / 3.
          * 
-         * Therefore,numbers are:
-         * 
-         * x=(num/3)-1;
-         * x+1=(num/3)-1+1=num/3;
-         * x+2=(num/3)-1+2=(num/3)+1
-         * 
+         * Therefore, the three consecutive integers are:
+         *   (num / 3) − 1,  (num / 3),  (num / 3) + 1
          */
-
         return new long[] { (num / 3) - 1, num / 3, (num / 3) + 1 };
     }
 }
