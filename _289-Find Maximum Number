@@ -1,4 +1,4 @@
-// Bruteforce Approach
+//Bruteforce Approach
 
 class Solution {
     static String findMax(String str) {
