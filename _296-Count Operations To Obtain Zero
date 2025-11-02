@@ -26,10 +26,6 @@ class Solution {
             return 0; // Target Acheived,No More Operations Required so return 0
         }
 
-        if (num1 >= num2) {
-            return 1 + countOperations(num1 - num2, num2);
-        }
-
-        return 1 + countOperations(num1, num2 - num1);
+        return 1 + (num1 >= num2 ? countOperations(num1 - num2, num2) : countOperations(num1, num2 - num1));
     }
 }
