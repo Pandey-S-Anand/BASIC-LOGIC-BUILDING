@@ -8,8 +8,8 @@ class Solution {
         int a1 = Integer.parseInt(arr1[0]);
         int a2 = Integer.parseInt(arr2[0]);
 
-        int b1 = Integer.parseInt(arr1[1].substring(0, arr1[1].indexOf("i")));
-        int b2 = Integer.parseInt(arr2[1].substring(0, arr2[1].indexOf("i")));
+        int b1 = Integer.parseInt(arr1[1].substring(0, arr1[1].length() - 1));
+        int b2 = Integer.parseInt(arr2[1].substring(0, arr2[1].length() - 1));
 
         int real = (a1 * a2) - (b1 * b2);
         int imaginary = (a1 * b2) + (a2 * b1);
@@ -21,13 +21,14 @@ class Solution {
 
 //Method 2
 
+
 class Solution {
     public String complexNumberMultiply(String num1, String num2) {
         int a1 = Integer.parseInt(num1.substring(0, num1.indexOf("+")));
         int a2 = Integer.parseInt(num2.substring(0, num2.indexOf("+")));
 
-        int b1 = Integer.parseInt(num1.substring(num1.indexOf("+") + 1, num1.indexOf("i")));
-        int b2 = Integer.parseInt(num2.substring(num2.indexOf("+") + 1, num2.indexOf("i")));
+        int b1 = Integer.parseInt(num1.substring(num1.indexOf("+") + 1, num1.length() - 1));
+        int b2 = Integer.parseInt(num2.substring(num2.indexOf("+") + 1, num2.length() - 1));
 
         int real = (a1 * a2) - (b1 * b2);
         int imaginary = (a1 * b2) + (a2 * b1);
