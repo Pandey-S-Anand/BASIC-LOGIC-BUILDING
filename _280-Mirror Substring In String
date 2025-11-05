@@ -22,7 +22,7 @@ class Solution {
 
     private String mirrorEndsHelper(String str, int index) {
         if (index == str.length()) {
-            return str.substring(0, index); // Base case: fully processed
+            return str; // Base case: fully processed
         }
 
         if (str.charAt(index) != str.charAt(str.length() - 1 - index)) {
