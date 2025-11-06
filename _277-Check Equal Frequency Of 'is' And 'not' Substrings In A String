@@ -2,27 +2,23 @@
 
 class Solution {
     public boolean equalIsNot(String str) {
-        return equalIsNotHelper(str, 0, 0) == 0;
+        return equalIsNot(str, 0) == 0;
     }
 
-    private int equalIsNotHelper(String str, int index, int count) {
-        // Base case: if fewer than 2 characters remain, return the count
-        if (index + 1 >= str.length()) {
-            return count;
+    public int equalIsNot(String str, int index) {
+        if (index >= str.length()) {
+            return 0;
         }
 
-        // Check if "is" starts at the current index
         if (str.startsWith("is", index)) {
-            return equalIsNotHelper(str, index + 2, count + 1);
+            return 1 + equalIsNot(str, index + 2);
         }
 
-        // Check if "not" starts at the current index
         if (str.startsWith("not", index)) {
-            return equalIsNotHelper(str, index + 3, count - 1);
+            return -1 + equalIsNot(str, index + 3);
         }
 
-        // Otherwise, move to the next character
-        return equalIsNotHelper(str, index + 1, count);
+        return equalIsNot(str, index + 1);
     }
 }
 
