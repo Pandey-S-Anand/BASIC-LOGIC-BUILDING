@@ -1,18 +1,21 @@
 class Solution {
     public String sameEnds(String str) {
-        String left = str.substring(0, str.length() / 2);
-        String right;
+        int middle = str.length() / 2;
+
+        String leftHalf = str.substring(0, middle);
+        String rightHalf = null;
+
         if (str.length() % 2 == 0) {
-            right = str.substring(str.length() / 2);
+            rightHalf = str.substring(middle);
         } else {
-            right = str.substring((str.length() / 2) + 1);
+            rightHalf = str.substring(middle + 1);
         }
 
-        while (!left.equals(right)) {
-            left = left.substring(0, left.length() - 1);
-            right = right.substring(1);
+        while (!leftHalf.equals(rightHalf)) {
+            leftHalf = leftHalf.substring(0, leftHalf.length() - 1);
+            rightHalf = rightHalf.substring(1);
         }
 
-        return left;
+        return leftHalf;
     }
 }
