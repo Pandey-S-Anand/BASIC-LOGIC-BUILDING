@@ -1,31 +1,91 @@
-//(via Repeated Substraction)
+//Via Long Division
 
 class Solution {
-    public int divide(int numerator, int denominator) {
-        long dividend = numerator, divisor = denominator;
-
+    public int divide(int dividend, int divisor) {
+        // Handle quick cases to improve efficiency and avoid unnecessary computation
         if (divisor == 1) {
-            return (int) dividend;
+            return dividend;
         } else if (divisor == -1) {
-            if (dividend == Integer.MIN_VALUE) { // Integer.MIN_VALUE= -2^31 = -2147483648 and Integer.MAX_VALUE = 2^31-1 = 2147483647
+            // Integer.MIN_VALUE= -2^31 = -2147483648 and Integer.MAX_VALUE = 2^31-1 = 2147483647
+            if (dividend == Integer.MIN_VALUE) { // Edge case: cannot negate Integer.MIN_VALUE due to overflow
+                return Integer.MAX_VALUE; // Clamp to maximum integer value
+            }
+            return -dividend;
+        }
+
+        // Determine the sign of the result
+        int signOfQuotient = 1;
+        if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) {
+            signOfQuotient = -1; // One operand is negative → quotient is negative
+        }
+
+        /**
+         * Important note:
+         * Math.abs(int a) returns the same negative number for Integer.MIN_VALUE,
+         * because |−2³¹| = 2³¹ is out of int range.
+         * To avoid overflow, cast to long before applying Math.abs().
+         */
+        long dividendAbs = Math.abs((long) dividend);
+        long divisorAbs = Math.abs((long) divisor);
+
+        // Perform manual long-division simulation
+        String quotient = longDivision(Long.toString(dividendAbs), divisorAbs);
+
+        // Apply sign to final result and return parsed integer
+        return signOfQuotient * Integer.parseInt(quotient);
+    }
+
+    private String longDivision(String dividend, long divisor) {
+        StringBuilder quotient = new StringBuilder();
+        long currentDividend = 0;
+        boolean isNonZeroQuotientFound = false; // Used to skip leading zeros
+
+        for (int i = 0; i < dividend.length(); i++) {
+            // Bring down the next digit into current partial dividend
+            currentDividend = currentDividend * 10 + (dividend.charAt(i) - '0');
+
+            if (currentDividend >= divisor) {
+                quotient.append(currentDividend / divisor);
+                currentDividend = currentDividend % divisor;
+                isNonZeroQuotientFound = true;
+            } else if (isNonZeroQuotientFound) {
+                // Append 0 only after quotient has started forming
+                quotient.append('0');
+            }
+        }
+
+        // If quotient is empty (divisor > dividend), return "0"
+        return quotient.length() == 0 ? "0" : quotient.toString();
+    }
+}
+
+
+//(Via Repeated Substraction)
+
+class Solution {
+    public int divide(int dividend, int divisor) {
+        if (divisor == 1) {
+            return dividend;
+        } else if (divisor == -1) {
+            if (dividend == Integer.MIN_VALUE) {
                 return Integer.MAX_VALUE;
             }
 
-            return -1 * (int) dividend;
+            return -dividend;
         }
 
         int signOfQuotient = 1;
 
         if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) {
-            signOfQuotient = -1; // Quotient will be negative
+            signOfQuotient = -1;
         }
 
-        divisor = Math.abs(divisor);
-        dividend = Math.abs(dividend);
+        long divisorAbs = Math.abs((long) divisor);
+        long dividendAbs = Math.abs((long) dividend);
 
         int quotient = 0;
-        while (dividend >= divisor) {
-            dividend = dividend - divisor;
+        while (dividendAbs >= divisorAbs) {
+            dividendAbs = dividendAbs - divisorAbs;
             quotient++;
         }
 
