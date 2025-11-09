@@ -2,12 +2,41 @@
 
 class Solution {
     public boolean xyzThere(String str) {
-        for (int i = 0; i < str.length(); i++) {
-            if (str.startsWith("xyz", i) && (i == 0 || str.charAt(i - 1) != '.')) {
+        int i = 0;
+
+        /**
+         * Scan through the string while enough characters remain
+         * to form the substring "xyz".
+         */
+        while (i < str.length() - 2) {
+
+            /**
+             * Case 1: If ".xyz" starts at the current index,
+             * skip it by moving the pointer 4 positions ahead.
+             * This ensures we ignore "xyz" occurrences that are prefixed by '.'.
+             */
+            if (str.startsWith(".xyz", i)) {
+                i += 4;
+            }
+
+            /**
+             * Case 2: If "xyz" starts at the current index (and not ".xyz"),
+             * we’ve found a valid occurrence — return true immediately.
+             */
+            else if (str.startsWith("xyz", i)) {
                 return true;
+            }
+
+            /**
+             * Case 3: If neither condition matches,
+             * simply move one step forward and continue scanning.
+             */
+            else {
+                i++;
             }
         }
 
+        /** No valid "xyz" found after scanning the entire string. */
         return false;
     }
 }
