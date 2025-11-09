@@ -1,0 +1,70 @@
+/*
+Division Logic Summary
+
+In division, we determine:
+➡️ How many times the divisor can fit completely inside the dividend.
+   → That count is called the **Quotient**.
+➡️ Whatever part is left over is called the **Remainder**.
+
+For example:
+   17 ÷ 5 → Quotient = 3, Remainder = 2
+   (Because 5 fits into 17 three full times, and 2 is left over)
+
+---------------------------------------------------------------
+Dividend   Divisor   Quotient      Remainder
++           +         ➕ Positive    ➕ Positive
+−           −         ➕ Positive    ➖ Negative
++           −         ➖ Negative    ➕ Positive
+−           +         ➖ Negative    ➖ Negative
+---------------------------------------------------------------
+
+✅ Rule of thumb:
+Quotient  → Positive if both signs are same, else Negative  
+Remainder → Always has the same sign as the dividend
+*/
+
+
+//Via Repeated Substraction
+
+class Solution {
+    public static String division(int dividend, int divisor) { // find (dividend / divisor)
+        if (divisor == 0) {
+            return "Error!! Division Not Possible!! Divisor Cannot be Zero.";
+        }
+
+        if (divisor == 1) {
+            return "Quotient = " + dividend + " and Remainder = 0";
+        }
+
+        if (divisor == -1) {
+            if (dividend == Integer.MIN_VALUE) {
+                return "Quotient = " + Integer.MAX_VALUE + " and Remainder = 0";
+            }
+            return "Quotient = " + (-dividend) + " and Remainder = 0";
+        }
+
+        int signOfQuotient = 1;
+        int signOfRemainder = 1;
+
+        if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) {
+            signOfQuotient = -1;
+        }
+
+        if (dividend < 0) {
+            signOfRemainder = -1;
+        }
+
+        long divisorAbs = Math.abs((long) divisor);
+        long dividendAbs = Math.abs((long) dividend);
+
+        int quotient = 0;
+        while (dividendAbs >= divisorAbs) {
+            dividendAbs = dividendAbs - divisorAbs;
+            quotient++;
+        }
+
+        int remainder = (int) dividendAbs;
+
+        return "Quotient = " + (quotient * signOfQuotient) + " and Remainder = " + (remainder * signOfRemainder);
+    }
+}
