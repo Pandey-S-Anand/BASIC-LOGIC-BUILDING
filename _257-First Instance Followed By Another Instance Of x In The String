@@ -5,13 +5,13 @@ class Solution {
         return doubleX(str, 0);
     }
 
-    boolean doubleX(String str, int index) {
-        if (index + 1 >= str.length()) {
+    private boolean doubleX(String str, int index) {
+        if (index == str.length()) {
             return false;
         }
 
         if (str.charAt(index) == 'x') {
-            return str.charAt(index + 1) == 'x';
+            return (index < str.length() - 1 && str.charAt(index + 1) == 'x');
         }
 
         return doubleX(str, index + 1);
