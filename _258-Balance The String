@@ -2,17 +2,17 @@
 
 class Solution {
     public boolean xyBalance(String str) {
-        boolean foundX = false;
+        boolean isBalanced = true;
 
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == 'x') {
-                foundX = true;
-            } else if (str.charAt(i) == 'y' && foundX) {
-                foundX = false;
+                isBalanced = false;
+            } else if (!isBalanced && str.charAt(i) == 'y') {
+                isBalanced = true;
             }
         }
 
-        return !foundX;
+        return isBalanced;
     }
 }
 
@@ -25,12 +25,12 @@ class Solution {
     }
 
     private boolean xyBalance(String str, int index) {
-        if (index + 1 > str.length()) {
+        if (index == str.length()) {
             return true;
         }
 
         // Check if there is a 'y' after the current 'x'
-        if (str.charAt(index) == 'x' && !str.substring(index + 1).contains("y")) {
+        if (str.charAt(index) == 'x' && (index + 1 == str.length() || !str.substring(index + 1).contains("y"))) {
             return false;
         }
 
