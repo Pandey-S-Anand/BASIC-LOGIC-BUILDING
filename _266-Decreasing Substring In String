@@ -2,18 +2,17 @@
 
 class Solution {
     public String repeatFront(String str, int n) {
-        StringBuilder substring = new StringBuilder(str.substring(0, n));
         StringBuilder modifiedString = new StringBuilder();
 
-        while (substring.length() != 0) {
-            modifiedString.append(substring);
-            substring.setLength(substring.length() - 1);
+        while (n != 0) {
+            modifiedString.append(str.substring(0, n));
+            n--;
         }
 
         return modifiedString.toString();
     }
-}
 
+}
 
 
 //Using Recursion
