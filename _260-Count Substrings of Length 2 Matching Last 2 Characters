@@ -33,7 +33,7 @@ class Solution {
         }
 
         int count = 0;
-        String last2Char = str.substring(str.length() - 2, str.length());
+        String last2Char = str.substring(str.length() - 2);
 
         for (int i = 0; i < str.length() - 2; i++) {
             if (str.startsWith(last2Char, i)) {
