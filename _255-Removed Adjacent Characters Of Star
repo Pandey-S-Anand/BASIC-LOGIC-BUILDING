@@ -5,18 +5,16 @@ class Solution {
 
         while (i < str.length()) {
             if (str.charAt(i) == '*') {
-                // Remove the last character if it exists (left side of the star)
-                if (result.length() > 0) {
+                if (result.length() > 0 && str.charAt(i - 1) != '*') {
                     result.deleteCharAt(result.length() - 1);
                 }
 
-                // Skip all consecutive '*' and the character immediately to the right
-                while (i < str.length() && str.charAt(i) == '*') {
+                if (i < str.length() - 1 && str.charAt(i + 1) != '*') {
+                    i += 2;
+                } else {
                     i++;
                 }
-                i++; // Skip the right-side character
             } else {
-                // Add the current character to the result if not affected by a star
                 result.append(str.charAt(i));
                 i++;
             }
