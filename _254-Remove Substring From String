@@ -2,45 +2,41 @@
 
 class Solution {
     public String stringYak(String str) {
-        return stringYakHelper(str, 0);
+        return stringYak(str, 0);
     }
 
-    private String stringYakHelper(String str, int index) {
-        if (index == str.length()) {
-            return ""; // Base case: reached the end of the string
+    private String stringYak(String str, int index) {
+        // Base case: reached end of string
+        if (index >= str.length()) {
+            return "";
         }
 
-        // Check if the substring starting at the current index is "yak"
-        if (index <= str.length() - 3 && str.substring(index, index + 3).equals("yak")) {
-            return stringYakHelper(str, index + 3); // Skip "yak"
+        // If "yak"-like pattern found (y?k), skip it
+        if (index + 2 < str.length() && str.charAt(index) == 'y' && str.charAt(index + 2) == 'k') {
+            return stringYak(str, index + 3);
         }
 
-        // Include the current character and move to the next
-        return str.charAt(index) + stringYakHelper(str, index + 1);
+        // Otherwise, include current character and continue recursion
+        return str.charAt(index) + stringYak(str, index + 1);
     }
 }
 
 
-
-
 //Without Using Recursion
 
-class Solution {
-    public String stringYak(String str) {
-        StringBuilder modifiedString = new StringBuilder();
-        int i = 0;
+public String stringYak(String str) {
+    StringBuilder modifiedString = new StringBuilder();
+    int i = 0;
 
-        while (i < (str.length() - 2)) {
-            if (str.startsWith("yak", i)) {
-                i += 3;
-            } else {
-                modifiedString.append(str.charAt(i));
-                i++;
-            }
+    while (i < str.length()) {
+        // Check for pattern 'y?k' where '?' can be any character
+        if (i + 2 < str.length() && str.charAt(i) == 'y' && str.charAt(i + 2) == 'k') {
+            i += 3; // Skip 'yak' pattern entirely
+        } else {
+            modifiedString.append(str.charAt(i));
+            i++;
         }
-
-        modifiedString.append(str.substring(i));
-
-        return modifiedString.toString();
     }
+
+    return modifiedString.toString();
 }
