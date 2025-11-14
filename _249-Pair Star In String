@@ -2,23 +2,27 @@
 
 class Solution {
     public String pairStar(String str) {
-        return pairStarHelper(str, 0);
+        if (str.isEmpty()) {
+            return str;
+        }
+        return pairStar(str, 0);
     }
 
-    private String pairStarHelper(String str, int index) {
+    private String pairStar(String str, int index) {
+        // Base case: last character reached
         if (index == str.length() - 1) {
-            return str.charAt(index) + ""; // Base case: return the last character as a string
+            return String.valueOf(str.charAt(index));
         }
 
-        String result = str.charAt(index) + "";
+        // If two adjacent chars are same, insert '*'
         if (str.charAt(index) == str.charAt(index + 1)) {
-            result += "*"; // Add '*' if adjacent characters are the same
+            return str.charAt(index) + "*" + pairStar(str, index + 1);
         }
 
-        return result + pairStarHelper(str, index + 1);
+        // Otherwise, move to next character
+        return str.charAt(index) + pairStar(str, index + 1);
     }
 }
-
 
 
 //Without Using Recursion
