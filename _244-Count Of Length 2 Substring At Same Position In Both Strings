@@ -2,37 +2,35 @@
 
 class Solution {
     public int stringMatch(String str1, String str2) {
-        return stringMatchHelper(str1, str2, 0);
+        if (str1.isEmpty() || str2.isEmpty()) {
+            return 0;
+        }
+        return stringMatch(str1, str2, 0, Math.min(str1.length(), str2.length()));
     }
 
-    private int stringMatchHelper(String str1, String str2, int index) {
-        if (str1.length() - index < 2 || str2.length() - index < 2) {
-            return 0; // Base case: if there are fewer than 2 characters remaining in either string
+    private int stringMatch(String str1, String str2, int index, int n) {
+        if (index == n - 1) {
+            return 0;
         }
 
-        // Check if the first two characters from both strings match
         if (str1.charAt(index) == str2.charAt(index) && str1.charAt(index + 1) == str2.charAt(index + 1)) {
-            return 1 + stringMatchHelper(str1, str2, index + 1); // If they match, count and continue
+            return 1 + stringMatch(str1, str2, index + 1, n);
         }
 
-        return stringMatchHelper(str1, str2, index + 1); // Otherwise, continue checking from the next index
+        return stringMatch(str1, str2, index + 1, n);
     }
 }
 
 
 //Without Using Recursion
 
+
 class Solution {
     public int stringMatch(String str1, String str2) {
-        if (str1.length() < 2 || str2.length() < 2) {
-            return 0;
-        }
-
-        int size = Math.min(str1.length(), str2.length());
         int count = 0;
 
-        for (int i = 0; i < size - 1; i++) {
-            if (str1.substring(i, i + 2).equals(str2.substring(i, i + 2))) {
+        for (int i = 0; i < Math.min(str1.length(), str2.length()) - 1; i++) {
+            if (str1.charAt(i) == str2.charAt(i) && str1.charAt(i + 1) == str2.charAt(i + 1)) {
                 count++;
             }
         }
