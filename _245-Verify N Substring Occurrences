@@ -1,21 +1,24 @@
 //Using Recursion
 
 class Solution {
-    public int stringMatch(String str1, String str2) {
-        return stringMatchHelper(str1, str2, 0);
+    public boolean strCopies(String str, String sub, int n) {
+        return strCopies(str, sub, 0, n);
     }
 
-    private int stringMatchHelper(String str1, String str2, int index) {
-        if (str1.length() - index < 2 || str2.length() - index < 2) {
-            return 0; // Base case: if there are fewer than 2 characters remaining in either string
+    private boolean strCopies(String str, String sub, int index, int n) {
+        if (n == 0) {
+            return true;
         }
 
-        // Check if the first two characters from both strings match
-        if (str1.charAt(index) == str2.charAt(index) && str1.charAt(index + 1) == str2.charAt(index + 1)) {
-            return 1 + stringMatchHelper(str1, str2, index + 1); // If they match, count and continue
+        if (index + sub.length() > str.length()) {
+            return false;
         }
 
-        return stringMatchHelper(str1, str2, index + 1); // Otherwise, continue checking from the next index
+        if (str.startsWith(sub, index)) {
+            return strCopies(str, sub, index + 1, n - 1);
+        }
+
+        return strCopies(str, sub, index + 1, n);
     }
 }
 
