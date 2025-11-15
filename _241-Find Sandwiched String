@@ -1,46 +1,47 @@
 //Without Recursion
 
 class Solution {
+
     public String getSandwich(String str) {
-        if (str.length() < 5) {
-            return ""; // no bread found
-        }
-        
-        int firstIndex = str.indexOf("bread");
-        if (firstIndex == -1) {
-            return "";
+        int firstOccurenceIndex = str.indexOf("bread");
+
+        if (firstOccurenceIndex == -1) {
+            return ""; // No "bread" found
         }
 
-        int lastIndex = str.lastIndexOf("bread");
-        if (lastIndex == firstIndex) {
-            return "";
+        int lastOccurenceIndex = str.lastIndexOf("bread");
+
+        if (firstOccurenceIndex == lastOccurenceIndex) {
+            return ""; // Only one "bread" found, sandwich not possible
         }
 
-        return str.substring(firstIndex + 5, lastIndex);
+        // Content within the sandwich
+        return str.substring(firstOccurenceIndex + 5, lastOccurenceIndex);
     }
 }
+
 
 
 //Using Recursion
 
 class Solution {
     public String getSandwich(String str) {
-        return getSandwichHelper(str, 0, str.length() - 1);
-    }
-
-    private String getSandwichHelper(String str, int start, int end) {
-        if (end - start + 1 < 10) { // At least two "bread" (5 + 5) required to form a sandwich
+        // If string is empty OR exactly equals one "bread", no sandwich possible
+        if (str.isEmpty() || str.equals("bread")) {
             return "";
         }
 
-        if (str.startsWith("bread", start) && str.startsWith("bread", end - 4)) {
-            return str.substring(start + 5, end - 4); // Found sandwich
+        // Move inward from left until the first "bread" appears
+        if (!str.startsWith("bread")) {
+            return getSandwich(str.substring(1));
         }
 
-        if (!str.startsWith("bread", start)) {
-            return getSandwichHelper(str, start + 1, end); // Move start forward
+        // Move inward from right until the last "bread" appears
+        if (!str.endsWith("bread")) {
+            return getSandwich(str.substring(0, str.length() - 1));
         }
 
-        return getSandwichHelper(str, start, end - 1); // Move end backward
+        // Two breads exist → valid sandwich → return content in between
+        return str.substring(5, str.length() - 5);
     }
 }
