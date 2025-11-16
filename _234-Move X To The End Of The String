@@ -13,9 +13,8 @@ class Solution {
             }
         }
 
-        while (countX != 0) {
+        while (countX --> 0) {
             modifiedString.append("x");
-            countX--;
         }
 
         return modifiedString.toString();
@@ -27,24 +26,26 @@ class Solution {
 
 class Solution {
     public String endX(String str) {
-        return endXHelper(str, 0, "");
+        return endX(str, 0);
     }
 
-    private String endXHelper(String str, int index, String result) {
+    private String endX(String str, int index) {
         if (index == str.length()) {
-            return result; // Base case: processed all characters
+            return "";
         }
 
         char currentChar = str.charAt(index);
+
+        // If current character is 'x', push it to the end
         if (currentChar == 'x') {
-            // Append 'x' to the end of the result string
-            return endXHelper(str, index + 1, result) + 'x';
+            return endX(str, index + 1) + 'x';
         }
 
-        // Append the current character to the result string
-        return currentChar + endXHelper(str, index + 1, result);
+        // Otherwise, keep the character in place
+        return currentChar + endX(str, index + 1);
     }
 }
+
 
 /*
 
