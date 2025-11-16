@@ -4,10 +4,6 @@ class Solution {
     public int countPairs(String str) {
         int count = 0;
 
-        if (str.length() < 3) {
-            return 0;
-        }
-
         for (int i = 0; i <= (str.length() - 3); i++) {
             if (str.charAt(i) == str.charAt(i + 2)) {
                 count++;
@@ -27,7 +23,7 @@ class Solution {
     }
 
     private int countPairsHelper(String str, int index) {
-        if (index + 2 >= str.length()) {
+        if (index >= str.length() - 2) {
             return 0; // Base case: fewer than 3 characters left
         }
 
