@@ -1,7 +1,5 @@
 //Without Using Recursion 
 
-//Naive Implementation
-
 class Solution {
     public String mixString(String str1, String str2) {
         int i = 0, j = 0;
@@ -24,40 +22,22 @@ class Solution {
 }
 
 
-//Aliter
-
-class Solution {
-    public String mixString(String str1, String str2) {
-        int i = 0, j = 0;
-        StringBuilder mixedString = new StringBuilder();
-
-        while (i < str1.length() && j < str2.length()) {
-            mixedString.append(str1.charAt(i++)).append(str2.charAt(j++));
-        }
-
-        mixedString.append(str1.substring(i)).append(str2.substring(j));
-
-        return mixedString.toString();
-    }
-}
-
-
 //Using Recursion
 
 class Solution {
     public String mixString(String str1, String str2) {
-        return mixStringHelper(str1, str2, 0, 0);
+        return mixStringHelper(str1, str2, 0);
     }
 
-    private String mixStringHelper(String str1, String str2, int index1, int index2) {
-        if (index1 == str1.length()) {
-            return str2.substring(index2); // If `str1` is exhausted, append the remaining of `str2`
+    private String mixStringHelper(String str1, String str2, int index) {
+        if (index == str1.length()) {
+            return str2.substring(index); // If `str1` is exhausted, append the remaining of `str2`
         }
 
-        if (index2 == str2.length()) {
-            return str1.substring(index1); // If `str2` is exhausted, append the remaining of `str1`
+        if (index == str2.length()) {
+            return str1.substring(index); // If `str2` is exhausted, append the remaining of `str1`
         }
 
-        return str1.charAt(index1) + "" + str2.charAt(index2) + mixStringHelper(str1, str2, index1 + 1, index2 + 1);
+        return String.valueOf(str1.charAt(index)) + String.valueOf(str2.charAt(index)) + mixStringHelper(str1, str2, index+1);
     }
 }
