@@ -19,31 +19,32 @@ class Solution {
     }
 
     private String reverseString(char[] arr, int index) {
+        // Base case: reached middle → array is fully reversed
         if (index == (arr.length / 2)) {
             return new String(arr);
         }
 
-        char temp = arr[index];
-        arr[index] = arr[arr.length - 1 - index];
-        arr[arr.length - 1 - index] = temp;
+        // Swap the characters at index and its mirror position
+        swap(arr, index, arr.length - 1 - index);
 
+        // Move inward
         return reverseString(arr, index + 1);
+    }
+
+    private void swap(char[] arr, int i, int j) {
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
 
 
-//Without Using Recursion
 
+//Without Using Recursion
 
 class Solution {
     public static String reverseString(String str) {
-        StringBuilder reverse = new StringBuilder();
-
-        for (int i = str.length() - 1; i >= 0; i--) {
-            reverse.append(str.charAt(i));
-        }
-
-        return reverse.toString();
+        return new StringBuilder(str).reverse().toString();
     }
 }
 
