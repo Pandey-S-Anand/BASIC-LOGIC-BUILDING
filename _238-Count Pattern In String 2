@@ -2,25 +2,26 @@
 
 class Solution {
     public int countHi2(String str) {
-        return countHi2Helper(str, 0);
+        return countHi2(str, 0);
     }
 
-    private int countHi2Helper(String str, int index) {
+    private int countHi2(String str, int index) {
         if (index > str.length() - 2) {
-            return 0; // Base case: fewer than 2 characters remaining
+            return 0;
         }
 
-        if (index < str.length() - 2 && str.substring(index, index + 3).equals("xhi")) {
-            return countHi2Helper(str, index + 3);
+        if (str.startsWith("xhi", index)) {
+            return countHi2(str, index + 3);
         }
 
-        if (str.substring(index, index + 2).equals("hi")) {
-            return 1 + countHi2Helper(str, index + 2);
+        if (str.startsWith("hi", index)) {
+            return 1 + countHi2(str, index + 2);
         }
 
-        return countHi2Helper(str, index + 1);
+        return countHi2(str, index + 1);
     }
 }
+
 
 
 //Without Using Recursion
