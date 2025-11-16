@@ -1,5 +1,3 @@
-// Without Recursion
-
 class Solution {
     public int maxBlock(String str) {
         if (str.isEmpty()) {
@@ -18,29 +16,5 @@ class Solution {
         }
 
         return Math.max(maxBlockLength, currentBlockLength);
-    }
-}
-
-
-//Using Recursion
-
-class Solution {
-    public int maxBlock(String str) {
-        if (str.isEmpty()) {
-            return 0;
-        }
-        return maxBlockHelper(str, 1, 1, 1);
-    }
-
-    private int maxBlockHelper(String str, int index, int currentBlockLength, int maxBlockLength) {
-        if (index == str.length()) {
-            return Math.max(maxBlockLength, currentBlockLength);
-        }
-
-        if (str.charAt(index) == str.charAt(index - 1)) {
-            return maxBlockHelper(str, index + 1, currentBlockLength + 1, maxBlockLength);
-        }
-
-        return maxBlockHelper(str, index + 1, 1, Math.max(maxBlockLength, currentBlockLength));
     }
 }
