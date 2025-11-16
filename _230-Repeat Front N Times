@@ -27,14 +27,14 @@ class Solution {
 class Solution {
     public String frontTimes(String str, int n) {
         String front = str.length() < 3 ? str : str.substring(0, 3);
-        return frontTimesHelper(front, n, 0);
+        return frontTimesHelper(front, n);
     }
 
-    private String frontTimesHelper(String front, int n, int index) {
-        if (index == n) {
+    private String frontTimesHelper(String front, int n) {
+        if (n == 0) {
             return ""; // Base case: no more repetitions needed
         }
 
-        return front + frontTimesHelper(front, n, index + 1);
+        return front + frontTimesHelper(front, n - 1);
     }
 }
