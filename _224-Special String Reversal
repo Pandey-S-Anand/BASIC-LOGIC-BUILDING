@@ -28,30 +28,36 @@ class Solution {
 
 //Optimal approach
 
-class Solution{
-    public String reverse(String str){
+class Solution {
+    public String reverse(String str) {
         char[] arr = str.toCharArray();
         int left = 0, right = arr.length - 1;
 
         while (left < right) {
             // Move left pointer until an alphabetic character is found
-            while(left<right && !Character.isLetter(arr[left])) {
+            while (left < right && !Character.isLetter(arr[left])) {
                 left++;
             }
+
             // Move right pointer until an alphabetic character is found
-            while(left<right && !Character.isLetter(arr[right])) {
+            while (left < right && !Character.isLetter(arr[right])) {
                 right--;
             }
+
             // If both characters are alphabetic, swap them
-            if(left<right){
-                char temp = arr[left];
-                arr[left] = arr[right];
-                arr[right] = temp;
+            if (left < right) {
+                swap(arr, left, right);
                 left++;
                 right--;
             }
         }
 
         return new String(arr);
+    }
+
+    private void swap(char[] arr, int i, int j) {
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
