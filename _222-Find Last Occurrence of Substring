@@ -1,55 +1,29 @@
-//Bruteforce Approach
+// Bruteforce Approach
 
 class Solution {
-    static int findLastOccurence(String str, String sub) {
-        int lastIndex = str.lastIndexOf(sub);
-        return (lastIndex != -1) ? (lastIndex + 1) : -1;
+    static int findLastOccurence(String text, String target) {
+        int lastIndex = text.lastIndexOf(target);
+        return (lastIndex != -1) ? (lastIndex + 1) : -1; // 1-based index
     }
 }
 
 
-//Better Approach
-
-//Naive Implementation 
+// Better Approach
 
 class Solution {
-    static int findLastOccurence(String str, String sub) {
+    static int findLastOccurence(String text, String target) {
         int lastIndex = -1;
-        for (int i = 0; i < str.length(); i++) {
-            int j = i, k = 0;
-            while (j < str.length() && k < sub.length()) {
-                if (str.charAt(j) != sub.charAt(k)) {
-                    break;
-                }
-                j++;
-                k++;
-            }
-
-            if (k == sub.length()) {
-                lastIndex = i + 1;
-            }
-        }
-
-        return lastIndex;
-    }
-}
-
-
-//Optimal Implementation 
-
-class Solution {
-    static int findLastOccurence(String str, String sub) {
-        int lastIndex = -1;
-        for (int i = 0; i <= (str.length() - sub.length()); i++) {
+        for (int i = 0; i <= (text.length() - target.length()); i++) {
             int j;
-            for (j = 0; j < sub.length(); j++) {
-                if (str.charAt(i + j) != sub.charAt(j)) {
+            for (j = 0; j < target.length(); j++) {
+                if (text.charAt(i + j) != target.charAt(j)) {
                     break;
                 }
             }
 
-            if (j == sub.length()) {
-                lastIndex = i + 1;
+            // Full match
+            if (j == target.length()) {
+                lastIndex = i + 1; // 1-based index
             }
         }
 
@@ -60,48 +34,28 @@ class Solution {
 
 //Optimal Approach
 
-//Naive Implementation 
-
-class Solution{
-    static int findLastOccurence(String str,String sub){
-        for (int i = str.length() - sub.length(); i >= 0; i--) {
-            int j = i, k = 0;
-            while (j < str.length() && k < sub.length()) {
-                if (str.charAt(j) != sub.charAt(k)) {
-                    break;
-                }
-                j++;
-                k++;
-            }
-
-            if (k == sub.length()) {
-                return i + 1;
-            }
-        }
-
-        return -1;
-    }
-}
-
-
-
-//Optimal Implementation
-
 class Solution {
-    static int findLastOccurence(String str, String sub) {
-        for (int i = str.length() - sub.length(); i >= 0; i--) {
+    static int findLastOccurence(String text, String target) {
+        // Start scanning from the end of the main string
+        for (int i = text.length() - 1; i >= target.length() - 1; i--) {
             int j;
-            for (j = 0; j < sub.length(); j++) {
-                if (str.charAt(i + j) != sub.charAt(j)) {
-                    break;
+            int k = i;
+            
+            // Compare characters of 'target' with current window in 'text' (from end to start)
+            for (j = target.length() - 1; j >= 0; j--, k--) {
+                if (text.charAt(k) != target.charAt(j)) {
+                    break; // Break early if mismatch found
                 }
             }
 
-            if (j == sub.length()) {
-                return i + 1;
+            // If j < 0, all characters matched — substring found
+            if (j < 0) {
+                // Convert to 1-based index
+                return k + 2;
             }
         }
 
+        // Substring not found
         return -1;
     }
 }
