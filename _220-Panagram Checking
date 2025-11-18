@@ -2,20 +2,17 @@
 
 class Solution {
     public static boolean checkPangram(String str) {
+        Set<Character> characters = new HashSet<>();
         str = str.toLowerCase();
-        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
-        for (char letter : alphabet) {
-            boolean found = false;
-
-            for (int i = 0; i < str.length(); i++) {
-                if (str.charAt(i) == letter) {
-                    found = true;
-                    break;
-                }
+        for (int i = 0; i < str.length(); i++) {
+            if(Character.isLetter(str.charAt(i))){
+               characters.add(str.charAt(i));   
             }
+        }
 
-            if (!found) {
+        for (char ch = 'a'; ch <= 'z'; ch++) {
+            if (!characters.contains(ch)) {
                 return false;
             }
         }
