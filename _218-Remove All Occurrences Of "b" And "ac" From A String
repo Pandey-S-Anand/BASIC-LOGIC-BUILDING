@@ -17,7 +17,7 @@ class Solution {
         while (i < str.length()) {
             if (str.charAt(i) == 'b') {
                 i++;
-            } else if (str.charAt(i) == 'a' && (i + 1 < str.length() && str.charAt(i + 1) == 'c')) {
+            } else if (str.startsWith("ac", i)) {
                 i += 2;
             } else {
                 modifiedString.append(str.charAt(i));
