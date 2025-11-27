@@ -21,28 +21,38 @@ class Solution {
 }
 
 
+
 //Better Approach
 
 class Solution {
     public static String concatenatedString(String str1, String str2) {
-        Set<Character> commonChars = new HashSet<>();
+        boolean[] str1Chars = new boolean[26];
+        boolean[] commonChars = new boolean[26];
 
+        // Mark characters present in str1
+        for (int i = 0; i < str1.length(); i++) {
+            str1Chars[str1.charAt(i) - 'a'] = true;
+        }
+
+        // Mark common characters between str1 and str2
         for (int i = 0; i < str2.length(); i++) {
-            if (str1.contains(str2.charAt(i) + "")) {
-                commonChars.add(str2.charAt(i));
+            if (str1Chars[str2.charAt(i) - 'a']) {
+                commonChars[str2.charAt(i) - 'a'] = true;
             }
         }
 
         StringBuilder uncommonChars = new StringBuilder();
 
+        // Add chars from str1 that are not common
         for (int i = 0; i < str1.length(); i++) {
-            if (!commonChars.contains(str1.charAt(i))) {
+            if (!commonChars[str1.charAt(i) - 'a']) {
                 uncommonChars.append(str1.charAt(i));
             }
         }
 
+        // Add chars from str2 that are not common
         for (int i = 0; i < str2.length(); i++) {
-            if (!commonChars.contains(str2.charAt(i))) {
+            if (!commonChars[str2.charAt(i) - 'a']) {
                 uncommonChars.append(str2.charAt(i));
             }
         }
@@ -56,33 +66,36 @@ class Solution {
 
 class Solution {
     public static String concatenatedString(String str1, String str2) {
-        Set<Character> str1Chars = new HashSet<>();
-        Set<Character> commonChars = new HashSet<>();
+        boolean[] inStr1 = new boolean[26];
+        boolean[] common = new boolean[26];
 
+        // Mark chars of str1
         for (int i = 0; i < str1.length(); i++) {
-            str1Chars.add(str1.charAt(i));
+            inStr1[str1.charAt(i) - 'a'] = true;
         }
 
+        StringBuilder uncommon1 = new StringBuilder();
+        StringBuilder uncommon2 = new StringBuilder();
+
+        // Identify common chars + collect str2 uncommon chars
         for (int i = 0; i < str2.length(); i++) {
-            if (str1.contains(str2.charAt(i) + "")) {
-                commonChars.add(str2.charAt(i));
+            if (inStr1[str2.charAt(i) - 'a']) {
+                common[str2.charAt(i) - 'a'] = true;
+            } else {
+                uncommon2.append(str2.charAt(i));
             }
         }
 
-        StringBuilder uncommonChars = new StringBuilder();
-
+        // Collect str1 uncommon chars
         for (int i = 0; i < str1.length(); i++) {
-            if (!commonChars.contains(str1.charAt(i))) {
-                uncommonChars.append(str1.charAt(i));
+            if (!common[str1.charAt(i) - 'a']) {
+                uncommon1.append(str1.charAt(i));
             }
         }
 
-        for (int i = 0; i < str2.length(); i++) {
-            if (!commonChars.contains(str2.charAt(i))) {
-                uncommonChars.append(str2.charAt(i));
-            }
-        }
+        // Append final result
+        uncommon1.append(uncommon2);
 
-        return uncommonChars.length() == 0 ? "-1" : uncommonChars.toString();
+        return uncommon1.isEmpty() ? "-1" : uncommon1.toString();
     }
 }
