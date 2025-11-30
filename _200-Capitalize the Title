@@ -19,24 +19,96 @@ class Solution {
 }
 
 
+//Good Approach
+
+class Solution {
+    public String capitalizeTitle(String title) {
+        title = title.toLowerCase();
+        StringBuilder modifiedString = new StringBuilder();
+
+        int startIndex = 0;
+        int endIndex = 0;
+
+        while (endIndex < title.length()) {
+            startIndex = endIndex;
+            while (endIndex < title.length() && title.charAt(endIndex) != ' ') {
+                endIndex++;
+            }
+
+            int wordLength = endIndex - startIndex;
+
+            if (wordLength > 2) {
+                modifiedString.append(Character.toUpperCase(title.charAt(startIndex)) + title.substring(startIndex + 1, endIndex));
+            } else {
+                modifiedString.append(title.substring(startIndex, endIndex));
+            }
+
+            modifiedString.append(" ");
+            endIndex++;
+        }
+
+        return modifiedString.toString().trim();
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    public String capitalizeTitle(String title) {
+        title = title.toLowerCase();
+
+        StringBuilder modifiedString = new StringBuilder();
+        StringBuilder currentWord = new StringBuilder();
+        int index = 0;
+
+        while (index < title.length()) {
+            // Build the current word
+            while (index < title.length() && title.charAt(index) != ' ') {
+                currentWord.append(title.charAt(index));
+                index++;
+            }
+
+            // Capitalize if word length is more than 2
+            if (currentWord.length() > 2) {
+                currentWord.setCharAt(0, Character.toUpperCase(currentWord.charAt(0)));
+            }
+
+            // Append processed word
+            modifiedString.append(currentWord).append(" ");
+
+            // Reset for the next word
+            currentWord.setLength(0);
+
+            // Move past the space
+            index++;
+        }
+
+        return modifiedString.toString().trim();
+    }
+}
+
+
 //Optimal Approach
 
 class Solution {
     public String capitalizeTitle(String title) {
         char[] arr = title.toLowerCase().toCharArray();
-        int start = 0;
+        int wordStart = 0, wordEnd = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == ' ') {
-                if ((i - start) > 2) {
-                    arr[start] = Character.toUpperCase(arr[start]);
-                }
-                start = i + 1;
+        while (wordEnd < arr.length) {
+            // Find end of the current word
+            wordStart = wordEnd;
+            while (wordEnd < arr.length && arr[wordEnd] != ' ') {
+                wordEnd++;
             }
-        }
 
-        if ((arr.length - start) > 2) {
-            arr[start] = Character.toUpperCase(arr[start]);
+            // Capitalize if word length > 2
+            if (wordEnd - wordStart > 2) {
+                arr[wordStart] = Character.toUpperCase(arr[wordStart]);
+            }
+
+            wordEnd++; // Move past the space
         }
 
         return new String(arr);
