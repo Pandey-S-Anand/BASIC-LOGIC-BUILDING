@@ -1,24 +1,23 @@
-//Without Recursion
-
 //Bruteforce Approach
 
 class Solution {
     public boolean checkString(String str) {
-        int aCount = 0;
+        int countA = 0;
 
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == 'a') {
-                aCount++;
+                countA++;
             }
         }
 
         int i = 0;
-        while (aCount != 0) {
-            if (str.charAt(i++) == 'b') {
+        while (countA != 0) {
+            if (str.charAt(i) == 'b' && countA != 0) {
                 return false;
             }
+
+            countA--;
             i++;
-            aCount--;
         }
 
         return true;
