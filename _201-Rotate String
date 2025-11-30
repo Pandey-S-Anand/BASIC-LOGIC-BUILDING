@@ -1,11 +1,29 @@
 //Bruteforce Approach
 
 class Solution {
+
+    /**
+     * Checks if 'goal' can be obtained by rotating 'str'.
+     *
+     * Rotation explanation:
+     * ---------------------
+     * We start the rotation loop from 1 to str.length() - 1 because a
+     * rotation by exactly 'str.length()' positions produces the same
+     * string as the original (same as 0 rotation).
+     *
+     * Since we already check upfront whether both strings are equal,
+     * there is no need to perform a full-length rotation again.
+     *
+     * Therefore, we only need to test rotations from:
+     * 1 → str.length() - 1
+     */
     public boolean rotateString(String str, String goal) {
+
         if (str.length() != goal.length()) {
             return false;
         }
 
+        // Direct equality means no rotation needed.
         if (str.equals(goal)) {
             return true;
         }
@@ -13,6 +31,7 @@ class Solution {
         char[] arr = str.toCharArray();
         char[] target = goal.toCharArray();
 
+        // Loop through all unique rotations (excluding full rotation).
         for (int count = 1; count < arr.length; count++) {
             leftShiftBy1(arr);
             if (Arrays.equals(arr, target)) {
@@ -25,12 +44,13 @@ class Solution {
 
     private void leftShiftBy1(char[] arr) {
         char temp = arr[0];
-        for (int i = 0; i < (arr.length - 1); i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
             arr[i] = arr[i + 1];
         }
         arr[arr.length - 1] = temp;
     }
 }
+
 
 
 //Optimal Approach
