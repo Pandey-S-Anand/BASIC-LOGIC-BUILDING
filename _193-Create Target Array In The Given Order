@@ -1,24 +1,24 @@
 //Using array
 
 class Solution {
-    public int[] createTargetArray(int[] nums, int[] indices) {
-        int[] targetArray = new int[nums.length];
-        Arrays.fill(targetArray, -1);
+    public int[] createTargetArray(int[] values, int[] index) {
+        int[] target = new int[values.length];
 
-        for (int i = 0; i < nums.length; i++) {
-            if (targetArray[indices[i]] != -1) {
-                shiftRight(targetArray, indices[i], i);
-            }
-            targetArray[indices[i]] = nums[i];
+        for (int i = 0; i < values.length; i++) {
+            insertAtIndex(target, index[i], values[i]);
         }
 
-        return targetArray;
+        return target;
     }
 
-    private void shiftRight(int[] arr, int startIdx, int endIdx) {
-        for (int i = endIdx; i > startIdx; i--) {
+    private void insertAtIndex(int[] arr, int insertIndex, int value) {
+        // Shift elements one position to the right, starting from the end until the insertion point is reached.
+        for (int i = arr.length - 1; i > insertIndex; i--) {
             arr[i] = arr[i - 1];
         }
+
+        // Place the value at the specified index
+        arr[insertIndex] = value;
     }
 }
 
