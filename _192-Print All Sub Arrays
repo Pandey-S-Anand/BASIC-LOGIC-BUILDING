@@ -9,53 +9,52 @@
 //Iterative Approach
 
 class Solution {
-    public static void printAllSubarrays(int[] arr) {
-        for (int start = 0; start < arr.length; start++) {
-            for (int end = start; end < arr.length; end++) {
-                System.out.print("{");
-                for (int range = start; range <= end; range++) {
-                    System.out.print(arr[range]);
+    public List<List<Integer>> getSubArrays(int[] arr) {
+        List<List<Integer>> subarrays = new ArrayList<>();
+        List<Integer> currentSubarray = new ArrayList<>();
 
-                    if (range < end) {
-                        System.out.print(",");
-                    }
-                }
-                System.out.println("}");
+        for (int start = 0; start < arr.length; start++) {
+            currentSubarray.clear();
+            for (int end = start; end < arr.length; end++) {
+                currentSubarray.add(arr[end]);
+                subarrays.add(new ArrayList<>(currentSubarray));
             }
         }
+
+        return subarrays;
     }
 }
+
 
 // Recurssive Approach
 
 class Solution {
-    public void printAllSubarrays(int[] arr) {
-        printSubarraysHelper(arr, 0, 0);
+    private List<List<Integer>> subarrays;
+
+    public List<List<Integer>> getSubArrays(int[] arr) {
+        subarrays = new ArrayList<>();
+        generateSubarrays(arr, 0, 0, new ArrayList<>());
+        return subarrays;
     }
 
-    private void printSubarraysHelper(int[] arr, int start, int end) {
-        if (start == arr.length) {
+    private void generateSubarrays(int[] arr, int startIndex, int endIndex, List<Integer> currentSubarray) {
+        // If startIndex reaches end of array, stop recursion
+        if (startIndex == arr.length) {
             return;
         }
 
-        if (end == arr.length) {
-            printSubarraysHelper(arr, start + 1, start + 1);
+        // If endIndex runs out, move startIndex forward
+        if (endIndex == arr.length) {
+            currentSubarray.clear();
+            generateSubarrays(arr, startIndex + 1, startIndex + 1, currentSubarray);
             return;
         }
 
-        printCurrentSubarray(arr, start, end);
+        // Add current element and record the subarray
+        currentSubarray.add(arr[endIndex]);
+        subarrays.add(new ArrayList<>(currentSubarray));
 
-        printSubarraysHelper(arr, start, end + 1);
-    }
-
-    private void printCurrentSubarray(int[] arr, int start, int end) {
-        System.out.print("{");
-        for (int i = start; i <= end; i++) {
-            System.out.print(arr[i]);
-            if (i < end) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("}");
+        // Continue extending current subarray
+        generateSubarrays(arr, startIndex, endIndex + 1, currentSubarray);
     }
 }
