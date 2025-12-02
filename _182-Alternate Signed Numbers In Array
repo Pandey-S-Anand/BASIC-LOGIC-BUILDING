@@ -1,49 +1,18 @@
-//Bruteforce Approach
-
 class Solution {
-    static void isAlternate(int arr[], int n) {
-        int i;
-        if (arr[0] >= 0) {
-            for (i = 1; i < n; i++) {
-                if (((i % 2 == 1) && arr[i] >= 0) || ((i % 2 == 0) && arr[i] < 0)) {
-                    break;
-                }
+    private static boolean isAlternate(int[] arr, int n) {
+        boolean isLastPositive = arr[0] >= 0;
+
+        for (int i = 1; i < n; i++) {
+            // If the current element has same sign as the last one → not alternating
+            if ((isLastPositive && arr[i] >= 0) || (!isLastPositive && arr[i] < 0)) {
+                return false;
             }
-        } else {
-            for (i = 1; i < n; i++) {
-                if (((i % 2) == 1 && arr[i] < 0) || ((i % 2) == 0 && arr[i] >= 0)) {
-                    break;
-                }
-            }
+
+            // Update last sign
+            isLastPositive = !isLastPositive;
         }
 
-        if (i == n) {
-            System.out.println("Yes");
-        } else {
-            System.out.println("No");
-        }
+        return true;
     }
 }
 
-
-//Optimal Implementation
-
-class Solution {
-    static void isAlternate(int arr[], int n) {
-        boolean isPositive = arr[0] >= 0;
-        int i;
-        for (i = 1; i < n; i++) {
-            if ((isPositive && arr[i] >= 0) || (!isPositive && arr[i] < 0)) {
-                break;
-            }
-
-            isPositive = !isPositive;
-        }
-
-        if (i == n) {
-            System.out.println("Yes");
-        } else {
-            System.out.println("No");
-        }
-    }
-}
