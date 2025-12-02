@@ -27,20 +27,38 @@ class Solution {
     }
 }
 
+
+
 // Optimal Approach
 
 class Solution {
     static ArrayList<Integer> leaders(int n, int arr[]) {
         ArrayList<Integer> leaders = new ArrayList<>();
-        int maxSoFar = -1;
+        
+        int maxSoFar = arr[n - 1];
+        leaders.add(maxSoFar);
 
-        for (int i = (n - 1); i >= 0; i--) {
+        for (int i = n - 2; i >= 0; i--) {
             if (arr[i] >= maxSoFar) {
-                leaders.add(0, arr[i]);
+                leaders.add(arr[i]);
                 maxSoFar = arr[i];
             }
         }
 
+        reverseList(leaders);
         return leaders;
+    }
+
+    private static void reverseList(ArrayList<Integer> list) {
+        int left = 0;
+        int right = list.size() - 1;
+
+        while (left < right) {
+            int temp = list.get(left);
+            list.set(left, list.get(right));
+            list.set(right, temp);
+            left++;
+            right--;
+        }
     }
 }
