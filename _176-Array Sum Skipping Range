@@ -2,14 +2,19 @@
 
 class Solution {
     public int sum67(int[] arr) {
-        int sum = 0;
+        int i = 0, sum = 0;
 
-        for (int i = 0; i < arr.length; i++) {
+        while (i < arr.length) {
+            // If we hit a 6, skip until we reach the next 7
             if (arr[i] == 6) {
-                while (arr[i++] != 7)
-            } else {
-                sum += arr[i];
+                while (i < arr.length && arr[i] != 7) {
+                    i++;
+                }
+                i++; // skip the 7 itself
+                continue; // skip this 6..7 block and re-check, in case another 6 starts right after
             }
+
+            sum += arr[i++]; // clean increment and add
         }
 
         return sum;
@@ -20,27 +25,31 @@ class Solution {
 //Using Recursion
 
 class Solution {
-   public int sum67(int[] arr) {
-        return sum67(arr, 0,false);
+    public int sum67(int[] arr) {
+        return sum67Helper(arr, 0, false);
     }
 
-    private int sum67(int[] arr, int index, boolean inRange) {
+    private int sum67Helper(int[] arr, int index, boolean isSkipping) {
         if (index == arr.length) {
             return 0;
         }
 
+        // Start of a 6–7 block
         if (arr[index] == 6) {
-            return sum67(arr, index+1, true);
+            return sum67Helper(arr, index + 1, true);
         }
 
-        if (arr[index] == 7 && inRange) {
-            return sum67(arr,index+1, false);
+        // We are inside a skip-block
+        if (isSkipping) {
+            // End of the skip-block when we see 7
+            if (arr[index] == 7) {
+                return sum67Helper(arr, index + 1, false);
+            }
+            // Continue skipping until 7
+            return sum67Helper(arr, index + 1, true);
         }
 
-        if (inRange) {
-            return sum67(arr,index+1, true);
-        }
-
-        return arr[index] + sum67(arr, index+1, false);
+        // Normal case: add the element
+        return arr[index] + sum67Helper(arr, index + 1, false);
     }
 }
