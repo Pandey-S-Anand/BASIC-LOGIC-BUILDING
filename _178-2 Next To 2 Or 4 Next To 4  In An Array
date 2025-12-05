@@ -1,51 +1,23 @@
-//Without Recursion
-
 class Solution {
     public boolean either24(int[] arr) {
-        boolean has22 = false, has44 = false;
+        boolean hasPairOfTwos = false;
+        boolean hasPairOfFours = false;
 
         for (int i = 0; i < arr.length - 1; i++) {
+
             if (arr[i] == 2 && arr[i + 1] == 2) {
-                has22 = true;
+                hasPairOfTwos = true;
             } else if (arr[i] == 4 && arr[i + 1] == 4) {
-                has44 = true;
+                hasPairOfFours = true;
             }
 
-            if (has22 && has44) {
+            // If both pairs appear : not allowed
+            if (hasPairOfTwos && hasPairOfFours) {
                 return false;
             }
         }
 
-        return has22 != has44;
-    }
-}
-
-
-//Using Recursion
-
-class Solution {
-    public boolean either24(int[] arr) {
-        if (arr.length == 0) {
-            return false;
-        }
-        return either24(arr, 0, false, false);
-    }
-
-    private boolean either24(int[] arr, int index, boolean has22, boolean has44) {
-        if (index == arr.length - 1) {
-            return has22 != has44;
-        }
-
-        if (has22 && has44) {
-            return false;
-        }
-
-        if (arr[index] == 2 && arr[index + 1] == 2) {
-            has22 = true;
-        } else if (arr[index] == 4 && arr[index + 1] == 4) {
-            has44 = true;
-        }
-
-        return either24(arr, index + 1, has22, has44);
+        // Valid only if exactly one of them appears
+        return hasPairOfTwos || hasPairOfFours;
     }
 }
