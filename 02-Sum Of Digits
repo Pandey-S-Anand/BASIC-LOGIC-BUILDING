@@ -1,10 +1,11 @@
-//1-Iterative Approach
+//Iterative Approach
 
 //Method 1
 
 class Solution {
     static int sumOfDigits(int num) {
         int sum = 0;
+
         while (num != 0) {
             sum += (num % 10);
             num = num / 10;
@@ -14,18 +15,8 @@ class Solution {
     }
 }
 
+
 //Method 2
-
-class Solution{
-    static int sumOfDigits(int num) {         
-       int sum;
-       for (sum=0; num!=0; sum+=(num%10),num=num/10){}
-
-       return sum;
-    }
-}
-
-//Method 3
 
 class Solution {
     static int sumOfDigits(int n) {
@@ -41,14 +32,14 @@ class Solution {
 }
 
 
-//2-Recursive Approach
+//Recursive Approach
 
-class Solution{
-    static int sumOfDigits(int num){
-       if(num==0){ //Base Case: Sum of Digits of '0'is 0
-         return 0;
-       }
-         
-       return (num%10)+sumOfDigits(num/10);
+class Solution {
+    static int sumOfDigits(int num) {
+        if (num == 0) { //Base Case: Sum of Digits of '0'is 0
+            return 0;
+        }
+
+        return (num % 10) + sumOfDigits(num / 10);
     }
-} 
+}
