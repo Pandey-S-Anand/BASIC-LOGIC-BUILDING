@@ -8,9 +8,9 @@ Note: Natural numbers do not include negative numbers or zero.
 
 //Method 1 : Using Formula
 
-class Solution{
-    public static int sumNaturalNumbers(int N){
-         return (N*(N+1))/2;
+class Solution {
+    public static int sumNaturalNumbers(int n) {
+        return (n * (n + 1)) / 2;
     }
 }
 
@@ -32,10 +32,11 @@ class Solution {
 //Method 3- Iterative Approach
 
 class Solution {
-    public static int sumNaturalNumbers(int N) {
+    public static int sumNaturalNumbers(int n) {
         int sum = 0;
-        for (int i = 1; i <= N; i++) {
-            sum = sum + i;
+
+        for (int num = 1; num <= n; num++) {
+            sum = sum + num;
         }
 
         return sum;
@@ -46,11 +47,11 @@ class Solution {
 //Method 4- Recursive Approach
 
 class Solution {
-    public static int sumNaturalNumbers(int N) {
-        if (N == 0) { // Sum of first 0 Natural Numbers
+    public static int sumNaturalNumbers(int n) {
+        if (n == 0) { // Sum of first 0 Natural Numbers
             return 0;
         }
 
-        return N + sumNaturalNumbers(N - 1);
+        return n + sumNaturalNumbers(n - 1);
     }
 }
