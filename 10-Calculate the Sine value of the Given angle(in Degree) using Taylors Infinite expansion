@@ -3,26 +3,29 @@
  (x=angle in Radian)
  */
 
-import java.lang.Math;
-
 class Solution {
     public static float series(int angInDeg, int limit) {
-        if (angInDeg < 0 || limit <= 0) { // invalid input
+        if (angInDeg < 0 || limit <= 0) { 
             return -1;
         }
 
         float sum = 0f;
-        int temp = 1;
+        int power = 1;
 
-        float angInRad = (float) (angInDeg * (Math.PI)) / 180;
+        float angInRad = (float) (angInDeg * Math.PI) / 180;
+
         for (int i = 1; i <= limit; i++) {
-            if ((i % 2) != 0) {
-                sum += Math.pow(angInRad, temp) / factorial(temp);
+            float term = (float) (Math.pow(angInRad, power) / factorial(power));
+
+            if (i % 2 != 0) {
+                sum += term;
             } else {
-                sum -= Math.pow(angInRad, temp) / factorial(temp);
+                sum -= term;
             }
-            temp += 2;
+
+            power += 2;
         }
+
         return sum;
     }
 
