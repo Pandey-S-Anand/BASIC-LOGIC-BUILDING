@@ -18,21 +18,7 @@ class Solution {
     }
 }
 
-
-
-//Method 2 - Iterative Approach
-
-class Solution{
-   public static int firstDigit(int num){
-      if(num>=0 && num<=9){
-        return num;
-      }
-
-      return firstDigit(Math.abs(num)/10);
-   }
-}
-
-//Method 3 - First Convert the given integer to string and then first char of string – ‘0’ is our answer.
+//Method 2 - First Convert the given integer to string and then first char of string – ‘0’ is our answer.
 
 class Solution {
     public static int firstDigit(int num) {
@@ -41,5 +27,21 @@ class Solution {
         }
 
         return Integer.toString(num).charAt(0) - '0';
+    }
+}
+
+
+//Method 3 - Recursive approach
+
+class Solution {
+    public static int firstDigit(int num) {
+        return firstDigitHelper(Math.abs(num));
+    }
+
+    private static int firstDigitHelper(int num) {
+        if (num < 10) {
+            return num;
+        }
+        return firstDigitHelper(num / 10);
     }
 }
