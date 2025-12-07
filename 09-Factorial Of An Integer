@@ -39,6 +39,7 @@ class Solution {
     }
 }
 
+
 // Method 3- Recursive Approach
 
 public class Solution {
@@ -52,32 +53,7 @@ public class Solution {
 }
 
 
-//Method 4 - Memoized Approach
-
-class Solution {
-    private static long[] cache;
-
-    public static long factorial(int num) {
-        cache = new long[num + 1];
-        Arrays.fill(cache, -1);
-        return factorialHelper(num);
-    }
-
-    private static long factorialHelper(int num) {
-        if (num == 0) { // Base Case (Factorial of 0 is 1)
-            return 1L;
-        }
-
-        if (cache[num] != -1) {
-            return cache[num];
-        }
-
-        return cache[num] = (num * factorial(num - 1));
-    }
-}
-
-
-// Method 5 - Using Dynamic programming
+// Method 4 - Using Dynamic programming
 
 class Solution {
     static long factorial(int n) {
