@@ -6,26 +6,19 @@ Prime numbers are the numbers that have only two factors, 1 and the number itsel
 //Bruteforce Approach
 
 class Solution {
-    public int[] AllPrimeFactors(int number) {
-        ArrayList<Integer> primeFactorsList = new ArrayList<>();
+    public static ArrayList<Integer> primeFac(int num) {
+        ArrayList<Integer> primeFactors = new ArrayList<>();
         
-        for (int i = 2; i <= number; i++) {
-            if (number % i == 0) {
-                primeFactorsList.add(i);
-                while (number % i == 0) {
-                    number /= i;
+        for (int i = 2; i <= num; i++) {
+            if (num % i == 0) {
+                primeFactors.add(i);
+                while (num % i == 0) {
+                    num /= i;
                 }
             }
         }
-
-        int n = primeFactorsList.size();
-        int[] primeFactors = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            primeFactors[i] = primeFactorsList.get(i);
-        }
         
-        return primeFactors;
+        return primeFactors;  
     }
 }
 
@@ -33,60 +26,48 @@ class Solution {
 //Better Approach
 
 class Solution {
-    public int[] AllPrimeFactors(int number) {
-        ArrayList<Integer> primeFactorsList = new ArrayList<>();
-        
-        for (int i = 2; i <= (number / 2); i++) {
-            if (number % i == 0) {
-                primeFactorsList.add(i);
-                while (number % i == 0) {
-                    number /= i;
+    public static ArrayList<Integer> primeFac(int num) {
+        ArrayList<Integer> primeFactors = new ArrayList<>();
+
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) {
+                primeFactors.add(i);
+                while (num % i == 0) {
+                    num /= i;
                 }
             }
         }
-        
-        if (number != 1) {
-           primeFactorsList.add(number);
+
+        if (num != 1) {
+            primeFactors.add(num);
         }
 
-        int n = primeFactorsList.size();
-        int[] primeFactors = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            primeFactors[i] = primeFactorsList.get(i);
-        }
-        
         return primeFactors;
     }
 }
 
 
+
 //Optimal Approach
 
 class Solution {
-    public int[] getPrimeFactors(int number) {
-        ArrayList<Integer> primeFactorsList = new ArrayList<>();
+    public static ArrayList<Integer> primeFac(int num) {
+        ArrayList<Integer> primeFactors = new ArrayList<>();
+        int sqrt=(int)Math.sqrt(num);
         
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-            if (number % i == 0) {
-                primeFactorsList.add(i);
-                while (number % i == 0) {
-                    number /= i;
+        for (int i = 2; i <= sqrt; i++) {
+            if (num % i == 0) {
+                primeFactors.add(i);
+                while (num % i == 0) {
+                    num /= i;
                 }
             }
         }
         
-        if (number != 1) {
-           primeFactorsList.add(number);
-        }
-
-        int n = primeFactorsList.size();
-        int[] primeFactors = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            primeFactors[i] = primeFactorsList.get(i);
+        if (num != 1) {
+           primeFactors.add(num);
         }
         
-        return primeFactors;
+        return primeFactors;  
     }
 }
