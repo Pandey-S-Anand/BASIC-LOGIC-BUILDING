@@ -2,14 +2,18 @@
 
 class Solution {
     public static int reverse(int num) {
-        int rev = 0;
+        int sign = num < 0 ? -1 : 1;
+        num = Math.abs(num);
+
+        int reversed = 0;
 
         while (num != 0) {
-            rev = rev * 10 + (num % 10);
-            num = num / 10;
+            int lastDigit = num % 10;
+            reversed = reversed * 10 + lastDigit;
+            num /= 10;
         }
 
-        return rev;
+        return sign * reversed;
     }
 }
 
@@ -18,12 +22,7 @@ class Solution {
 
 class Solution {
     public static int reverse(int num) {
-        int sign = 1;
-
-        if (num < 0) {
-            num = Math.abs(num);
-            sign = -1;
-        }
+        int sign = num < 0 ? -1 : 1;
 
         return Integer.parseInt(new StringBuilder(Integer.toString(num)).reverse().toString()) * sign;
     }
@@ -33,17 +32,22 @@ class Solution {
 //Method3- Recursive Approach
 
 class Solution {
-    public static int reverseNumber(int number) {
-        if (number >= 0 && number <= 9) {
-            return number;
+    public static int reverseNumber(int num) {
+        int sign = num < 0 ? -1 : 1;
+        num = Math.abs(num);
+
+        return sign * reverseHelper(num);
+    }
+
+    private static int reverseHelper(int num) {
+        if (num < 10) {
+            return num;
         }
 
-        int lastDigit = number % 10;
-
-        int numDigits = (int) Math.log10(Math.abs(number)) + 1;
-
+        int lastDigit = num % 10;
+        int numDigits = (int) Math.log10(num) + 1;
         int placeValue = (int) Math.pow(10, numDigits - 1);
 
-        return lastDigit * placeValue + reverseNumber(number / 10);
+        return lastDigit * placeValue + reverseHelper(num / 10);
     }
 }
