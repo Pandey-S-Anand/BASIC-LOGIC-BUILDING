@@ -46,35 +46,19 @@ class Solution {
 class Solution {
     public List<Integer> addToArrayForm(int[] num1, int num2) {
         int i = num1.length - 1, carry = 0;
-        List<Integer> sum = new LinkedList<>();
+        LinkedList<Integer> sum = new LinkedList<>();
 
-        while (i >= 0 && num2 != 0) {
-            int digit = (num1[i] + (num2 % 10) + carry) % 10;
-            carry = (num1[i] + (num2 % 10) + carry) / 10;
+        while (i >= 0 || num2 != 0 || carry != 0) {
+            int digit1 = (i >= 0) ? num1[i] : 0;
+            int digit2 = num2 % 10;
 
-            sum.add(0, digit);
+            int total = digit1 + digit2 + carry;
+
+            sum.addFirst(total % 10);
+            carry = total / 10;
+
             i--;
-            num2 = num2 / 10;
-        }
-
-        while (i >= 0) {
-            int digit = (num1[i] + carry) % 10;
-            carry = (num1[i] + carry) / 10;
-
-            sum.add(0, digit);
-            i--;
-        }
-
-        while (num2 != 0) {
-            int digit = (num2 % 10 + carry) % 10;
-            carry = (num2 % 10 + carry) / 10;
-
-            sum.add(0, digit);
-            num2 = num2 / 10;
-        }
-
-        if (carry == 1) {
-            sum.add(0, carry);
+            num2 /= 10;
         }
 
         return sum;
