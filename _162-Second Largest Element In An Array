@@ -1,22 +1,20 @@
-//Without Recursion
-
 //Bruteforce Approach
 
 class Solution {
-    int print2largest(int arr[]) {
+    public int getSecondLargest(int[] arr) {
         int max = Integer.MIN_VALUE;
         for (int num : arr) {
             max = Math.max(num, max);
         }
 
-        int secondMax = -1;
+        int secondMax = Integer.MIN_VALUE;
         for (int num : arr) {
-            if (num > secondMax && num < max) {
+            if (num > secondMax && num != max) {
                 secondMax = num;
             }
         }
 
-        return secondMax;
+        return secondMax == Integer.MIN_VALUE ? -1 : secondMax;
     }
 }
 
@@ -24,42 +22,18 @@ class Solution {
 //Optimal Approach
 
 class Solution {
-    int print2largest(int arr[]) {
-        int max = -1, secondMax = -1;
+    public int getSecondLargest(int[] arr) {
+        int max = Integer.MIN_VALUE, secondMax = Integer.MIN_VALUE;
 
-        for (int num : arr) {
-            if (num > max) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
                 secondMax = max;
-                max = num;
-            } else if (num < max && num > secondMax) {
-                secondMax = num;
+                max = arr[i];
+            } else if (arr[i] != max && arr[i] > secondMax) {
+                secondMax = arr[i];
             }
         }
 
-        return secondMax;
-    }
-}
-
-
-//Using Recursion
-
-class Solution {
-    int print2largest(int[] arr) {
-        return print2largestHelper(arr, -1, -1);
-    }
-
-    private int print2largestHelper(int[] arr, int max, int secondMax) {
-        if (arr.length == 0) {
-            return secondMax;
-        }
-
-        if (arr[0] > max) {
-            secondMax = max;
-            max = arr[0];
-        } else if (arr[0] < max && arr[0] > secondMax) {
-            secondMax = arr[0];
-        }
-
-        return print2largestHelper(Arrays.copyOfRange(arr, 1, arr.length), max, secondMax);
+        return (secondMax == Integer.MIN_VALUE) ? -1 : secondMax;
     }
 }
