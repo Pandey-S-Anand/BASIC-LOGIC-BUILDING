@@ -1,34 +1,46 @@
-/*
-Efficient solution: 
-Apart from 2, all of the prime numbers are odd. So it is not possible to represent a prime number (which is odd) to be written as a sum of two odd prime numbers,
-so we are sure that one of the two prime numbers should be 2. So we have to check whether n-2 is prime or not. If it holds we print Yes else No.
-For example, if the number is 19 then we have to check whether 19-2 = 17 is a prime number or not. If 17 is a prime number then print yes otherwise print no.
-*/
+/**
+ * Efficient approach:
+ *
+ * Except for 2, all prime numbers are odd. 
+ * And an odd number can never be expressed as the sum of two odd numbers,
+ * because odd + odd always equals an even number.
+ *
+ * Therefore, an odd prime cannot be written as the sum of two odd primes.
+ * This means that if a prime number 'n' is to be represented as the sum 
+ * of two primes, one of them must be 2.
+ *
+ * So we only need to check whether (n - 2) is prime.
+ * If (n - 2) is prime, the answer is "Yes". Otherwise, "No".
+ *
+ * Example:
+ * For n = 19:
+ *   Check whether 19 - 2 = 17 is prime.
+ *   Since 17 is prime → answer is "Yes".
+ */
+
 
 class Solution {
     public static boolean canBeExpressedAsSumOfTwoPrimes(int num) {
         // Check if (num - 2) is prime
-        if (isPrime(num - 2)) {
-            return true;
-        }
-        return false;
+        return isPrime(num - 2);
     }
 
-    private static boolean isPrime(int number) {
-        if (number <= 1) {
-            return false; // Numbers <= 1 are not prime
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false; // Not prime
         }
 
-        if (number == 2) {
-            return true; // 2 is the only even prime number
+        if (num == 2) {
+            return true; // 2 is the only even prime
         }
 
-        for (int divisor = 2; divisor <= Math.sqrt(number); divisor++) {
-            if (number % divisor == 0) {
-                return false; // Found a divisor, so not prime
+        for (int divisor = 2; divisor <= Math.sqrt(num); divisor++) {
+            if (num % divisor == 0) {
+                return false;
             }
         }
 
-        return true; // Prime if no divisors are found
+        return true;
     }
 }
+
