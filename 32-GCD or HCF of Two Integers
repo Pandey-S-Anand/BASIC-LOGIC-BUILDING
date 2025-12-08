@@ -9,55 +9,24 @@
    Highest Common Factor : 16
 */
 
-//Iterative Approach
+//Method 1 :
 
 class Solution {
-    public int findGCD(int num1, int num2) {
-        // Find the minimum of the two numbers
-        int smallerNum = Math.min(num1, num2);
+    public static int gcd(int num1, int num2) {
+        int smaller = Math.min(num1, num2);
+        int larger = Math.max(num1, num2);
 
-        // Check if the larger number is divisible by the smaller number
-        if (Math.max(num1, num2) % smallerNum == 0) {
-            return smallerNum; // If true, return the smaller number as the GCD
+        if (larger % smaller == 0) {
+            return smaller;
         }
 
-        // Iterate from half of the smaller number to 1, to find the GCD
-        for (int i = smallerNum / 2; i > 1; i--) {
+        for (int i = smaller / 2; i >= 1; i--) {
             if (num1 % i == 0 && num2 % i == 0) {
-                return i; // If i is a divisor of both num1 and num2, return it as GCD
+                return i;
             }
         }
 
-        return 1; // If no common divisor greater than 1 is found, return 1
-    }
-}
-
-
-//Recurssive Approaches
-
-//Method 1: Bruteforce Approach
-
-class Solution {
-    public int findGCD(int num1, int num2) {
-        // Find the smaller of the two numbers
-        int smallerNum = Math.min(num1, num2);
-
-        // If one number is divisible by the smaller one, return the smaller number
-        if (Math.max(num1, num2) % smallerNum == 0) {
-            return smallerNum;
-        }
-
-        return findGCDRecursive(num1, num2, smallerNum / 2);
-    }
-
-    private static int findGCDRecursive(int num1, int num2, int currentDivisor) {
-        // If currentDivisor is a divisor of both num1 and num2, return it
-        if (num1 % currentDivisor == 0 && num2 % currentDivisor == 0) {
-            return currentDivisor;
-        }
-
-        // Recursively check the next smaller divisor
-        return findGCDRecursive(num1, num2, currentDivisor - 1);
+        return 1;
     }
 }
 
