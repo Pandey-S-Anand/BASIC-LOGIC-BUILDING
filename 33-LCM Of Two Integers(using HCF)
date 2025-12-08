@@ -1,17 +1,17 @@
 class Solution {
     public static int LCM(int num1, int num2) {
-        int hcf = GCD(num1, num2);
+        int hcf = gcd(num1, num2);
         int lcm = (num1 * num2) / hcf;
         return lcm;
     }
 
-    private static int GCD(int divisor, int dividend) {
+    private static int gcd(int divisor, int dividend) {
         int remainder = dividend % divisor;
 
         if (remainder == 0) {
             return divisor;
         }
 
-        return GCD(remainder, divisor);
+        return gcd(remainder, divisor);
     }
 }
