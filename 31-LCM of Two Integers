@@ -24,8 +24,6 @@
   
 */
 
-//Iterative Approach 
-
 class Solution {
     public static int findLCM(int num1, int num2) {
         int largerNum = Math.max(num1, num2);
@@ -41,27 +39,5 @@ class Solution {
         }
 
         return currentMultiple;
-    }
-}
-
-
-//Recurssive Approach
-
-class Solution {
-    public static int findLCM(int num1, int num2) {
-        int largerNum = Math.max(num1, num2);
-        int smallerNum = Math.min(num1, num2);
-
-        return lcm(smallerNum, largerNum, largerNum);
-    }
-
-    private static int lcm(int smallerNum, int largerNum, int currentMultiple) {
-        // Base case: if currentMultiple is divisible by smallerNum, we've found the LCM
-        if (currentMultiple % smallerNum == 0) {
-            return currentMultiple;
-        }
-
-        // Recursive case: increment by largerNum to check the next multiple
-        return lcm(smallerNum, largerNum, currentMultiple + largerNum);
     }
 }
