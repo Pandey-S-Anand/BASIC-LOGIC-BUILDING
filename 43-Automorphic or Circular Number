@@ -6,16 +6,12 @@ Some other automorphic numbers are 5, 6, 36, 890625, etc.
 //Method 1
 
 class Solution {
-    public String checkAutomorphic(int number) {
-        int digitCount = (int) Math.ceil(Math.log10(number));
-        long square = (long) number * number;
+    public String checkAutomorphic(int num) {
+        int digitCount = (int) Math.ceil(Math.log10(num));
+        long square = (long) num * num;
         int lastDigits = (int) (square % (int) Math.pow(10, digitCount));
 
-        if (lastDigits == number) {
-            return "Automorphic";
-        } else {
-            return "Not Automorphic";
-        }
+        return lastDigits == num ? "Automorphic" : "Not Automorphic";
     }
 }
 
@@ -23,16 +19,15 @@ class Solution {
 //Method 2
 
 class Solution {
-    public String checkAutomorphic(int number) {
-        long square = (long) number * number;
+    public String checkAutomorphic(int num) {
+        long sq = (long) num * num;
 
-        while (number != 0) {
-            if ((number % 10) != (square % 10)) {
+        while (num > 0) {
+            if (num % 10 != sq % 10) {
                 return "Not Automorphic";
             }
-
-            number /= 10;
-            square /= 10;
+            num /= 10;
+            sq /= 10;
         }
 
         return "Automorphic";
@@ -52,8 +47,8 @@ class Solution {
 
         if (lastDigits.equals(BigInteger.valueOf(number))) {
             return "Automorphic";
-        } else {
-            return "Not Automorphic";
         }
+
+        return "Not Automorphic";
     }
 }
