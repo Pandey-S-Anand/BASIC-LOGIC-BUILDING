@@ -16,37 +16,29 @@ Reading the remainders from bottom to top gives us the hexadecimal representatio
 // Method 1
 
 class Solution {
-    public String decimalToHexadecimal(int decimalNumber) {
-        if (decimalNumber == 0) {
+    public String decimalToHexadecimal(int decimal) {
+        if (decimal == 0) {
             return "0";
         }
 
-        String result = "", hexDigits = "0123456789ABCDEF";
+        StringBuilder hex = new StringBuilder();
+        String hexDigits = "0123456789ABCDEF";
 
-        while (decimalNumber != 0) {
-            int remainder = decimalNumber % 16;
-            result = result + hexDigits.charAt(remainder);
-            decimalNumber = decimalNumber / 16;
+        while (decimal != 0) {
+            int remainder = decimal % 16;
+            hex.append(hexDigits.charAt(remainder));
+            decimal = decimal / 16;
         }
 
-        return reverseString(result);
-    }
-
-    private String reverseString(String str) {
-        String reversedString = "";
-        for (int i = str.length() - 1; i >= 0; i--) {
-            reversedString = reversedString + str.charAt(i);
-        }
-        return reversedString;
+        return hex.reverse().toString();
     }
 }
-
 
 
 //Method 2 (using Inbuilt Method)
 
 class Solution {
-    public static String decToHex(int dec) {
-        return Integer.toHexString(dec);
+    public static String decToHex(int decimal) {
+        return Integer.toHexString(decimal);
     }
 }
