@@ -29,21 +29,14 @@ class Solution {
             return "0";
         }
 
-        StringBuilder octalString = new StringBuilder();
+        StringBuilder octal = new StringBuilder();
+
         while (decimal != 0) {
-            octalString.append(decimal % 8);
+            octal.append(decimal % 8);
             decimal = decimal / 8;
         }
 
-        return reverseString(octalString.toString());
-    }
-
-    private String reverseString(String str) {
-        StringBuilder reversedString = new StringBuilder();
-        for (int i = str.length() - 1; i >= 0; i--) {
-            reversedString.append(str.charAt(i));
-        }
-        return reversedString.toString();
+        return octal.reverse().toString();
     }
 }
 
@@ -51,7 +44,7 @@ class Solution {
 //Method 2 (inbuilt method)
 
 class Solution {
-    public static String decToOct(int dec) {
-        return Integer.toOctalString(dec);
+    public static String decToOct(int decimal) {
+        return Integer.toOctalString(decimal);
     }
 }
