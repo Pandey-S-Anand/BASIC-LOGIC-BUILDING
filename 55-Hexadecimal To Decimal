@@ -26,17 +26,17 @@ class Solution {
         }
 
         String validDigits = "0123456789ABCDEF";
-        long decimalValue = 0;
+        long decimal = 0;
         long powerOf16 = 1; // 16^0
 
         for (int i = hex.length() - 1; i >= 0; i--) {
             char currentChar = hex.charAt(i);
             int digitIndex = validDigits.indexOf(currentChar);
-            decimalValue += (digitIndex * powerOf16);
+            decimal += (digitIndex * powerOf16);
             powerOf16 = powerOf16 * 16;
         }
 
-        return decimalValue;
+        return decimal;
     }
 }
 
