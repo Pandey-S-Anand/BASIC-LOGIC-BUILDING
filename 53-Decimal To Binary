@@ -1,5 +1,5 @@
 /*
-   Let's take the example of converting the decimal number 25 to binary:
+Let's take the example of converting the decimal number 25 to binary:
 
 Start with the decimal number (25).
 
@@ -26,68 +26,99 @@ Remainder: 1
 Reading the remainders from bottom to top, we get the binary representation: 11001.
 */
 
-//Method 1: Naive Approach (Will only work for Positive Integers ,fail for Negative Integers and 0)
+//Naive Approach (Will only work for Positive Integers ,fail for Negative Integers and 0)
 
-class Solution {
-    public String decimalToBinary(int decimalNumber) {
-        String binary = "";
-        while (decimalNumber != 0) {
-            binary = binary + (decimalNumber % 2);
-            decimalNumber = decimalNumber / 2;
-        }
-        return reverseString(binary);
-    }
-
-    private String reverseString(String str) {
-        String reversedString = "";
-        for (int i = str.length() - 1; i >= 0; i--) {
-            reversedString = reversedString + str.charAt(i);
-        }
-        return reversedString;
-    }
-}
-
-
-
-
-//Method 2: Optimal Approach (Will work for Positive Integers ,Negative Integers and 0)
-
-class Solution { 
-    public String decimalToBinary(int decimalNumber) {
-        if (decimalNumber == 0) {
-            return "0";
+public class Solution {
+    public static void toBinary(int decimal) {
+        if (decimal == 0) {
+            System.out.print("0");
+            return;
         }
 
-        String binaryString = "";
-        boolean leadingOneFound = false;
+        StringBuilder binary = new StringBuilder();
 
-        for (int i = 31; i >= 0; i--) {
-            int bitMask = 1 << i;
-
-            if (leadingOneFound) {
-                if ((decimalNumber & bitMask) == 0) {
-                    binaryString += "0"; 
-                } else {
-                    binaryString += "1";
-                }
-            } else {
-                if ((decimalNumber & bitMask) != 0) {
-                    binaryString += "1"; 
-                    leadingOneFound = true;
-                }
-            }
+        while (decimal != 0) {
+            int remainder = decimal % 2;
+            binary.append(remainder);
+            decimal = decimal / 2;
         }
 
-        return binaryString;
+        System.out.print(binary.reverse().toString());
     }
 }
 
 
-//Method 3 : inbuilt Method (Will work for Positive Integers ,Negative Integers and 0)
+//Optimal Approach (Will work for Positive Integers ,Negative Integers and 0)
 
-class Solution { 
-  public static String decimalToBinary(int decimalNumber) {
-    String binaryValue = Integer.toBinaryString(decimalNumber);
-    return binaryValue;
-  }
+public class Solution {
+    public static void toBinary(int decimal) {
+        // Direct return for zero (special case)
+        if (decimal == 0) {
+            System.out.println("0");
+            return;
+        }
+
+        boolean isNegative = false;
+
+        // Mark sign and work with absolute value
+        if (decimal < 0) {
+            isNegative = true;
+            decimal = Math.abs(decimal);
+        }
+
+        // If negative → compute two’s complement on padded binary
+        // If positive → just normal binary
+        String binary = isNegative ? twosComplement(toBinary(decimal, true)) : toBinary(decimal, false).toString();
+
+        System.out.print(binary);
+    }
+
+    private static StringBuilder toBinary(int decimal, boolean isNegative) {
+        StringBuilder binary = new StringBuilder();
+
+        while (decimal != 0) {
+            int remainder = decimal % 2;
+            binary.append(remainder);
+            decimal /= 2;
+        }
+
+        // For negative numbers, pad with zeros until length becomes 32.
+        while (isNegative && binary.length() < 32) {
+            binary.append('0');
+        }
+
+        // Final binary must be MSB → LSB, so reverse it
+        return binary.reverse();
+    }
+
+    // flip all bits → add 1.
+    private static String twosComplement(StringBuilder binary) {
+        int carry = 1; // Start with +1 to complete two’s complement
+
+        // Traverse from LSB to MSB
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            int bit = binary.charAt(i) - '0';
+
+            // Flip the bit manually (0→1, 1→0)
+            int flipped = (bit == 0) ? 1 : 0;
+
+            int sum = flipped + carry;
+            carry = sum / 2;
+
+            // Set resulting bit ('0' or '1')
+            binary.setCharAt(i, (char) ((sum % 2) + '0'));
+        }
+
+        return binary.toString();
+    }
+}
+
+
+//Aliter : inbuilt Method (Will work for Positive Integers ,Negative Integers and 0)
+
+public class Solution {
+    public static void toBinary(int decimalNumber) {
+        String binaryValue = Integer.toBinaryString(decimalNumber);
+        System.out.print(binaryValue);
+    }
 }
