@@ -28,17 +28,17 @@ class Solution {
             return 0;
         }
 
-        long decimalValue = 0;
+        long decimal = 0;
         long powerOf8 = 1; // 8^0 = 1
 
         while (octal != 0) {
             int remainder = octal % 10;
-            decimalValue += remainder * powerOf8;
+            decimal += remainder * powerOf8;
             octal = octal / 10;
             powerOf8 = powerOf8 * 8;
         }
 
-        return decimalValue;
+        return decimal;
     }
 }
 
