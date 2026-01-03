@@ -1,0 +1,112 @@
+//Bruteforce Approach
+
+class Solution {
+    public int sumOfUnique(int[] arr) {
+        /*
+         Sort the array so that identical elements become adjacent.
+         This allows us to count occurrences of each number in a single pass.
+        */
+        Arrays.sort(arr);
+
+        int count = 1; // Counts occurrences of the current number
+        int sum = 0; // Stores the sum of elements that appear exactly once
+
+        /*
+         Traverse the array from the second element onwards.
+         We compare each element with the previous one to detect duplicates.
+        */
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] == arr[i - 1]) {
+                // Same number as before → increment its frequency count
+                count++;
+            } else {
+                /*
+                 We encountered a new number.
+                 Before moving on, check the frequency of the previous number.
+                 If it appeared exactly once, add it to the sum.
+                */
+                if (count == 1) {
+                    sum += arr[i - 1];
+                }
+
+                // Reset count for the new number
+                count = 1;
+            }
+        }
+
+        /*
+         After the loop, the last number has not been evaluated yet.
+         If it appeared exactly once, add it to the sum.
+        */
+        if (count == 1) {
+            sum += arr[arr.length - 1];
+        }
+
+        return sum;
+    }
+}
+
+
+//Good Approach
+
+class Solution {
+    public int sumOfUnique(int[] arr) {
+        int sum = 0;
+        Map<Integer, Integer> freqMap = new HashMap<>();
+
+        for (int num : arr) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+
+        for (int num : freqMap.keySet()) {
+            if (freqMap.get(num) == 1) {
+                sum += num;
+            }
+        }
+
+        return sum;
+    }
+}
+
+
+//Better Approach
+
+class Solution {
+    public int sumOfUnique(int[] arr) {
+        int sum = 0;
+        int[] freqArr = new int[101]; //1 <= nums[i] <= 100
+
+        for (int num : arr) {
+            freqArr[num]++;
+        }
+
+        for (int num = 1; num <= 100; num++) {
+            if (freqArr[num] == 1) {
+                sum += num;
+            }
+        }
+
+        return sum;
+    }
+}
+
+
+//Optimal Approach
+
+class Solution {
+    public int sumOfUnique(int[] arr) {
+        int sum = 0;
+        int[] freqArr = new int[101]; //1 <= nums[i] <= 100
+
+        for (int num : arr) {
+            freqArr[num]++;
+            if (freqArr[num] == 1) {
+                sum += num; // first time seen
+            } else if (freqArr[num] == 2) {
+                sum -= num; // no longer unique
+            }
+        }
+
+        return sum;
+    }
+}
